@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8p1jrh5cqy0w"
-path="res://.godot/imported/btn_pin.png-6aff163f40b5d6b09bc143607d585d57.ctex"
+uid="uid://cuqc1s7kyxpw2"
+path="res://.godot/imported/btn_pincolor.png-5346a5a1914305c8813c28b997ca9a7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/btn_pin.png"
-dest_files=["res://.godot/imported/btn_pin.png-6aff163f40b5d6b09bc143607d585d57.ctex"]
+source_file="res://Sprites/btn_pincolor.png"
+dest_files=["res://.godot/imported/btn_pincolor.png-5346a5a1914305c8813c28b997ca9a7d.ctex"]
 
 [params]
 
