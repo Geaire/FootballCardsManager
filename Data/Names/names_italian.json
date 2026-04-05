@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Marco", "Luca", "Alessandro", "Andrea", "Giuseppe", "Antonio", "Francesco", "Matteo", "Roberto", "Stefano",
+    "Davide", "Simone", "Riccardo", "Fabio", "Daniele", "Lorenzo", "Giovanni", "Paolo", "Giorgio", "Vincenzo",
+    "Alberto", "Bruno", "Carlo", "Dario", "Emanuele", "Federico", "Gabriele", "Iacopo", "Jacopo", "Leonardo",
+    "Massimo", "Nicola", "Ottavio", "Pietro", "Raffaele", "Salvatore", "Tommaso", "Umberto", "Valerio", "Walter",
+    "Adriano", "Beniamino", "Claudio", "Domenico", "Edoardo", "Filippo", "Giulio", "Ignazio", "Ivan", "Luca",
+    "Mauro", "Nino", "Oscar", "Piero", "Romano", "Sergio", "Tiziano", "Ugo", "Vittorio", "Xavier"
+  ],
+  "lastNames": [
+    "Rossi", "Ferrari", "Esposito", "Bianchi", "Romano", "Colombo", "Ricci", "Marino", "Greco", "Bruno",
+    "Gallo", "Conti", "De Luca", "Mancini", "Costa", "Giordano", "Rizzo", "Lombardi", "Moretti", "Barbieri",
+    "Fontana", "Santoro", "Mariani", "Rinaldi", "Caruso", "Ferrara", "Galli", "Martini", "Leone", "Longo",
+    "Gentile", "Martinelli", "Vitale", "Lombardo", "Serra", "Coppola", "De Angelis", "Ferretti", "Grassi", "Monti",
+    "Neri", "Orlando", "Palumbo", "Quattrocchi", "Riva", "Sorrentino", "Testa", "Valentini", "Villa", "Zanetti",
+    "Amato", "Basile", "Catalano", "D'Angelo", "Farina", "Guerra", "Innocenti", "Lanza", "Messina", "Napoli"
+  ]
+}

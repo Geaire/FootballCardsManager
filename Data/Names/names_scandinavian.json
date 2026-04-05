@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Erik", "Lars", "Anders", "Johan", "Magnus", "Mikael", "Per", "Karl", "Henrik", "Björn",
+    "Christian", "Daniel", "Emil", "Fredrik", "Gustav", "Hans", "Ingvar", "Jonas", "Kristian", "Leif",
+    "Martin", "Niklas", "Olof", "Patrik", "Rasmus", "Stefan", "Tobias", "Ulf", "Viktor", "William",
+    "Adam", "Bengt", "Claes", "David", "Einar", "Filip", "Gunnar", "Håkon", "Ivar", "Jens",
+    "Knut", "Lennart", "Mats", "Nils", "Oskar", "Petter", "Rolf", "Sven", "Torbjørn", "Ulf",
+    "Vidar", "Wilhelm", "Axel", "Bo", "Christer", "Dag", "Eirik", "Finn", "Geir", "Halvard"
+  ],
+  "lastNames": [
+    "Andersen", "Christensen", "Eriksson", "Hansen", "Johansson", "Jensen", "Karlsson", "Larsson", "Lindqvist", "Nielsen",
+    "Nilsson", "Olsen", "Pedersen", "Petersen", "Svensson", "Thomsen", "Williamsen", "Bjørnsson", "Dahl", "Eklund",
+    "Fransson", "Gunnarsson", "Halvorsen", "Isaksson", "Jakobsson", "Kristiansen", "Lindgren", "Magnusson", "Nordberg", "Olsson",
+    "Persson", "Qvist", "Rasmussen", "Strand", "Thorsen", "Vesterinen", "Wikström", "Abrahamsen", "Berg", "Carlsson",
+    "Danielsen", "Engström", "Fredriksen", "Gustafsson", "Holm", "Iversen", "Jacobsen", "Knudsen", "Lund", "Mikkelsen",
+    "Nygaard", "Ottosen", "Poulsen", "Rønning", "Simonsen", "Torp", "Vang", "Winther", "Åkerberg", "Berglund"
+  ]
+}

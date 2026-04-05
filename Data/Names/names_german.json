@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Hans", "Klaus", "Dieter", "Werner", "Stefan", "Thomas", "Andreas", "Michael", "Peter", "Christian",
+    "Daniel", "Markus", "Martin", "Jürgen", "Rainer", "Helmut", "Bernd", "Frank", "Gerhard", "Heinz",
+    "Karl", "Lukas", "Matthias", "Norbert", "Oliver", "Patrick", "Rolf", "Sebastian", "Tobias", "Ulrich",
+    "Volker", "Walter", "Alexander", "Benjamin", "Christoph", "David", "Erik", "Felix", "Georg", "Holger",
+    "Ingo", "Joachim", "Kai", "Leon", "Max", "Nico", "Otto", "Philipp", "Ralf", "Simon",
+    "Tim", "Uwe", "Viktor", "Wolfgang", "Axel", "Benedikt", "Conrad", "Dominik", "Erich", "Friedrich"
+  ],
+  "lastNames": [
+    "Müller", "Schmidt", "Schneider", "Fischer", "Weber", "Meyer", "Wagner", "Becker", "Schulz", "Hoffmann",
+    "Schäfer", "Koch", "Bauer", "Richter", "Klein", "Wolf", "Schröder", "Neumann", "Schwarz", "Zimmermann",
+    "Braun", "Krüger", "Hofmann", "Hartmann", "Lange", "Schmitt", "Werner", "Krause", "Lehmann", "Schmid",
+    "Schulze", "Maier", "Köhler", "Herrmann", "König", "Walter", "Mayer", "Huber", "Kaiser", "Fuchs",
+    "Peters", "Lang", "Scholz", "Möller", "Weiß", "Jung", "Hahn", "Schubert", "Vogel", "Friedrich",
+    "Keller", "Günther", "Frank", "Berger", "Winkler", "Roth", "Beck", "Lorenz", "Baumann", "Franke"
+  ]
+}

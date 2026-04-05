@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Ali", "Reza", "Hassan", "Hossein", "Mohammad", "Ahmad", "Mehdi", "Amir", "Saeed", "Javad",
+    "Majid", "Hamid", "Karim", "Dariush", "Bahram", "Cyrus", "Farhad", "Omid", "Parviz", "Shahram",
+    "Arash", "Babak", "Ehsan", "Farshid", "Kamran", "Nader", "Pouya", "Roohollah", "Siamak", "Vahid",
+    "Amin", "Behrouz", "Davoud", "Farid", "Hooman", "Kambiz", "Leila", "Milad", "Navid", "Payam",
+    "Ramtin", "Sina", "Tariq", "Yousef", "Zubair", "Alireza", "Bijan", "Changiz", "Daryoush", "Ebrahim",
+    "Farrokh", "Ghasem", "Iraj", "Jamshid", "Khosrow", "Mansour", "Nima", "Pedram", "Rostam", "Shahab"
+  ],
+  "lastNames": [
+    "Ahmadi", "Hosseini", "Mohammadi", "Rezaei", "Karimi", "Moradi", "Najafi", "Rahimi", "Safari", "Taheri",
+    "Abbasi", "Bagheri", "Dehghani", "Ebrahimi", "Farahani", "Ghorbani", "Hashemi", "Izadi", "Jalali", "Kazemi",
+    "Lotfi", "Mansouri", "Nazari", "Omidi", "Pourali", "Qasemi", "Rastegar", "Sadeghi", "Tavakoli", "Vakili",
+    "Yousefi", "Zamani", "Asgari", "Bahrami", "Davari", "Eslami", "Fallah", "Ghasemi", "Hedayat", "Imani",
+    "Jalili", "Khani", "Lajevardi", "Maleki", "Nasiri", "Nouri", "Pakdel", "Rahmani", "Salari", "Shirazi",
+    "Tehrani", "Mousavi", "Shariati", "Khatami", "Rouhani", "Ahmadinejad", "Dastjerdi", "Firoozi", "Golmohammadi", "Hajizadeh"
+  ]
+}

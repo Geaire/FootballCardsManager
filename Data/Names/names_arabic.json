@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Mohamed", "Ahmed", "Omar", "Ali", "Hassan", "Hussein", "Khalid", "Tariq", "Youssef", "Ibrahim",
+    "Karim", "Nabil", "Samir", "Walid", "Bilal", "Rachid", "Mourad", "Adel", "Sofiane", "Ryad",
+    "Faisal", "Abdullah", "Hamid", "Jamal", "Kareem", "Latif", "Mansour", "Nasser", "Osama", "Qasim",
+    "Ramzi", "Salim", "Tarek", "Umar", "Wissam", "Yazid", "Ziad", "Adnan", "Bassam", "Djamel",
+    "Farouk", "Ghazi", "Hamza", "Issam", "Jawad", "Khaled", "Lotfi", "Malek", "Nadir", "Oussama",
+    "Rafik", "Sami", "Taoufik", "Amine", "Brahim", "Chakib", "Driss", "Fouad", "Hakim", "Ilyes"
+  ],
+  "lastNames": [
+    "Al-Hassan", "Al-Rahman", "Al-Sayed", "Al-Amin", "Al-Farsi", "Al-Qahtani", "Al-Zahrani", "Al-Harbi", "Al-Dosari", "Al-Mutairi",
+    "Ben Ali", "Ben Salem", "Ben Youssef", "Ben Ahmed", "Ben Mohamed", "Ben Amor", "Ben Abdallah", "Ben Khalil", "Ben Omar", "Ben Hamza",
+    "Benali", "Bensalem", "Benzema", "Benatia", "Benzia", "Belhanda", "Belkacem", "Benkhalifa", "Bennacer", "Benrahma",
+    "Mahrez", "Mandi", "Medjani", "Bougherra", "Ziani", "Ghilas", "Lacen", "Yebda", "Halliche", "Djabou",
+    "El-Hadary", "El-Nenny", "El-Mohamady", "Hegazi", "Elneny", "Shobeir", "Ramadan", "Salah", "Aboutrika", "Zidan",
+    "Khalfallah", "Khazri", "Chermiti", "Msakni", "Skhiri", "Sliti", "Bedoui", "Badri", "Traoui", "Lahmar"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Aleksander", "Boris", "Dmitri", "Ivan", "Mikhail", "Nikolai", "Pavel", "Sergei", "Vladimir", "Andrei",
+    "Anton", "Bogdan", "Constantin", "Danilo", "Emil", "Filip", "Goran", "Igor", "Jan", "Krzysztof",
+    "Luka", "Marek", "Nikola", "Oleg", "Piotr", "Roman", "Stefan", "Tomáš", "Viktor", "Wojciech",
+    "Adam", "Branko", "Čedomir", "Dragomir", "Ervin", "Franjo", "Grzegorz", "Hrvoje", "Ivo", "Jaroslav",
+    "Kamil", "Luboš", "Miroslav", "Nemanja", "Ondrej", "Predrag", "Radovan", "Stanislav", "Tibor", "Uros",
+    "Vaclav", "Zoran", "Aleksandar", "Bartosz", "Cezar", "Damir", "Edin", "Fernand", "Gabor", "Hasan"
+  ],
+  "lastNames": [
+    "Novak", "Kovač", "Horváth", "Szabó", "Popescu", "Ionescu", "Popa", "Stanescu", "Georgescu", "Stoica",
+    "Ivanov", "Petrov", "Sidorov", "Kuznetsov", "Smirnov", "Popov", "Sokolov", "Lebedev", "Kozlov", "Novikov",
+    "Morozov", "Volkov", "Alekseev", "Fedorov", "Orlov", "Makarov", "Nikitin", "Zaitsev", "Pavlov", "Semyonov",
+    "Kowalski", "Wiśniewski", "Wójcik", "Kowalczyk", "Kamiński", "Lewandowski", "Zieliński", "Szymański", "Woźniak", "Dąbrowski",
+    "Kovacs", "Tóth", "Varga", "Nagy", "Fekete", "Molnár", "Balogh", "Kiss", "Farkas", "Lukács",
+    "Novotný", "Dvořák", "Procházka", "Krejčí", "Blažek", "Jelínek", "Marković", "Petrović", "Jovanović", "Nikolić"
+  ]
+}

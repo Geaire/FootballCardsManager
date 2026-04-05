@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Nikos", "Giorgos", "Kostas", "Dimitris", "Yannis", "Petros", "Stavros", "Alexis", "Andreas", "Christos",
+    "Spyros", "Tasos", "Vasilis", "Manolis", "Lefteris", "Panagiotis", "Theodoros", "Michalis", "Stelios", "Fotis",
+    "Mehmet", "Mustafa", "Ahmet", "Hasan", "Huseyin", "Ibrahim", "Ismail", "Kemal", "Murat", "Osman",
+    "Recep", "Selim", "Yilmaz", "Aydin", "Bulent", "Cem", "Derya", "Emre", "Fatih", "Gokhan",
+    "Hakan", "Ilker", "Kadir", "Levent", "Nihat", "Oguz", "Ramazan", "Sercan", "Tuncay", "Umut",
+    "Evangelos", "Konstantinos", "Leonidas", "Nikolaos", "Athanasios", "Anastasios", "Kyriakos", "Georgios", "Ioannis", "Elias"
+  ],
+  "lastNames": [
+    "Papadopoulos", "Papadimitriou", "Papageorgiou", "Alexopoulos", "Georgiou", "Nikolaou", "Dimos", "Stavros", "Kostopoulos", "Theodorou",
+    "Anagnostopoulos", "Karamanlis", "Venizelos", "Samaras", "Mitsotakis", "Tsipras", "Papandreou", "Karaiskakis", "Seferis", "Elytis",
+    "Yilmaz", "Kaya", "Demir", "Celik", "Sahin", "Ozturk", "Arslan", "Dogan", "Aslan", "Kilic",
+    "Ozdemir", "Simsek", "Yildirim", "Karahan", "Polat", "Erdogan", "Akbas", "Bulut", "Ciftci", "Gungor",
+    "Kaplan", "Kurt", "Ozkan", "Sezer", "Tekin", "Ucar", "Vardar", "Yazici", "Zorlu", "Aksoy",
+    "Zachariadis", "Petridis", "Kyriazis", "Stavridis", "Andreou", "Christodoulou", "Hadjis", "Ioannou", "Michaelides", "Nicolaou"
+  ]
+}

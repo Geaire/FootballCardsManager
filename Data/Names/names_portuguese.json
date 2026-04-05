@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Pedro", "João", "Bruno", "Ricardo", "André", "Tiago", "Rui", "Hugo", "Nuno", "Luís",
+    "Miguel", "Paulo", "Carlos", "Diogo", "Filipe", "Gonçalo", "Marco", "Rafael", "Sérgio", "Vítor",
+    "Fábio", "Hélder", "Ivo", "Joaquim", "Leandro", "Mário", "Nelson", "Óscar", "Renato", "Salvador",
+    "Tomás", "Valter", "Xavier", "Afonso", "Bernardo", "Cristiano", "Dário", "Emanuel", "Francisco", "Gerson",
+    "Henrique", "Igor", "Jaime", "Kiko", "Leonardo", "Márcio", "Nicolau", "Olavo", "Patricio", "Quintino",
+    "Rodrigo", "Simão", "Telmo", "Ulisses", "Vasco", "Wellington", "Alexandre", "Beto", "César", "Deco"
+  ],
+  "lastNames": [
+    "Silva", "Santos", "Ferreira", "Pereira", "Oliveira", "Costa", "Rodrigues", "Martins", "Jesus", "Sousa",
+    "Fernandes", "Gonçalves", "Lopes", "Marques", "Alves", "Almeida", "Ribeiro", "Pinto", "Carvalho", "Teixeira",
+    "Moreira", "Correia", "Mendes", "Nunes", "Soares", "Vieira", "Monteiro", "Cardoso", "Rocha", "Cunha",
+    "Barbosa", "Coelho", "Figueiredo", "Gaspar", "Henriques", "Isidoro", "Jerónimo", "Leal", "Magalhães", "Neves",
+    "Pacheco", "Queirós", "Rego", "Sequeira", "Tavares", "Valente", "Xavier", "Azevedo", "Branco", "Castro",
+    "Duarte", "Esteves", "Freitas", "Gomes", "Horta", "Ivo", "Jardim", "Lacerda", "Matos", "Neto"
+  ]
+}

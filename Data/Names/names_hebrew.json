@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Aviv", "Bar", "Ben", "Dan", "Eitan", "Gil", "Idan", "Jonathan", "Lior", "Matan",
+    "Nir", "Omer", "Ran", "Shai", "Tal", "Uri", "Yoav", "Ziv", "Alon", "Barak",
+    "Chen", "David", "Elad", "Firas", "Gal", "Hagai", "Itai", "Jacob", "Kobi", "Levi",
+    "Moshe", "Nadav", "Or", "Pini", "Roi", "Shimon", "Tomer", "Udi", "Vered", "Yaron",
+    "Avi", "Boaz", "Carmel", "Dor", "Elior", "Gideon", "Haim", "Ilan", "Joshua", "Kfir",
+    "Liran", "Michael", "Natan", "Ofir", "Peleg", "Roni", "Sahar", "Tamir", "Tzachi", "Yaniv"
+  ],
+  "lastNames": [
+    "Cohen", "Levi", "Mizrahi", "Peretz", "Biton", "Dahan", "Azoulay", "Friedman", "Goldberg", "Shapiro",
+    "Katz", "Levy", "Rosenberg", "Weiss", "Stern", "Berkowitz", "Blum", "Feldman", "Grossman", "Horowitz",
+    "Israeli", "Jacobson", "Klein", "Lieberman", "Marcus", "Nathan", "Ofer", "Peled", "Rabin", "Shalom",
+    "Tal", "Unger", "Viner", "Wexler", "Yaniv", "Zamir", "Amar", "Ben-David", "Carmel", "Doron",
+    "Elbaz", "Fadlon", "Gabay", "Hadad", "Iluz", "Jaber", "Kadosh", "Laor", "Maman", "Naor",
+    "Ohayon", "Partush", "Regev", "Sarusi", "Tarrab", "Uziel", "Vardi", "Waxman", "Yehuda", "Zohar"
+  ]
+}

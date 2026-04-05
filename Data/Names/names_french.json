@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Pierre", "Jean", "Luc", "Paul", "Marc", "Henri", "Louis", "René", "André", "Michel",
+    "Philippe", "Alain", "Claude", "Denis", "François", "Gilles", "Hugo", "Julien", "Kévin", "Laurent",
+    "Mathieu", "Nicolas", "Olivier", "Pascal", "Quentin", "Raphaël", "Sébastien", "Thomas", "Vincent", "Xavier",
+    "Yannick", "Alexis", "Baptiste", "Clément", "Damien", "Édouard", "Florian", "Gaëtan", "Hervé", "Ivan",
+    "Jonathan", "Karim", "Léo", "Maxime", "Nathan", "Patrice", "Robin", "Samuel", "Théo", "Ugo",
+    "Valentin", "William", "Antoine", "Bruno", "Cyril", "Dylan", "Ethan", "Fabien", "Gaël", "Hadrien"
+  ],
+  "lastNames": [
+    "Martin", "Dupont", "Bernard", "Moreau", "Laurent", "Simon", "Michel", "Lefebvre", "Leroy", "Roux",
+    "David", "Bertrand", "Morel", "Fournier", "Girard", "Bonnet", "Dupuis", "Lambert", "Fontaine", "Rousseau",
+    "Vincent", "Muller", "Lefevre", "Faure", "André", "Mercier", "Blanc", "Guerin", "Boyer", "Gauthier",
+    "Perrin", "Robin", "Clement", "Morin", "Nicolas", "Henry", "Roussel", "Mathieu", "Gautier", "Masson",
+    "Marchand", "Durand", "Leblanc", "Fernandez", "Colin", "Legrand", "Garnier", "Renard", "Chevalier", "Gaillard",
+    "Noel", "Barbier", "Arnaud", "Picard", "Lemaire", "Boucher", "Carpentier", "Lacroix", "Meunier", "Rey"
+  ]
+}

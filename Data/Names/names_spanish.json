@@ -1,0 +1,18 @@
+{
+  "firstNames": [
+    "Carlos", "Miguel", "José", "Juan", "Pedro", "Luis", "Diego", "Alejandro", "Fernando", "Andrés",
+    "Ricardo", "Roberto", "Eduardo", "Sergio", "Pablo", "Javier", "Héctor", "Raúl", "Iván", "Óscar",
+    "Rodrigo", "Ernesto", "Gustavo", "Alberto", "Alfredo", "Manuel", "Antonio", "Francisco", "Jorge", "Enrique",
+    "Arturo", "Rubén", "Gerardo", "Mauricio", "Adrián", "Tomás", "Nicolás", "Sebastián", "Gabriel", "Cristian",
+    "Daniel", "Santiago", "Mateo", "Lucas", "Emilio", "César", "Víctor", "Ramón", "Ignacio", "Felipe",
+    "Álvaro", "Bruno", "David", "Marcos", "Gonzalo", "Agustín", "Esteban", "Julio", "Mario", "Martín"
+  ],
+  "lastNames": [
+    "García", "Rodríguez", "Martínez", "López", "González", "Hernández", "Pérez", "Sánchez", "Ramírez", "Torres",
+    "Flores", "Rivera", "Gómez", "Díaz", "Cruz", "Morales", "Reyes", "Guerrero", "Ortiz", "Delgado",
+    "Castro", "Vargas", "Ramos", "Romero", "Jiménez", "Moreno", "Álvarez", "Ruiz", "Herrera", "Medina",
+    "Aguilar", "Gutiérrez", "Mendoza", "Vega", "Castillo", "Ríos", "Navarro", "Salinas", "Fuentes", "Cabrera",
+    "Espinoza", "Figueroa", "Ibáñez", "Lara", "Miranda", "Núñez", "Ponce", "Quintero", "Serrano", "Trujillo",
+    "Valenzuela", "Zamora", "Acosta", "Bernal", "Campos", "Coronel", "Domínguez", "Escobar", "Fonseca", "Guzmán"
+  ]
+}

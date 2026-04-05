@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://bkfpyr8yi4g2m"]
+
+[ext_resource type="Script" uid="uid://dbn3aa8r7oq7v" path="res://Scripts/card_player.gd" id="1_6d7mh"]
+[ext_resource type="Texture2D" uid="uid://c3o02fd63ge2d" path="res://Sprites/card_background.png" id="1_aanve"]
+[ext_resource type="Texture2D" uid="uid://mikkmg4nkqhm" path="res://Sprites/card_border.png" id="2_6d7mh"]
+[ext_resource type="Texture2D" uid="uid://crnk1dsofiomg" path="res://Sprites/card_silhouette.png" id="3_ajqki"]
+[ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="4_b12v8"]
+[ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="5_r57cx"]
+[ext_resource type="FontFile" uid="uid://d345ux4b2dmhk" path="res://Fonts/Roboto-Regular.ttf" id="6_0i6fe"]
+[ext_resource type="Texture2D" uid="uid://dugyg7kkokyba" path="res://Sprites/Specialties/specialty_crossing.png" id="7_1v2uw"]
+[ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="8_8tm0q"]
+[ext_resource type="FontFile" uid="uid://djse4v8s8ul4d" path="res://Fonts/MPLUS1p-Bold.ttf" id="9_fhld7"]
+[ext_resource type="FontFile" uid="uid://qchfwvdcm00i" path="res://Fonts/MPLUS1p-Black.ttf" id="10_dtb0m"]
+[ext_resource type="Texture2D" uid="uid://8p1jrh5cqy0w" path="res://Sprites/btn_pin.png" id="11_5uvk1"]
+
+[node name="Card_Player" type="Node2D" unique_id=1206912900]
+script = ExtResource("1_6d7mh")
+
+[node name="CardBackground" type="Sprite2D" parent="." unique_id=1334964318]
+texture = ExtResource("1_aanve")
+
+[node name="CardBorder" type="Sprite2D" parent="." unique_id=590357485]
+z_index = 2
+texture = ExtResource("2_6d7mh")
+
+[node name="CardSilhouette" type="Sprite2D" parent="." unique_id=1698343987]
+z_index = 1
+texture = ExtResource("3_ajqki")
+
+[node name="TXT_Note" type="Label" parent="." unique_id=221002004]
+z_index = 3
+offset_left = 123.0
+offset_top = -200.0
+offset_right = 313.0
+offset_bottom = -90.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_b12v8")
+theme_override_font_sizes/font_size = 80
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Position1" type="Label" parent="." unique_id=1973637261]
+z_index = 3
+offset_left = -270.0
+offset_top = -200.0
+offset_right = -80.0
+offset_bottom = -90.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_r57cx")
+theme_override_font_sizes/font_size = 75
+text = "MDF"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Position2" type="Label" parent="." unique_id=907523274]
+z_index = 3
+offset_left = -270.0
+offset_top = -110.0
+offset_right = -80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_0i6fe")
+theme_override_font_sizes/font_size = 65
+text = "MDF"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IMG_Specialty1" type="Sprite2D" parent="." unique_id=1806895979]
+z_index = 3
+position = Vector2(-175, 36)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("7_1v2uw")
+
+[node name="IMG_Specialty2" type="Sprite2D" parent="." unique_id=110106042]
+z_index = 3
+position = Vector2(-175, 135)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("7_1v2uw")
+
+[node name="IMG_Flag" type="Sprite2D" parent="." unique_id=1331291584]
+z_index = 3
+position = Vector2(215, -55)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_8tm0q")
+
+[node name="TXT_FirstName" type="Label" parent="." unique_id=1348867650]
+z_index = 3
+offset_left = -125.0
+offset_right = 290.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_fhld7")
+theme_override_font_sizes/font_size = 60
+text = "First Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_LastName" type="Label" parent="." unique_id=739092819]
+z_index = 3
+offset_left = -125.0
+offset_top = 90.0
+offset_right = 290.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_dtb0m")
+theme_override_font_sizes/font_size = 60
+text = "Last Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BTN_PinColor" type="Sprite2D" parent="." unique_id=75564132]
+z_index = 3
+position = Vector2(292, 94.99999)
+rotation = 0.34906584
+scale = Vector2(0.2, 0.20023584)
+texture = ExtResource("11_5uvk1")
