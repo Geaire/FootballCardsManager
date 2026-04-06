@@ -37,6 +37,7 @@ var concentration: int
 var motivation: int
 var anticipation: int
 var communication: int
+var clickable: bool = true
 
 # --- CONSTANTES ---
 const POSITIONS = ["GB","DG","DD","DC","MG","MD","MDF","MC","MO","AG","AD","AC","ATT"]
@@ -302,6 +303,8 @@ func _input(event):
 				_on_card_clicked()
 
 func _on_card_clicked():
+	if not clickable:
+		return
 	GameState.selected_note = note
 	GameState.selected_color = color
 	GameState.selected_position1 = position1

@@ -43,6 +43,7 @@ func setup():
 	if GameState.selected_color == "":
 		return
 	var cp = card_preview
+	cp.clickable = false
 
 	# Injecter les données GameState dans CardPreview
 	cp.note = GameState.selected_note
