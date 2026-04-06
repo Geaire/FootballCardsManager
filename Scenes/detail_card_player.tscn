@@ -1,0 +1,501 @@
+[gd_scene format=3 uid="uid://cf8hw8cjf51g8"]
+
+[ext_resource type="Texture2D" uid="uid://eqe0xk17nf27" path="res://Sprites/bg_detailcardplayer.jpg" id="1_gswx7"]
+[ext_resource type="Script" uid="uid://crd7xr1rnehck" path="res://Scripts/detail_card_player.gd" id="1_u8okc"]
+[ext_resource type="PackedScene" uid="uid://bkfpyr8yi4g2m" path="res://Scenes/card_player.tscn" id="2_v5e6n"]
+[ext_resource type="Texture2D" uid="uid://c3o02fd63ge2d" path="res://Sprites/card_background.png" id="3_ngsar"]
+[ext_resource type="Texture2D" uid="uid://mikkmg4nkqhm" path="res://Sprites/card_border.png" id="4_oh0sr"]
+[ext_resource type="Texture2D" uid="uid://crnk1dsofiomg" path="res://Sprites/card_silhouette.png" id="5_cqtoe"]
+[ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="6_oh0sr"]
+[ext_resource type="Texture2D" uid="uid://b8vrf4y83wuts" path="res://Sprites/card_backgroundphysical.png" id="7_cqtoe"]
+[ext_resource type="Texture2D" uid="uid://djpyktraqd11s" path="res://Sprites/card_borderphysical.png" id="8_b10uk"]
+[ext_resource type="Texture2D" uid="uid://bpcqq5pns0ar5" path="res://Sprites/btn_circle.png" id="9_meft2"]
+[ext_resource type="FontFile" uid="uid://djse4v8s8ul4d" path="res://Fonts/MPLUS1p-Bold.ttf" id="10_6o6a0"]
+[ext_resource type="FontFile" uid="uid://qchfwvdcm00i" path="res://Fonts/MPLUS1p-Black.ttf" id="11_u8okc"]
+
+[node name="Detail_Card_Player" type="Node2D" unique_id=1937574575]
+script = ExtResource("1_u8okc")
+
+[node name="BG_DetailCardPlayer" type="Sprite2D" parent="." unique_id=548986546]
+position = Vector2(960, 540)
+texture = ExtResource("1_gswx7")
+
+[node name="BTN_CloseDetailCardPlayer" type="Sprite2D" parent="." unique_id=1596337298]
+z_index = 2
+position = Vector2(1780, 70)
+texture = ExtResource("9_meft2")
+
+[node name="CardPreview" parent="." unique_id=1206912900 instance=ExtResource("2_v5e6n")]
+z_index = 1
+position = Vector2(400, 300)
+
+[node name="Skills" type="Node2D" parent="." unique_id=469869775]
+
+[node name="CardBackgroundSkills" type="Sprite2D" parent="Skills" unique_id=1113663137]
+z_index = 1
+position = Vector2(400, 800)
+texture = ExtResource("3_ngsar")
+
+[node name="CardSilhouetteSkills" type="Sprite2D" parent="Skills" unique_id=192292123]
+z_index = 2
+position = Vector2(400, 800)
+texture = ExtResource("5_cqtoe")
+
+[node name="CardBorderSkills" type="Sprite2D" parent="Skills" unique_id=838634187]
+z_index = 3
+position = Vector2(400, 800)
+texture = ExtResource("4_oh0sr")
+
+[node name="TXT_StrengthLabel" type="Label" parent="Skills" unique_id=1047299356]
+z_index = 4
+offset_left = 175.0
+offset_top = 630.0
+offset_right = 475.0
+offset_bottom = 695.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Strength"
+vertical_alignment = 1
+
+[node name="TXT_SpeedLabel" type="Label" parent="Skills" unique_id=1619013880]
+z_index = 4
+offset_left = 175.0
+offset_top = 700.0
+offset_right = 475.0
+offset_bottom = 765.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Speed"
+vertical_alignment = 1
+
+[node name="TXT_AggressionLabel" type="Label" parent="Skills" unique_id=1089035036]
+z_index = 4
+offset_left = 175.0
+offset_top = 770.0
+offset_right = 475.0
+offset_bottom = 835.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Aggression"
+vertical_alignment = 1
+
+[node name="TXT_PositioningLabel" type="Label" parent="Skills" unique_id=39960429]
+z_index = 4
+offset_left = 175.0
+offset_top = 840.0
+offset_right = 475.0
+offset_bottom = 905.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Positioning"
+vertical_alignment = 1
+
+[node name="TXT_StaminaLabel" type="Label" parent="Skills" unique_id=1347666037]
+z_index = 4
+offset_left = 175.0
+offset_top = 910.0
+offset_right = 475.0
+offset_bottom = 975.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Stamina"
+vertical_alignment = 1
+
+[node name="TXT_ConcentrationLabel" type="Label" parent="Skills" unique_id=54323237]
+z_index = 4
+offset_left = 325.0
+offset_top = 630.0
+offset_right = 625.0
+offset_bottom = 695.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Concentration"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TXT_CommunicationLabel" type="Label" parent="Skills" unique_id=277941004]
+z_index = 4
+offset_left = 325.0
+offset_top = 700.0
+offset_right = 625.0
+offset_bottom = 765.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Communication"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TXT_MotivationLabel" type="Label" parent="Skills" unique_id=1476187155]
+z_index = 4
+offset_left = 325.0
+offset_top = 770.0
+offset_right = 625.0
+offset_bottom = 835.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Motivation"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TXT_CreativityLabel" type="Label" parent="Skills" unique_id=972205070]
+z_index = 4
+offset_left = 325.0
+offset_top = 840.0
+offset_right = 625.0
+offset_bottom = 905.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Creativity"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TXT_AnticipationLabel" type="Label" parent="Skills" unique_id=1056766221]
+z_index = 4
+offset_left = 325.0
+offset_top = 910.0
+offset_right = 625.0
+offset_bottom = 975.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Anticipation"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TXT_StrengthValue" type="Label" parent="Skills" unique_id=865999818]
+z_index = 4
+offset_left = 110.0
+offset_top = 630.0
+offset_right = 175.0
+offset_bottom = 695.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_SpeedValue" type="Label" parent="Skills" unique_id=1586993595]
+z_index = 4
+offset_left = 110.0
+offset_top = 700.0
+offset_right = 175.0
+offset_bottom = 765.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_AggressionValue" type="Label" parent="Skills" unique_id=579437533]
+z_index = 4
+offset_left = 110.0
+offset_top = 770.0
+offset_right = 175.0
+offset_bottom = 835.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_PositioningValue" type="Label" parent="Skills" unique_id=638138619]
+z_index = 4
+offset_left = 110.0
+offset_top = 840.0
+offset_right = 175.0
+offset_bottom = 905.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_StaminaValue" type="Label" parent="Skills" unique_id=2035677897]
+z_index = 4
+offset_left = 110.0
+offset_top = 910.0
+offset_right = 175.0
+offset_bottom = 975.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_ConcentrationValue" type="Label" parent="Skills" unique_id=528636003]
+z_index = 4
+offset_left = 625.0
+offset_top = 630.0
+offset_right = 690.0
+offset_bottom = 695.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_CommunicationValue" type="Label" parent="Skills" unique_id=1470219974]
+z_index = 4
+offset_left = 625.0
+offset_top = 700.0
+offset_right = 690.0
+offset_bottom = 765.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_MotivationValue" type="Label" parent="Skills" unique_id=1696494977]
+z_index = 4
+offset_left = 625.0
+offset_top = 770.0
+offset_right = 690.0
+offset_bottom = 835.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_CreativityValue" type="Label" parent="Skills" unique_id=1754169887]
+z_index = 4
+offset_left = 625.0
+offset_top = 840.0
+offset_right = 690.0
+offset_bottom = 905.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_AnticipationValue" type="Label" parent="Skills" unique_id=232545363]
+z_index = 4
+offset_left = 625.0
+offset_top = 910.0
+offset_right = 690.0
+offset_bottom = 975.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Physical" type="Node2D" parent="." unique_id=540855286]
+
+[node name="CardBackgroundPhysical" type="Sprite2D" parent="Physical" unique_id=408385372]
+z_index = 1
+position = Vector2(810, 800)
+texture = ExtResource("7_cqtoe")
+
+[node name="CardBorderPhysical" type="Sprite2D" parent="Physical" unique_id=1969539343]
+z_index = 3
+position = Vector2(810, 800)
+texture = ExtResource("8_b10uk")
+
+[node name="TXT_AgeLabel" type="Label" parent="Physical" unique_id=758081042]
+z_index = 4
+offset_left = 700.0
+offset_top = 620.0
+offset_right = 920.0
+offset_bottom = 685.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Age"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_HeightLabel" type="Label" parent="Physical" unique_id=1025113050]
+z_index = 4
+offset_left = 700.0
+offset_top = 740.0
+offset_right = 920.0
+offset_bottom = 805.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Height"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_WeightLabel" type="Label" parent="Physical" unique_id=866068434]
+z_index = 4
+offset_left = 700.0
+offset_top = 860.0
+offset_right = 920.0
+offset_bottom = 925.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Weight"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_AgeValue" type="Label" parent="Physical" unique_id=210940479]
+z_index = 4
+offset_left = 700.0
+offset_top = 670.0
+offset_right = 920.0
+offset_bottom = 735.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_HeightValue" type="Label" parent="Physical" unique_id=523719253]
+z_index = 4
+offset_left = 700.0
+offset_top = 790.0
+offset_right = 920.0
+offset_bottom = 855.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_WeightValue" type="Label" parent="Physical" unique_id=80963128]
+z_index = 4
+offset_left = 700.0
+offset_top = 910.0
+offset_right = 920.0
+offset_bottom = 975.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player Evolution" type="Node2D" parent="." unique_id=507651848]
+
+[node name="BTN_Rename" type="Sprite2D" parent="Player Evolution" unique_id=2077760092]
+z_index = 1
+position = Vector2(815, 140)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePosition2" type="Sprite2D" parent="Player Evolution" unique_id=1328749480]
+z_index = 1
+position = Vector2(815, 220)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributeSpecialty1" type="Sprite2D" parent="Player Evolution" unique_id=1384146759]
+z_index = 1
+position = Vector2(815, 300)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributeSpecialty2" type="Sprite2D" parent="Player Evolution" unique_id=1456557657]
+z_index = 1
+position = Vector2(815, 380)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePinColor" type="Sprite2D" parent="Player Evolution" unique_id=310793502]
+z_index = 1
+position = Vector2(815, 460)
+texture = ExtResource("9_meft2")
+
+[node name="TXT_Rename" type="Label" parent="Player Evolution" unique_id=299735104]
+z_index = 1
+offset_left = 870.0
+offset_top = 108.0
+offset_right = 1070.0
+offset_bottom = 173.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Rename"
+vertical_alignment = 1
+
+[node name="TXT_RenameFirstName" type="Label" parent="Player Evolution" unique_id=261132362]
+z_index = 1
+offset_left = 1060.0
+offset_top = 98.0
+offset_right = 1475.0
+offset_bottom = 183.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 60
+text = "First Name"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TXT_RenameLastName" type="Label" parent="Player Evolution" unique_id=671564548]
+z_index = 1
+offset_left = 1500.0
+offset_top = 98.0
+offset_right = 1915.0
+offset_bottom = 183.0
+theme_override_fonts/font = ExtResource("11_u8okc")
+theme_override_font_sizes/font_size = 60
+text = "Last Name"
+vertical_alignment = 1
+
+[node name="TXT_AttributePosition2" type="Label" parent="Player Evolution" unique_id=1154836499]
+z_index = 1
+offset_left = 870.0
+offset_top = 188.0
+offset_right = 1370.0
+offset_bottom = 253.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Attribute Position 2"
+vertical_alignment = 1
+
+[node name="TXT_AttributeSpecialty1" type="Label" parent="Player Evolution" unique_id=155777934]
+z_index = 1
+offset_left = 870.0
+offset_top = 268.0
+offset_right = 1370.0
+offset_bottom = 333.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Attribute Specialty 1"
+vertical_alignment = 1
+
+[node name="TXT_AttributeSpecialty2" type="Label" parent="Player Evolution" unique_id=330612274]
+z_index = 1
+offset_left = 870.0
+offset_top = 348.0
+offset_right = 1370.0
+offset_bottom = 413.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Attribute Specialty 2"
+vertical_alignment = 1
+
+[node name="TXT_AttributePinColor" type="Label" parent="Player Evolution" unique_id=1947795996]
+z_index = 1
+offset_left = 870.0
+offset_top = 428.0
+offset_right = 1370.0
+offset_bottom = 493.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Attribute Pin Color"
+vertical_alignment = 1
+
+[node name="BTN_Achievements" type="Sprite2D" parent="." unique_id=1554284939]
+z_index = 2
+position = Vector2(1780, 980)
+texture = ExtResource("9_meft2")
+
+[node name="TXT_Achievements" type="Label" parent="." unique_id=70223637]
+z_index = 1
+offset_left = 1320.0
+offset_top = 945.0
+offset_right = 1720.0
+offset_bottom = 1015.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Achievements"
+horizontal_alignment = 2
+vertical_alignment = 1
