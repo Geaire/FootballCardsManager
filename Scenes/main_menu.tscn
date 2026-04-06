@@ -52,10 +52,10 @@ vertical_alignment = 1
 
 [node name="TXT_Slogan1" type="Label" parent="." unique_id=514433398]
 z_index = 1
-offset_left = 56.0
-offset_top = 658.0
-offset_right = 497.0
-offset_bottom = 707.0
+offset_left = 49.0
+offset_top = 600.0
+offset_right = 490.0
+offset_bottom = 649.0
 theme_override_font_sizes/font_size = 35
 text = "Construis. Pense. Domine."
 horizontal_alignment = 1
@@ -63,10 +63,10 @@ vertical_alignment = 1
 
 [node name="TXT_Slogan2" type="Label" parent="." unique_id=751701807]
 z_index = 1
-offset_left = 964.0
-offset_top = 955.0
-offset_right = 1670.0
-offset_bottom = 1004.0
+offset_left = 1070.0
+offset_top = 950.0
+offset_right = 1870.0
+offset_bottom = 999.0
 theme_override_font_sizes/font_size = 35
 text = "Pas de hasard, le meilleur gagne toujours."
 horizontal_alignment = 1
@@ -113,36 +113,42 @@ texture = ExtResource("6_t1dhk")
 offset = Vector2(960, 540)
 
 [node name="Lang_FR" type="Sprite2D" parent="." unique_id=2014385221]
+visible = false
 z_index = 5
 position = Vector2(1760, 330)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("7_5egv6")
 
 [node name="Lang_EN" type="Sprite2D" parent="." unique_id=2064675293]
+visible = false
 z_index = 5
 position = Vector2(1760, 430)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_vtepg")
 
 [node name="Lang_DE" type="Sprite2D" parent="." unique_id=70128829]
+visible = false
 z_index = 5
 position = Vector2(1760, 530)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_8dnnj")
 
 [node name="Lang_IT" type="Sprite2D" parent="." unique_id=1322469172]
+visible = false
 z_index = 5
 position = Vector2(1760, 630)
 scale = Vector2(0.19999999, 0.19999999)
 texture = ExtResource("10_m3bi6")
 
 [node name="Lang_ES" type="Sprite2D" parent="." unique_id=1740179776]
+visible = false
 z_index = 5
 position = Vector2(1760, 730)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("11_wyh8j")
 
 [node name="Lang_PT" type="Sprite2D" parent="." unique_id=685009667]
+visible = false
 z_index = 5
 position = Vector2(1760, 830)
 scale = Vector2(0.2, 0.2)
@@ -161,10 +167,10 @@ vertical_alignment = 1
 
 [node name="Card_Player1" parent="." unique_id=1206912900 instance=ExtResource("13_5egv6")]
 z_index = 6
-position = Vector2(1317, 825)
+position = Vector2(1468, 657)
 scale = Vector2(0.6, 0.6)
 
 [node name="Card_Player2" parent="." unique_id=1001469731 instance=ExtResource("13_5egv6")]
 z_index = 6
-position = Vector2(271, 527)
+position = Vector2(266, 461)
 scale = Vector2(0.6, 0.6)

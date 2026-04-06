@@ -27,6 +27,7 @@ var specialty2: String = ""
 var firstname: String
 var lastname: String
 var pin_color: String = ""
+var clickable: bool = true
 var strength: int
 var speed: int
 var aggression: int
@@ -37,7 +38,6 @@ var concentration: int
 var motivation: int
 var anticipation: int
 var communication: int
-var clickable: bool = true
 
 # --- CONSTANTES ---
 const POSITIONS = ["GB","DG","DD","DC","MG","MD","MDF","MC","MO","AG","AD","AC","ATT"]

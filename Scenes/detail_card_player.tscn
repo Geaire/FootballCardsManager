@@ -405,6 +405,46 @@ z_index = 1
 position = Vector2(815, 460)
 texture = ExtResource("9_meft2")
 
+[node name="BTN_AttributePinYellow" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=554204814]
+z_index = 1
+position = Vector2(100, 0)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePinOrange" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=236256697]
+z_index = 1
+position = Vector2(200, 0)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePinRed" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=2107656202]
+z_index = 1
+position = Vector2(300, 0)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePinPurple" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=802899850]
+z_index = 1
+position = Vector2(400, 0)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePinBlue" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=881260373]
+z_index = 1
+position = Vector2(500, 0)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePinGreen" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1829074168]
+z_index = 1
+position = Vector2(600, 0)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePinWhite" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1356779211]
+z_index = 1
+position = Vector2(700, 0)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePinBlack" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1233534402]
+z_index = 1
+position = Vector2(800, 0)
+texture = ExtResource("9_meft2")
+
 [node name="TXT_Rename" type="Label" parent="Player Evolution" unique_id=299735104]
 z_index = 1
 offset_left = 870.0
@@ -419,25 +459,43 @@ vertical_alignment = 1
 [node name="TXT_RenameFirstName" type="Label" parent="Player Evolution" unique_id=261132362]
 z_index = 1
 offset_left = 1060.0
-offset_top = 98.0
+offset_top = 90.0
 offset_right = 1475.0
-offset_bottom = 183.0
+offset_bottom = 175.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 60
 text = "First Name"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="LineEdit_FirstName" type="LineEdit" parent="Player Evolution" unique_id=418160183]
+offset_left = 1060.0
+offset_top = 85.0
+offset_right = 1475.0
+offset_bottom = 178.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 60
+alignment = 2
+
 [node name="TXT_RenameLastName" type="Label" parent="Player Evolution" unique_id=671564548]
 z_index = 1
 offset_left = 1500.0
-offset_top = 98.0
+offset_top = 90.0
 offset_right = 1915.0
-offset_bottom = 183.0
+offset_bottom = 175.0
 theme_override_fonts/font = ExtResource("11_u8okc")
 theme_override_font_sizes/font_size = 60
 text = "Last Name"
 vertical_alignment = 1
+
+[node name="LineEdit_LastName" type="LineEdit" parent="Player Evolution" unique_id=1142479911]
+offset_left = 1500.0
+offset_top = 85.0
+offset_right = 1915.0
+offset_bottom = 178.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 60
+alignment = 2
 
 [node name="TXT_AttributePosition2" type="Label" parent="Player Evolution" unique_id=1154836499]
 z_index = 1
@@ -473,6 +531,7 @@ text = "Attribute Specialty 2"
 vertical_alignment = 1
 
 [node name="TXT_AttributePinColor" type="Label" parent="Player Evolution" unique_id=1947795996]
+visible = false
 z_index = 1
 offset_left = 870.0
 offset_top = 428.0
