@@ -2,6 +2,7 @@ extends Node2D
 
 # --- NOEUDS ---
 @onready var card_preview = $CardPreview
+@onready var btn_close = $BTN_CloseDetailCardPlayer
 @onready var card_background_skills = $Skills/CardBackgroundSkills
 @onready var txt_strength_value = $Skills/TXT_StrengthValue
 @onready var txt_speed_value = $Skills/TXT_SpeedValue
@@ -21,34 +22,39 @@ extends Node2D
 @onready var btn_specialty1 = $"Player Evolution/BTN_AttributeSpecialty1"
 @onready var btn_specialty2 = $"Player Evolution/BTN_AttributeSpecialty2"
 @onready var btn_pincolor = $"Player Evolution/BTN_AttributePinColor"
+@onready var txt_attribute_pincolor = $"Player Evolution/TXT_AttributePinColor"
 @onready var txt_rename_firstname = $"Player Evolution/TXT_RenameFirstName"
 @onready var txt_rename_lastname = $"Player Evolution/TXT_RenameLastName"
 @onready var lineedit_firstname = $"Player Evolution/LineEdit_FirstName"
 @onready var lineedit_lastname = $"Player Evolution/LineEdit_LastName"
-@onready var btn_pin_yellow = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinYellow"
-@onready var btn_pin_orange = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinOrange"
-@onready var btn_pin_red = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinRed"
-@onready var btn_pin_purple = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinPurple"
-@onready var btn_pin_blue = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinBlue"
-@onready var btn_pin_green = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinGreen"
-@onready var btn_pin_white = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinWhite"
-@onready var btn_pin_black = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinBlack"
+@onready var btn_pin_1 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinYellow"
+@onready var btn_pin_2 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinOrange"
+@onready var btn_pin_3 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinRed"
+@onready var btn_pin_4 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinPurple"
+@onready var btn_pin_5 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinBlue"
+@onready var btn_pin_6 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinGreen"
+@onready var btn_pin_7 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinWhite"
+@onready var btn_pin_8 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinBlack"
 
 # --- COULEURS BOUTONS ---
 const BTN_GREEN = Color(0.0, 0.8, 0.0)
 const BTN_RED = Color(0.8, 0.0, 0.0)
 
-# --- COULEURS PIN ---
+# --- COULEURS PIN (distinctes des couleurs de cartes) ---
+# Ordre : Rose, Cyan, Marron, Corail, Marine, Lime, Argent, Violet
 const PIN_COLORS = {
-	"yellow": Color(1.0, 0.85, 0.0),
-	"orange": Color(1.0, 0.5, 0.0),
-	"red": Color(0.9, 0.1, 0.1),
-	"purple": Color(0.56, 0.016, 0.56),
-	"blue": Color(0.2, 0.5, 1.0),
-	"green": Color(0.0, 0.8, 0.0),
-	"white": Color(1.0, 1.0, 1.0),
-	"black": Color(0.05, 0.05, 0.05)
+	"rose":   Color(1.0, 0.4, 0.7),
+	"cyan":   Color(0.0, 0.9, 0.9),
+	"marron": Color(0.5, 0.25, 0.0),
+	"corail": Color(1.0, 0.3, 0.2),
+	"marine": Color(0.0, 0.1, 0.6),
+	"lime":   Color(0.4, 1.0, 0.0),
+	"argent": Color(0.75, 0.75, 0.75),
+	"violet": Color(0.5, 0.0, 0.9)
 }
+
+# Mapping boutons → clés couleur
+const PIN_BUTTON_KEYS = ["rose", "cyan", "marron", "corail", "marine", "lime", "argent", "violet"]
 
 # --- VARIABLES ---
 var manager_position2_stock: int = 0
@@ -104,18 +110,24 @@ func setup():
 	lineedit_lastname.visible = false
 
 	# Coloriser les 8 pins
-	btn_pin_yellow.modulate = PIN_COLORS["yellow"]
-	btn_pin_orange.modulate = PIN_COLORS["orange"]
-	btn_pin_red.modulate = PIN_COLORS["red"]
-	btn_pin_purple.modulate = PIN_COLORS["purple"]
-	btn_pin_blue.modulate = PIN_COLORS["blue"]
-	btn_pin_green.modulate = PIN_COLORS["green"]
-	btn_pin_white.modulate = PIN_COLORS["white"]
-	btn_pin_black.modulate = PIN_COLORS["black"]
+	btn_pin_1.modulate = PIN_COLORS["rose"]
+	btn_pin_2.modulate = PIN_COLORS["cyan"]
+	btn_pin_3.modulate = PIN_COLORS["marron"]
+	btn_pin_4.modulate = PIN_COLORS["corail"]
+	btn_pin_5.modulate = PIN_COLORS["marine"]
+	btn_pin_6.modulate = PIN_COLORS["lime"]
+	btn_pin_7.modulate = PIN_COLORS["argent"]
+	btn_pin_8.modulate = PIN_COLORS["violet"]
 
-	# Pin menu fermé + bouton toggle blanc
+	# Pin menu fermé au départ
 	_set_pin_menu_visible(false)
 	btn_pincolor.modulate = Color(1.0, 1.0, 1.0)
+	txt_attribute_pincolor.visible = true
+
+	# Si un pin est déjà attribué, on l'affiche sur la carte
+	if GameState.selected_pin_color != "":
+		cp.btn_pincolor.modulate = PIN_COLORS[GameState.selected_pin_color]
+		cp.btn_pincolor.visible = true
 
 	lineedit_firstname.text_submitted.connect(_on_firstname_submitted)
 	lineedit_lastname.text_submitted.connect(_on_lastname_submitted)
@@ -140,20 +152,28 @@ func setup_buttons(cp):
 
 # --- PIN COLOR ---
 func _set_pin_menu_visible(value: bool):
-	btn_pin_yellow.visible = value
-	btn_pin_orange.visible = value
-	btn_pin_red.visible = value
-	btn_pin_purple.visible = value
-	btn_pin_blue.visible = value
-	btn_pin_green.visible = value
-	btn_pin_white.visible = value
-	btn_pin_black.visible = value
+	btn_pin_1.visible = value
+	btn_pin_2.visible = value
+	btn_pin_3.visible = value
+	btn_pin_4.visible = value
+	btn_pin_5.visible = value
+	btn_pin_6.visible = value
+	btn_pin_7.visible = value
+	btn_pin_8.visible = value
+	txt_attribute_pincolor.visible = not value
 
 func _apply_pin_color(color_key: String):
 	card_preview.btn_pincolor.modulate = PIN_COLORS[color_key]
 	card_preview.btn_pincolor.visible = true
 	card_preview.pin_color = color_key
 	GameState.selected_pin_color = color_key
+	pin_menu_open = false
+	_set_pin_menu_visible(false)
+
+func _remove_pin():
+	card_preview.btn_pincolor.visible = false
+	card_preview.pin_color = ""
+	GameState.selected_pin_color = ""
 	pin_menu_open = false
 	_set_pin_menu_visible(false)
 
@@ -197,37 +217,46 @@ func _input(event):
 		return
 	var pos = event.position
 
+	# FERMER DCP
+	if _sprite_hit(btn_close, pos):
+		get_tree().change_scene_to_file(GameState.previous_scene)
+		return
+
+	# RENAME
 	if _sprite_hit(btn_rename, pos):
 		if card_preview.color in ["blue", "white", "special"]:
 			_enter_rename_mode()
 		return
 
+	# PIN COLOR toggle
 	if _sprite_hit(btn_pincolor, pos):
 		if pin_menu_open:
-			pin_menu_open = false
-			_set_pin_menu_visible(false)
+			# Menu ouvert → fermer + supprimer le pin
+			_remove_pin()
 		else:
+			# Menu fermé → ouvrir
 			pin_menu_open = true
 			_set_pin_menu_visible(true)
 		return
 
+	# CHOIX COULEUR PIN
 	if pin_menu_open:
-		if _sprite_hit(btn_pin_yellow, pos):
-			_apply_pin_color("yellow")
-		elif _sprite_hit(btn_pin_orange, pos):
-			_apply_pin_color("orange")
-		elif _sprite_hit(btn_pin_red, pos):
-			_apply_pin_color("red")
-		elif _sprite_hit(btn_pin_purple, pos):
-			_apply_pin_color("purple")
-		elif _sprite_hit(btn_pin_blue, pos):
-			_apply_pin_color("blue")
-		elif _sprite_hit(btn_pin_green, pos):
-			_apply_pin_color("green")
-		elif _sprite_hit(btn_pin_white, pos):
-			_apply_pin_color("white")
-		elif _sprite_hit(btn_pin_black, pos):
-			_apply_pin_color("black")
+		if _sprite_hit(btn_pin_1, pos):
+			_apply_pin_color("rose")
+		elif _sprite_hit(btn_pin_2, pos):
+			_apply_pin_color("cyan")
+		elif _sprite_hit(btn_pin_3, pos):
+			_apply_pin_color("marron")
+		elif _sprite_hit(btn_pin_4, pos):
+			_apply_pin_color("corail")
+		elif _sprite_hit(btn_pin_5, pos):
+			_apply_pin_color("marine")
+		elif _sprite_hit(btn_pin_6, pos):
+			_apply_pin_color("lime")
+		elif _sprite_hit(btn_pin_7, pos):
+			_apply_pin_color("argent")
+		elif _sprite_hit(btn_pin_8, pos):
+			_apply_pin_color("violet")
 		return
 
 # --- UTILITAIRES ---

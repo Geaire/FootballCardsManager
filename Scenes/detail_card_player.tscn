@@ -474,8 +474,8 @@ offset_top = 85.0
 offset_right = 1475.0
 offset_bottom = 178.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
-theme_override_font_sizes/font_size = 60
-alignment = 2
+theme_override_font_sizes/font_size = 36
+alignment = 1
 
 [node name="TXT_RenameLastName" type="Label" parent="Player Evolution" unique_id=671564548]
 z_index = 1
@@ -494,8 +494,8 @@ offset_top = 85.0
 offset_right = 1915.0
 offset_bottom = 178.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
-theme_override_font_sizes/font_size = 60
-alignment = 2
+theme_override_font_sizes/font_size = 36
+alignment = 1
 
 [node name="TXT_AttributePosition2" type="Label" parent="Player Evolution" unique_id=1154836499]
 z_index = 1

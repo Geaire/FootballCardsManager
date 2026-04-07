@@ -329,4 +329,5 @@ func _on_card_clicked():
 	GameState.selected_motivation = motivation
 	GameState.selected_anticipation = anticipation
 	GameState.selected_communication = communication
+	GameState.previous_scene = get_tree().current_scene.scene_file_path
 	get_tree().change_scene_to_file("res://Scenes/detail_card_player.tscn")

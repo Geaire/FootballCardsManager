@@ -25,5 +25,8 @@ var selected_concentration: int = 0
 var selected_motivation: int = 0
 var selected_anticipation: int = 0
 var selected_communication: int = 0
+
+# Paramètres globaux
 var sound_on: bool = true
 var language: String = "fr"
+var previous_scene: String = ""
