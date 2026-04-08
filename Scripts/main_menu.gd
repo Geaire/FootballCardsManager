@@ -77,12 +77,17 @@ func _ready():
 	btn_sound_off.visible = not GameState.sound_on
 	ovl_language.visible = false
 	_set_lang_flags_visible(false)
-	card_deco1.clickable = true
-	card_deco2.clickable = true
-	card_deco1.generate()
-	card_deco1.display()
-	card_deco2.generate()
-	card_deco2.display()
+
+	# Génération uniquement si les cartes ne sont pas encore générées
+	if card_deco1.color == "":
+		card_deco1.clickable = true
+		card_deco1.generate()
+		card_deco1.display()
+	if card_deco2.color == "":
+		card_deco2.clickable = true
+		card_deco2.generate()
+		card_deco2.display()
+
 	_apply_translations()
 
 func _set_lang_flags_visible(value: bool):
@@ -107,24 +112,20 @@ func _input(event):
 		return
 	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
 		return
-
 	var pos = event.position
 
-	# PLAY
 	if _sprite_hit(btn_play, pos):
 		play_click_sound()
 		await get_tree().create_timer(0.2).timeout
 		get_tree().change_scene_to_file(SCENE_COMPETITION)
 		return
 
-	# SON ON -> OFF
 	if _sprite_hit(btn_sound_on, pos) and btn_sound_on.visible:
 		GameState.sound_on = false
 		btn_sound_on.visible = false
 		btn_sound_off.visible = true
 		return
 
-	# SON OFF -> ON
 	if _sprite_hit(btn_sound_off, pos) and btn_sound_off.visible:
 		GameState.sound_on = true
 		btn_sound_on.visible = true
@@ -132,14 +133,12 @@ func _input(event):
 		play_click_sound()
 		return
 
-	# LANGUE - ouvrir overlay
 	if _label_hit(txt_language, pos) and not ovl_language.visible:
 		play_click_sound()
 		ovl_language.visible = true
 		_set_lang_flags_visible(true)
 		return
 
-	# DRAPEAUX
 	if ovl_language.visible:
 		if _sprite_hit(lang_fr, pos):
 			_select_language("fr")

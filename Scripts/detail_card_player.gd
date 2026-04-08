@@ -41,7 +41,6 @@ const BTN_GREEN = Color(0.0, 0.8, 0.0)
 const BTN_RED = Color(0.8, 0.0, 0.0)
 
 # --- COULEURS PIN (distinctes des couleurs de cartes) ---
-# Ordre : Rose, Cyan, Marron, Corail, Marine, Lime, Argent, Violet
 const PIN_COLORS = {
 	"rose":   Color(1.0, 0.4, 0.7),
 	"cyan":   Color(0.0, 0.9, 0.9),
@@ -52,9 +51,6 @@ const PIN_COLORS = {
 	"argent": Color(0.75, 0.75, 0.75),
 	"violet": Color(0.5, 0.0, 0.9)
 }
-
-# Mapping boutons → clés couleur
-const PIN_BUTTON_KEYS = ["rose", "cyan", "marron", "corail", "marine", "lime", "argent", "violet"]
 
 # --- VARIABLES ---
 var manager_position2_stock: int = 0
@@ -106,10 +102,11 @@ func setup():
 	txt_rename_firstname.text = GameState.selected_firstname
 	txt_rename_lastname.text = GameState.selected_lastname
 
+	lineedit_firstname.max_length = 13
+	lineedit_lastname.max_length = 11
 	lineedit_firstname.visible = false
 	lineedit_lastname.visible = false
 
-	# Coloriser les 8 pins
 	btn_pin_1.modulate = PIN_COLORS["rose"]
 	btn_pin_2.modulate = PIN_COLORS["cyan"]
 	btn_pin_3.modulate = PIN_COLORS["marron"]
@@ -119,12 +116,10 @@ func setup():
 	btn_pin_7.modulate = PIN_COLORS["argent"]
 	btn_pin_8.modulate = PIN_COLORS["violet"]
 
-	# Pin menu fermé au départ
 	_set_pin_menu_visible(false)
 	btn_pincolor.modulate = Color(1.0, 1.0, 1.0)
 	txt_attribute_pincolor.visible = true
 
-	# Si un pin est déjà attribué, on l'affiche sur la carte
 	if GameState.selected_pin_color != "":
 		cp.btn_pincolor.modulate = PIN_COLORS[GameState.selected_pin_color]
 		cp.btn_pincolor.visible = true
@@ -187,6 +182,7 @@ func _enter_rename_mode():
 	lineedit_firstname.visible = true
 	lineedit_lastname.visible = true
 	lineedit_firstname.grab_focus()
+	lineedit_firstname.select_all()
 
 func _on_firstname_submitted(new_text: String):
 	GameState.selected_firstname = new_text
@@ -194,6 +190,7 @@ func _on_firstname_submitted(new_text: String):
 	card_preview.firstname = new_text
 	card_preview.display()
 	lineedit_lastname.grab_focus()
+	lineedit_lastname.select_all()
 
 func _on_lastname_submitted(new_text: String):
 	GameState.selected_lastname = new_text
@@ -217,29 +214,23 @@ func _input(event):
 		return
 	var pos = event.position
 
-	# FERMER DCP
 	if _sprite_hit(btn_close, pos):
 		get_tree().change_scene_to_file(GameState.previous_scene)
 		return
 
-	# RENAME
 	if _sprite_hit(btn_rename, pos):
 		if card_preview.color in ["blue", "white", "special"]:
 			_enter_rename_mode()
 		return
 
-	# PIN COLOR toggle
 	if _sprite_hit(btn_pincolor, pos):
 		if pin_menu_open:
-			# Menu ouvert → fermer + supprimer le pin
 			_remove_pin()
 		else:
-			# Menu fermé → ouvrir
 			pin_menu_open = true
 			_set_pin_menu_visible(true)
 		return
 
-	# CHOIX COULEUR PIN
 	if pin_menu_open:
 		if _sprite_hit(btn_pin_1, pos):
 			_apply_pin_color("rose")

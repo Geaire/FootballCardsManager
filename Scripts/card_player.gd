@@ -14,18 +14,18 @@ extends Node2D
 
 # --- DONNEES ---
 var note: int
-var color: String
-var position1: String
+var color: String = ""
+var position1: String = ""
 var position2: String = ""
 var position2_unlocked: int = 0
 var age: int
 var height: int
 var weight: int
-var nationality: String
+var nationality: String = ""
 var specialty1: String = ""
 var specialty2: String = ""
-var firstname: String
-var lastname: String
+var firstname: String = ""
+var lastname: String = ""
 var pin_color: String = ""
 var clickable: bool = true
 var strength: int
@@ -51,29 +51,47 @@ const CARD_COLORS = {
 	"white": Color(1.0, 1.0, 1.0)
 }
 
-const TOP_COUNTRIES = ["br","de","ar","fr","it","es","gb","pt"]
-const STRONG_COUNTRIES = ["nl","be","hr","pl","se","ma","sn","gh","ng","us","mx","jp","kr","au"]
-const OTHER_COUNTRIES = [
-	"ca","ch","at","dk","no","fi","cz","sk","hu",
-	"ro","bg","gr","tr","ua","rs","si","ie","za",
-	"eg","dz","tn","cm","ci","ml","ir","iq","sa",
-	"qa","kw","cl","pe","co","ve","ec","py","bo",
-	"uy","cr","hn","pa","cn","ru","is"
+# TOP 60% : grandes nations footballistiques
+const TOP_COUNTRIES = [
+	"br","de","ar","fr","it","es","gb","pt"
 ]
 
+# STRONG 20% : nations régulières en Coupe du Monde
+const STRONG_COUNTRIES = [
+	"nl","be","hr","pl","se","ma","sn","gh","ng","us","mx","jp","kr","au",
+	"ru","cz","tr","ro","dk","no"
+]
+
+# OTHER 20% : toutes les autres nations avec drapeau disponible
+const OTHER_COUNTRIES = [
+	"ca","ch","at","bg","gr","ua","rs","si","ie","za",
+	"eg","dz","tn","cm","ci","iq","sa","qa","kw",
+	"cl","pe","co","ec","py","bo","uy","cr","hn","pa",
+	"cn","ir","ae","ao","ba","cd","cu","ht","id","il",
+	"jm","kp","ni","nz","sc","sv","tg","tt","wa"
+]
+
+# Mapping pays → fichier noms
 const COUNTRY_TO_NAME_FILE = {
+	# Français
 	"fr": "res://Data/Names/names_french.json",
 	"be": "res://Data/Names/names_french.json",
 	"ch": "res://Data/Names/names_french.json",
+	"ht": "res://Data/Names/names_french.json",
+	"cd": "res://Data/Names/names_french.json",
+	"ci": "res://Data/Names/names_french.json",
+	"cm": "res://Data/Names/names_french.json",
+	# Portugais
 	"br": "res://Data/Names/names_portuguese.json",
 	"pt": "res://Data/Names/names_portuguese.json",
+	"ao": "res://Data/Names/names_portuguese.json",
+	# Espagnol
 	"es": "res://Data/Names/names_spanish.json",
 	"ar": "res://Data/Names/names_spanish.json",
 	"mx": "res://Data/Names/names_spanish.json",
 	"cl": "res://Data/Names/names_spanish.json",
 	"co": "res://Data/Names/names_spanish.json",
 	"pe": "res://Data/Names/names_spanish.json",
-	"ve": "res://Data/Names/names_spanish.json",
 	"ec": "res://Data/Names/names_spanish.json",
 	"py": "res://Data/Names/names_spanish.json",
 	"bo": "res://Data/Names/names_spanish.json",
@@ -81,14 +99,33 @@ const COUNTRY_TO_NAME_FILE = {
 	"cr": "res://Data/Names/names_spanish.json",
 	"hn": "res://Data/Names/names_spanish.json",
 	"pa": "res://Data/Names/names_spanish.json",
+	"cu": "res://Data/Names/names_spanish.json",
+	"sv": "res://Data/Names/names_spanish.json",
+	"ni": "res://Data/Names/names_spanish.json",
+	# Italien
 	"it": "res://Data/Names/names_italian.json",
+	# Allemand
 	"de": "res://Data/Names/names_german.json",
 	"at": "res://Data/Names/names_german.json",
 	"nl": "res://Data/Names/names_german.json",
+	# Anglais
 	"gb": "res://Data/Names/names_english.json",
 	"us": "res://Data/Names/names_english.json",
 	"au": "res://Data/Names/names_english.json",
 	"ie": "res://Data/Names/names_english.json",
+	"ca": "res://Data/Names/names_english.json",
+	"nz": "res://Data/Names/names_english.json",
+	"jm": "res://Data/Names/names_english.json",
+	"tt": "res://Data/Names/names_english.json",
+	"wa": "res://Data/Names/names_english.json",
+	"sc": "res://Data/Names/names_english.json",
+	"za": "res://Data/Names/names_english.json",
+	"ng": "res://Data/Names/names_english.json",
+	"gh": "res://Data/Names/names_english.json",
+	"id": "res://Data/Names/names_english.json",
+	"il": "res://Data/Names/names_english.json",
+	"tr": "res://Data/Names/names_english.json",
+	# Slave
 	"hr": "res://Data/Names/names_slavic.json",
 	"pl": "res://Data/Names/names_slavic.json",
 	"ru": "res://Data/Names/names_slavic.json",
@@ -96,14 +133,14 @@ const COUNTRY_TO_NAME_FILE = {
 	"rs": "res://Data/Names/names_slavic.json",
 	"si": "res://Data/Names/names_slavic.json",
 	"cz": "res://Data/Names/names_slavic.json",
-	"sk": "res://Data/Names/names_slavic.json",
 	"bg": "res://Data/Names/names_slavic.json",
 	"ro": "res://Data/Names/names_slavic.json",
+	"ba": "res://Data/Names/names_slavic.json",
+	# Scandinave
 	"se": "res://Data/Names/names_scandinavian.json",
 	"dk": "res://Data/Names/names_scandinavian.json",
 	"no": "res://Data/Names/names_scandinavian.json",
-	"fi": "res://Data/Names/names_scandinavian.json",
-	"is": "res://Data/Names/names_scandinavian.json",
+	# Arabe
 	"ma": "res://Data/Names/names_arabic.json",
 	"dz": "res://Data/Names/names_arabic.json",
 	"tn": "res://Data/Names/names_arabic.json",
@@ -112,18 +149,20 @@ const COUNTRY_TO_NAME_FILE = {
 	"qa": "res://Data/Names/names_arabic.json",
 	"kw": "res://Data/Names/names_arabic.json",
 	"iq": "res://Data/Names/names_arabic.json",
+	"ae": "res://Data/Names/names_arabic.json",
+	# Persan
 	"ir": "res://Data/Names/names_persian.json",
+	# Africain
 	"sn": "res://Data/Names/names_african.json",
-	"gh": "res://Data/Names/names_african.json",
-	"ng": "res://Data/Names/names_african.json",
-	"cm": "res://Data/Names/names_african.json",
-	"ci": "res://Data/Names/names_african.json",
-	"ml": "res://Data/Names/names_african.json",
-	"za": "res://Data/Names/names_african.json",
+	"tg": "res://Data/Names/names_african.json",
+	# Asiatique
 	"jp": "res://Data/Names/names_asian.json",
 	"kr": "res://Data/Names/names_asian.json",
 	"cn": "res://Data/Names/names_asian.json",
+	"kp": "res://Data/Names/names_asian.json",
+	# Grec
 	"gr": "res://Data/Names/names_greek.json",
+	# Default
 	"default": "res://Data/Names/names_english.json"
 }
 
