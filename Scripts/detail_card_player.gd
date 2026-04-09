@@ -40,7 +40,7 @@ extends Node2D
 const BTN_GREEN = Color(0.0, 0.8, 0.0)
 const BTN_RED = Color(0.8, 0.0, 0.0)
 
-# --- COULEURS PIN (distinctes des couleurs de cartes) ---
+# --- COULEURS PIN ---
 const PIN_COLORS = {
 	"rose":   Color(1.0, 0.4, 0.7),
 	"cyan":   Color(0.0, 0.9, 0.9),

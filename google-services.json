@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "165960497251",
+    "project_id": "football-cards-manager",
+    "storage_bucket": "football-cards-manager.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165960497251:android:ba9945b66556016571e056",
+        "android_client_info": {
+          "package_name": "com.geaire.footballcardsmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "165960497251-jr313gd5vkk9sop136o4uhqeknoa5phf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNt1WyCmqC8RKG1qJb4slLHrxwDduWF_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "165960497251-jr313gd5vkk9sop136o4uhqeknoa5phf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://waskghwhdowj"
-path="res://.godot/imported/specialty_Command.png-ad5acd336e50ef8b2a07659e856ca334.ctex"
+path="res://.godot/imported/specialty_command.png-d35963424c84ff2eb5b795446d93e233.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Specialties/specialty_Command.png"
-dest_files=["res://.godot/imported/specialty_Command.png-ad5acd336e50ef8b2a07659e856ca334.ctex"]
+source_file="res://Sprites/Specialties/specialty_command.png"
+dest_files=["res://.godot/imported/specialty_command.png-d35963424c84ff2eb5b795446d93e233.ctex"]
 
 [params]
 

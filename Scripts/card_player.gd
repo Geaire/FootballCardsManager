@@ -51,18 +51,14 @@ const CARD_COLORS = {
 	"white": Color(1.0, 1.0, 1.0)
 }
 
-# TOP 60% : grandes nations footballistiques
-const TOP_COUNTRIES = [
-	"br","de","ar","fr","it","es","gb","pt"
-]
+const SPECIALTIES_GB = ["command", "reflexes"]
+const SPECIALTIES_FIELD = ["crossing", "dribbling", "heading", "passing", "shooting", "tackling"]
 
-# STRONG 20% : nations régulières en Coupe du Monde
+const TOP_COUNTRIES = ["br","de","ar","fr","it","es","gb","pt"]
 const STRONG_COUNTRIES = [
 	"nl","be","hr","pl","se","ma","sn","gh","ng","us","mx","jp","kr","au",
 	"ru","cz","tr","ro","dk","no"
 ]
-
-# OTHER 20% : toutes les autres nations avec drapeau disponible
 const OTHER_COUNTRIES = [
 	"ca","ch","at","bg","gr","ua","rs","si","ie","za",
 	"eg","dz","tn","cm","ci","iq","sa","qa","kw",
@@ -71,9 +67,7 @@ const OTHER_COUNTRIES = [
 	"jm","kp","ni","nz","sc","sv","tg","tt","wa"
 ]
 
-# Mapping pays → fichier noms
 const COUNTRY_TO_NAME_FILE = {
-	# Français
 	"fr": "res://Data/Names/names_french.json",
 	"be": "res://Data/Names/names_french.json",
 	"ch": "res://Data/Names/names_french.json",
@@ -81,11 +75,9 @@ const COUNTRY_TO_NAME_FILE = {
 	"cd": "res://Data/Names/names_french.json",
 	"ci": "res://Data/Names/names_french.json",
 	"cm": "res://Data/Names/names_french.json",
-	# Portugais
 	"br": "res://Data/Names/names_portuguese.json",
 	"pt": "res://Data/Names/names_portuguese.json",
 	"ao": "res://Data/Names/names_portuguese.json",
-	# Espagnol
 	"es": "res://Data/Names/names_spanish.json",
 	"ar": "res://Data/Names/names_spanish.json",
 	"mx": "res://Data/Names/names_spanish.json",
@@ -102,13 +94,10 @@ const COUNTRY_TO_NAME_FILE = {
 	"cu": "res://Data/Names/names_spanish.json",
 	"sv": "res://Data/Names/names_spanish.json",
 	"ni": "res://Data/Names/names_spanish.json",
-	# Italien
 	"it": "res://Data/Names/names_italian.json",
-	# Allemand
 	"de": "res://Data/Names/names_german.json",
 	"at": "res://Data/Names/names_german.json",
 	"nl": "res://Data/Names/names_german.json",
-	# Anglais
 	"gb": "res://Data/Names/names_english.json",
 	"us": "res://Data/Names/names_english.json",
 	"au": "res://Data/Names/names_english.json",
@@ -125,7 +114,6 @@ const COUNTRY_TO_NAME_FILE = {
 	"id": "res://Data/Names/names_english.json",
 	"il": "res://Data/Names/names_english.json",
 	"tr": "res://Data/Names/names_english.json",
-	# Slave
 	"hr": "res://Data/Names/names_slavic.json",
 	"pl": "res://Data/Names/names_slavic.json",
 	"ru": "res://Data/Names/names_slavic.json",
@@ -136,11 +124,9 @@ const COUNTRY_TO_NAME_FILE = {
 	"bg": "res://Data/Names/names_slavic.json",
 	"ro": "res://Data/Names/names_slavic.json",
 	"ba": "res://Data/Names/names_slavic.json",
-	# Scandinave
 	"se": "res://Data/Names/names_scandinavian.json",
 	"dk": "res://Data/Names/names_scandinavian.json",
 	"no": "res://Data/Names/names_scandinavian.json",
-	# Arabe
 	"ma": "res://Data/Names/names_arabic.json",
 	"dz": "res://Data/Names/names_arabic.json",
 	"tn": "res://Data/Names/names_arabic.json",
@@ -150,19 +136,14 @@ const COUNTRY_TO_NAME_FILE = {
 	"kw": "res://Data/Names/names_arabic.json",
 	"iq": "res://Data/Names/names_arabic.json",
 	"ae": "res://Data/Names/names_arabic.json",
-	# Persan
 	"ir": "res://Data/Names/names_persian.json",
-	# Africain
 	"sn": "res://Data/Names/names_african.json",
 	"tg": "res://Data/Names/names_african.json",
-	# Asiatique
 	"jp": "res://Data/Names/names_asian.json",
 	"kr": "res://Data/Names/names_asian.json",
 	"cn": "res://Data/Names/names_asian.json",
 	"kp": "res://Data/Names/names_asian.json",
-	# Grec
 	"gr": "res://Data/Names/names_greek.json",
-	# Default
 	"default": "res://Data/Names/names_english.json"
 }
 
@@ -227,13 +208,20 @@ func generate_nationality():
 		nationality = OTHER_COUNTRIES[randi_range(0, OTHER_COUNTRIES.size() - 1)]
 
 func generate_positions():
+	# Position1 : toujours générée aléatoirement
 	position1 = POSITIONS[randi_range(0, POSITIONS.size() - 1)]
+
+	# Position2 : 90% aucune, 10% une position différente (jamais GB)
+	if position1 == "GB":
+		position2 = ""
+		return
 	var roll = randi_range(1, 100)
-	if roll <= 5 and position1 != "GB":
-		var pos2 = position1
-		while pos2 == position1 or pos2 == "GB":
-			pos2 = POSITIONS[randi_range(0, POSITIONS.size() - 1)]
-		position2 = pos2
+	if roll <= 10:
+		var candidates = []
+		for p in POSITIONS:
+			if p != position1 and p != "GB":
+				candidates.append(p)
+		position2 = candidates[randi_range(0, candidates.size() - 1)]
 	else:
 		position2 = ""
 
@@ -257,17 +245,26 @@ func generate_name():
 	lastname = lastnames[randi_range(0, lastnames.size() - 1)]
 
 func generate_specialties():
+	var pool = SPECIALTIES_GB if position1 == "GB" else SPECIALTIES_FIELD
 	var roll = randi_range(1, 100)
-	if roll <= 15:
-		specialty1 = "tir"
-		var roll2 = randi_range(1, 100)
-		if roll2 <= 33:
-			specialty2 = "dribble"
-		else:
-			specialty2 = ""
-	else:
+	if roll <= 90:
+		# 90% aucune specialty
 		specialty1 = ""
 		specialty2 = ""
+	elif roll <= 99:
+		# 9% une seule specialty
+		specialty1 = pool[randi_range(0, pool.size() - 1)]
+		specialty2 = ""
+	else:
+		# 1% deux specialties différentes
+		specialty1 = pool[randi_range(0, pool.size() - 1)]
+		if pool.size() > 1:
+			var s2 = specialty1
+			while s2 == specialty1:
+				s2 = pool[randi_range(0, pool.size() - 1)]
+			specialty2 = s2
+		else:
+			specialty2 = ""
 
 func generate_skills():
 	var base_value = note / 10
@@ -328,6 +325,14 @@ func display():
 	btn_pincolor.visible = (pin_color != "")
 	img_specialty1.visible = (specialty1 != "")
 	img_specialty2.visible = (specialty2 != "")
+	if specialty1 != "":
+		var path1 = "res://Sprites/Specialties/specialty_" + specialty1 + ".png"
+		var tex1 = load(path1) if ResourceLoader.exists(path1) else null
+		img_specialty1.texture = tex1
+	if specialty2 != "":
+		var path2 = "res://Sprites/Specialties/specialty_" + specialty2 + ".png"
+		var tex2 = load(path2) if ResourceLoader.exists(path2) else null
+		img_specialty2.texture = tex2
 	var flag_path = "res://Sprites/Flags/flag_" + nationality + ".png"
 	var tex = load(flag_path) if ResourceLoader.exists(flag_path) else null
 	img_flag.texture = tex
@@ -370,3 +375,108 @@ func _on_card_clicked():
 	GameState.selected_communication = communication
 	GameState.previous_scene = get_tree().current_scene.scene_file_path
 	get_tree().change_scene_to_file("res://Scenes/detail_card_player.tscn")
+
+# --- SAUVEGARDE DONNEES DECO (appelé par main_menu.gd) ---
+func save_to_gamestate_deco1():
+	GameState.deco1_note = note
+	GameState.deco1_color = color
+	GameState.deco1_position1 = position1
+	GameState.deco1_position2 = position2
+	GameState.deco1_position2_unlocked = position2_unlocked
+	GameState.deco1_age = age
+	GameState.deco1_height = height
+	GameState.deco1_weight = weight
+	GameState.deco1_nationality = nationality
+	GameState.deco1_specialty1 = specialty1
+	GameState.deco1_specialty2 = specialty2
+	GameState.deco1_firstname = firstname
+	GameState.deco1_lastname = lastname
+	GameState.deco1_pin_color = pin_color
+	GameState.deco1_strength = strength
+	GameState.deco1_speed = speed
+	GameState.deco1_aggression = aggression
+	GameState.deco1_positioning = positioning
+	GameState.deco1_stamina = stamina
+	GameState.deco1_creativity = creativity
+	GameState.deco1_concentration = concentration
+	GameState.deco1_motivation = motivation
+	GameState.deco1_anticipation = anticipation
+	GameState.deco1_communication = communication
+
+func save_to_gamestate_deco2():
+	GameState.deco2_note = note
+	GameState.deco2_color = color
+	GameState.deco2_position1 = position1
+	GameState.deco2_position2 = position2
+	GameState.deco2_position2_unlocked = position2_unlocked
+	GameState.deco2_age = age
+	GameState.deco2_height = height
+	GameState.deco2_weight = weight
+	GameState.deco2_nationality = nationality
+	GameState.deco2_specialty1 = specialty1
+	GameState.deco2_specialty2 = specialty2
+	GameState.deco2_firstname = firstname
+	GameState.deco2_lastname = lastname
+	GameState.deco2_pin_color = pin_color
+	GameState.deco2_strength = strength
+	GameState.deco2_speed = speed
+	GameState.deco2_aggression = aggression
+	GameState.deco2_positioning = positioning
+	GameState.deco2_stamina = stamina
+	GameState.deco2_creativity = creativity
+	GameState.deco2_concentration = concentration
+	GameState.deco2_motivation = motivation
+	GameState.deco2_anticipation = anticipation
+	GameState.deco2_communication = communication
+
+func restore_from_gamestate_deco1():
+	note = GameState.deco1_note
+	color = GameState.deco1_color
+	position1 = GameState.deco1_position1
+	position2 = GameState.deco1_position2
+	position2_unlocked = GameState.deco1_position2_unlocked
+	age = GameState.deco1_age
+	height = GameState.deco1_height
+	weight = GameState.deco1_weight
+	nationality = GameState.deco1_nationality
+	specialty1 = GameState.deco1_specialty1
+	specialty2 = GameState.deco1_specialty2
+	firstname = GameState.deco1_firstname
+	lastname = GameState.deco1_lastname
+	pin_color = GameState.deco1_pin_color
+	strength = GameState.deco1_strength
+	speed = GameState.deco1_speed
+	aggression = GameState.deco1_aggression
+	positioning = GameState.deco1_positioning
+	stamina = GameState.deco1_stamina
+	creativity = GameState.deco1_creativity
+	concentration = GameState.deco1_concentration
+	motivation = GameState.deco1_motivation
+	anticipation = GameState.deco1_anticipation
+	communication = GameState.deco1_communication
+
+func restore_from_gamestate_deco2():
+	note = GameState.deco2_note
+	color = GameState.deco2_color
+	position1 = GameState.deco2_position1
+	position2 = GameState.deco2_position2
+	position2_unlocked = GameState.deco2_position2_unlocked
+	age = GameState.deco2_age
+	height = GameState.deco2_height
+	weight = GameState.deco2_weight
+	nationality = GameState.deco2_nationality
+	specialty1 = GameState.deco2_specialty1
+	specialty2 = GameState.deco2_specialty2
+	firstname = GameState.deco2_firstname
+	lastname = GameState.deco2_lastname
+	pin_color = GameState.deco2_pin_color
+	strength = GameState.deco2_strength
+	speed = GameState.deco2_speed
+	aggression = GameState.deco2_aggression
+	positioning = GameState.deco2_positioning
+	stamina = GameState.deco2_stamina
+	creativity = GameState.deco2_creativity
+	concentration = GameState.deco2_concentration
+	motivation = GameState.deco2_motivation
+	anticipation = GameState.deco2_anticipation
+	communication = GameState.deco2_communication

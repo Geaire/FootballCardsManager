@@ -78,14 +78,26 @@ func _ready():
 	ovl_language.visible = false
 	_set_lang_flags_visible(false)
 
-	# Génération uniquement si les cartes ne sont pas encore générées
-	if card_deco1.color == "":
+	# Première ouverture : générer les cartes
+	if GameState.deco1_color == "":
 		card_deco1.clickable = true
 		card_deco1.generate()
 		card_deco1.display()
-	if card_deco2.color == "":
+		card_deco1.save_to_gamestate_deco1()
+	else:
+		# Retour depuis DCP : restaurer les cartes
+		card_deco1.clickable = true
+		card_deco1.restore_from_gamestate_deco1()
+		card_deco1.display()
+
+	if GameState.deco2_color == "":
 		card_deco2.clickable = true
 		card_deco2.generate()
+		card_deco2.display()
+		card_deco2.save_to_gamestate_deco2()
+	else:
+		card_deco2.clickable = true
+		card_deco2.restore_from_gamestate_deco2()
 		card_deco2.display()
 
 	_apply_translations()
