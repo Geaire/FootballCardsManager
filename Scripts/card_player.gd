@@ -28,6 +28,7 @@ var firstname: String = ""
 var lastname: String = ""
 var pin_color: String = ""
 var clickable: bool = true
+var deco_index: int = 0
 var strength: int
 var speed: int
 var aggression: int
@@ -208,10 +209,7 @@ func generate_nationality():
 		nationality = OTHER_COUNTRIES[randi_range(0, OTHER_COUNTRIES.size() - 1)]
 
 func generate_positions():
-	# Position1 : toujours générée aléatoirement
 	position1 = POSITIONS[randi_range(0, POSITIONS.size() - 1)]
-
-	# Position2 : 90% aucune, 10% une position différente (jamais GB)
 	if position1 == "GB":
 		position2 = ""
 		return
@@ -248,15 +246,12 @@ func generate_specialties():
 	var pool = SPECIALTIES_GB if position1 == "GB" else SPECIALTIES_FIELD
 	var roll = randi_range(1, 100)
 	if roll <= 90:
-		# 90% aucune specialty
 		specialty1 = ""
 		specialty2 = ""
 	elif roll <= 99:
-		# 9% une seule specialty
 		specialty1 = pool[randi_range(0, pool.size() - 1)]
 		specialty2 = ""
 	else:
-		# 1% deux specialties différentes
 		specialty1 = pool[randi_range(0, pool.size() - 1)]
 		if pool.size() > 1:
 			var s2 = specialty1
@@ -373,10 +368,11 @@ func _on_card_clicked():
 	GameState.selected_motivation = motivation
 	GameState.selected_anticipation = anticipation
 	GameState.selected_communication = communication
+	GameState.selected_deco_index = deco_index
 	GameState.previous_scene = get_tree().current_scene.scene_file_path
 	get_tree().change_scene_to_file("res://Scenes/detail_card_player.tscn")
 
-# --- SAUVEGARDE DONNEES DECO (appelé par main_menu.gd) ---
+# --- SAUVEGARDE / RESTAURATION DECO ---
 func save_to_gamestate_deco1():
 	GameState.deco1_note = note
 	GameState.deco1_color = color

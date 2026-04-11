@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://bb1vgvgokr82"]
+
+[ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="1_kj54y"]
+[ext_resource type="Texture2D" uid="uid://dtmbafjwc3bjr" path="res://Sprites/logo_fcm.png" id="2_8cgga"]
+[ext_resource type="Texture2D" uid="uid://demwf8ogjm3cs" path="res://Sprites/btn_playmainmenu.png" id="3_8cgga"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tayyo"]
+load_path = "res://.godot/imported/bg_login.jpg-1685255d7bf944ef95e5de9c2eeef7d3.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kj54y"]
+bg_color = Color(0, 0, 0, 0.25882354)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="Login_Email" type="Node2D" unique_id=1187815742]
+
+[node name="BG_Login" type="Sprite2D" parent="." unique_id=1306740595]
+position = Vector2(960, 540)
+texture = SubResource("CompressedTexture2D_tayyo")
+
+[node name="TXT_Title" type="Label" parent="." unique_id=1052383095]
+z_index = 1
+offset_left = 450.0
+offset_top = 50.0
+offset_right = 1450.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_kj54y")
+theme_override_font_sizes/font_size = 80
+text = "Football Cards Manager"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="logo_FCM" type="Sprite2D" parent="." unique_id=215233274]
+z_index = 1
+position = Vector2(1605, 920)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8cgga")
+
+[node name="TXT_Email" type="Label" parent="." unique_id=454550780]
+z_index = 1
+offset_left = 150.0
+offset_top = 300.0
+offset_right = 750.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Email"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit_Email" type="LineEdit" parent="." unique_id=2047842740]
+z_index = 1
+offset_left = 150.0
+offset_top = 380.0
+offset_right = 750.0
+offset_bottom = 443.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_kj54y")
+
+[node name="TXT_Password" type="Label" parent="." unique_id=740760036]
+z_index = 1
+offset_left = 150.0
+offset_top = 500.0
+offset_right = 750.0
+offset_bottom = 560.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Password"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit_Password" type="LineEdit" parent="." unique_id=1616500398]
+z_index = 1
+offset_left = 150.0
+offset_top = 580.0
+offset_right = 750.0
+offset_bottom = 643.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_kj54y")
+
+[node name="BTN_Login" type="Sprite2D" parent="." unique_id=453352977]
+z_index = 1
+position = Vector2(960, 410)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_8cgga")
+
+[node name="BTN_SignUp" type="Sprite2D" parent="." unique_id=1825554569]
+z_index = 1
+position = Vector2(960, 610)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_8cgga")
+
+[node name="TXT_ForgotPassword" type="Label" parent="." unique_id=2047690126]
+z_index = 1
+offset_left = 150.0
+offset_top = 850.0
+offset_right = 750.0
+offset_bottom = 910.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Forgot Password"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Login" type="Label" parent="." unique_id=1017308391]
+z_index = 1
+offset_left = 660.0
+offset_top = 380.0
+offset_right = 1260.0
+offset_bottom = 440.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Login"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_SignUp" type="Label" parent="." unique_id=1431485126]
+z_index = 1
+offset_left = 660.0
+offset_top = 580.0
+offset_right = 1260.0
+offset_bottom = 640.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "SignUp"
+horizontal_alignment = 1
+vertical_alignment = 1

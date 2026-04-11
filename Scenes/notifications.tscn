@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://qhjb8wxm5mtp"]
+
+[ext_resource type="Script" uid="uid://cl4ihkw4lxvqv" path="res://Scripts/notifications.gd" id="1_3n02b"]
+[ext_resource type="Texture2D" uid="uid://bqrkjhm8xinn2" path="res://Sprites/Wallpapers/bg_black.jpg" id="1_i4giy"]
+[ext_resource type="Texture2D" uid="uid://c3o02fd63ge2d" path="res://Sprites/card_background.png" id="2_3n02b"]
+[ext_resource type="Texture2D" uid="uid://cneq40toha0am" path="res://Sprites/icon_bell.png" id="4_7htj6"]
+
+[node name="Notifications" type="Node2D" unique_id=1104601523]
+script = ExtResource("1_3n02b")
+
+[node name="BG_Dark" type="Sprite2D" parent="." unique_id=1920763936]
+position = Vector2(960, 540)
+texture = ExtResource("1_i4giy")
+
+[node name="Panel_Notif" type="Sprite2D" parent="." unique_id=1488868047]
+position = Vector2(960, 800)
+texture = ExtResource("2_3n02b")
+
+[node name="IMG_Bell" type="Sprite2D" parent="." unique_id=1766447935]
+position = Vector2(960, 800)
+texture = ExtResource("4_7htj6")
+
+[node name="TXT_Content" type="Label" parent="." unique_id=940427463]
+offset_left = 651.0
+offset_top = 594.0
+offset_right = 1270.0
+offset_bottom = 785.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Autoriser Football Cards Manager à vous envoyer des notifications ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TXT_Accept" type="Label" parent="." unique_id=193603807]
+offset_left = 660.0
+offset_top = 860.0
+offset_right = 1260.0
+offset_bottom = 905.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Autoriser"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Refuse" type="Label" parent="." unique_id=1614339987]
+offset_left = 660.0
+offset_top = 920.0
+offset_right = 1260.0
+offset_bottom = 965.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Ne pas autoriser"
+horizontal_alignment = 1
+vertical_alignment = 1

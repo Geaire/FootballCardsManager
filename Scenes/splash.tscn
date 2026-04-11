@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b1poi6n53q4u3"]
+
+[ext_resource type="Script" uid="uid://bqw527qbjkgv7" path="res://Scripts/splash.gd" id="1_7xstc"]
+[ext_resource type="Texture2D" uid="uid://2difb3uhfief" path="res://Sprites/Wallpapers/bg_splash.jpg" id="1_t3al1"]
+[ext_resource type="Texture2D" uid="uid://dtmbafjwc3bjr" path="res://Sprites/logo_fcm.png" id="2_7xstc"]
+
+[node name="Splash" type="Node2D" unique_id=666962164]
+script = ExtResource("1_7xstc")
+
+[node name="BG_Splash" type="Sprite2D" parent="." unique_id=1941698295]
+position = Vector2(960, 540)
+texture = ExtResource("1_t3al1")
+
+[node name="Logo_FCM" type="Sprite2D" parent="." unique_id=897367817]
+z_index = 1
+position = Vector2(514, 401)
+texture = ExtResource("2_7xstc")
+
+[node name="BAR_Loading" type="ProgressBar" parent="." unique_id=2136872303]
+z_index = 1
+offset_left = 65.0
+offset_top = 800.0
+offset_right = 965.0
+offset_bottom = 845.0
+theme_override_font_sizes/font_size = 32

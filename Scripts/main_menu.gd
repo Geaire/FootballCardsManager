@@ -78,29 +78,50 @@ func _ready():
 	ovl_language.visible = false
 	_set_lang_flags_visible(false)
 
-	# Première ouverture : générer les cartes
 	if GameState.deco1_color == "":
+		card_deco1.deco_index = 1
 		card_deco1.clickable = true
 		card_deco1.generate()
 		card_deco1.display()
 		card_deco1.save_to_gamestate_deco1()
 	else:
-		# Retour depuis DCP : restaurer les cartes
+		card_deco1.deco_index = 1
 		card_deco1.clickable = true
 		card_deco1.restore_from_gamestate_deco1()
 		card_deco1.display()
+		if GameState.deco1_pin_color != "":
+			card_deco1.btn_pincolor.modulate = _get_pin_color(GameState.deco1_pin_color)
+			card_deco1.btn_pincolor.visible = true
 
 	if GameState.deco2_color == "":
+		card_deco2.deco_index = 2
 		card_deco2.clickable = true
 		card_deco2.generate()
 		card_deco2.display()
 		card_deco2.save_to_gamestate_deco2()
 	else:
+		card_deco2.deco_index = 2
 		card_deco2.clickable = true
 		card_deco2.restore_from_gamestate_deco2()
 		card_deco2.display()
+		if GameState.deco2_pin_color != "":
+			card_deco2.btn_pincolor.modulate = _get_pin_color(GameState.deco2_pin_color)
+			card_deco2.btn_pincolor.visible = true
 
 	_apply_translations()
+
+func _get_pin_color(key: String) -> Color:
+	var pin_colors = {
+		"rose":   Color(1.0, 0.4, 0.7),
+		"cyan":   Color(0.0, 0.9, 0.9),
+		"marron": Color(0.5, 0.25, 0.0),
+		"corail": Color(1.0, 0.3, 0.2),
+		"marine": Color(0.0, 0.1, 0.6),
+		"lime":   Color(0.4, 1.0, 0.0),
+		"argent": Color(0.75, 0.75, 0.75),
+		"violet": Color(0.5, 0.0, 0.9)
+	}
+	return pin_colors.get(key, Color(1.0, 1.0, 1.0))
 
 func _set_lang_flags_visible(value: bool):
 	lang_fr.visible = value

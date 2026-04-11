@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://drahv5tryxtpg"]
+
+[ext_resource type="Texture2D" uid="uid://dt72iq2jih7k2" path="res://Sprites/Wallpapers/bg_green.jpg" id="1_0175p"]
+[ext_resource type="Texture2D" uid="uid://c3o02fd63ge2d" path="res://Sprites/card_background.png" id="2_i3wwc"]
+
+[node name="Pantheon" type="Node2D" unique_id=1784861112]
+
+[node name="BG_Pantheon" type="Sprite2D" parent="." unique_id=1311035966]
+position = Vector2(960, 540)
+texture = ExtResource("1_0175p")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=45299496]
+z_index = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.7372549, 0, 1, 0.39215687)
+
+[node name="Fenetre 1" type="Sprite2D" parent="." unique_id=1568341534]
+z_index = 2
+position = Vector2(238, 432)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i3wwc")
+
+[node name="Fenetre 2" type="Sprite2D" parent="." unique_id=2010175309]
+z_index = 2
+position = Vector2(1704, 450)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i3wwc")
+
+[node name="Fenetre 3" type="Sprite2D" parent="." unique_id=840192573]
+z_index = 2
+position = Vector2(241, 675)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i3wwc")
+
+[node name="Fenetre 4" type="Sprite2D" parent="." unique_id=1391628975]
+z_index = 2
+position = Vector2(1705, 673)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i3wwc")
+
+[node name="Fenetre 5" type="Sprite2D" parent="." unique_id=1576897394]
+z_index = 2
+position = Vector2(234, 198)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i3wwc")
+
+[node name="Fenetre 6" type="Sprite2D" parent="." unique_id=391748231]
+z_index = 2
+position = Vector2(244, 910)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i3wwc")
+
+[node name="Fenetre 7" type="Sprite2D" parent="." unique_id=540882237]
+z_index = 2
+position = Vector2(1708, 891)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i3wwc")
+
+[node name="Fenetre 8" type="Sprite2D" parent="." unique_id=426797241]
+z_index = 2
+position = Vector2(1700, 216)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i3wwc")

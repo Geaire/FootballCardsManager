@@ -30,8 +30,10 @@ var selected_communication: int = 0
 var sound_on: bool = true
 var language: String = "fr"
 var previous_scene: String = ""
+var selected_deco_index: int = 0
+var notifications_enabled: bool = false
 
-# Données cartes déco MainMenu (pour restauration après DCP)
+# Données cartes déco MainMenu
 var deco1_note: int = 0
 var deco1_color: String = ""
 var deco1_position1: String = ""

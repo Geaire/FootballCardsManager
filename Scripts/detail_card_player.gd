@@ -1,5 +1,57 @@
 extends Node2D
 
+# --- TRADUCTIONS DCP ---
+const TRANSLATIONS_DCP = {
+	"fr": {
+		"rename": "Renommer joueur",
+		"position2": "Attribuer poste 2",
+		"specialty1": "Attribuer spécialité 1",
+		"specialty2": "Attribuer spécialité 2",
+		"pincolor": "Attribuer épingle de couleur",
+		"achievements": "Historique"
+	},
+	"en": {
+		"rename": "Rename player",
+		"position2": "Assign position 2",
+		"specialty1": "Assign specialty 1",
+		"specialty2": "Assign specialty 2",
+		"pincolor": "Assign color pin",
+		"achievements": "History"
+	},
+	"es": {
+		"rename": "Renombrar jugador",
+		"position2": "Asignar posición 2",
+		"specialty1": "Asignar especialidad 1",
+		"specialty2": "Asignar especialidad 2",
+		"pincolor": "Asignar pin de color",
+		"achievements": "Historial"
+	},
+	"de": {
+		"rename": "Spieler umbenennen",
+		"position2": "Position 2 zuweisen",
+		"specialty1": "Spezialität 1 zuweisen",
+		"specialty2": "Spezialität 2 zuweisen",
+		"pincolor": "Farbpin zuweisen",
+		"achievements": "Verlauf"
+	},
+	"it": {
+		"rename": "Rinomina giocatore",
+		"position2": "Assegna posizione 2",
+		"specialty1": "Assegna specialità 1",
+		"specialty2": "Assegna specialità 2",
+		"pincolor": "Assegna pin colore",
+		"achievements": "Storico"
+	},
+	"pt": {
+		"rename": "Renomear jogador",
+		"position2": "Atribuir posição 2",
+		"specialty1": "Atribuir especialidade 1",
+		"specialty2": "Atribuir especialidade 2",
+		"pincolor": "Atribuir pin de cor",
+		"achievements": "Histórico"
+	}
+}
+
 # --- NOEUDS ---
 @onready var card_preview = $CardPreview
 @onready var btn_close = $BTN_CloseDetailCardPlayer
@@ -27,6 +79,7 @@ extends Node2D
 @onready var txt_rename_lastname = $"Player Evolution/TXT_RenameLastName"
 @onready var lineedit_firstname = $"Player Evolution/LineEdit_FirstName"
 @onready var lineedit_lastname = $"Player Evolution/LineEdit_LastName"
+@onready var txt_achievements = $TXT_Achievements
 @onready var btn_pin_1 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinYellow"
 @onready var btn_pin_2 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinOrange"
 @onready var btn_pin_3 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinRed"
@@ -102,7 +155,7 @@ func setup():
 	txt_rename_firstname.text = GameState.selected_firstname
 	txt_rename_lastname.text = GameState.selected_lastname
 
-	lineedit_firstname.max_length = 13
+	lineedit_firstname.max_length = 11
 	lineedit_lastname.max_length = 11
 	lineedit_firstname.visible = false
 	lineedit_lastname.visible = false
@@ -127,7 +180,17 @@ func setup():
 	lineedit_firstname.text_submitted.connect(_on_firstname_submitted)
 	lineedit_lastname.text_submitted.connect(_on_lastname_submitted)
 
+	_apply_translations()
 	setup_buttons(cp)
+
+func _apply_translations():
+	var t = TRANSLATIONS_DCP[GameState.language]
+	btn_rename.text = t["rename"]
+	btn_position2.text = t["position2"]
+	btn_specialty1.text = t["specialty1"]
+	btn_specialty2.text = t["specialty2"]
+	txt_attribute_pincolor.text = t["pincolor"]
+	txt_achievements.text = t["achievements"]
 
 func setup_buttons(cp):
 	if cp.color in ["blue", "white", "special"]:
@@ -206,6 +269,17 @@ func _exit_rename_mode():
 	txt_rename_firstname.visible = true
 	txt_rename_lastname.visible = true
 
+# --- SAUVEGARDE DECO AVANT FERMETURE ---
+func _save_changes_to_deco():
+	if GameState.selected_deco_index == 1:
+		GameState.deco1_firstname = GameState.selected_firstname
+		GameState.deco1_lastname = GameState.selected_lastname
+		GameState.deco1_pin_color = GameState.selected_pin_color
+	elif GameState.selected_deco_index == 2:
+		GameState.deco2_firstname = GameState.selected_firstname
+		GameState.deco2_lastname = GameState.selected_lastname
+		GameState.deco2_pin_color = GameState.selected_pin_color
+
 # --- INPUT ---
 func _input(event):
 	if not (event is InputEventMouseButton):
@@ -215,6 +289,7 @@ func _input(event):
 	var pos = event.position
 
 	if _sprite_hit(btn_close, pos):
+		_save_changes_to_deco()
 		get_tree().change_scene_to_file(GameState.previous_scene)
 		return
 

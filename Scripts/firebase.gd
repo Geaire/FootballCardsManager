@@ -11,7 +11,7 @@ var id_token: String = ""
 var refresh_token: String = ""
 var user_id: String = ""
 var manager_email: String = ""
-var is_connected: bool = false
+var manager_connected: bool = false
 
 # --- SIGNAUX ---
 signal auth_success(user_id: String)
@@ -38,12 +38,17 @@ func sign_in(email: String, password: String):
 	})
 	_send_request(url, body, "_on_auth_response")
 
+func sign_in_anonymous():
+	var url = AUTH_URL + "signUp?key=" + API_KEY
+	var body = JSON.stringify({"returnSecureToken": true})
+	_send_request(url, body, "_on_auth_response")
+
 func sign_out():
 	id_token = ""
 	refresh_token = ""
 	user_id = ""
 	manager_email = ""
-	is_connected = false
+	manager_connected = false
 
 # --- FIRESTORE ---
 func create_document(collection: String, doc_id: String, data: Dictionary):
@@ -79,7 +84,7 @@ func _send_request_auth(url: String, body: String, callback: String, method: int
 	http.request(url, headers, method, body)
 
 # --- CALLBACKS ---
-func _on_auth_response(result, response_code, headers, body, http):
+func _on_auth_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	if response_code == 200:
@@ -87,13 +92,13 @@ func _on_auth_response(result, response_code, headers, body, http):
 		refresh_token = response.get("refreshToken", "")
 		user_id = response.get("localId", "")
 		manager_email = response.get("email", "")
-		is_connected = true
+		manager_connected = true
 		emit_signal("auth_success", user_id)
 	else:
 		var error = response.get("error", {}).get("message", "Erreur inconnue")
 		emit_signal("auth_failed", error)
 
-func _on_firestore_response(result, response_code, headers, body, http):
+func _on_firestore_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	if response_code in [200, 201]:

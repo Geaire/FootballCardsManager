@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cl4v3u3ejgvun"]
 
-[ext_resource type="Texture2D" uid="uid://da3056hj7yu1i" path="res://Sprites/bg_mainmenu.jpg" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://da3056hj7yu1i" path="res://Sprites/Wallpapers/bg_mainmenu.jpg" id="1_28flt"]
 [ext_resource type="Script" uid="uid://w7khqwtx7c2t" path="res://Scripts/main_menu.gd" id="1_vtepg"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="2_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://demwf8ogjm3cs" path="res://Sprites/btn_playmainmenu.png" id="3_ce3w2"]
@@ -55,7 +55,7 @@ z_index = 1
 offset_left = 49.0
 offset_top = 600.0
 offset_right = 490.0
-offset_bottom = 649.0
+offset_bottom = 650.0
 theme_override_font_sizes/font_size = 35
 text = "Construis. Pense. Domine."
 horizontal_alignment = 1
@@ -66,7 +66,7 @@ z_index = 1
 offset_left = 1070.0
 offset_top = 950.0
 offset_right = 1870.0
-offset_bottom = 999.0
+offset_bottom = 1000.0
 theme_override_font_sizes/font_size = 35
 text = "Pas de hasard, le meilleur gagne toujours."
 horizontal_alignment = 1
@@ -100,7 +100,7 @@ z_index = 1
 offset_left = 1657.0
 offset_top = 197.0
 offset_right = 1857.0
-offset_bottom = 246.0
+offset_bottom = 247.0
 theme_override_font_sizes/font_size = 35
 text = "Language"
 horizontal_alignment = 1
