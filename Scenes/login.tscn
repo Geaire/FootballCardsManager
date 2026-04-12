@@ -31,7 +31,7 @@ vertical_alignment = 1
 
 [node name="logo_FCM" type="Sprite2D" parent="." unique_id=1326612748]
 z_index = 1
-position = Vector2(1605, 920)
+position = Vector2(1646, 920)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_dpd3p")
 
@@ -55,7 +55,7 @@ offset_top = 420.0
 offset_right = 800.0
 offset_bottom = 470.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 32
 text = "Sign in with Google"
 horizontal_alignment = 1
 
@@ -86,7 +86,7 @@ offset_top = 620.0
 offset_right = 800.0
 offset_bottom = 670.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 32
 text = "Sign in with Email"
 horizontal_alignment = 1
 
@@ -117,6 +117,6 @@ offset_top = 820.0
 offset_right = 800.0
 offset_bottom = 870.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 32
 text = "Play as Guest"
 horizontal_alignment = 1

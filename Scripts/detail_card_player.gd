@@ -3,97 +3,60 @@ extends Node2D
 # --- TRADUCTIONS DCP ---
 const TRANSLATIONS_DCP = {
 	"fr": {
-		"rename": "Renommer joueur",
-		"position2": "Attribuer poste 2",
-		"specialty1": "Attribuer spécialité 1",
-		"specialty2": "Attribuer spécialité 2",
-		"pincolor": "Attribuer épingle de couleur",
+		"rename":       "Renommer joueur",
+		"position2":    "Attribuer poste 2",
+		"specialty1":   "Attribuer spécialité 1",
+		"specialty2":   "Attribuer spécialité 2",
+		"pincolor":     "Attribuer épingle de couleur",
 		"achievements": "Historique"
 	},
 	"en": {
-		"rename": "Rename player",
-		"position2": "Assign position 2",
-		"specialty1": "Assign specialty 1",
-		"specialty2": "Assign specialty 2",
-		"pincolor": "Assign color pin",
+		"rename":       "Rename player",
+		"position2":    "Assign position 2",
+		"specialty1":   "Assign specialty 1",
+		"specialty2":   "Assign specialty 2",
+		"pincolor":     "Assign color pin",
 		"achievements": "History"
 	},
 	"es": {
-		"rename": "Renombrar jugador",
-		"position2": "Asignar posición 2",
-		"specialty1": "Asignar especialidad 1",
-		"specialty2": "Asignar especialidad 2",
-		"pincolor": "Asignar pin de color",
+		"rename":       "Renombrar jugador",
+		"position2":    "Asignar posición 2",
+		"specialty1":   "Asignar especialidad 1",
+		"specialty2":   "Asignar especialidad 2",
+		"pincolor":     "Asignar pin de color",
 		"achievements": "Historial"
 	},
 	"de": {
-		"rename": "Spieler umbenennen",
-		"position2": "Position 2 zuweisen",
-		"specialty1": "Spezialität 1 zuweisen",
-		"specialty2": "Spezialität 2 zuweisen",
-		"pincolor": "Farbpin zuweisen",
+		"rename":       "Spieler umbenennen",
+		"position2":    "Position 2 zuweisen",
+		"specialty1":   "Spezialität 1 zuweisen",
+		"specialty2":   "Spezialität 2 zuweisen",
+		"pincolor":     "Farbpin zuweisen",
 		"achievements": "Verlauf"
 	},
 	"it": {
-		"rename": "Rinomina giocatore",
-		"position2": "Assegna posizione 2",
-		"specialty1": "Assegna specialità 1",
-		"specialty2": "Assegna specialità 2",
-		"pincolor": "Assegna pin colore",
+		"rename":       "Rinomina giocatore",
+		"position2":    "Assegna posizione 2",
+		"specialty1":   "Assegna specialità 1",
+		"specialty2":   "Assegna specialità 2",
+		"pincolor":     "Assegna pin colore",
 		"achievements": "Storico"
 	},
 	"pt": {
-		"rename": "Renomear jogador",
-		"position2": "Atribuir posição 2",
-		"specialty1": "Atribuir especialidade 1",
-		"specialty2": "Atribuir especialidade 2",
-		"pincolor": "Atribuir pin de cor",
+		"rename":       "Renomear jogador",
+		"position2":    "Atribuir posição 2",
+		"specialty1":   "Atribuir especialidade 1",
+		"specialty2":   "Atribuir especialidade 2",
+		"pincolor":     "Atribuir pin de cor",
 		"achievements": "Histórico"
 	}
 }
 
-# --- NOEUDS ---
-@onready var card_preview = $CardPreview
-@onready var btn_close = $BTN_CloseDetailCardPlayer
-@onready var card_background_skills = $Skills/CardBackgroundSkills
-@onready var txt_strength_value = $Skills/TXT_StrengthValue
-@onready var txt_speed_value = $Skills/TXT_SpeedValue
-@onready var txt_aggression_value = $Skills/TXT_AggressionValue
-@onready var txt_positioning_value = $Skills/TXT_PositioningValue
-@onready var txt_stamina_value = $Skills/TXT_StaminaValue
-@onready var txt_concentration_value = $Skills/TXT_ConcentrationValue
-@onready var txt_communication_value = $Skills/TXT_CommunicationValue
-@onready var txt_motivation_value = $Skills/TXT_MotivationValue
-@onready var txt_creativity_value = $Skills/TXT_CreativityValue
-@onready var txt_anticipation_value = $Skills/TXT_AnticipationValue
-@onready var txt_age_value = $Physical/TXT_AgeValue
-@onready var txt_height_value = $Physical/TXT_HeightValue
-@onready var txt_weight_value = $Physical/TXT_WeightValue
-@onready var btn_rename = $"Player Evolution/BTN_Rename"
-@onready var btn_position2 = $"Player Evolution/BTN_AttributePosition2"
-@onready var btn_specialty1 = $"Player Evolution/BTN_AttributeSpecialty1"
-@onready var btn_specialty2 = $"Player Evolution/BTN_AttributeSpecialty2"
-@onready var btn_pincolor = $"Player Evolution/BTN_AttributePinColor"
-@onready var txt_attribute_pincolor = $"Player Evolution/TXT_AttributePinColor"
-@onready var txt_rename_firstname = $"Player Evolution/TXT_RenameFirstName"
-@onready var txt_rename_lastname = $"Player Evolution/TXT_RenameLastName"
-@onready var lineedit_firstname = $"Player Evolution/LineEdit_FirstName"
-@onready var lineedit_lastname = $"Player Evolution/LineEdit_LastName"
-@onready var txt_achievements = $TXT_Achievements
-@onready var btn_pin_1 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinYellow"
-@onready var btn_pin_2 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinOrange"
-@onready var btn_pin_3 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinRed"
-@onready var btn_pin_4 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinPurple"
-@onready var btn_pin_5 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinBlue"
-@onready var btn_pin_6 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinGreen"
-@onready var btn_pin_7 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinWhite"
-@onready var btn_pin_8 = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinBlack"
+# --- CONSTANTES COULEURS ---
+const BTN_GREEN = Color(0.0, 0.8, 0.2)
+const BTN_RED   = Color(0.9, 0.1, 0.1)
+const BTN_WHITE = Color(1.0, 1.0, 1.0)
 
-# --- COULEURS BOUTONS ---
-const BTN_GREEN = Color(0.0, 0.8, 0.0)
-const BTN_RED = Color(0.8, 0.0, 0.0)
-
-# --- COULEURS PIN ---
 const PIN_COLORS = {
 	"rose":   Color(1.0, 0.4, 0.7),
 	"cyan":   Color(0.0, 0.9, 0.9),
@@ -105,92 +68,107 @@ const PIN_COLORS = {
 	"violet": Color(0.5, 0.0, 0.9)
 }
 
-# --- VARIABLES ---
 var manager_position2_stock: int = 0
 var manager_specialty_stock: int = 0
-var rename_mode: bool = false
 var pin_menu_open: bool = false
+var rename_mode: String = ""
+
+# --- NOEUDS ---
+@onready var card_preview            = $CardPreview
+@onready var btn_close               = $BTN_CloseDetailCardPlayer
+@onready var txt_strength_value      = $Skills/TXT_StrengthValue
+@onready var txt_speed_value         = $Skills/TXT_SpeedValue
+@onready var txt_aggression_value    = $Skills/TXT_AggressionValue
+@onready var txt_positioning_value   = $Skills/TXT_PositioningValue
+@onready var txt_stamina_value       = $Skills/TXT_StaminaValue
+@onready var txt_concentration_value = $Skills/TXT_ConcentrationValue
+@onready var txt_communication_value = $Skills/TXT_CommunicationValue
+@onready var txt_motivation_value    = $Skills/TXT_MotivationValue
+@onready var txt_creativity_value    = $Skills/TXT_CreativityValue
+@onready var txt_anticipation_value  = $Skills/TXT_AnticipationValue
+@onready var txt_age_value           = $Physical/TXT_AgeValue
+@onready var txt_height_value        = $Physical/TXT_HeightValue
+@onready var txt_weight_value        = $Physical/TXT_WeightValue
+@onready var btn_rename              = $"Player Evolution/BTN_Rename"
+@onready var btn_position2           = $"Player Evolution/BTN_AttributePosition2"
+@onready var btn_specialty1          = $"Player Evolution/BTN_AttributeSpecialty1"
+@onready var btn_specialty2          = $"Player Evolution/BTN_AttributeSpecialty2"
+@onready var btn_pincolor            = $"Player Evolution/BTN_AttributePinColor"
+@onready var txt_rename              = $"Player Evolution/TXT_Rename"
+@onready var txt_pos2_label          = $"Player Evolution/TXT_AttributePosition2"
+@onready var txt_spec1_label         = $"Player Evolution/TXT_AttributeSpecialty1"
+@onready var txt_spec2_label         = $"Player Evolution/TXT_AttributeSpecialty2"
+@onready var txt_attribute_pincolor  = $"Player Evolution/TXT_AttributePinColor"
+@onready var txt_rename_firstname    = $"Player Evolution/TXT_RenameFirstName"
+@onready var txt_rename_lastname     = $"Player Evolution/TXT_RenameLastName"
+@onready var lineedit_firstname      = $"Player Evolution/LineEdit_FirstName"
+@onready var lineedit_lastname       = $"Player Evolution/LineEdit_LastName"
+@onready var btn_pin_rose   = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinRose"
+@onready var btn_pin_cyan   = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinCyan"
+@onready var btn_pin_marron = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinMarron"
+@onready var btn_pin_corail = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinCorail"
+@onready var btn_pin_marine = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinMarine"
+@onready var btn_pin_lime   = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinLime"
+@onready var btn_pin_argent = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinArgent"
+@onready var btn_pin_violet = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePinViolet"
+@onready var txt_achievements = $TXT_Achievements
 
 # --- READY ---
 func _ready():
-	await get_tree().process_frame
-	await get_tree().process_frame
-	setup()
-
-func setup():
-	if GameState.selected_color == "":
-		return
 	var cp = card_preview
-	cp.clickable = false
-
-	cp.note = GameState.selected_note
-	cp.color = GameState.selected_color
-	cp.position1 = GameState.selected_position1
-	cp.position2 = GameState.selected_position2
+	cp.note               = GameState.selected_note
+	cp.color              = GameState.selected_color
+	cp.position1          = GameState.selected_position1
+	cp.position2          = GameState.selected_position2
 	cp.position2_unlocked = GameState.selected_position2_unlocked
-	cp.firstname = GameState.selected_firstname
-	cp.lastname = GameState.selected_lastname
-	cp.nationality = GameState.selected_nationality
-	cp.specialty1 = GameState.selected_specialty1
-	cp.specialty2 = GameState.selected_specialty2
-	cp.pin_color = GameState.selected_pin_color
+	cp.age                = GameState.selected_age
+	cp.height             = GameState.selected_height
+	cp.weight             = GameState.selected_weight
+	cp.nationality        = GameState.selected_nationality
+	cp.specialty1         = GameState.selected_specialty1
+	cp.specialty2         = GameState.selected_specialty2
+	cp.firstname          = GameState.selected_firstname
+	cp.lastname           = GameState.selected_lastname
+	cp.pin_color          = GameState.selected_pin_color
+	cp.strength           = GameState.selected_strength
+	cp.speed              = GameState.selected_speed
+	cp.aggression         = GameState.selected_aggression
+	cp.positioning        = GameState.selected_positioning
+	cp.stamina            = GameState.selected_stamina
+	cp.creativity         = GameState.selected_creativity
+	cp.concentration      = GameState.selected_concentration
+	cp.motivation         = GameState.selected_motivation
+	cp.anticipation       = GameState.selected_anticipation
+	cp.communication      = GameState.selected_communication
+	cp.clickable          = false
 	cp.display()
-
-	card_background_skills.modulate = cp.CARD_COLORS[cp.color]
-	txt_strength_value.text = str(GameState.selected_strength)
-	txt_speed_value.text = str(GameState.selected_speed)
-	txt_aggression_value.text = str(GameState.selected_aggression)
-	txt_positioning_value.text = str(GameState.selected_positioning)
-	txt_stamina_value.text = str(GameState.selected_stamina)
-	txt_concentration_value.text = str(GameState.selected_concentration)
-	txt_communication_value.text = str(GameState.selected_communication)
-	txt_motivation_value.text = str(GameState.selected_motivation)
-	txt_creativity_value.text = str(GameState.selected_creativity)
-	txt_anticipation_value.text = str(GameState.selected_anticipation)
-
-	txt_age_value.text = str(GameState.selected_age)
-	txt_height_value.text = str(GameState.selected_height)
-	txt_weight_value.text = str(GameState.selected_weight)
-
-	txt_rename_firstname.text = GameState.selected_firstname
-	txt_rename_lastname.text = GameState.selected_lastname
-
-	lineedit_firstname.max_length = 11
-	lineedit_lastname.max_length = 11
 	lineedit_firstname.visible = false
-	lineedit_lastname.visible = false
-
-	btn_pin_1.modulate = PIN_COLORS["rose"]
-	btn_pin_2.modulate = PIN_COLORS["cyan"]
-	btn_pin_3.modulate = PIN_COLORS["marron"]
-	btn_pin_4.modulate = PIN_COLORS["corail"]
-	btn_pin_5.modulate = PIN_COLORS["marine"]
-	btn_pin_6.modulate = PIN_COLORS["lime"]
-	btn_pin_7.modulate = PIN_COLORS["argent"]
-	btn_pin_8.modulate = PIN_COLORS["violet"]
-
+	lineedit_lastname.visible  = false
+	_setup_pin_colors()
 	_set_pin_menu_visible(false)
-	btn_pincolor.modulate = Color(1.0, 1.0, 1.0)
-	txt_attribute_pincolor.visible = true
-
-	if GameState.selected_pin_color != "":
-		cp.btn_pincolor.modulate = PIN_COLORS[GameState.selected_pin_color]
-		cp.btn_pincolor.visible = true
-
 	lineedit_firstname.text_submitted.connect(_on_firstname_submitted)
 	lineedit_lastname.text_submitted.connect(_on_lastname_submitted)
-
 	_apply_translations()
 	setup_buttons(cp)
 
+func _setup_pin_colors():
+	btn_pin_rose.modulate   = PIN_COLORS["rose"]
+	btn_pin_cyan.modulate   = PIN_COLORS["cyan"]
+	btn_pin_marron.modulate = PIN_COLORS["marron"]
+	btn_pin_corail.modulate = PIN_COLORS["corail"]
+	btn_pin_marine.modulate = PIN_COLORS["marine"]
+	btn_pin_lime.modulate   = PIN_COLORS["lime"]
+	btn_pin_argent.modulate = PIN_COLORS["argent"]
+	btn_pin_violet.modulate = PIN_COLORS["violet"]
+
 func _apply_translations():
 	var t = TRANSLATIONS_DCP[GameState.language]
-	btn_rename.text = t["rename"]
-	btn_position2.text = t["position2"]
-	btn_specialty1.text = t["specialty1"]
-	btn_specialty2.text = t["specialty2"]
+	txt_rename.text             = t["rename"]
+	txt_pos2_label.text         = t["position2"]
+	txt_spec1_label.text        = t["specialty1"]
+	txt_spec2_label.text        = t["specialty2"]
 	txt_attribute_pincolor.text = t["pincolor"]
-	txt_achievements.text = t["achievements"]
+	txt_achievements.text       = t["achievements"]
 
 func setup_buttons(cp):
 	if cp.color in ["blue", "white", "special"]:
@@ -207,97 +185,82 @@ func setup_buttons(cp):
 	else:
 		btn_specialty1.modulate = BTN_RED
 		btn_specialty2.modulate = BTN_RED
+	btn_pincolor.modulate = BTN_WHITE
 
-# --- PIN COLOR ---
 func _set_pin_menu_visible(value: bool):
-	btn_pin_1.visible = value
-	btn_pin_2.visible = value
-	btn_pin_3.visible = value
-	btn_pin_4.visible = value
-	btn_pin_5.visible = value
-	btn_pin_6.visible = value
-	btn_pin_7.visible = value
-	btn_pin_8.visible = value
-	txt_attribute_pincolor.visible = not value
+	btn_pin_rose.visible   = value
+	btn_pin_cyan.visible   = value
+	btn_pin_marron.visible = value
+	btn_pin_corail.visible = value
+	btn_pin_marine.visible = value
+	btn_pin_lime.visible   = value
+	btn_pin_argent.visible = value
+	btn_pin_violet.visible = value
 
-func _apply_pin_color(color_key: String):
-	card_preview.btn_pincolor.modulate = PIN_COLORS[color_key]
-	card_preview.btn_pincolor.visible = true
-	card_preview.pin_color = color_key
-	GameState.selected_pin_color = color_key
+func _apply_pin_color(key: String):
+	card_preview.pin_color = key
+	card_preview.btn_pincolor.modulate = PIN_COLORS[key]
+	card_preview.btn_pincolor.visible  = true
 	pin_menu_open = false
 	_set_pin_menu_visible(false)
 
 func _remove_pin():
-	card_preview.btn_pincolor.visible = false
 	card_preview.pin_color = ""
-	GameState.selected_pin_color = ""
+	card_preview.btn_pincolor.visible = false
 	pin_menu_open = false
 	_set_pin_menu_visible(false)
 
-# --- RENAME ---
 func _enter_rename_mode():
-	rename_mode = true
-	lineedit_firstname.text = GameState.selected_firstname
-	lineedit_lastname.text = GameState.selected_lastname
-	txt_rename_firstname.visible = false
-	txt_rename_lastname.visible = false
+	lineedit_firstname.text    = card_preview.firstname
+	lineedit_lastname.text     = card_preview.lastname
 	lineedit_firstname.visible = true
-	lineedit_lastname.visible = true
+	lineedit_lastname.visible  = true
 	lineedit_firstname.grab_focus()
-	lineedit_firstname.select_all()
+	rename_mode = "firstname"
 
-func _on_firstname_submitted(new_text: String):
-	GameState.selected_firstname = new_text
-	txt_rename_firstname.text = new_text
-	card_preview.firstname = new_text
-	card_preview.display()
+func _on_firstname_submitted(text: String):
+	card_preview.firstname    = text.strip_edges()
+	txt_rename_firstname.text = card_preview.firstname
+	rename_mode = "lastname"
 	lineedit_lastname.grab_focus()
-	lineedit_lastname.select_all()
 
-func _on_lastname_submitted(new_text: String):
-	GameState.selected_lastname = new_text
-	txt_rename_lastname.text = new_text
-	card_preview.lastname = new_text
+func _on_lastname_submitted(text: String):
+	card_preview.lastname    = text.strip_edges()
+	txt_rename_lastname.text = card_preview.lastname
+	lineedit_firstname.visible = false
+	lineedit_lastname.visible  = false
+	rename_mode = ""
 	card_preview.display()
-	_exit_rename_mode()
 
 func _exit_rename_mode():
-	rename_mode = false
 	lineedit_firstname.visible = false
-	lineedit_lastname.visible = false
-	txt_rename_firstname.visible = true
-	txt_rename_lastname.visible = true
+	lineedit_lastname.visible  = false
+	rename_mode = ""
 
-# --- SAUVEGARDE DECO AVANT FERMETURE ---
 func _save_changes_to_deco():
 	if GameState.selected_deco_index == 1:
-		GameState.deco1_firstname = GameState.selected_firstname
-		GameState.deco1_lastname = GameState.selected_lastname
-		GameState.deco1_pin_color = GameState.selected_pin_color
+		GameState.deco1_firstname = card_preview.firstname
+		GameState.deco1_lastname  = card_preview.lastname
+		GameState.deco1_pin_color = card_preview.pin_color
 	elif GameState.selected_deco_index == 2:
-		GameState.deco2_firstname = GameState.selected_firstname
-		GameState.deco2_lastname = GameState.selected_lastname
-		GameState.deco2_pin_color = GameState.selected_pin_color
+		GameState.deco2_firstname = card_preview.firstname
+		GameState.deco2_lastname  = card_preview.lastname
+		GameState.deco2_pin_color = card_preview.pin_color
 
-# --- INPUT ---
 func _input(event):
 	if not (event is InputEventMouseButton):
 		return
 	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
 		return
 	var pos = event.position
-
 	if _sprite_hit(btn_close, pos):
 		_save_changes_to_deco()
 		get_tree().change_scene_to_file(GameState.previous_scene)
 		return
-
 	if _sprite_hit(btn_rename, pos):
 		if card_preview.color in ["blue", "white", "special"]:
 			_enter_rename_mode()
 		return
-
 	if _sprite_hit(btn_pincolor, pos):
 		if pin_menu_open:
 			_remove_pin()
@@ -305,27 +268,25 @@ func _input(event):
 			pin_menu_open = true
 			_set_pin_menu_visible(true)
 		return
-
 	if pin_menu_open:
-		if _sprite_hit(btn_pin_1, pos):
+		if _sprite_hit(btn_pin_rose, pos):
 			_apply_pin_color("rose")
-		elif _sprite_hit(btn_pin_2, pos):
+		elif _sprite_hit(btn_pin_cyan, pos):
 			_apply_pin_color("cyan")
-		elif _sprite_hit(btn_pin_3, pos):
+		elif _sprite_hit(btn_pin_marron, pos):
 			_apply_pin_color("marron")
-		elif _sprite_hit(btn_pin_4, pos):
+		elif _sprite_hit(btn_pin_corail, pos):
 			_apply_pin_color("corail")
-		elif _sprite_hit(btn_pin_5, pos):
+		elif _sprite_hit(btn_pin_marine, pos):
 			_apply_pin_color("marine")
-		elif _sprite_hit(btn_pin_6, pos):
+		elif _sprite_hit(btn_pin_lime, pos):
 			_apply_pin_color("lime")
-		elif _sprite_hit(btn_pin_7, pos):
+		elif _sprite_hit(btn_pin_argent, pos):
 			_apply_pin_color("argent")
-		elif _sprite_hit(btn_pin_8, pos):
+		elif _sprite_hit(btn_pin_violet, pos):
 			_apply_pin_color("violet")
 		return
 
-# --- UTILITAIRES ---
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if not sprite.visible:
 		return false

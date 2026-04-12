@@ -1,0 +1,486 @@
+[gd_scene format=3 uid="uid://drahv5tryxtpg"]
+
+[ext_resource type="Script" uid="uid://ioadjvqsgwh5" path="res://Scripts/schedule.gd" id="1_qej65"]
+[ext_resource type="Texture2D" uid="uid://dt72iq2jih7k2" path="res://Sprites/Wallpapers/bg_green.jpg" id="2_a7fnj"]
+[ext_resource type="Texture2D" uid="uid://d2fxq0cewyowc" path="res://Sprites/card_background_300x200.png" id="3_qffxc"]
+[ext_resource type="Texture2D" uid="uid://mljq2xfx2uah" path="res://Sprites/card_border_300x200.png" id="4_gi3xp"]
+[ext_resource type="Texture2D" uid="uid://h5sy5diu63gp" path="res://Sprites/ovl_lock_300x200.png" id="5_1sw8w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsp7w"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="Schedule" type="Node2D" unique_id=1784861112]
+script = ExtResource("1_qej65")
+
+[node name="BG_Schedule" type="Sprite2D" parent="." unique_id=1311035966]
+position = Vector2(960, 540)
+texture = ExtResource("2_a7fnj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=45299496]
+z_index = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.050980393, 0.078431375, 0.30980393, 0.78431374)
+
+[node name="Shot_1" type="Node2D" parent="." unique_id=1879677896]
+z_index = 2
+
+[node name="Card_Background_Shot" type="Sprite2D" parent="Shot_1" unique_id=1568341534]
+z_index = 3
+position = Vector2(250, 210)
+texture = ExtResource("3_qffxc")
+
+[node name="Card_Border_Shot" type="Sprite2D" parent="Shot_1" unique_id=937814347]
+z_index = 4
+position = Vector2(250, 210)
+texture = ExtResource("4_gi3xp")
+
+[node name="TXT_Time" type="Label" parent="Shot_1" unique_id=1404057024]
+z_index = 7
+offset_left = 175.0
+offset_top = 120.0
+offset_right = 325.0
+offset_bottom = 167.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
+text = "0h - 3h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition" type="Label" parent="Shot_1" unique_id=872313617]
+z_index = 5
+offset_left = 100.0
+offset_top = 180.0
+offset_right = 400.0
+offset_bottom = 303.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Competition"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OVL_Lock" type="Sprite2D" parent="Shot_1" unique_id=45717646]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 6
+position = Vector2(250, 210)
+texture = ExtResource("5_1sw8w")
+
+[node name="Shot_2" type="Node2D" parent="." unique_id=28091919]
+z_index = 2
+
+[node name="Card_Background_Shot" type="Sprite2D" parent="Shot_2" unique_id=690195862]
+z_index = 3
+position = Vector2(250, 440)
+texture = ExtResource("3_qffxc")
+
+[node name="Card_Border_Shot" type="Sprite2D" parent="Shot_2" unique_id=1258293940]
+z_index = 4
+position = Vector2(250, 440)
+texture = ExtResource("4_gi3xp")
+
+[node name="TXT_Time" type="Label" parent="Shot_2" unique_id=1941617043]
+z_index = 7
+offset_left = 175.0
+offset_top = 350.0
+offset_right = 325.0
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
+text = "3h - 6h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition" type="Label" parent="Shot_2" unique_id=1600533975]
+z_index = 5
+offset_left = 100.0
+offset_top = 410.0
+offset_right = 400.0
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Competition"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OVL_Lock" type="Sprite2D" parent="Shot_2" unique_id=856668007]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 6
+position = Vector2(250, 440)
+texture = ExtResource("5_1sw8w")
+
+[node name="Shot_3" type="Node2D" parent="." unique_id=727239494]
+z_index = 2
+
+[node name="Card_Background_Shot" type="Sprite2D" parent="Shot_3" unique_id=1066899040]
+z_index = 3
+position = Vector2(250, 670)
+texture = ExtResource("3_qffxc")
+
+[node name="Card_Border_Shot" type="Sprite2D" parent="Shot_3" unique_id=1412979496]
+z_index = 4
+position = Vector2(250, 670)
+texture = ExtResource("4_gi3xp")
+
+[node name="TXT_Time" type="Label" parent="Shot_3" unique_id=1515013442]
+z_index = 7
+offset_left = 175.0
+offset_top = 580.0
+offset_right = 325.0
+offset_bottom = 627.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
+text = "6h - 9h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition" type="Label" parent="Shot_3" unique_id=1203894481]
+z_index = 5
+offset_left = 100.0
+offset_top = 640.0
+offset_right = 400.0
+offset_bottom = 763.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Competition"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OVL_Lock" type="Sprite2D" parent="Shot_3" unique_id=45657635]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 6
+position = Vector2(250, 670)
+texture = ExtResource("5_1sw8w")
+
+[node name="Shot_4" type="Node2D" parent="." unique_id=1022563633]
+z_index = 2
+
+[node name="Card_Background_Shot" type="Sprite2D" parent="Shot_4" unique_id=225972923]
+z_index = 3
+position = Vector2(250, 900)
+texture = ExtResource("3_qffxc")
+
+[node name="Card_Border_Shot" type="Sprite2D" parent="Shot_4" unique_id=1171929094]
+z_index = 4
+position = Vector2(250, 900)
+texture = ExtResource("4_gi3xp")
+
+[node name="TXT_Time" type="Label" parent="Shot_4" unique_id=1081842360]
+z_index = 7
+offset_left = 175.0
+offset_top = 810.0
+offset_right = 325.0
+offset_bottom = 857.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
+text = "9h - 12h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition" type="Label" parent="Shot_4" unique_id=634485273]
+z_index = 5
+offset_left = 100.0
+offset_top = 870.0
+offset_right = 400.0
+offset_bottom = 993.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Competition"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OVL_Lock" type="Sprite2D" parent="Shot_4" unique_id=1341945779]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 6
+position = Vector2(250, 900)
+texture = ExtResource("5_1sw8w")
+
+[node name="Shot_5" type="Node2D" parent="." unique_id=1591826840]
+z_index = 2
+
+[node name="Card_Background_Shot" type="Sprite2D" parent="Shot_5" unique_id=1068440840]
+z_index = 3
+position = Vector2(1680, 210)
+texture = ExtResource("3_qffxc")
+
+[node name="Card_Border_Shot" type="Sprite2D" parent="Shot_5" unique_id=1571496756]
+z_index = 4
+position = Vector2(1680, 210)
+texture = ExtResource("4_gi3xp")
+
+[node name="TXT_Time" type="Label" parent="Shot_5" unique_id=1222681336]
+z_index = 7
+offset_left = 1605.0
+offset_top = 120.0
+offset_right = 1755.0
+offset_bottom = 167.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
+text = "12h - 15h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition" type="Label" parent="Shot_5" unique_id=971865498]
+z_index = 5
+offset_left = 1530.0
+offset_top = 180.0
+offset_right = 1830.0
+offset_bottom = 303.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Competition"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OVL_Lock" type="Sprite2D" parent="Shot_5" unique_id=787362818]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 6
+position = Vector2(1680, 210)
+texture = ExtResource("5_1sw8w")
+
+[node name="Shot_6" type="Node2D" parent="." unique_id=333167498]
+z_index = 2
+
+[node name="Card_Background_Shot" type="Sprite2D" parent="Shot_6" unique_id=72356594]
+z_index = 3
+position = Vector2(1680, 440)
+texture = ExtResource("3_qffxc")
+
+[node name="Card_Border_Shot" type="Sprite2D" parent="Shot_6" unique_id=1689282037]
+z_index = 4
+position = Vector2(1680, 440)
+texture = ExtResource("4_gi3xp")
+
+[node name="TXT_Time" type="Label" parent="Shot_6" unique_id=1307953072]
+z_index = 7
+offset_left = 1605.0
+offset_top = 350.0
+offset_right = 1755.0
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
+text = "15h - 18h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition" type="Label" parent="Shot_6" unique_id=1610653849]
+z_index = 5
+offset_left = 1530.0
+offset_top = 410.0
+offset_right = 1830.0
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Competition"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OVL_Lock" type="Sprite2D" parent="Shot_6" unique_id=723890335]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 6
+position = Vector2(1680, 440)
+texture = ExtResource("5_1sw8w")
+
+[node name="Shot_7" type="Node2D" parent="." unique_id=1639634930]
+z_index = 2
+
+[node name="Card_Background_Shot" type="Sprite2D" parent="Shot_7" unique_id=985402139]
+z_index = 3
+position = Vector2(1680, 670)
+texture = ExtResource("3_qffxc")
+
+[node name="Card_Border_Shot" type="Sprite2D" parent="Shot_7" unique_id=1698656466]
+z_index = 4
+position = Vector2(1680, 670)
+texture = ExtResource("4_gi3xp")
+
+[node name="TXT_Time" type="Label" parent="Shot_7" unique_id=1636064079]
+z_index = 7
+offset_left = 1605.0
+offset_top = 580.0
+offset_right = 1755.0
+offset_bottom = 627.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
+text = "18h - 21h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition" type="Label" parent="Shot_7" unique_id=839710699]
+z_index = 5
+offset_left = 1530.0
+offset_top = 640.0
+offset_right = 1830.0
+offset_bottom = 763.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Competition"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OVL_Lock" type="Sprite2D" parent="Shot_7" unique_id=89818815]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 6
+position = Vector2(1680, 670)
+texture = ExtResource("5_1sw8w")
+
+[node name="Shot_8" type="Node2D" parent="." unique_id=846923604]
+z_index = 2
+
+[node name="Card_Background_Shot" type="Sprite2D" parent="Shot_8" unique_id=238942225]
+z_index = 3
+position = Vector2(1680, 900)
+texture = ExtResource("3_qffxc")
+
+[node name="Card_Border_Shot" type="Sprite2D" parent="Shot_8" unique_id=1313270092]
+z_index = 4
+position = Vector2(1680, 900)
+texture = ExtResource("4_gi3xp")
+
+[node name="TXT_Time" type="Label" parent="Shot_8" unique_id=1980658408]
+z_index = 7
+offset_left = 1605.0
+offset_top = 810.0
+offset_right = 1755.0
+offset_bottom = 857.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
+text = "21h - 24h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition" type="Label" parent="Shot_8" unique_id=921360529]
+z_index = 5
+offset_left = 1530.0
+offset_top = 870.0
+offset_right = 1830.0
+offset_bottom = 993.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Competition"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OVL_Lock" type="Sprite2D" parent="Shot_8" unique_id=131660733]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 6
+position = Vector2(1680, 900)
+texture = ExtResource("5_1sw8w")
+
+[node name="Catalogue" type="Node2D" parent="." unique_id=1074273401]
+
+[node name="TXT_Instructions" type="Label" parent="Catalogue" unique_id=2009617408]
+z_index = 5
+offset_left = 560.0
+offset_top = 114.0
+offset_right = 1360.0
+offset_bottom = 304.0
+theme_override_font_sizes/font_size = 32
+text = "Drag and drop your favorite competitions for the next week into the shots of your choice."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TXT_Competition1" type="Label" parent="Catalogue" unique_id=153977863]
+z_index = 5
+offset_left = 560.0
+offset_top = 300.0
+offset_right = 1360.0
+offset_bottom = 370.0
+theme_override_font_sizes/font_size = 40
+text = "Competition 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition2" type="Label" parent="Catalogue" unique_id=1578844005]
+z_index = 5
+offset_left = 560.0
+offset_top = 400.0
+offset_right = 1360.0
+offset_bottom = 470.0
+theme_override_font_sizes/font_size = 40
+text = "Competition 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition3" type="Label" parent="Catalogue" unique_id=1770681453]
+z_index = 5
+offset_left = 560.0
+offset_top = 500.0
+offset_right = 1360.0
+offset_bottom = 570.0
+theme_override_font_sizes/font_size = 40
+text = "Competition 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition4" type="Label" parent="Catalogue" unique_id=421418030]
+z_index = 5
+offset_left = 560.0
+offset_top = 600.0
+offset_right = 1360.0
+offset_bottom = 670.0
+theme_override_font_sizes/font_size = 40
+text = "Competition 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition5" type="Label" parent="Catalogue" unique_id=785758180]
+z_index = 5
+offset_left = 560.0
+offset_top = 700.0
+offset_right = 1360.0
+offset_bottom = 770.0
+theme_override_font_sizes/font_size = 40
+text = "Competition 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition6" type="Label" parent="Catalogue" unique_id=1102032651]
+z_index = 5
+offset_left = 560.0
+offset_top = 800.0
+offset_right = 1360.0
+offset_bottom = 870.0
+theme_override_font_sizes/font_size = 40
+text = "Competition 6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Competition7" type="Label" parent="Catalogue" unique_id=869234481]
+z_index = 5
+offset_left = 560.0
+offset_top = 900.0
+offset_right = 1360.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 40
+text = "Competition 7"
+horizontal_alignment = 1
+vertical_alignment = 1

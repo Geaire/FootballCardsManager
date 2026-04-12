@@ -6,13 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://demwf8ogjm3cs" path="res://Sprites/btn_playmainmenu.png" id="3_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://2pc21x0gtk0o" path="res://Sprites/btn_sound_on.png" id="4_n45e2"]
 [ext_resource type="Texture2D" uid="uid://bgqv5yvve3042" path="res://Sprites/btn_sound_off.png" id="5_opfnp"]
-[ext_resource type="Texture2D" uid="uid://cupdiqwej1w0l" path="res://Sprites/ovl_language.png" id="6_t1dhk"]
-[ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="7_5egv6"]
-[ext_resource type="Texture2D" uid="uid://dn5m5eq7rd5mt" path="res://Sprites/Flags/lang_en.png" id="8_vtepg"]
-[ext_resource type="Texture2D" uid="uid://dcjqa84kll06g" path="res://Sprites/Flags/flag_de.png" id="9_8dnnj"]
-[ext_resource type="Texture2D" uid="uid://d277n0bsf1l3v" path="res://Sprites/Flags/flag_it.png" id="10_m3bi6"]
-[ext_resource type="Texture2D" uid="uid://gxmpnnodt0s1" path="res://Sprites/Flags/flag_es.png" id="11_wyh8j"]
-[ext_resource type="Texture2D" uid="uid://jc87qpron1nn" path="res://Sprites/Flags/lang_pt.png" id="12_ujyyl"]
 [ext_resource type="PackedScene" uid="uid://bkfpyr8yi4g2m" path="res://Scenes/card_player.tscn" id="13_5egv6"]
 
 [node name="Main_Menu" type="Node2D" unique_id=1103332167]
@@ -34,6 +27,7 @@ text = "Football Cards Manager"
 horizontal_alignment = 1
 
 [node name="BTN_Play" type="Sprite2D" parent="." unique_id=1279859900]
+modulate = Color(0, 0, 0, 0.37254903)
 z_index = 1
 position = Vector2(950, 330)
 texture = ExtResource("3_ce3w2")
@@ -94,65 +88,6 @@ z_index = 1
 position = Vector2(1750, 100)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_opfnp")
-
-[node name="TXT_Language" type="Label" parent="." unique_id=1296454516]
-z_index = 1
-offset_left = 1657.0
-offset_top = 197.0
-offset_right = 1857.0
-offset_bottom = 247.0
-theme_override_font_sizes/font_size = 35
-text = "Language"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="OVL_Language" type="Sprite2D" parent="." unique_id=447639340]
-visible = false
-z_index = 4
-texture = ExtResource("6_t1dhk")
-offset = Vector2(960, 540)
-
-[node name="Lang_FR" type="Sprite2D" parent="." unique_id=2014385221]
-visible = false
-z_index = 5
-position = Vector2(1760, 330)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_5egv6")
-
-[node name="Lang_EN" type="Sprite2D" parent="." unique_id=2064675293]
-visible = false
-z_index = 5
-position = Vector2(1760, 430)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("8_vtepg")
-
-[node name="Lang_DE" type="Sprite2D" parent="." unique_id=70128829]
-visible = false
-z_index = 5
-position = Vector2(1760, 530)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_8dnnj")
-
-[node name="Lang_IT" type="Sprite2D" parent="." unique_id=1322469172]
-visible = false
-z_index = 5
-position = Vector2(1760, 630)
-scale = Vector2(0.19999999, 0.19999999)
-texture = ExtResource("10_m3bi6")
-
-[node name="Lang_ES" type="Sprite2D" parent="." unique_id=1740179776]
-visible = false
-z_index = 5
-position = Vector2(1760, 730)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_wyh8j")
-
-[node name="Lang_PT" type="Sprite2D" parent="." unique_id=685009667]
-visible = false
-z_index = 5
-position = Vector2(1760, 830)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_ujyyl")
 
 [node name="TXT_Version" type="Label" parent="." unique_id=2142098443]
 z_index = 1

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bb1vgvgokr82"]
 
+[ext_resource type="Script" uid="uid://kr3aervwtcna" path="res://Scripts/login_email.gd" id="1_8cgga"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="1_kj54y"]
 [ext_resource type="Texture2D" uid="uid://dtmbafjwc3bjr" path="res://Sprites/logo_fcm.png" id="2_8cgga"]
-[ext_resource type="Texture2D" uid="uid://demwf8ogjm3cs" path="res://Sprites/btn_playmainmenu.png" id="3_8cgga"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tayyo"]
 load_path = "res://.godot/imported/bg_login.jpg-1685255d7bf944ef95e5de9c2eeef7d3.ctex"
@@ -15,7 +15,14 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kj54y"]
+load_path = "res://.godot/imported/btn_playmainmenu.png-fffee8b0187fc1ade17f9a28c9e8a39a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8cgga"]
+load_path = "res://.godot/imported/btn_playmainmenu.png-fffee8b0187fc1ade17f9a28c9e8a39a.ctex"
+
 [node name="Login_Email" type="Node2D" unique_id=1187815742]
+script = ExtResource("1_8cgga")
 
 [node name="BG_Login" type="Sprite2D" parent="." unique_id=1306740595]
 position = Vector2(960, 540)
@@ -36,16 +43,16 @@ vertical_alignment = 1
 
 [node name="logo_FCM" type="Sprite2D" parent="." unique_id=215233274]
 z_index = 1
-position = Vector2(1605, 920)
+position = Vector2(1646, 920)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_8cgga")
 
 [node name="TXT_Email" type="Label" parent="." unique_id=454550780]
 z_index = 1
-offset_left = 150.0
-offset_top = 300.0
-offset_right = 750.0
-offset_bottom = 360.0
+offset_left = 200.0
+offset_top = 210.0
+offset_right = 800.0
+offset_bottom = 275.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Email"
@@ -54,19 +61,31 @@ vertical_alignment = 1
 
 [node name="LineEdit_Email" type="LineEdit" parent="." unique_id=2047842740]
 z_index = 1
-offset_left = 150.0
-offset_top = 380.0
-offset_right = 750.0
-offset_bottom = 443.0
+offset_left = 200.0
+offset_top = 280.0
+offset_right = 800.0
+offset_bottom = 345.0
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_kj54y")
 
+[node name="TXT_IncorrectEmail" type="Label" parent="." unique_id=1930123187]
+z_index = 1
+offset_left = 200.0
+offset_top = 353.0
+offset_right = 800.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Incorrect Email"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TXT_Password" type="Label" parent="." unique_id=740760036]
 z_index = 1
-offset_left = 150.0
-offset_top = 500.0
-offset_right = 750.0
-offset_bottom = 560.0
+offset_left = 1120.0
+offset_top = 210.0
+offset_right = 1720.0
+offset_bottom = 275.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Password"
@@ -75,57 +94,108 @@ vertical_alignment = 1
 
 [node name="LineEdit_Password" type="LineEdit" parent="." unique_id=1616500398]
 z_index = 1
-offset_left = 150.0
-offset_top = 580.0
-offset_right = 750.0
-offset_bottom = 643.0
+offset_left = 1120.0
+offset_top = 280.0
+offset_right = 1720.0
+offset_bottom = 345.0
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_kj54y")
 
-[node name="BTN_Login" type="Sprite2D" parent="." unique_id=453352977]
+[node name="TXT_IncorrectPassword" type="Label" parent="." unique_id=647548184]
 z_index = 1
-position = Vector2(960, 410)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_8cgga")
-
-[node name="BTN_SignUp" type="Sprite2D" parent="." unique_id=1825554569]
-z_index = 1
-position = Vector2(960, 610)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_8cgga")
-
-[node name="TXT_ForgotPassword" type="Label" parent="." unique_id=2047690126]
-z_index = 1
-offset_left = 150.0
-offset_top = 850.0
-offset_right = 750.0
-offset_bottom = 910.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "Forgot Password"
+offset_left = 1120.0
+offset_top = 353.0
+offset_right = 1720.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Incorrect Password"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BTN_Login" type="Sprite2D" parent="." unique_id=9549104]
+modulate = Color(0, 0.6156863, 0.011764706, 1)
+position = Vector2(500, 500)
+texture = SubResource("CompressedTexture2D_kj54y")
+
 [node name="TXT_Login" type="Label" parent="." unique_id=1017308391]
 z_index = 1
-offset_left = 660.0
-offset_top = 380.0
-offset_right = 1260.0
-offset_bottom = 440.0
+offset_left = 200.0
+offset_top = 430.0
+offset_right = 800.0
+offset_bottom = 570.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Login"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BTN_SignUp" type="Sprite2D" parent="." unique_id=503297035]
+modulate = Color(0, 0.6156863, 0.011764706, 1)
+position = Vector2(500, 700)
+texture = SubResource("CompressedTexture2D_8cgga")
+
 [node name="TXT_SignUp" type="Label" parent="." unique_id=1431485126]
 z_index = 1
-offset_left = 660.0
-offset_top = 580.0
-offset_right = 1260.0
-offset_bottom = 640.0
+offset_left = 200.0
+offset_top = 630.0
+offset_right = 800.0
+offset_bottom = 770.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "SignUp"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_ForgotPassword" type="Label" parent="." unique_id=2047690126]
+z_index = 1
+offset_left = 700.0
+offset_top = 600.0
+offset_right = 1300.0
+offset_bottom = 740.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Forgot Password
+Enter Email"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="LineEdit_ForgotPassword" type="LineEdit" parent="." unique_id=1256182022]
+z_index = 1
+offset_left = 700.0
+offset_top = 750.0
+offset_right = 1300.0
+offset_bottom = 815.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_kj54y")
+
+[node name="BTN_SendReset" type="Sprite2D" parent="." unique_id=1229002342]
+modulate = Color(0, 0.6156863, 0.011764706, 1)
+position = Vector2(1000, 903)
+texture = SubResource("CompressedTexture2D_8cgga")
+
+[node name="TXT_SendReset" type="Label" parent="." unique_id=74076118]
+z_index = 1
+offset_left = 700.0
+offset_top = 832.0
+offset_right = 1300.0
+offset_bottom = 972.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Send Reset"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_ResetConfirm" type="Label" parent="." unique_id=2067493123]
+visible = false
+z_index = 1
+offset_left = 700.0
+offset_top = 832.0
+offset_right = 1300.0
+offset_bottom = 972.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Reset Confirm"
 horizontal_alignment = 1
 vertical_alignment = 1

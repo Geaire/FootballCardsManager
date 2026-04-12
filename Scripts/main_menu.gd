@@ -1,219 +1,222 @@
 extends Node2D
 
-# --- NOEUDS ---
-@onready var btn_sound_on = $BTN_SoundOn
-@onready var btn_sound_off = $BTN_SoundOff
-@onready var ovl_language = $OVL_Language
-@onready var card_deco1 = $Card_Player1
-@onready var card_deco2 = $Card_Player2
-@onready var txt_version = $TXT_Version
-@onready var btn_play = $BTN_Play
-@onready var txt_play = $TXT_Play
-@onready var lang_fr = $Lang_FR
-@onready var lang_en = $Lang_EN
-@onready var lang_de = $Lang_DE
-@onready var lang_it = $Lang_IT
-@onready var lang_es = $Lang_ES
-@onready var lang_pt = $Lang_PT
-@onready var txt_slogan1 = $TXT_Slogan1
-@onready var txt_slogan2 = $TXT_Slogan2
-@onready var txt_slogan3 = $TXT_Slogan3
-@onready var txt_language = $TXT_Language
 
-# --- TRADUCTIONS ---
+@onready var btn_sound_on  = $BTN_SoundOn
+
+@onready var btn_sound_off = $BTN_SoundOff
+
+@onready var card_deco1    = $Card_Player1
+
+@onready var card_deco2    = $Card_Player2
+
+@onready var txt_version   = $TXT_Version
+
+@onready var btn_play      = $BTN_Play
+
+@onready var txt_play      = $TXT_Play
+
+@onready var txt_slogan1   = $TXT_Slogan1
+
+@onready var txt_slogan2   = $TXT_Slogan2
+
+@onready var txt_slogan3   = $TXT_Slogan3
+
+
 const TRANSLATIONS = {
+
 	"fr": {
+
 		"slogan1": "Construis. Pense. Domine.",
+
 		"slogan2": "Pas de hasard, le meilleur gagne toujours.",
-		"slogan3": "Oublie les tactiques. Maîtrise les bonus.",
-		"language": "Langue",
+
+		"slogan3": "Oublie les tactiques. Maitrise les bonus.",
+
 		"play": "Jouer"
+
 	},
+
 	"en": {
+
 		"slogan1": "Build. Think. Dominate.",
+
 		"slogan2": "No luck, the best always wins.",
+
 		"slogan3": "Forget tactics. Master the bonuses.",
-		"language": "Language",
+
 		"play": "Play"
+
 	},
+
 	"es": {
+
 		"slogan1": "Construye. Piensa. Domina.",
+
 		"slogan2": "Sin suerte, el mejor siempre gana.",
-		"slogan3": "Olvida las tácticas. Domina los bonos.",
-		"language": "Idioma",
+
+		"slogan3": "Olvida las tacticas. Domina los bonos.",
+
 		"play": "Jugar"
+
 	},
+
 	"de": {
+
 		"slogan1": "Baue. Denke. Dominiere.",
+
 		"slogan2": "Kein Zufall, der Beste gewinnt immer.",
+
 		"slogan3": "Vergiss Taktiken. Meistere die Boni.",
-		"language": "Sprache",
+
 		"play": "Spielen"
+
 	},
+
 	"it": {
+
 		"slogan1": "Costruisci. Pensa. Domina.",
+
 		"slogan2": "Nessuna fortuna, il migliore vince sempre.",
+
 		"slogan3": "Dimentica le tattiche. Padroneggia i bonus.",
-		"language": "Lingua",
+
 		"play": "Giocare"
+
 	},
+
 	"pt": {
-		"slogan1": "Constrói. Pensa. Domina.",
+
+		"slogan1": "Constroi. Pensa. Domina.",
+
 		"slogan2": "Sem sorte, o melhor sempre vence.",
-		"slogan3": "Esqueça as táticas. Domine os bônus.",
-		"language": "Língua",
+
+		"slogan3": "Esqueca as taticas. Domine os bonus.",
+
 		"play": "Jogar"
+
 	}
+
 }
 
-# --- CONSTANTES ---
-const SFX_CLICK = "res://Audio/sfx_click.wav"
+
+const SFX_CLICK        = "res://Audio/sfx_click.wav"
+
 const SCENE_COMPETITION = "res://Scenes/competition.tscn"
 
-# --- READY ---
+
 func _ready():
-	txt_version.text = "V 0.1"
-	btn_sound_on.visible = GameState.sound_on
+
+	txt_version.text      = "V 0.1"
+
+	btn_sound_on.visible  = GameState.sound_on
+
 	btn_sound_off.visible = not GameState.sound_on
-	ovl_language.visible = false
-	_set_lang_flags_visible(false)
 
 	if GameState.deco1_color == "":
-		card_deco1.deco_index = 1
-		card_deco1.clickable = true
-		card_deco1.generate()
-		card_deco1.display()
-		card_deco1.save_to_gamestate_deco1()
+
+		card_deco1.deco_index = 1; card_deco1.clickable = true
+
+		card_deco1.generate(); card_deco1.display(); card_deco1.save_to_gamestate_deco1()
+
 	else:
-		card_deco1.deco_index = 1
-		card_deco1.clickable = true
-		card_deco1.restore_from_gamestate_deco1()
-		card_deco1.display()
+
+		card_deco1.deco_index = 1; card_deco1.clickable = true
+
+		card_deco1.restore_from_gamestate_deco1(); card_deco1.display()
+
 		if GameState.deco1_pin_color != "":
+
 			card_deco1.btn_pincolor.modulate = _get_pin_color(GameState.deco1_pin_color)
-			card_deco1.btn_pincolor.visible = true
+
+			card_deco1.btn_pincolor.visible  = true
 
 	if GameState.deco2_color == "":
-		card_deco2.deco_index = 2
-		card_deco2.clickable = true
-		card_deco2.generate()
-		card_deco2.display()
-		card_deco2.save_to_gamestate_deco2()
+
+		card_deco2.deco_index = 2; card_deco2.clickable = true
+
+		card_deco2.generate(); card_deco2.display(); card_deco2.save_to_gamestate_deco2()
+
 	else:
-		card_deco2.deco_index = 2
-		card_deco2.clickable = true
-		card_deco2.restore_from_gamestate_deco2()
-		card_deco2.display()
+
+		card_deco2.deco_index = 2; card_deco2.clickable = true
+
+		card_deco2.restore_from_gamestate_deco2(); card_deco2.display()
+
 		if GameState.deco2_pin_color != "":
+
 			card_deco2.btn_pincolor.modulate = _get_pin_color(GameState.deco2_pin_color)
-			card_deco2.btn_pincolor.visible = true
+
+			card_deco2.btn_pincolor.visible  = true
 
 	_apply_translations()
 
-func _get_pin_color(key: String) -> Color:
-	var pin_colors = {
-		"rose":   Color(1.0, 0.4, 0.7),
-		"cyan":   Color(0.0, 0.9, 0.9),
-		"marron": Color(0.5, 0.25, 0.0),
-		"corail": Color(1.0, 0.3, 0.2),
-		"marine": Color(0.0, 0.1, 0.6),
-		"lime":   Color(0.4, 1.0, 0.0),
-		"argent": Color(0.75, 0.75, 0.75),
-		"violet": Color(0.5, 0.0, 0.9)
-	}
-	return pin_colors.get(key, Color(1.0, 1.0, 1.0))
 
-func _set_lang_flags_visible(value: bool):
-	lang_fr.visible = value
-	lang_en.visible = value
-	lang_de.visible = value
-	lang_it.visible = value
-	lang_es.visible = value
-	lang_pt.visible = value
+func _get_pin_color(key: String) -> Color:
+
+	var pin_colors = {
+
+		"rose": Color(1.0,0.4,0.7), "cyan": Color(0.0,0.9,0.9),
+
+		"marron": Color(0.5,0.25,0.0), "corail": Color(1.0,0.3,0.2),
+
+		"marine": Color(0.0,0.1,0.6), "lime": Color(0.4,1.0,0.0),
+
+		"argent": Color(0.75,0.75,0.75), "violet": Color(0.5,0.0,0.9)
+
+	}
+
+	return pin_colors.get(key, Color(1.0,1.0,1.0))
+
 
 func _apply_translations():
-	var t = TRANSLATIONS[GameState.language]
-	txt_slogan1.text = t["slogan1"]
-	txt_slogan2.text = t["slogan2"]
-	txt_slogan3.text = t["slogan3"]
-	txt_language.text = t["language"]
-	txt_play.text = t["play"]
 
-# --- INPUT ---
+	var t = TRANSLATIONS[GameState.language]
+
+	txt_slogan1.text = t["slogan1"]; txt_slogan2.text = t["slogan2"]
+
+	txt_slogan3.text = t["slogan3"]; txt_play.text    = t["play"]
+
+
 func _input(event):
-	if not (event is InputEventMouseButton):
-		return
-	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
-		return
+
+	if not (event is InputEventMouseButton): return
+
+	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
+
 	var pos = event.position
 
 	if _sprite_hit(btn_play, pos):
+
 		play_click_sound()
+
 		await get_tree().create_timer(0.2).timeout
-		get_tree().change_scene_to_file(SCENE_COMPETITION)
-		return
+
+		get_tree().change_scene_to_file(SCENE_COMPETITION); return
 
 	if _sprite_hit(btn_sound_on, pos) and btn_sound_on.visible:
-		GameState.sound_on = false
-		btn_sound_on.visible = false
-		btn_sound_off.visible = true
-		return
+
+		GameState.sound_on = false; btn_sound_on.visible = false; btn_sound_off.visible = true; return
 
 	if _sprite_hit(btn_sound_off, pos) and btn_sound_off.visible:
-		GameState.sound_on = true
-		btn_sound_on.visible = true
-		btn_sound_off.visible = false
-		play_click_sound()
-		return
 
-	if _label_hit(txt_language, pos) and not ovl_language.visible:
-		play_click_sound()
-		ovl_language.visible = true
-		_set_lang_flags_visible(true)
-		return
+		GameState.sound_on = true; btn_sound_on.visible = true; btn_sound_off.visible = false
 
-	if ovl_language.visible:
-		if _sprite_hit(lang_fr, pos):
-			_select_language("fr")
-		elif _sprite_hit(lang_en, pos):
-			_select_language("en")
-		elif _sprite_hit(lang_de, pos):
-			_select_language("de")
-		elif _sprite_hit(lang_it, pos):
-			_select_language("it")
-		elif _sprite_hit(lang_es, pos):
-			_select_language("es")
-		elif _sprite_hit(lang_pt, pos):
-			_select_language("pt")
-		else:
-			ovl_language.visible = false
-			_set_lang_flags_visible(false)
-		return
+		play_click_sound(); return
 
-func _select_language(lang: String):
-	GameState.language = lang
-	ovl_language.visible = false
-	_set_lang_flags_visible(false)
-	_apply_translations()
-	play_click_sound()
 
-# --- UTILITAIRES ---
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
-	if not sprite.visible:
-		return false
+
+	if not sprite.visible: return false
+
 	return sprite.get_rect().has_point(sprite.to_local(pos))
 
-func _label_hit(label: Label, pos: Vector2) -> bool:
-	if not label.visible:
-		return false
-	return label.get_global_rect().has_point(pos)
 
 func play_click_sound():
-	if not GameState.sound_on:
-		return
+
+	if not GameState.sound_on: return
+
 	var player = AudioStreamPlayer.new()
-	add_child(player)
-	player.stream = load(SFX_CLICK)
-	player.play()
-	await player.finished
-	player.queue_free()
+
+	add_child(player); player.stream = load(SFX_CLICK); player.play()
+
+	await player.finished; player.queue_free()

@@ -4,15 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://bqrkjhm8xinn2" path="res://Sprites/Wallpapers/bg_black.jpg" id="1_i4giy"]
 [ext_resource type="Texture2D" uid="uid://c3o02fd63ge2d" path="res://Sprites/card_background.png" id="2_3n02b"]
 [ext_resource type="Texture2D" uid="uid://cneq40toha0am" path="res://Sprites/icon_bell.png" id="4_7htj6"]
+[ext_resource type="Texture2D" uid="uid://bd14j11tesdy2" path="res://Sprites/Flags/lang_fr.png" id="5_k0gq3"]
+[ext_resource type="Texture2D" uid="uid://dn5m5eq7rd5mt" path="res://Sprites/Flags/lang_en.png" id="6_v8ynq"]
+[ext_resource type="Texture2D" uid="uid://c0hmf617na1qj" path="res://Sprites/Flags/lang_de.png" id="7_5jsob"]
+[ext_resource type="Texture2D" uid="uid://baavlm82yu4kg" path="res://Sprites/Flags/lang_it.png" id="8_xahqb"]
+[ext_resource type="Texture2D" uid="uid://dvh01pn5nmjh0" path="res://Sprites/Flags/lang_es.png" id="9_if0s5"]
+[ext_resource type="Texture2D" uid="uid://jc87qpron1nn" path="res://Sprites/Flags/lang_pt.png" id="10_hdsqe"]
 
 [node name="Notifications" type="Node2D" unique_id=1104601523]
 script = ExtResource("1_3n02b")
 
-[node name="BG_Dark" type="Sprite2D" parent="." unique_id=1920763936]
+[node name="BG_Notifications" type="Sprite2D" parent="." unique_id=1920763936]
+modulate = Color(1, 1, 1, 0.6039216)
 position = Vector2(960, 540)
 texture = ExtResource("1_i4giy")
 
-[node name="Panel_Notif" type="Sprite2D" parent="." unique_id=1488868047]
+[node name="Panel_Notifications" type="Sprite2D" parent="." unique_id=1488868047]
 position = Vector2(960, 800)
 texture = ExtResource("2_3n02b")
 
@@ -53,3 +60,43 @@ theme_override_font_sizes/font_size = 32
 text = "Ne pas autoriser"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TXT_Language" type="Label" parent="." unique_id=1443656400]
+offset_left = 651.0
+offset_top = 129.0
+offset_right = 1270.0
+offset_bottom = 233.0
+theme_override_font_sizes/font_size = 40
+text = "Langue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lang_FR" type="Sprite2D" parent="." unique_id=1934162445]
+position = Vector2(185, 340)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_k0gq3")
+
+[node name="Lang_EN" type="Sprite2D" parent="." unique_id=788958238]
+position = Vector2(495, 340)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_v8ynq")
+
+[node name="Lang_DE" type="Sprite2D" parent="." unique_id=555895891]
+position = Vector2(805, 340)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_5jsob")
+
+[node name="Lang_IT" type="Sprite2D" parent="." unique_id=1395402494]
+position = Vector2(1115, 340)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_xahqb")
+
+[node name="Lang_ES" type="Sprite2D" parent="." unique_id=4879968]
+position = Vector2(1425, 340)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_if0s5")
+
+[node name="Lang_PT" type="Sprite2D" parent="." unique_id=1531910369]
+position = Vector2(1735, 340)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_hdsqe")
