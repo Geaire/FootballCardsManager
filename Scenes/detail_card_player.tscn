@@ -405,44 +405,54 @@ z_index = 1
 position = Vector2(815, 460)
 texture = ExtResource("9_meft2")
 
-[node name="BTN_AttributePinRose" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=554204814]
+[node name="BTN_AttributePin#00CED1" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=554204814]
 z_index = 1
 position = Vector2(100, 0)
 texture = ExtResource("9_meft2")
 
-[node name="BTN_AttributePinCyan" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=236256697]
+[node name="BTN_AttributePin#003366" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=236256697]
 z_index = 1
 position = Vector2(200, 0)
 texture = ExtResource("9_meft2")
 
-[node name="BTN_AttributePinMarron" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=2107656202]
+[node name="BTN_AttributePin#FF69B4" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=2107656202]
 z_index = 1
 position = Vector2(300, 0)
 texture = ExtResource("9_meft2")
 
-[node name="BTN_AttributePinCorail" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=802899850]
+[node name="BTN_AttributePin#6A0DAD" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=802899850]
 z_index = 1
 position = Vector2(400, 0)
 texture = ExtResource("9_meft2")
 
-[node name="BTN_AttributePinMarine" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=881260373]
+[node name="BTN_AttributePin#B8B8B8" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=881260373]
 z_index = 1
 position = Vector2(500, 0)
 texture = ExtResource("9_meft2")
 
-[node name="BTN_AttributePinLime" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1829074168]
+[node name="BTN_AttributePin#8B4513" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1829074168]
 z_index = 1
 position = Vector2(600, 0)
 texture = ExtResource("9_meft2")
 
-[node name="BTN_AttributePinArgent" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1356779211]
+[node name="BTN_AttributePin#FF6B6B" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1356779211]
 z_index = 1
 position = Vector2(700, 0)
 texture = ExtResource("9_meft2")
 
-[node name="BTN_AttributePinViolet" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1233534402]
+[node name="BTN_AttributePin#800020" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1233534402]
 z_index = 1
 position = Vector2(800, 0)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePin#95D5B2" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=644254331]
+z_index = 1
+position = Vector2(900, 0)
+texture = ExtResource("9_meft2")
+
+[node name="BTN_AttributePin#2D6A4F" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=273819443]
+z_index = 1
+position = Vector2(1000, 0)
 texture = ExtResource("9_meft2")
 
 [node name="TXT_Rename" type="Label" parent="Player Evolution" unique_id=299735104]
