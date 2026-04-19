@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt72iq2jih7k2"
-path="res://.godot/imported/bg_green.jpg-8d8717fd684310cbf0fa1bc73f5d4e0a.ctex"
+uid="uid://bx0cvnhphb3p5"
+path="res://.godot/imported/flag_ae.png-ae17449e657b703be90b7a6b88f32bac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Wallpapers/bg_green.jpg"
-dest_files=["res://.godot/imported/bg_green.jpg-8d8717fd684310cbf0fa1bc73f5d4e0a.ctex"]
+source_file="res://Scenes/flag_ae.png"
+dest_files=["res://.godot/imported/flag_ae.png-ae17449e657b703be90b7a6b88f32bac.ctex"]
 
 [params]
 

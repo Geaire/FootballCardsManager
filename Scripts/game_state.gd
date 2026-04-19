@@ -1,5 +1,6 @@
 extends Node
 
+# ── CARTE SÉLECTIONNÉE ────────────────────────────────────────────────────────
 var selected_note: int = 0
 var selected_color: String = ""
 var selected_position1: String = ""
@@ -25,12 +26,14 @@ var selected_motivation: int = 0
 var selected_anticipation: int = 0
 var selected_communication: int = 0
 
+# ── PARAMÈTRES GLOBAUX ────────────────────────────────────────────────────────
 var sound_on: bool = true
 var language: String = "fr"
 var previous_scene: String = ""
 var selected_deco_index: int = 0
 var notifications_enabled: bool = false
 
+# ── CARTE DÉCO 1 ──────────────────────────────────────────────────────────────
 var deco1_note: int = 0
 var deco1_color: String = ""
 var deco1_position1: String = ""
@@ -56,6 +59,7 @@ var deco1_motivation: int = 0
 var deco1_anticipation: int = 0
 var deco1_communication: int = 0
 
+# ── CARTE DÉCO 2 ──────────────────────────────────────────────────────────────
 var deco2_note: int = 0
 var deco2_color: String = ""
 var deco2_position1: String = ""

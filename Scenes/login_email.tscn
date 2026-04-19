@@ -65,6 +65,7 @@ offset_left = 200.0
 offset_top = 280.0
 offset_right = 800.0
 offset_bottom = 345.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_kj54y")
 
@@ -98,6 +99,7 @@ offset_left = 1120.0
 offset_top = 280.0
 offset_right = 1720.0
 offset_bottom = 345.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_kj54y")
 
@@ -167,6 +169,7 @@ offset_left = 700.0
 offset_top = 750.0
 offset_right = 1300.0
 offset_bottom = 815.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_kj54y")
 

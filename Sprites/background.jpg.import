@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g2exj1op85j"
-path="res://.godot/imported/card_borderflag.png-d01a69ba7c16661cce650abd9d8ee7d6.ctex"
+uid="uid://hjejqqvcal5n"
+path="res://.godot/imported/background.jpg-77ddbda3feaafd7445df3a7f365c31db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/card_borderflag.png"
-dest_files=["res://.godot/imported/card_borderflag.png-d01a69ba7c16661cce650abd9d8ee7d6.ctex"]
+source_file="res://Sprites/background.jpg"
+dest_files=["res://.godot/imported/background.jpg-77ddbda3feaafd7445df3a7f365c31db.ctex"]
 
 [params]
 

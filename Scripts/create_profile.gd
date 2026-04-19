@@ -1,5 +1,6 @@
 extends Node2D
 
+# ── NOEUDS ────────────────────────────────────────────────────────────────────
 @onready var lineedit_manager  = $LineEdit_Manager
 @onready var lineedit_team     = $LineEdit_TeamLabel
 @onready var btn_confirm       = $BTN_Confirm
@@ -9,67 +10,52 @@ extends Node2D
 @onready var txt_team_label    = $TXT_TeamLabel
 @onready var txt_confirm       = $TXT_Confirm
 
+# ── CONSTANTES ────────────────────────────────────────────────────────────────
 const MAX_NAME_LENGTH = 13
-const SCENE_MAIN_MENU = "res://Scenes/main_menu.tscn"
+const SCENE_MAIN_MENU = "res://Scenes/schedule.tscn"
 const ALLOWED_CHARS   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-'"
 
+# ── TRADUCTIONS ───────────────────────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {
 		"manager": "Nom du manager", "team": "Nom de l'équipe", "confirm": "Confirmer",
-		"err_mgr_empty": "Nom du manager : champ vide.",
-		"err_mgr_length": "Nom du manager : 13 caractères maximum.",
-		"err_mgr_chars": "Nom du manager : caractères non autorisés.",
-		"err_team_empty": "Nom d'équipe : champ vide.",
-		"err_team_length": "Nom d'équipe : 13 caractères maximum.",
-		"err_team_chars": "Nom d'équipe : caractères non autorisés."
+		"err_mgr_empty": "Nom du manager : champ vide.", "err_mgr_length": "Nom du manager : 13 caractères maximum.",
+		"err_mgr_chars": "Nom du manager : caractères non autorisés.", "err_team_empty": "Nom d'équipe : champ vide.",
+		"err_team_length": "Nom d'équipe : 13 caractères maximum.", "err_team_chars": "Nom d'équipe : caractères non autorisés."
 	},
 	"en": {
 		"manager": "Manager name", "team": "Team name", "confirm": "Confirm",
-		"err_mgr_empty": "Manager name: empty field.",
-		"err_mgr_length": "Manager name: 13 characters maximum.",
-		"err_mgr_chars": "Manager name: invalid characters.",
-		"err_team_empty": "Team name: empty field.",
-		"err_team_length": "Team name: 13 characters maximum.",
-		"err_team_chars": "Team name: invalid characters."
+		"err_mgr_empty": "Manager name: empty field.", "err_mgr_length": "Manager name: 13 characters maximum.",
+		"err_mgr_chars": "Manager name: invalid characters.", "err_team_empty": "Team name: empty field.",
+		"err_team_length": "Team name: 13 characters maximum.", "err_team_chars": "Team name: invalid characters."
 	},
 	"es": {
 		"manager": "Nombre del manager", "team": "Nombre del equipo", "confirm": "Confirmar",
-		"err_mgr_empty": "Nombre del manager: campo vacío.",
-		"err_mgr_length": "Nombre del manager: máximo 13 caracteres.",
-		"err_mgr_chars": "Nombre del manager: caracteres no permitidos.",
-		"err_team_empty": "Nombre del equipo: campo vacío.",
-		"err_team_length": "Nombre del equipo: máximo 13 caracteres.",
-		"err_team_chars": "Nombre del equipo: caracteres no permitidos."
+		"err_mgr_empty": "Nombre del manager: campo vacío.", "err_mgr_length": "Nombre del manager: máximo 13 caracteres.",
+		"err_mgr_chars": "Nombre del manager: caracteres no permitidos.", "err_team_empty": "Nombre del equipo: campo vacío.",
+		"err_team_length": "Nombre del equipo: máximo 13 caracteres.", "err_team_chars": "Nombre del equipo: caracteres no permitidos."
 	},
 	"de": {
 		"manager": "Manager-Name", "team": "Teamname", "confirm": "Bestätigen",
-		"err_mgr_empty": "Manager-Name: leeres Feld.",
-		"err_mgr_length": "Manager-Name: maximal 13 Zeichen.",
-		"err_mgr_chars": "Manager-Name: ungültige Zeichen.",
-		"err_team_empty": "Teamname: leeres Feld.",
-		"err_team_length": "Teamname: maximal 13 Zeichen.",
-		"err_team_chars": "Teamname: ungültige Zeichen."
+		"err_mgr_empty": "Manager-Name: leeres Feld.", "err_mgr_length": "Manager-Name: maximal 13 Zeichen.",
+		"err_mgr_chars": "Manager-Name: ungültige Zeichen.", "err_team_empty": "Teamname: leeres Feld.",
+		"err_team_length": "Teamname: maximal 13 Zeichen.", "err_team_chars": "Teamname: ungültige Zeichen."
 	},
 	"it": {
 		"manager": "Nome del manager", "team": "Nome della squadra", "confirm": "Conferma",
-		"err_mgr_empty": "Nome del manager: campo vuoto.",
-		"err_mgr_length": "Nome del manager: massimo 13 caratteri.",
-		"err_mgr_chars": "Nome del manager: caratteri non consentiti.",
-		"err_team_empty": "Nome della squadra: campo vuoto.",
-		"err_team_length": "Nome della squadra: massimo 13 caratteri.",
-		"err_team_chars": "Nome della squadra: caratteri non consentiti."
+		"err_mgr_empty": "Nome del manager: campo vuoto.", "err_mgr_length": "Nome del manager: massimo 13 caratteri.",
+		"err_mgr_chars": "Nome del manager: caratteri non consentiti.", "err_team_empty": "Nome della squadra: campo vuoto.",
+		"err_team_length": "Nome della squadra: massimo 13 caratteri.", "err_team_chars": "Nome della squadra: caratteri non consentiti."
 	},
 	"pt": {
 		"manager": "Nome do manager", "team": "Nome da equipa", "confirm": "Confirmar",
-		"err_mgr_empty": "Nome do manager: campo vazio.",
-		"err_mgr_length": "Nome do manager: máximo 13 caracteres.",
-		"err_mgr_chars": "Nome do manager: caracteres não permitidos.",
-		"err_team_empty": "Nome da equipa: campo vazio.",
-		"err_team_length": "Nome da equipa: máximo 13 caracteres.",
-		"err_team_chars": "Nome da equipa: caracteres não permitidos."
+		"err_mgr_empty": "Nome do manager: campo vazio.", "err_mgr_length": "Nome do manager: máximo 13 caracteres.",
+		"err_mgr_chars": "Nome do manager: caracteres não permitidos.", "err_team_empty": "Nome da equipa: campo vazio.",
+		"err_team_length": "Nome da equipa: máximo 13 caracteres.", "err_team_chars": "Nome da equipa: caracteres não permitidos."
 	}
 }
 
+# ── READY ─────────────────────────────────────────────────────────────────────
 func _ready():
 	lineedit_manager.max_length = MAX_NAME_LENGTH
 	lineedit_team.max_length    = MAX_NAME_LENGTH
@@ -81,15 +67,14 @@ func _ready():
 
 func _apply_translations():
 	var t = TRANSLATIONS[GameState.language]
-	txt_manager_label.text = t["manager"]
-	txt_team_label.text    = t["team"]
-	txt_confirm.text       = t["confirm"]
+	txt_manager_label.text = t["manager"]; txt_team_label.text = t["team"]; txt_confirm.text = t["confirm"]
 
 func _is_valid_name(name: String) -> bool:
 	for c in name:
 		if not (c in ALLOWED_CHARS): return false
 	return true
 
+# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
 	if not (event is InputEventMouseButton): return
 	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
@@ -119,6 +104,7 @@ func _try_confirm():
 		"language": GameState.language, "sound_on": GameState.sound_on
 	})
 
+# ── FIRESTORE ─────────────────────────────────────────────────────────────────
 func _on_firestore_success(_data: Dictionary):
 	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
 
@@ -126,6 +112,7 @@ func _on_firestore_failed(error: String):
 	print("Erreur Firestore : " + error)
 	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
 
+# ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))

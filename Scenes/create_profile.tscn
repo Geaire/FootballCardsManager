@@ -39,6 +39,7 @@ offset_left = 100.0
 offset_top = 250.0
 offset_right = 600.0
 offset_bottom = 350.0
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_3y2mj")
 alignment = 1
 
@@ -71,6 +72,7 @@ offset_left = 100.0
 offset_top = 600.0
 offset_right = 600.0
 offset_bottom = 700.0
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_3y2mj")
 alignment = 1
 

@@ -1,5 +1,6 @@
 extends Node2D
 
+# ── NOEUDS ────────────────────────────────────────────────────────────────────
 @onready var txt_content  = $TXT_Content
 @onready var btn_accept   = $TXT_Accept
 @onready var btn_refuse   = $TXT_Refuse
@@ -11,6 +12,7 @@ extends Node2D
 @onready var lang_es      = $Lang_ES
 @onready var lang_pt      = $Lang_PT
 
+# ── TRADUCTIONS ───────────────────────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {
 		"language": "Langue",
@@ -52,11 +54,13 @@ const TRANSLATIONS = {
 
 const SCENE_LOGIN = "res://Scenes/login.tscn"
 
+# ── READY ─────────────────────────────────────────────────────────────────────
 func _ready():
 	var locale = OS.get_locale_language()
 	GameState.language = locale if locale in TRANSLATIONS else "fr"
 	_apply_translations()
 
+# ── TRADUCTIONS ───────────────────────────────────────────────────────────────
 func _apply_translations():
 	var t = TRANSLATIONS[GameState.language]
 	txt_language.text = t["language"]
@@ -64,6 +68,7 @@ func _apply_translations():
 	btn_accept.text   = t["accept"]
 	btn_refuse.text   = t["refuse"]
 
+# ── ANIMATION DRAPEAU ─────────────────────────────────────────────────────────
 func _shake_flag(flag: Sprite2D):
 	var tween  = create_tween()
 	var orig_x = flag.position.x
@@ -78,6 +83,7 @@ func _select_language(lang: String, flag: Sprite2D):
 	_shake_flag(flag)
 	_apply_translations()
 
+# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
 	if not (event is InputEventMouseButton): return
 	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
@@ -95,6 +101,7 @@ func _input(event):
 		GameState.notifications_enabled = false
 		get_tree().change_scene_to_file(SCENE_LOGIN); return
 
+# ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))

@@ -1,5 +1,6 @@
 extends Node2D
 
+# ── TRADUCTIONS ───────────────────────────────────────────────────────────────
 const TRANSLATIONS_DCP = {
 	"fr": {"rename": "Renommer joueur", "position2": "Attribuer poste 2", "specialty1": "Attribuer spécialité 1", "specialty2": "Attribuer spécialité 2", "pincolor": "Attribuer épingle de couleur", "achievements": "Historique"},
 	"en": {"rename": "Rename player", "position2": "Assign position 2", "specialty1": "Assign specialty 1", "specialty2": "Assign specialty 2", "pincolor": "Assign color pin", "achievements": "History"},
@@ -13,6 +14,7 @@ const BTN_GREEN = Color(0.0, 0.8, 0.2)
 const BTN_RED   = Color(0.9, 0.1, 0.1)
 const BTN_WHITE = Color(1.0, 1.0, 1.0)
 
+# ── COULEURS ÉPINGLES — 10 épingles ──────────────────────────────────────────
 const PIN_COLORS = {
 	"cyan":     Color(0.0,   0.808, 0.820),
 	"marine":   Color(0.0,   0.200, 0.400),
@@ -31,6 +33,7 @@ var manager_specialty_stock: int = 0
 var pin_menu_open: bool = false
 var rename_mode: String = ""
 
+# ── NOEUDS ────────────────────────────────────────────────────────────────────
 @onready var card_preview            = $CardPreview
 @onready var btn_close               = $BTN_CloseDetailCardPlayer
 @onready var txt_strength_value      = $Skills/TXT_StrengthValue
@@ -72,6 +75,7 @@ var rename_mode: String = ""
 @onready var btn_pin_vertfonce = $"Player Evolution/BTN_AttributePinColor/BTN_AttributePin#2D6A4F"
 @onready var txt_achievements  = $TXT_Achievements
 
+# ── READY ─────────────────────────────────────────────────────────────────────
 func _ready():
 	var cp = card_preview
 	cp.note = GameState.selected_note; cp.color = GameState.selected_color
@@ -97,6 +101,7 @@ func _ready():
 	_apply_translations()
 	setup_buttons(cp)
 
+# ── SETUP ─────────────────────────────────────────────────────────────────────
 func _setup_pin_colors():
 	btn_pin_cyan.modulate      = PIN_COLORS["cyan"]
 	btn_pin_marine.modulate    = PIN_COLORS["marine"]
@@ -116,11 +121,11 @@ func _apply_translations():
 	txt_attribute_pincolor.text = t["pincolor"]; txt_achievements.text = t["achievements"]
 
 func setup_buttons(cp):
-	btn_rename.modulate   = BTN_GREEN if cp.color in ["blue","white","special"] else BTN_RED
+	btn_rename.modulate    = BTN_GREEN if cp.color in ["blue","white","special"] else BTN_RED
 	btn_position2.modulate = BTN_GREEN if manager_position2_stock > 0 else BTN_RED
 	btn_specialty1.modulate = BTN_GREEN if manager_specialty_stock > 0 else BTN_RED
 	btn_specialty2.modulate = BTN_GREEN if manager_specialty_stock > 0 else BTN_RED
-	btn_pincolor.modulate = BTN_WHITE
+	btn_pincolor.modulate  = BTN_WHITE
 
 func _set_pin_menu_visible(value: bool):
 	btn_pin_cyan.visible = value; btn_pin_marine.visible = value
@@ -129,6 +134,7 @@ func _set_pin_menu_visible(value: bool):
 	btn_pin_rouge.visible = value; btn_pin_bordeaux.visible = value
 	btn_pin_vertclair.visible = value; btn_pin_vertfonce.visible = value
 
+# ── ÉPINGLES ──────────────────────────────────────────────────────────────────
 func _apply_pin_color(key: String):
 	card_preview.pin_color = key
 	card_preview.btn_pincolor.modulate = PIN_COLORS[key]
@@ -139,6 +145,7 @@ func _remove_pin():
 	card_preview.pin_color = ""; card_preview.btn_pincolor.visible = false
 	pin_menu_open = false; _set_pin_menu_visible(false)
 
+# ── RENOMMAGE ─────────────────────────────────────────────────────────────────
 func _enter_rename_mode():
 	lineedit_firstname.text = card_preview.firstname; lineedit_lastname.text = card_preview.lastname
 	lineedit_firstname.visible = true; lineedit_lastname.visible = true
@@ -155,6 +162,7 @@ func _on_lastname_submitted(text: String):
 	lineedit_firstname.visible = false; lineedit_lastname.visible = false
 	rename_mode = ""; card_preview.display()
 
+# ── SAUVEGARDE ────────────────────────────────────────────────────────────────
 func _save_changes_to_deco():
 	if GameState.selected_deco_index == 1:
 		GameState.deco1_firstname = card_preview.firstname
@@ -165,6 +173,7 @@ func _save_changes_to_deco():
 		GameState.deco2_lastname  = card_preview.lastname
 		GameState.deco2_pin_color = card_preview.pin_color
 
+# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
 	if not (event is InputEventMouseButton): return
 	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
@@ -180,7 +189,7 @@ func _input(event):
 		else: pin_menu_open = true; _set_pin_menu_visible(true)
 		return
 	if pin_menu_open:
-		if _sprite_hit(btn_pin_cyan, pos):      _apply_pin_color("cyan")
+		if _sprite_hit(btn_pin_cyan, pos):       _apply_pin_color("cyan")
 		elif _sprite_hit(btn_pin_marine, pos):   _apply_pin_color("marine")
 		elif _sprite_hit(btn_pin_rose, pos):     _apply_pin_color("rose")
 		elif _sprite_hit(btn_pin_violet, pos):   _apply_pin_color("violet")
@@ -192,6 +201,7 @@ func _input(event):
 		elif _sprite_hit(btn_pin_vertfonce, pos):_apply_pin_color("vertfonce")
 		return
 
+# ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))

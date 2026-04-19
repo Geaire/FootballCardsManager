@@ -1,5 +1,6 @@
 extends Node2D
 
+# ── NOEUDS ────────────────────────────────────────────────────────────────────
 @onready var btn_sound_on  = $BTN_SoundOn
 @onready var btn_sound_off = $BTN_SoundOff
 @onready var card_deco1    = $Card_Player1
@@ -11,6 +12,7 @@ extends Node2D
 @onready var txt_slogan2   = $TXT_Slogan2
 @onready var txt_slogan3   = $TXT_Slogan3
 
+# ── TRADUCTIONS ───────────────────────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {"slogan1": "Construis. Pense. Domine.", "slogan2": "Pas de hasard, le meilleur gagne toujours.", "slogan3": "Oublie les tactiques. Maîtrise les bonus.", "play": "Jouer"},
 	"en": {"slogan1": "Build. Think. Dominate.", "slogan2": "No luck, the best always wins.", "slogan3": "Forget tactics. Master the bonuses.", "play": "Play"},
@@ -20,6 +22,7 @@ const TRANSLATIONS = {
 	"pt": {"slogan1": "Constrói. Pensa. Domina.", "slogan2": "Sem sorte, o melhor sempre vence.", "slogan3": "Esqueça as táticas. Domine os bônus.", "play": "Jogar"}
 }
 
+# ── COULEURS ÉPINGLES ─────────────────────────────────────────────────────────
 const PIN_COLORS = {
 	"cyan":     Color(0.0,   0.808, 0.820),
 	"marine":   Color(0.0,   0.200, 0.400),
@@ -36,6 +39,7 @@ const PIN_COLORS = {
 const SFX_CLICK         = "res://Audio/sfx_click.wav"
 const SCENE_COMPETITION = "res://Scenes/competition.tscn"
 
+# ── READY ─────────────────────────────────────────────────────────────────────
 func _ready():
 	txt_version.text = "V 0.1"
 	btn_sound_on.visible = GameState.sound_on
@@ -65,6 +69,7 @@ func _apply_translations():
 	txt_slogan1.text = t["slogan1"]; txt_slogan2.text = t["slogan2"]
 	txt_slogan3.text = t["slogan3"]; txt_play.text = t["play"]
 
+# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
 	if not (event is InputEventMouseButton): return
 	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
@@ -79,12 +84,14 @@ func _input(event):
 		GameState.sound_on = true; btn_sound_on.visible = true; btn_sound_off.visible = false
 		play_click_sound(); return
 
-func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
-	if not sprite.visible: return false
-	return sprite.get_rect().has_point(sprite.to_local(pos))
-
+# ── SON ───────────────────────────────────────────────────────────────────────
 func play_click_sound():
 	if not GameState.sound_on: return
 	var player = AudioStreamPlayer.new()
 	add_child(player); player.stream = load(SFX_CLICK); player.play()
 	await player.finished; player.queue_free()
+
+# ── HIT DETECTION ─────────────────────────────────────────────────────────────
+func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
+	if not sprite.visible: return false
+	return sprite.get_rect().has_point(sprite.to_local(pos))

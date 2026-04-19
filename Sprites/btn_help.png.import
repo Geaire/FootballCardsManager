@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjxv05w8koaku"
-path="res://.godot/imported/adrian-curiel-1XVpwAHlSNs-unsplash.jpg-0c48ad7ec7fae17137f1070cd08d33b5.ctex"
+uid="uid://5heaf2s1np5n"
+path="res://.godot/imported/btn_help.png-6e90405312902370d3b756c4f895f0e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Wallpapers/adrian-curiel-1XVpwAHlSNs-unsplash.jpg"
-dest_files=["res://.godot/imported/adrian-curiel-1XVpwAHlSNs-unsplash.jpg-0c48ad7ec7fae17137f1070cd08d33b5.ctex"]
+source_file="res://Sprites/btn_help.png"
+dest_files=["res://.godot/imported/btn_help.png-6e90405312902370d3b756c4f895f0e4.ctex"]
 
 [params]
 

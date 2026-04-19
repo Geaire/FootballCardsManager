@@ -12,7 +12,6 @@
 [ext_resource type="FontFile" uid="uid://djse4v8s8ul4d" path="res://Fonts/MPLUS1p-Bold.ttf" id="9_fhld7"]
 [ext_resource type="FontFile" uid="uid://qchfwvdcm00i" path="res://Fonts/MPLUS1p-Black.ttf" id="10_dtb0m"]
 [ext_resource type="Texture2D" uid="uid://cuqc1s7kyxpw2" path="res://Sprites/btn_pincolor.png" id="12_6d7mh"]
-[ext_resource type="Texture2D" uid="uid://g2exj1op85j" path="res://Sprites/card_borderflag.png" id="13_ajqki"]
 
 [node name="Card_Player" type="Node2D" unique_id=1206912900]
 script = ExtResource("1_6d7mh")
@@ -82,7 +81,6 @@ texture = ExtResource("7_1v2uw")
 [node name="IMG_Flag" type="Sprite2D" parent="." unique_id=1331291584]
 z_index = 3
 position = Vector2(220, -50)
-scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_8tm0q")
 
 [node name="TXT_FirstName" type="Label" parent="." unique_id=1348867650]
@@ -114,9 +112,3 @@ vertical_alignment = 1
 [node name="BTN_PinColor" type="Sprite2D" parent="." unique_id=75564132]
 position = Vector2(229, 93)
 texture = ExtResource("12_6d7mh")
-
-[node name="CardBorderFlag" type="Sprite2D" parent="." unique_id=1085200322]
-z_index = 3
-position = Vector2(220, -50)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("13_ajqki")

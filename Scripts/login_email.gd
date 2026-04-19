@@ -1,5 +1,6 @@
 extends Node2D
 
+# ── NOEUDS ────────────────────────────────────────────────────────────────────
 @onready var lineedit_email            = $LineEdit_Email
 @onready var lineedit_password         = $LineEdit_Password
 @onready var btn_login                 = $BTN_Login
@@ -17,6 +18,7 @@ extends Node2D
 @onready var txt_send_reset            = $TXT_SendReset
 @onready var txt_reset_confirm         = $TXT_ResetConfirm
 
+# ── TRADUCTIONS ───────────────────────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {
 		"title": "Football Cards Manager", "email": "Adresse e-mail", "password": "Mot de passe",
@@ -69,15 +71,20 @@ const TRANSLATIONS = {
 }
 
 const SCENE_CREATE_PROFILE = "res://Scenes/create_profile.tscn"
-const SCENE_MAIN_MENU      = "res://Scenes/main_menu.tscn"
+const SCENE_MAIN_MENU      = "res://Scenes/schedule.tscn"
 
 var _mode: String = ""
 
+# ── READY ─────────────────────────────────────────────────────────────────────
 func _ready():
 	_apply_translations()
-	txt_incorrect_email.visible = false; txt_incorrect_password.visible = false
-	txt_forgot_password.visible = false; lineedit_forgot_password.visible = false
-	btn_send_reset.visible = false; txt_send_reset.visible = false; txt_reset_confirm.visible = false
+	txt_incorrect_email.visible      = false
+	txt_incorrect_password.visible   = false
+	txt_forgot_password.visible      = false
+	lineedit_forgot_password.visible = false
+	btn_send_reset.visible           = false
+	txt_send_reset.visible           = false
+	txt_reset_confirm.visible        = false
 	Firebase.auth_success.connect(_on_auth_success)
 	Firebase.auth_failed.connect(_on_auth_failed)
 	Firebase.password_reset_success.connect(_on_password_reset_success)
@@ -89,29 +96,41 @@ func _exit_tree():
 
 func _apply_translations():
 	var t = TRANSLATIONS[GameState.language]
-	txt_title.text = t["title"]; txt_email.text = t["email"]; txt_password.text = t["password"]
-	txt_login.text = t["login"]; txt_signup.text = t["signup"]
-	txt_forgot_password.text = t["forgot"]; txt_send_reset.text = t["send_reset"]
-	txt_incorrect_email.text = t["incorrect_email"]; txt_incorrect_password.text = t["incorrect_password"]
+	txt_title.text              = t["title"]
+	txt_email.text              = t["email"]
+	txt_password.text           = t["password"]
+	txt_login.text              = t["login"]
+	txt_signup.text             = t["signup"]
+	txt_forgot_password.text    = t["forgot"]
+	txt_send_reset.text         = t["send_reset"]
+	txt_incorrect_email.text    = t["incorrect_email"]
+	txt_incorrect_password.text = t["incorrect_password"]
 
-func _input(event):
+# ── INPUT ─────────────────────────────────────────────────────────────────────
+func _unhandled_input(event):
 	if not (event is InputEventMouseButton): return
-	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
+	if not event.pressed: return
 	var pos = event.position
-	if _sprite_hit(btn_login, pos): _mode = "login"; _try_auth(); return
+
+	if _sprite_hit(btn_login, pos):  _mode = "login";  _try_auth(); return
 	if _sprite_hit(btn_signup, pos): _mode = "signup"; _try_auth(); return
 	if _label_hit(txt_forgot_password, pos):
-		lineedit_forgot_password.visible = true; btn_send_reset.visible = true; txt_send_reset.visible = true; return
+		lineedit_forgot_password.visible = true
+		btn_send_reset.visible           = true
+		txt_send_reset.visible           = true
+		return
 	if _sprite_hit(btn_send_reset, pos): _send_reset(); return
 
+# ── AUTH ──────────────────────────────────────────────────────────────────────
 func _try_auth():
-	var email = lineedit_email.text.strip_edges()
+	var email    = lineedit_email.text.strip_edges()
 	var password = lineedit_password.text.strip_edges()
-	txt_incorrect_email.visible = false; txt_incorrect_password.visible = false
-	if not _is_valid_email(email): txt_incorrect_email.visible = true; return
-	if password.length() < 6: txt_incorrect_password.visible = true; return
+	txt_incorrect_email.visible    = false
+	txt_incorrect_password.visible = false
+	if not _is_valid_email(email):  txt_incorrect_email.visible    = true; return
+	if password.length() < 6:       txt_incorrect_password.visible = true; return
 	if _mode == "login": Firebase.sign_in(email, password)
-	else: Firebase.sign_up(email, password)
+	else:                Firebase.sign_up(email, password)
 
 func _send_reset():
 	var email = lineedit_forgot_password.text.strip_edges()
@@ -120,8 +139,11 @@ func _send_reset():
 
 func _on_password_reset_success():
 	var t = TRANSLATIONS[GameState.language]
-	txt_reset_confirm.text = t["reset_confirm"]; txt_reset_confirm.visible = true
-	btn_send_reset.visible = false; lineedit_forgot_password.visible = false; txt_send_reset.visible = false
+	txt_reset_confirm.text           = t["reset_confirm"]
+	txt_reset_confirm.visible        = true
+	btn_send_reset.visible           = false
+	lineedit_forgot_password.visible = false
+	txt_send_reset.visible           = false
 
 func _on_auth_success(_user_id: String):
 	Firebase.firestore_success.connect(_on_profile_found)
@@ -140,15 +162,33 @@ func _on_profile_not_found(_error: String):
 
 func _on_auth_failed(_error: String):
 	var t = TRANSLATIONS[GameState.language]
-	if _mode == "signup": txt_incorrect_email.text = t["error_signup"]; txt_incorrect_email.visible = true
-	else: txt_incorrect_password.visible = true; txt_forgot_password.visible = true
+	if _mode == "signup":
+		txt_incorrect_email.text    = t["error_signup"]
+		txt_incorrect_email.visible = true
+	else:
+		txt_incorrect_password.visible = true
+		txt_forgot_password.visible    = true
 
 func _is_valid_email(email: String) -> bool:
 	return "@" in email and "." in email
 
+# ── HIT DETECTION ─────────────────────────────────────────────────────────────
+func _sprite_screen_rect(sprite: Sprite2D) -> Rect2:
+	var ct   = sprite.get_global_transform_with_canvas()
+	var r    = sprite.get_rect()
+	var tl   = ct * r.position
+	var br   = ct * (r.position + r.size)
+	var tl2  = ct * Vector2(r.position.x + r.size.x, r.position.y)
+	var br2  = ct * Vector2(r.position.x, r.position.y + r.size.y)
+	var min_x = min(min(tl.x, br.x), min(tl2.x, br2.x))
+	var min_y = min(min(tl.y, br.y), min(tl2.y, br2.y))
+	var max_x = max(max(tl.x, br.x), max(tl2.x, br2.x))
+	var max_y = max(max(tl.y, br.y), max(tl2.y, br2.y))
+	return Rect2(min_x, min_y, max_x - min_x, max_y - min_y)
+
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if not sprite.visible: return false
-	return sprite.get_rect().has_point(sprite.to_local(pos))
+	return _sprite_screen_rect(sprite).has_point(pos)
 
 func _label_hit(label: Label, pos: Vector2) -> bool:
 	if not label.visible: return false

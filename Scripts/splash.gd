@@ -1,15 +1,19 @@
 extends Node2D
 
+# ── NOEUDS ────────────────────────────────────────────────────────────────────
 @onready var bar_loading = $BAR_Loading
 
+# ── CONSTANTES ────────────────────────────────────────────────────────────────
 const SCENE_NOTIFICATIONS = "res://Scenes/notifications.tscn"
 const SCENE_MAIN_MENU     = "res://Scenes/main_menu.tscn"
 const LOAD_DURATION       = 3.0
 
+# ── READY ─────────────────────────────────────────────────────────────────────
 func _ready():
 	bar_loading.value = 0
 	_animate_bar()
 
+# ── ANIMATION ─────────────────────────────────────────────────────────────────
 func _animate_bar():
 	var tween = create_tween()
 	tween.tween_property(bar_loading, "value", 100, LOAD_DURATION)
