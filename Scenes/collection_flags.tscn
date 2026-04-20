@@ -1,0 +1,1455 @@
+[gd_scene format=3 uid="uid://b0g3x03jf4kko"]
+
+[ext_resource type="Texture2D" uid="uid://hjejqqvcal5n" path="res://Sprites/background.jpg" id="1_t5ujk"]
+[ext_resource type="Texture2D" uid="uid://c5jom8mmlhb0g" path="res://Sprites/grid.png" id="2_7wo4i"]
+[ext_resource type="Texture2D" uid="uid://chxkfnjepxr16" path="res://Sprites/Flags/flag_ae.png" id="3_8i5w5"]
+[ext_resource type="Texture2D" uid="uid://e8yj4xf6itqh" path="res://Sprites/swipe_down.png" id="3_lkdbg"]
+[ext_resource type="Texture2D" uid="uid://cmuegq05gwqow" path="res://Sprites/Flags/flag_ao.png" id="4_sum4u"]
+[ext_resource type="Texture2D" uid="uid://cvsvb0epp0yl7" path="res://Sprites/Flags/flag_ar.png" id="5_51paj"]
+[ext_resource type="Texture2D" uid="uid://b8p5boiejiip7" path="res://Sprites/Flags/flag_at.png" id="6_d5bk3"]
+[ext_resource type="Texture2D" uid="uid://crjq7qa4re4uu" path="res://Sprites/Flags/flag_au.png" id="7_yheyd"]
+[ext_resource type="Texture2D" uid="uid://b3wns3emnmv2s" path="res://Sprites/Flags/flag_ba.png" id="8_q47ni"]
+[ext_resource type="Texture2D" uid="uid://daug5ss2c3pcu" path="res://Sprites/Flags/flag_be.png" id="9_tmohq"]
+[ext_resource type="Texture2D" uid="uid://brydejmc01sgo" path="res://Sprites/Flags/flag_bg.png" id="10_lkdbg"]
+[ext_resource type="Texture2D" uid="uid://d3kylub281gps" path="res://Sprites/Flags/flag_bo.png" id="11_7tnv7"]
+[ext_resource type="Texture2D" uid="uid://lbca7vpaa7hb" path="res://Sprites/Flags/flag_br.png" id="12_1cxp5"]
+[ext_resource type="Texture2D" uid="uid://dfips0ksih3ba" path="res://Sprites/Flags/flag_cn.png" id="13_vc7tu"]
+[ext_resource type="Texture2D" uid="uid://cl2l1bub51hdp" path="res://Sprites/Flags/flag_ca.png" id="14_7tnv7"]
+[ext_resource type="Texture2D" uid="uid://u57wfugb6yi7" path="res://Sprites/Flags/flag_ec.png" id="14_kvvca"]
+[ext_resource type="Texture2D" uid="uid://4cg7bll5xvo0" path="res://Sprites/Flags/flag_cd.png" id="15_1cxp5"]
+[ext_resource type="Texture2D" uid="uid://l1qwe85tqpdi" path="res://Sprites/Flags/flag_hr.png" id="15_dwohl"]
+[ext_resource type="Texture2D" uid="uid://cuu0bu1upmxnb" path="res://Sprites/Flags/flag_ch.png" id="16_vc7tu"]
+[ext_resource type="Texture2D" uid="uid://dy4atarh6tyil" path="res://Sprites/Flags/flag_ci.png" id="17_kvvca"]
+[ext_resource type="Texture2D" uid="uid://cvq334k7062ki" path="res://Sprites/Flags/flag_cl.png" id="18_dwohl"]
+[ext_resource type="Texture2D" uid="uid://dujcxy87hmxy4" path="res://Sprites/Flags/flag_cm.png" id="19_21akr"]
+[ext_resource type="Texture2D" uid="uid://7gjhy5cb1hed" path="res://Sprites/Flags/flag_co.png" id="21_qf48m"]
+[ext_resource type="Texture2D" uid="uid://bo8800x5acgc8" path="res://Sprites/Flags/flag_cr.png" id="22_50eda"]
+[ext_resource type="Texture2D" uid="uid://bvs7fpp6ah1g8" path="res://Sprites/Flags/flag_cu.png" id="23_g6ile"]
+[ext_resource type="Texture2D" uid="uid://c8arqhsnnkgdp" path="res://Sprites/Flags/flag_cz.png" id="24_pgwnm"]
+[ext_resource type="Texture2D" uid="uid://dcjqa84kll06g" path="res://Sprites/Flags/flag_de.png" id="25_lhlwp"]
+[ext_resource type="Texture2D" uid="uid://b30hsd3267n3n" path="res://Sprites/Flags/flag_dk.png" id="26_0clf4"]
+[ext_resource type="Texture2D" uid="uid://c22me1dtmojdl" path="res://Sprites/Flags/flag_dz.png" id="27_nwehw"]
+[ext_resource type="Texture2D" uid="uid://b8pkmva6ssr8d" path="res://Sprites/Flags/flag_eg.png" id="29_8e83a"]
+[ext_resource type="Texture2D" uid="uid://gxmpnnodt0s1" path="res://Sprites/Flags/flag_es.png" id="30_clbma"]
+[ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="31_fu3aq"]
+[ext_resource type="Texture2D" uid="uid://h7b8aaxsb432" path="res://Sprites/Flags/flag_gb.png" id="32_sdh4x"]
+[ext_resource type="Texture2D" uid="uid://bcffxwt6r34rx" path="res://Sprites/Flags/flag_gh.png" id="33_x7lmq"]
+[ext_resource type="Texture2D" uid="uid://dadvoaawufypq" path="res://Sprites/Flags/flag_gr.png" id="34_8e83a"]
+[ext_resource type="Texture2D" uid="uid://w3reuso7epnc" path="res://Sprites/Flags/flag_hn.png" id="35_clbma"]
+[ext_resource type="Texture2D" uid="uid://wir541idq51" path="res://Sprites/Flags/flag_ht.png" id="37_fu3aq"]
+[ext_resource type="Texture2D" uid="uid://djc88f4keetac" path="res://Sprites/Flags/flag_hu.png" id="38_sdh4x"]
+[ext_resource type="Texture2D" uid="uid://bry3r0wl5spfa" path="res://Sprites/Flags/flag_id.png" id="39_x7lmq"]
+[ext_resource type="Texture2D" uid="uid://bscxxmf47np7x" path="res://Sprites/Flags/flag_ie.png" id="40_x7lmq"]
+[ext_resource type="Texture2D" uid="uid://41jnyx1bo634" path="res://Sprites/Flags/flag_il.png" id="41_x3nx7"]
+[ext_resource type="Texture2D" uid="uid://bkgctbsw88wt" path="res://Sprites/Flags/flag_iq.png" id="42_7exn4"]
+[ext_resource type="Texture2D" uid="uid://dsmfh7cbb44tf" path="res://Sprites/Flags/flag_ir.png" id="43_vhilb"]
+[ext_resource type="Texture2D" uid="uid://bscxswprobd1e" path="res://Sprites/swipe_up.png" id="44_o7jel"]
+[ext_resource type="Texture2D" uid="uid://d277n0bsf1l3v" path="res://Sprites/Flags/flag_it.png" id="44_pms3r"]
+[ext_resource type="Texture2D" uid="uid://chheg73iddfqw" path="res://Sprites/Flags/flag_jm.png" id="45_aum6o"]
+[ext_resource type="Texture2D" uid="uid://dpg7rjxr02471" path="res://Sprites/Flags/flag_jp.png" id="46_n0xv7"]
+[ext_resource type="Texture2D" uid="uid://cbjodoaq2bsvh" path="res://Sprites/Flags/flag_kp.png" id="47_cirxi"]
+[ext_resource type="Texture2D" uid="uid://bp5hmnpysvfto" path="res://Sprites/Flags/flag_kr.png" id="48_0bjc5"]
+[ext_resource type="Texture2D" uid="uid://kj8ndsbxmcbf" path="res://Sprites/Flags/flag_ru.png" id="48_etpmi"]
+[ext_resource type="Texture2D" uid="uid://cf1sjtbvh64qm" path="res://Sprites/Flags/flag_kw.png" id="49_o7jel"]
+[ext_resource type="Texture2D" uid="uid://c5wgio0wht06c" path="res://Sprites/Flags/flag_sa.png" id="49_wej0a"]
+[ext_resource type="Texture2D" uid="uid://b2rlxn0jpfoyv" path="res://Sprites/Flags/flag_ma.png" id="50_3y8ut"]
+[ext_resource type="Texture2D" uid="uid://brfpig7i6c22j" path="res://Sprites/Flags/flag_sc.png" id="50_j7tme"]
+[ext_resource type="Texture2D" uid="uid://cxiyb8m5rdnjq" path="res://Sprites/Flags/flag_mx.png" id="51_i0bty"]
+[ext_resource type="Texture2D" uid="uid://bxdyifp1c881c" path="res://Sprites/Flags/flag_se.png" id="51_kkvpe"]
+[ext_resource type="Texture2D" uid="uid://dclqryrm0khb3" path="res://Sprites/Flags/flag_si.png" id="52_4p5xg"]
+[ext_resource type="Texture2D" uid="uid://bq6qh0g0msphk" path="res://Sprites/Flags/flag_ng.png" id="52_37fho"]
+[ext_resource type="Texture2D" uid="uid://d3uc0vgvc50bs" path="res://Sprites/Flags/flag_ni.png" id="53_816nf"]
+[ext_resource type="Texture2D" uid="uid://dkkixjixqavy5" path="res://Sprites/Flags/flag_sk.png" id="53_t5akj"]
+[ext_resource type="Texture2D" uid="uid://ca58qgxmwamyk" path="res://Sprites/Flags/flag_sn.png" id="54_pihlk"]
+[ext_resource type="Texture2D" uid="uid://djtgcjc5qkd34" path="res://Sprites/Flags/flag_nl.png" id="54_uwoqm"]
+[ext_resource type="Texture2D" uid="uid://1khkxapur3s0" path="res://Sprites/Flags/flag_no.png" id="55_11sco"]
+[ext_resource type="Texture2D" uid="uid://df8swid6krfur" path="res://Sprites/Flags/flag_sv.png" id="55_jbx5t"]
+[ext_resource type="Texture2D" uid="uid://2n5ga0fx56gm" path="res://Sprites/Flags/flag_nz.png" id="56_fkkkd"]
+[ext_resource type="Texture2D" uid="uid://cskigifig3kp1" path="res://Sprites/Flags/flag_tg.png" id="56_hn5ga"]
+[ext_resource type="Texture2D" uid="uid://crv11obduumdi" path="res://Sprites/Flags/flag_pa.png" id="57_8y2lv"]
+[ext_resource type="Texture2D" uid="uid://2bpf3kpcmq1y" path="res://Sprites/Flags/flag_tn.png" id="57_y1g2k"]
+[ext_resource type="Texture2D" uid="uid://b7cu2ll5u7q7h" path="res://Sprites/Flags/flag_pe.png" id="58_gtj65"]
+[ext_resource type="Texture2D" uid="uid://c4adsyc6vckci" path="res://Sprites/Flags/flag_tr.png" id="58_xo45s"]
+[ext_resource type="Texture2D" uid="uid://6ik4h37li1wr" path="res://Sprites/Flags/flag_pl.png" id="59_1vvuk"]
+[ext_resource type="Texture2D" uid="uid://blubvs35ufts1" path="res://Sprites/Flags/flag_tt.png" id="59_w3dtq"]
+[ext_resource type="Texture2D" uid="uid://c4du2ecqxw0d8" path="res://Sprites/Flags/flag_ua.png" id="60_bg5r8"]
+[ext_resource type="Texture2D" uid="uid://cyycc173vchci" path="res://Sprites/Flags/flag_pt.png" id="60_e3bhy"]
+[ext_resource type="Texture2D" uid="uid://bgickh1jiocm1" path="res://Sprites/Flags/flag_us.png" id="61_0bjc5"]
+[ext_resource type="Texture2D" uid="uid://cgghtcsslqpdm" path="res://Sprites/Flags/flag_py.png" id="61_5ecfi"]
+[ext_resource type="Texture2D" uid="uid://dplou2023fsj2" path="res://Sprites/Flags/flag_qa.png" id="62_3kqkq"]
+[ext_resource type="Texture2D" uid="uid://dp6ahie016r6j" path="res://Sprites/Flags/flag_uy.png" id="62_o7jel"]
+[ext_resource type="Texture2D" uid="uid://bcs57w6kkkc6b" path="res://Sprites/Flags/flag_wa.png" id="63_3y8ut"]
+[ext_resource type="Texture2D" uid="uid://dhancpupdmy2f" path="res://Sprites/Flags/flag_ro.png" id="63_u82kc"]
+[ext_resource type="Texture2D" uid="uid://duuevcpxbrf2s" path="res://Sprites/Flags/flag_rs.png" id="64_hojyk"]
+[ext_resource type="Texture2D" uid="uid://so8yjg1dkece" path="res://Sprites/Flags/flag_za.png" id="64_i0bty"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0x61o"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.9647059, 1, 1)
+
+[node name="CollectionFlags" type="Node2D" unique_id=2066135834]
+
+[node name="Page1" type="Node2D" parent="." unique_id=537669689]
+
+[node name="BG_Collection" type="Sprite2D" parent="Page1" unique_id=690649481]
+position = Vector2(960, 540)
+texture = ExtResource("1_t5ujk")
+
+[node name="BG_GridCollection" type="Sprite2D" parent="Page1" unique_id=1519661671]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(960, 540)
+texture = ExtResource("2_7wo4i")
+
+[node name="Swipe_Down" type="Sprite2D" parent="Page1" unique_id=1270719893]
+z_index = 2
+position = Vector2(1870, 1010)
+texture = ExtResource("3_lkdbg")
+
+[node name="AE" type="Node2D" parent="Page1" unique_id=583719842]
+
+[node name="Flag_AE" type="Sprite2D" parent="Page1/AE" unique_id=21816056]
+position = Vector2(260, 150)
+texture = ExtResource("3_8i5w5")
+
+[node name="TXT_AE" type="Label" parent="Page1/AE" unique_id=1850522477]
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 320.0
+offset_bottom = 295.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AO" type="Node2D" parent="Page1" unique_id=1077681789]
+
+[node name="Flag_AO" type="Sprite2D" parent="Page1/AO" unique_id=1891437362]
+position = Vector2(460, 150)
+texture = ExtResource("4_sum4u")
+
+[node name="TXT_AO" type="Label" parent="Page1/AO" unique_id=1777371954]
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 520.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AR" type="Node2D" parent="Page1" unique_id=1105336186]
+
+[node name="Flag_AR" type="Sprite2D" parent="Page1/AR" unique_id=223061526]
+position = Vector2(660, 150)
+texture = ExtResource("5_51paj")
+
+[node name="TXT_AR" type="Label" parent="Page1/AR" unique_id=1823476400]
+offset_left = 600.0
+offset_top = 200.0
+offset_right = 720.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AT" type="Node2D" parent="Page1" unique_id=1789843201]
+
+[node name="Flag_AT" type="Sprite2D" parent="Page1/AT" unique_id=1385444261]
+position = Vector2(860, 150)
+texture = ExtResource("6_d5bk3")
+
+[node name="TXT_AT" type="Label" parent="Page1/AT" unique_id=312288918]
+offset_left = 800.0
+offset_top = 200.0
+offset_right = 920.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AU" type="Node2D" parent="Page1" unique_id=935699238]
+
+[node name="Flag_AU" type="Sprite2D" parent="Page1/AU" unique_id=140163965]
+position = Vector2(1060, 150)
+texture = ExtResource("7_yheyd")
+
+[node name="TXT_AU" type="Label" parent="Page1/AU" unique_id=1794002166]
+offset_left = 1000.0
+offset_top = 200.0
+offset_right = 1120.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BA" type="Node2D" parent="Page1" unique_id=117262993]
+
+[node name="Flag_BA" type="Sprite2D" parent="Page1/BA" unique_id=516816926]
+position = Vector2(1260, 150)
+texture = ExtResource("8_q47ni")
+
+[node name="TXT_BA" type="Label" parent="Page1/BA" unique_id=1757360619]
+offset_left = 1200.0
+offset_top = 200.0
+offset_right = 1320.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BE" type="Node2D" parent="Page1" unique_id=1775159899]
+
+[node name="Flag_BE" type="Sprite2D" parent="Page1/BE" unique_id=1123089836]
+position = Vector2(1460, 150)
+texture = ExtResource("9_tmohq")
+
+[node name="TXT_BE" type="Label" parent="Page1/BE" unique_id=383097910]
+offset_left = 1400.0
+offset_top = 200.0
+offset_right = 1520.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BG" type="Node2D" parent="Page1" unique_id=549039945]
+
+[node name="Flag_BG" type="Sprite2D" parent="Page1/BG" unique_id=236967256]
+position = Vector2(1660, 150)
+texture = ExtResource("10_lkdbg")
+
+[node name="TXT_BG" type="Label" parent="Page1/BG" unique_id=1515688599]
+offset_left = 1600.0
+offset_top = 200.0
+offset_right = 1720.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BO" type="Node2D" parent="Page1" unique_id=1067565206]
+
+[node name="Flag_BO" type="Sprite2D" parent="Page1/BO" unique_id=1596934127]
+position = Vector2(260, 330)
+texture = ExtResource("11_7tnv7")
+
+[node name="TXT_BO" type="Label" parent="Page1/BO" unique_id=1150840058]
+offset_left = 200.0
+offset_top = 380.0
+offset_right = 320.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BR" type="Node2D" parent="Page1" unique_id=1183351133]
+
+[node name="Flag_BR" type="Sprite2D" parent="Page1/BR" unique_id=723904461]
+position = Vector2(460, 330)
+texture = ExtResource("12_1cxp5")
+
+[node name="TXT_BR" type="Label" parent="Page1/BR" unique_id=412851326]
+offset_left = 400.0
+offset_top = 380.0
+offset_right = 520.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CA" type="Node2D" parent="Page1" unique_id=712224618]
+
+[node name="Flag_CA" type="Sprite2D" parent="Page1/CA" unique_id=1169116142]
+position = Vector2(660, 330)
+texture = ExtResource("14_7tnv7")
+
+[node name="TXT_CA" type="Label" parent="Page1/CA" unique_id=1258432681]
+offset_left = 600.0
+offset_top = 380.0
+offset_right = 720.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CD" type="Node2D" parent="Page1" unique_id=1613183801]
+
+[node name="Flag_CD" type="Sprite2D" parent="Page1/CD" unique_id=722876968]
+position = Vector2(860, 330)
+texture = ExtResource("15_1cxp5")
+
+[node name="TXT_CD" type="Label" parent="Page1/CD" unique_id=641518224]
+offset_left = 800.0
+offset_top = 380.0
+offset_right = 920.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CH" type="Node2D" parent="Page1" unique_id=248884925]
+
+[node name="Flag_CH" type="Sprite2D" parent="Page1/CH" unique_id=2023156175]
+position = Vector2(1060, 330)
+texture = ExtResource("16_vc7tu")
+
+[node name="TXT_CH" type="Label" parent="Page1/CH" unique_id=783996735]
+offset_left = 1000.0
+offset_top = 380.0
+offset_right = 1120.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CI" type="Node2D" parent="Page1" unique_id=1990552843]
+
+[node name="Flag_CI" type="Sprite2D" parent="Page1/CI" unique_id=1267872518]
+position = Vector2(1260, 330)
+texture = ExtResource("17_kvvca")
+
+[node name="TXT_CI" type="Label" parent="Page1/CI" unique_id=53132826]
+offset_left = 1200.0
+offset_top = 380.0
+offset_right = 1320.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CL" type="Node2D" parent="Page1" unique_id=1635151310]
+
+[node name="Flag_CL" type="Sprite2D" parent="Page1/CL" unique_id=291019013]
+position = Vector2(1460, 330)
+texture = ExtResource("18_dwohl")
+
+[node name="TXT_CL" type="Label" parent="Page1/CL" unique_id=312067526]
+offset_left = 1400.0
+offset_top = 380.0
+offset_right = 1520.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CM" type="Node2D" parent="Page1" unique_id=2136866885]
+
+[node name="Flag_CM" type="Sprite2D" parent="Page1/CM" unique_id=1327312085]
+position = Vector2(1660, 330)
+texture = ExtResource("19_21akr")
+
+[node name="TXT_CM" type="Label" parent="Page1/CM" unique_id=127115950]
+offset_left = 1600.0
+offset_top = 380.0
+offset_right = 1720.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CN" type="Node2D" parent="Page1" unique_id=70068142]
+
+[node name="Flag_CN" type="Sprite2D" parent="Page1/CN" unique_id=543965138]
+position = Vector2(260, 510)
+texture = ExtResource("13_vc7tu")
+
+[node name="TXT_CN" type="Label" parent="Page1/CN" unique_id=180240844]
+offset_left = 200.0
+offset_top = 560.0
+offset_right = 320.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CO" type="Node2D" parent="Page1" unique_id=1139554051]
+
+[node name="Flag_CO" type="Sprite2D" parent="Page1/CO" unique_id=1345178896]
+position = Vector2(460, 510)
+texture = ExtResource("21_qf48m")
+
+[node name="TXT_CO" type="Label" parent="Page1/CO" unique_id=783714288]
+offset_left = 400.0
+offset_top = 560.0
+offset_right = 520.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CR" type="Node2D" parent="Page1" unique_id=1003407537]
+
+[node name="Flag_CR" type="Sprite2D" parent="Page1/CR" unique_id=752959725]
+position = Vector2(660, 510)
+texture = ExtResource("22_50eda")
+
+[node name="TXT_CR" type="Label" parent="Page1/CR" unique_id=119366378]
+offset_left = 600.0
+offset_top = 560.0
+offset_right = 720.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CU" type="Node2D" parent="Page1" unique_id=865478414]
+
+[node name="Flag_CU" type="Sprite2D" parent="Page1/CU" unique_id=1765652728]
+position = Vector2(860, 510)
+texture = ExtResource("23_g6ile")
+
+[node name="TXT_CU" type="Label" parent="Page1/CU" unique_id=1949337215]
+offset_left = 800.0
+offset_top = 560.0
+offset_right = 920.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CZ" type="Node2D" parent="Page1" unique_id=1633504269]
+
+[node name="Flag_CZ" type="Sprite2D" parent="Page1/CZ" unique_id=1956449120]
+position = Vector2(1060, 510)
+texture = ExtResource("24_pgwnm")
+
+[node name="TXT_CZ" type="Label" parent="Page1/CZ" unique_id=1906587408]
+offset_left = 1000.0
+offset_top = 560.0
+offset_right = 1120.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DE" type="Node2D" parent="Page1" unique_id=731160320]
+
+[node name="Flag_DE" type="Sprite2D" parent="Page1/DE" unique_id=684408262]
+position = Vector2(1260, 510)
+texture = ExtResource("25_lhlwp")
+
+[node name="TXT_DE" type="Label" parent="Page1/DE" unique_id=596524810]
+offset_left = 1200.0
+offset_top = 560.0
+offset_right = 1320.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DK" type="Node2D" parent="Page1" unique_id=253350196]
+
+[node name="Flag_DK" type="Sprite2D" parent="Page1/DK" unique_id=1304932327]
+position = Vector2(1460, 510)
+texture = ExtResource("26_0clf4")
+
+[node name="TXT_DK" type="Label" parent="Page1/DK" unique_id=115406643]
+offset_left = 1400.0
+offset_top = 560.0
+offset_right = 1520.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DZ" type="Node2D" parent="Page1" unique_id=1113394780]
+
+[node name="Flag_DZ" type="Sprite2D" parent="Page1/DZ" unique_id=203723822]
+position = Vector2(1660, 510)
+texture = ExtResource("27_nwehw")
+
+[node name="TXT_DZ" type="Label" parent="Page1/DZ" unique_id=1962826935]
+offset_left = 1600.0
+offset_top = 560.0
+offset_right = 1720.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EC" type="Node2D" parent="Page1" unique_id=193307434]
+
+[node name="Flag_EC" type="Sprite2D" parent="Page1/EC" unique_id=945533342]
+position = Vector2(260, 690)
+texture = ExtResource("14_kvvca")
+
+[node name="TXT_EC" type="Label" parent="Page1/EC" unique_id=827371636]
+offset_left = 200.0
+offset_top = 740.0
+offset_right = 320.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EG" type="Node2D" parent="Page1" unique_id=350415107]
+
+[node name="Flag_EG" type="Sprite2D" parent="Page1/EG" unique_id=29018962]
+position = Vector2(460, 690)
+texture = ExtResource("29_8e83a")
+
+[node name="TXT_EG" type="Label" parent="Page1/EG" unique_id=1115530873]
+offset_left = 400.0
+offset_top = 740.0
+offset_right = 520.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ES" type="Node2D" parent="Page1" unique_id=1204375644]
+
+[node name="Flag_ES" type="Sprite2D" parent="Page1/ES" unique_id=998693897]
+position = Vector2(660, 690)
+texture = ExtResource("30_clbma")
+
+[node name="TXT_ES" type="Label" parent="Page1/ES" unique_id=100808233]
+offset_left = 600.0
+offset_top = 740.0
+offset_right = 720.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FR" type="Node2D" parent="Page1" unique_id=2068009586]
+
+[node name="Flag_FR" type="Sprite2D" parent="Page1/FR" unique_id=328496793]
+position = Vector2(860, 690)
+texture = ExtResource("31_fu3aq")
+
+[node name="TXT_FR" type="Label" parent="Page1/FR" unique_id=835714588]
+offset_left = 800.0
+offset_top = 740.0
+offset_right = 920.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GB" type="Node2D" parent="Page1" unique_id=1265971429]
+
+[node name="Flag_GB" type="Sprite2D" parent="Page1/GB" unique_id=909802676]
+position = Vector2(1060, 690)
+texture = ExtResource("32_sdh4x")
+
+[node name="TXT_GB" type="Label" parent="Page1/GB" unique_id=447775684]
+offset_left = 1000.0
+offset_top = 740.0
+offset_right = 1120.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GH" type="Node2D" parent="Page1" unique_id=1714369763]
+
+[node name="Flag_GH" type="Sprite2D" parent="Page1/GH" unique_id=422153732]
+position = Vector2(1260, 690)
+texture = ExtResource("33_x7lmq")
+
+[node name="TXT_GH" type="Label" parent="Page1/GH" unique_id=1725465672]
+offset_left = 1200.0
+offset_top = 740.0
+offset_right = 1320.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GR" type="Node2D" parent="Page1" unique_id=1561669200]
+
+[node name="Flag_GR" type="Sprite2D" parent="Page1/GR" unique_id=1003402824]
+position = Vector2(1460, 690)
+texture = ExtResource("34_8e83a")
+
+[node name="TXT_GR" type="Label" parent="Page1/GR" unique_id=1447921225]
+offset_left = 1400.0
+offset_top = 740.0
+offset_right = 1520.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HN" type="Node2D" parent="Page1" unique_id=493048399]
+
+[node name="Flag_HN" type="Sprite2D" parent="Page1/HN" unique_id=362978621]
+position = Vector2(1660, 690)
+texture = ExtResource("35_clbma")
+
+[node name="TXT_HN" type="Label" parent="Page1/HN" unique_id=1581757083]
+offset_left = 1600.0
+offset_top = 740.0
+offset_right = 1720.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HR" type="Node2D" parent="Page1" unique_id=497024957]
+
+[node name="Flag_HR" type="Sprite2D" parent="Page1/HR" unique_id=520943298]
+position = Vector2(260, 870)
+texture = ExtResource("15_dwohl")
+
+[node name="TXT_HR" type="Label" parent="Page1/HR" unique_id=1432045829]
+offset_left = 200.0
+offset_top = 920.0
+offset_right = 320.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HT" type="Node2D" parent="Page1" unique_id=1964189641]
+
+[node name="Flag_HT" type="Sprite2D" parent="Page1/HT" unique_id=437157604]
+position = Vector2(460, 870)
+texture = ExtResource("37_fu3aq")
+
+[node name="TXT_HT" type="Label" parent="Page1/HT" unique_id=774159451]
+offset_left = 400.0
+offset_top = 920.0
+offset_right = 520.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HU" type="Node2D" parent="Page1" unique_id=1438425699]
+
+[node name="Flag_HU" type="Sprite2D" parent="Page1/HU" unique_id=1898207776]
+position = Vector2(660, 870)
+texture = ExtResource("38_sdh4x")
+
+[node name="TXT_HU" type="Label" parent="Page1/HU" unique_id=331134578]
+offset_left = 600.0
+offset_top = 920.0
+offset_right = 720.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ID" type="Node2D" parent="Page1" unique_id=1522257]
+
+[node name="Flag_ID" type="Sprite2D" parent="Page1/ID" unique_id=1332192877]
+position = Vector2(860, 870)
+texture = ExtResource("39_x7lmq")
+
+[node name="TXT_ID" type="Label" parent="Page1/ID" unique_id=1765679320]
+offset_left = 800.0
+offset_top = 920.0
+offset_right = 920.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IE" type="Node2D" parent="Page1" unique_id=717505857]
+
+[node name="Flag_IE" type="Sprite2D" parent="Page1/IE" unique_id=1361738891]
+position = Vector2(1060, 870)
+texture = ExtResource("40_x7lmq")
+
+[node name="TXT_IE" type="Label" parent="Page1/IE" unique_id=2075099120]
+offset_left = 1000.0
+offset_top = 920.0
+offset_right = 1120.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IL" type="Node2D" parent="Page1" unique_id=1896399768]
+
+[node name="Flag_IL" type="Sprite2D" parent="Page1/IL" unique_id=1776031176]
+position = Vector2(1260, 870)
+texture = ExtResource("41_x3nx7")
+
+[node name="TXT_IL" type="Label" parent="Page1/IL" unique_id=294932436]
+offset_left = 1200.0
+offset_top = 920.0
+offset_right = 1320.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IQ" type="Node2D" parent="Page1" unique_id=846673483]
+
+[node name="Flag_IQ" type="Sprite2D" parent="Page1/IQ" unique_id=1155823534]
+position = Vector2(1460, 870)
+texture = ExtResource("42_7exn4")
+
+[node name="TXT_IQ" type="Label" parent="Page1/IQ" unique_id=1284449229]
+offset_left = 1400.0
+offset_top = 920.0
+offset_right = 1520.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IR" type="Node2D" parent="Page1" unique_id=1839405404]
+
+[node name="Flag_IR" type="Sprite2D" parent="Page1/IR" unique_id=1083610856]
+position = Vector2(1660, 870)
+texture = ExtResource("43_vhilb")
+
+[node name="TXT_IR" type="Label" parent="Page1/IR" unique_id=331978314]
+offset_left = 1600.0
+offset_top = 920.0
+offset_right = 1720.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Page2" type="Node2D" parent="." unique_id=1475400499]
+position = Vector2(0, 1080)
+
+[node name="BG_Collection" type="Sprite2D" parent="Page2" unique_id=1677993143]
+position = Vector2(960, 540)
+texture = ExtResource("1_t5ujk")
+
+[node name="BG_GridCollection" type="Sprite2D" parent="Page2" unique_id=1557436778]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(960, 540)
+texture = ExtResource("2_7wo4i")
+
+[node name="Swipe_Up" type="Sprite2D" parent="Page2" unique_id=350170039]
+z_index = 2
+position = Vector2(1870, 70)
+texture = ExtResource("44_o7jel")
+
+[node name="IT" type="Node2D" parent="Page2" unique_id=306964865]
+
+[node name="Flag_IT" type="Sprite2D" parent="Page2/IT" unique_id=1018755898]
+position = Vector2(260, 150)
+texture = ExtResource("44_pms3r")
+
+[node name="TXT_IT" type="Label" parent="Page2/IT" unique_id=1961083515]
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 320.0
+offset_bottom = 295.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JM" type="Node2D" parent="Page2" unique_id=533787183]
+
+[node name="Flag_JM" type="Sprite2D" parent="Page2/JM" unique_id=600186497]
+position = Vector2(460, 150)
+texture = ExtResource("45_aum6o")
+
+[node name="TXT_JM" type="Label" parent="Page2/JM" unique_id=1047407815]
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 520.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JP" type="Node2D" parent="Page2" unique_id=287010579]
+
+[node name="Flag_JP" type="Sprite2D" parent="Page2/JP" unique_id=129074496]
+position = Vector2(660, 150)
+texture = ExtResource("46_n0xv7")
+
+[node name="TXT_JP" type="Label" parent="Page2/JP" unique_id=205370545]
+offset_left = 600.0
+offset_top = 200.0
+offset_right = 720.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KP" type="Node2D" parent="Page2" unique_id=25498056]
+
+[node name="Flag_KP" type="Sprite2D" parent="Page2/KP" unique_id=1628637894]
+position = Vector2(860, 150)
+texture = ExtResource("47_cirxi")
+
+[node name="TXT_KP" type="Label" parent="Page2/KP" unique_id=10655058]
+offset_left = 800.0
+offset_top = 200.0
+offset_right = 920.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KR" type="Node2D" parent="Page2" unique_id=1355260294]
+
+[node name="Flag_KR" type="Sprite2D" parent="Page2/KR" unique_id=1157475374]
+position = Vector2(1060, 150)
+texture = ExtResource("48_0bjc5")
+
+[node name="TXT_KR" type="Label" parent="Page2/KR" unique_id=1120243619]
+offset_left = 1000.0
+offset_top = 200.0
+offset_right = 1120.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KW" type="Node2D" parent="Page2" unique_id=1353020066]
+
+[node name="Flag_KW" type="Sprite2D" parent="Page2/KW" unique_id=709664730]
+position = Vector2(1260, 150)
+texture = ExtResource("49_o7jel")
+
+[node name="TXT_KW" type="Label" parent="Page2/KW" unique_id=1704048098]
+offset_left = 1200.0
+offset_top = 200.0
+offset_right = 1320.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MA" type="Node2D" parent="Page2" unique_id=903194335]
+
+[node name="Flag_MA" type="Sprite2D" parent="Page2/MA" unique_id=1220875350]
+position = Vector2(1460, 150)
+texture = ExtResource("50_3y8ut")
+
+[node name="TXT_MA" type="Label" parent="Page2/MA" unique_id=115912047]
+offset_left = 1400.0
+offset_top = 200.0
+offset_right = 1520.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MX" type="Node2D" parent="Page2" unique_id=1597887176]
+
+[node name="Flag_MX" type="Sprite2D" parent="Page2/MX" unique_id=1457547918]
+position = Vector2(1660, 150)
+texture = ExtResource("51_i0bty")
+
+[node name="TXT_MX" type="Label" parent="Page2/MX" unique_id=279305548]
+offset_left = 1600.0
+offset_top = 200.0
+offset_right = 1720.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NG" type="Node2D" parent="Page2" unique_id=1995007031]
+
+[node name="Flag_NG" type="Sprite2D" parent="Page2/NG" unique_id=1181964033]
+position = Vector2(260, 330)
+texture = ExtResource("52_37fho")
+
+[node name="TXT_NG" type="Label" parent="Page2/NG" unique_id=1436744654]
+offset_left = 200.0
+offset_top = 380.0
+offset_right = 320.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NI" type="Node2D" parent="Page2" unique_id=703571486]
+
+[node name="Flag_NI" type="Sprite2D" parent="Page2/NI" unique_id=1229309742]
+position = Vector2(460, 330)
+texture = ExtResource("53_816nf")
+
+[node name="TXT_NI" type="Label" parent="Page2/NI" unique_id=1682841009]
+offset_left = 400.0
+offset_top = 380.0
+offset_right = 520.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NL" type="Node2D" parent="Page2" unique_id=703051066]
+
+[node name="Flag_NL" type="Sprite2D" parent="Page2/NL" unique_id=405280231]
+position = Vector2(660, 330)
+texture = ExtResource("54_uwoqm")
+
+[node name="TXT_NL" type="Label" parent="Page2/NL" unique_id=1475333507]
+offset_left = 600.0
+offset_top = 380.0
+offset_right = 720.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NO" type="Node2D" parent="Page2" unique_id=498538182]
+
+[node name="Flag_NO" type="Sprite2D" parent="Page2/NO" unique_id=582898192]
+position = Vector2(860, 330)
+texture = ExtResource("55_11sco")
+
+[node name="TXT_NO" type="Label" parent="Page2/NO" unique_id=763503528]
+offset_left = 800.0
+offset_top = 380.0
+offset_right = 920.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NZ" type="Node2D" parent="Page2" unique_id=251047710]
+
+[node name="Flag_NZ" type="Sprite2D" parent="Page2/NZ" unique_id=2019803718]
+position = Vector2(1060, 330)
+texture = ExtResource("56_fkkkd")
+
+[node name="TXT_NZ" type="Label" parent="Page2/NZ" unique_id=120649019]
+offset_left = 1000.0
+offset_top = 380.0
+offset_right = 1120.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PA" type="Node2D" parent="Page2" unique_id=1353248332]
+
+[node name="Flag_PA" type="Sprite2D" parent="Page2/PA" unique_id=2137550669]
+position = Vector2(1260, 330)
+texture = ExtResource("57_8y2lv")
+
+[node name="TXT_PA" type="Label" parent="Page2/PA" unique_id=695137590]
+offset_left = 1200.0
+offset_top = 380.0
+offset_right = 1320.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PE" type="Node2D" parent="Page2" unique_id=1285219020]
+
+[node name="Flag_PE" type="Sprite2D" parent="Page2/PE" unique_id=664128137]
+position = Vector2(1460, 330)
+texture = ExtResource("58_gtj65")
+
+[node name="TXT_PE" type="Label" parent="Page2/PE" unique_id=275424683]
+offset_left = 1400.0
+offset_top = 380.0
+offset_right = 1520.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PL" type="Node2D" parent="Page2" unique_id=1563853270]
+
+[node name="Flag_PL" type="Sprite2D" parent="Page2/PL" unique_id=52330066]
+position = Vector2(1660, 330)
+texture = ExtResource("59_1vvuk")
+
+[node name="TXT_PL" type="Label" parent="Page2/PL" unique_id=1139051431]
+offset_left = 1600.0
+offset_top = 380.0
+offset_right = 1720.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PT" type="Node2D" parent="Page2" unique_id=647573793]
+
+[node name="Flag_PT" type="Sprite2D" parent="Page2/PT" unique_id=443224908]
+position = Vector2(260, 510)
+texture = ExtResource("60_e3bhy")
+
+[node name="TXT_PT" type="Label" parent="Page2/PT" unique_id=1478530597]
+offset_left = 200.0
+offset_top = 560.0
+offset_right = 320.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PY" type="Node2D" parent="Page2" unique_id=598728948]
+
+[node name="Flag_PY" type="Sprite2D" parent="Page2/PY" unique_id=1368130790]
+position = Vector2(460, 510)
+texture = ExtResource("61_5ecfi")
+
+[node name="TXT_PY" type="Label" parent="Page2/PY" unique_id=1128362953]
+offset_left = 400.0
+offset_top = 560.0
+offset_right = 520.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QA" type="Node2D" parent="Page2" unique_id=2112865983]
+
+[node name="Flag_QA" type="Sprite2D" parent="Page2/QA" unique_id=266648323]
+position = Vector2(660, 510)
+texture = ExtResource("62_3kqkq")
+
+[node name="TXT_QA" type="Label" parent="Page2/QA" unique_id=209026278]
+offset_left = 600.0
+offset_top = 560.0
+offset_right = 720.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RO" type="Node2D" parent="Page2" unique_id=190107057]
+
+[node name="Flag_RO" type="Sprite2D" parent="Page2/RO" unique_id=451986588]
+position = Vector2(860, 510)
+texture = ExtResource("63_u82kc")
+
+[node name="TXT_RO" type="Label" parent="Page2/RO" unique_id=1955794130]
+offset_left = 800.0
+offset_top = 560.0
+offset_right = 920.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RS" type="Node2D" parent="Page2" unique_id=1123042343]
+
+[node name="Flag_RS" type="Sprite2D" parent="Page2/RS" unique_id=190730300]
+position = Vector2(1060, 510)
+texture = ExtResource("64_hojyk")
+
+[node name="TXT_RS" type="Label" parent="Page2/RS" unique_id=1063281271]
+offset_left = 1000.0
+offset_top = 560.0
+offset_right = 1120.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RU" type="Node2D" parent="Page2" unique_id=927429560]
+
+[node name="Flag_RU" type="Sprite2D" parent="Page2/RU" unique_id=1439672852]
+position = Vector2(1260, 510)
+texture = ExtResource("48_etpmi")
+
+[node name="TXT_RU" type="Label" parent="Page2/RU" unique_id=1027328178]
+offset_left = 1200.0
+offset_top = 560.0
+offset_right = 1320.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SA" type="Node2D" parent="Page2" unique_id=1130088338]
+
+[node name="Flag_SA" type="Sprite2D" parent="Page2/SA" unique_id=1096774993]
+position = Vector2(1460, 510)
+texture = ExtResource("49_wej0a")
+
+[node name="TXT_SA" type="Label" parent="Page2/SA" unique_id=1490371817]
+offset_left = 1400.0
+offset_top = 560.0
+offset_right = 1520.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SC" type="Node2D" parent="Page2" unique_id=1185888912]
+
+[node name="Flag_SC" type="Sprite2D" parent="Page2/SC" unique_id=889191470]
+position = Vector2(1660, 510)
+texture = ExtResource("50_j7tme")
+
+[node name="TXT_SC" type="Label" parent="Page2/SC" unique_id=1484089192]
+offset_left = 1600.0
+offset_top = 560.0
+offset_right = 1720.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SE" type="Node2D" parent="Page2" unique_id=1491308892]
+
+[node name="Flag_SE" type="Sprite2D" parent="Page2/SE" unique_id=1491898376]
+position = Vector2(260, 690)
+texture = ExtResource("51_kkvpe")
+
+[node name="TXT_SE" type="Label" parent="Page2/SE" unique_id=1133092156]
+offset_left = 200.0
+offset_top = 740.0
+offset_right = 320.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SI" type="Node2D" parent="Page2" unique_id=853246004]
+
+[node name="Flag_SI" type="Sprite2D" parent="Page2/SI" unique_id=72911639]
+position = Vector2(460, 690)
+texture = ExtResource("52_4p5xg")
+
+[node name="TXT_SI" type="Label" parent="Page2/SI" unique_id=134718731]
+offset_left = 400.0
+offset_top = 740.0
+offset_right = 520.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SK" type="Node2D" parent="Page2" unique_id=368156747]
+
+[node name="Flag_SK" type="Sprite2D" parent="Page2/SK" unique_id=381133963]
+position = Vector2(660, 690)
+texture = ExtResource("53_t5akj")
+
+[node name="TXT_SK" type="Label" parent="Page2/SK" unique_id=1025765862]
+offset_left = 600.0
+offset_top = 740.0
+offset_right = 720.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SN" type="Node2D" parent="Page2" unique_id=643802186]
+
+[node name="Flag_SN" type="Sprite2D" parent="Page2/SN" unique_id=572084792]
+position = Vector2(860, 690)
+texture = ExtResource("54_pihlk")
+
+[node name="TXT_SN" type="Label" parent="Page2/SN" unique_id=38772184]
+offset_left = 800.0
+offset_top = 740.0
+offset_right = 920.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SV" type="Node2D" parent="Page2" unique_id=1623574075]
+
+[node name="Flag_SV" type="Sprite2D" parent="Page2/SV" unique_id=1892575281]
+position = Vector2(1060, 690)
+texture = ExtResource("55_jbx5t")
+
+[node name="TXT_SV" type="Label" parent="Page2/SV" unique_id=1988075171]
+offset_left = 1000.0
+offset_top = 740.0
+offset_right = 1120.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TG" type="Node2D" parent="Page2" unique_id=1277512477]
+
+[node name="Flag_TG" type="Sprite2D" parent="Page2/TG" unique_id=1371622647]
+position = Vector2(1260, 690)
+texture = ExtResource("56_hn5ga")
+
+[node name="TXT_TG" type="Label" parent="Page2/TG" unique_id=1968426744]
+offset_left = 1200.0
+offset_top = 740.0
+offset_right = 1320.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TN" type="Node2D" parent="Page2" unique_id=937906772]
+
+[node name="Flag_TN" type="Sprite2D" parent="Page2/TN" unique_id=1086875919]
+position = Vector2(1460, 690)
+texture = ExtResource("57_y1g2k")
+
+[node name="TXT_TN" type="Label" parent="Page2/TN" unique_id=1384789968]
+offset_left = 1400.0
+offset_top = 740.0
+offset_right = 1520.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TR" type="Node2D" parent="Page2" unique_id=1447371822]
+
+[node name="Flag_TR" type="Sprite2D" parent="Page2/TR" unique_id=111734364]
+position = Vector2(1660, 690)
+texture = ExtResource("58_xo45s")
+
+[node name="TXT_TR" type="Label" parent="Page2/TR" unique_id=1364914986]
+offset_left = 1600.0
+offset_top = 740.0
+offset_right = 1720.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TT" type="Node2D" parent="Page2" unique_id=873865935]
+
+[node name="Flag_TT" type="Sprite2D" parent="Page2/TT" unique_id=75134805]
+position = Vector2(260, 870)
+texture = ExtResource("59_w3dtq")
+
+[node name="TXT_TT" type="Label" parent="Page2/TT" unique_id=1821864979]
+offset_left = 200.0
+offset_top = 920.0
+offset_right = 320.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UA" type="Node2D" parent="Page2" unique_id=1421306490]
+
+[node name="Flag_UA" type="Sprite2D" parent="Page2/UA" unique_id=1459430583]
+position = Vector2(460, 870)
+texture = ExtResource("60_bg5r8")
+
+[node name="TXT_UA" type="Label" parent="Page2/UA" unique_id=564604779]
+offset_left = 400.0
+offset_top = 920.0
+offset_right = 520.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="US" type="Node2D" parent="Page2" unique_id=342424]
+
+[node name="Flag_US" type="Sprite2D" parent="Page2/US" unique_id=323529390]
+position = Vector2(660, 870)
+texture = ExtResource("61_0bjc5")
+
+[node name="TXT_US" type="Label" parent="Page2/US" unique_id=1615130219]
+offset_left = 600.0
+offset_top = 920.0
+offset_right = 720.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UY" type="Node2D" parent="Page2" unique_id=825181136]
+
+[node name="Flag_UY" type="Sprite2D" parent="Page2/UY" unique_id=129466502]
+position = Vector2(860, 870)
+texture = ExtResource("62_o7jel")
+
+[node name="TXT_UY" type="Label" parent="Page2/UY" unique_id=1479909013]
+offset_left = 800.0
+offset_top = 920.0
+offset_right = 920.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WA" type="Node2D" parent="Page2" unique_id=1477908188]
+
+[node name="Flag_WA" type="Sprite2D" parent="Page2/WA" unique_id=142374417]
+position = Vector2(1060, 870)
+texture = ExtResource("63_3y8ut")
+
+[node name="TXT_WA" type="Label" parent="Page2/WA" unique_id=1760814682]
+offset_left = 1000.0
+offset_top = 920.0
+offset_right = 1120.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZA" type="Node2D" parent="Page2" unique_id=1803348558]
+
+[node name="Flag_ZA" type="Sprite2D" parent="Page2/ZA" unique_id=1182791359]
+position = Vector2(1260, 870)
+texture = ExtResource("64_i0bty")
+
+[node name="TXT_ZA" type="Label" parent="Page2/ZA" unique_id=1560670320]
+offset_left = 1200.0
+offset_top = 920.0
+offset_right = 1320.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
+text = "0/12"
+horizontal_alignment = 1
+vertical_alignment = 1
