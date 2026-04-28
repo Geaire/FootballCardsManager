@@ -46,10 +46,10 @@ vertical_alignment = 1
 
 [node name="TXT_Slogan1" type="Label" parent="." unique_id=514433398]
 z_index = 1
-offset_left = 49.0
-offset_top = 600.0
-offset_right = 490.0
-offset_bottom = 650.0
+offset_left = 63.0
+offset_top = 593.0
+offset_right = 504.0
+offset_bottom = 643.0
 theme_override_font_sizes/font_size = 35
 text = "Construis. Pense. Domine."
 horizontal_alignment = 1
@@ -57,10 +57,10 @@ vertical_alignment = 1
 
 [node name="TXT_Slogan2" type="Label" parent="." unique_id=751701807]
 z_index = 1
-offset_left = 1070.0
-offset_top = 950.0
-offset_right = 1870.0
-offset_bottom = 1000.0
+offset_left = 1003.0
+offset_top = 890.0
+offset_right = 1803.0
+offset_bottom = 940.0
 theme_override_font_sizes/font_size = 35
 text = "Pas de hasard, le meilleur gagne toujours."
 horizontal_alignment = 1
@@ -101,11 +101,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Card_Player1" parent="." unique_id=1206912900 instance=ExtResource("13_5egv6")]
-z_index = 6
-position = Vector2(1468, 657)
-scale = Vector2(0.6, 0.6)
+position = Vector2(447, 859)
 
-[node name="Card_Player2" parent="." unique_id=1001469731 instance=ExtResource("13_5egv6")]
-z_index = 6
-position = Vector2(266, 461)
-scale = Vector2(0.6, 0.6)
+[node name="Card_Player2" parent="." unique_id=1442980625 instance=ExtResource("13_5egv6")]
+position = Vector2(1614, 680)

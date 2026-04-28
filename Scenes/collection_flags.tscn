@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b0g3x03jf4kko"]
 
+[ext_resource type="Script" uid="uid://c36jp8qdx3bw7" path="res://Scripts/collection_flags.gd" id="1_3y8ut"]
 [ext_resource type="Texture2D" uid="uid://hjejqqvcal5n" path="res://Sprites/background.jpg" id="1_t5ujk"]
 [ext_resource type="Texture2D" uid="uid://c5jom8mmlhb0g" path="res://Sprites/grid.png" id="2_7wo4i"]
 [ext_resource type="Texture2D" uid="uid://chxkfnjepxr16" path="res://Sprites/Flags/flag_ae.png" id="3_8i5w5"]
@@ -92,6 +93,7 @@ border_width_bottom = 1
 border_color = Color(0, 0.9647059, 1, 1)
 
 [node name="CollectionFlags" type="Node2D" unique_id=2066135834]
+script = ExtResource("1_3y8ut")
 
 [node name="Page1" type="Node2D" parent="." unique_id=537669689]
 
@@ -106,7 +108,7 @@ texture = ExtResource("2_7wo4i")
 
 [node name="Swipe_Down" type="Sprite2D" parent="Page1" unique_id=1270719893]
 z_index = 2
-position = Vector2(1870, 1010)
+position = Vector2(1850, 940)
 texture = ExtResource("3_lkdbg")
 
 [node name="AE" type="Node2D" parent="Page1" unique_id=583719842]
@@ -115,15 +117,14 @@ texture = ExtResource("3_lkdbg")
 position = Vector2(260, 150)
 texture = ExtResource("3_8i5w5")
 
-[node name="TXT_AE" type="Label" parent="Page1/AE" unique_id=1850522477]
+[node name="TXT_AE" type="Label" parent="Page1/AE" unique_id=1508117873]
 offset_left = 200.0
 offset_top = 200.0
 offset_right = 320.0
-offset_bottom = 295.0
+offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12
-"
+text = "0/12"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -804,7 +805,7 @@ texture = ExtResource("2_7wo4i")
 
 [node name="Swipe_Up" type="Sprite2D" parent="Page2" unique_id=350170039]
 z_index = 2
-position = Vector2(1870, 70)
+position = Vector2(1850, 140)
 texture = ExtResource("44_o7jel")
 
 [node name="IT" type="Node2D" parent="Page2" unique_id=306964865]
@@ -813,15 +814,14 @@ texture = ExtResource("44_o7jel")
 position = Vector2(260, 150)
 texture = ExtResource("44_pms3r")
 
-[node name="TXT_IT" type="Label" parent="Page2/IT" unique_id=1961083515]
+[node name="TXT_IT" type="Label" parent="Page2/IT" unique_id=1701347631]
 offset_left = 200.0
 offset_top = 200.0
 offset_right = 320.0
-offset_bottom = 295.0
+offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12
-"
+text = "0/12"
 horizontal_alignment = 1
 vertical_alignment = 1
 

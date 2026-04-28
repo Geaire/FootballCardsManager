@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://c52hum6s3qslo"]
+
+[ext_resource type="Script" uid="uid://q2i1ssiybrmb" path="res://Scripts/taskbar.gd" id="1_d4e18"]
+[ext_resource type="Texture2D" uid="uid://cj6eenkir1iwh" path="res://Sprites/Taskbar/taskbar_background.png" id="1_uckm5"]
+[ext_resource type="Texture2D" uid="uid://mv4n064b1tas" path="res://Sprites/Taskbar/icon_competition.png" id="2_ofgbp"]
+[ext_resource type="Texture2D" uid="uid://elutmcu1vnlj" path="res://Sprites/Taskbar/taskbar_border.png" id="3_wutaj"]
+[ext_resource type="Texture2D" uid="uid://cv8jphk5o4h81" path="res://Sprites/Taskbar/icon_team.png" id="5_wutaj"]
+[ext_resource type="Texture2D" uid="uid://ddjyag5of683q" path="res://Sprites/Taskbar/icon_bonus.png" id="6_wutaj"]
+[ext_resource type="Texture2D" uid="uid://btvd7okrri4gr" path="res://Sprites/Taskbar/icon_collection.png" id="7_n7mhr"]
+[ext_resource type="Texture2D" uid="uid://cea6gumi464vl" path="res://Sprites/Taskbar/icon_transfert.png" id="7_wutaj"]
+[ext_resource type="Texture2D" uid="uid://cyegq6x45ooi0" path="res://Sprites/Taskbar/icon_association.png" id="8_5j7ea"]
+[ext_resource type="Texture2D" uid="uid://c233poxylbthx" path="res://Sprites/Taskbar/icon_schedule.png" id="9_30kwm"]
+[ext_resource type="Texture2D" uid="uid://pa36e6c0in7y" path="res://Sprites/Taskbar/icon_historique.png" id="10_2yxt2"]
+[ext_resource type="Texture2D" uid="uid://ea0ujji3trhd" path="res://Sprites/Taskbar/icon_settings.png" id="11_n713f"]
+
+[node name="Taskbar" type="CanvasLayer" unique_id=701137953]
+script = ExtResource("1_d4e18")
+
+[node name="TaskbarBottom" type="Node2D" parent="." unique_id=1400430682]
+
+[node name="BG_TaskbarBottom" type="Sprite2D" parent="TaskbarBottom" unique_id=1604534897]
+position = Vector2(960, 1030)
+texture = ExtResource("1_uckm5")
+
+[node name="Border_TaskbarBottom" type="Sprite2D" parent="TaskbarBottom" unique_id=276573969]
+z_index = 1
+position = Vector2(960, 1030)
+texture = ExtResource("3_wutaj")
+
+[node name="BTN_Competition" type="Sprite2D" parent="TaskbarBottom" unique_id=1595761943]
+z_index = 2
+position = Vector2(105, 1030)
+scale = Vector2(1, 0.9647062)
+texture = ExtResource("2_ofgbp")
+
+[node name="BTN_Team" type="Sprite2D" parent="TaskbarBottom" unique_id=2033978763]
+z_index = 2
+position = Vector2(315, 1030)
+scale = Vector2(1, 0.9647062)
+texture = ExtResource("5_wutaj")
+
+[node name="BTN_Bonus" type="Sprite2D" parent="TaskbarBottom" unique_id=627241859]
+z_index = 2
+position = Vector2(525, 1030)
+texture = ExtResource("6_wutaj")
+
+[node name="BTN_Transfert" type="Sprite2D" parent="TaskbarBottom" unique_id=594127495]
+z_index = 2
+position = Vector2(735, 1030)
+texture = ExtResource("7_wutaj")
+
+[node name="BTN_Association" type="Sprite2D" parent="TaskbarBottom" unique_id=1046018660]
+z_index = 2
+position = Vector2(950, 1030)
+texture = ExtResource("8_5j7ea")
+
+[node name="BTN_Schedule" type="Sprite2D" parent="TaskbarBottom" unique_id=584281431]
+z_index = 2
+position = Vector2(1185, 1030)
+texture = ExtResource("9_30kwm")
+
+[node name="BTN_Collection" type="Sprite2D" parent="TaskbarBottom" unique_id=472425100]
+z_index = 2
+position = Vector2(1395, 1030)
+texture = ExtResource("7_n7mhr")
+
+[node name="BTN_History" type="Sprite2D" parent="TaskbarBottom" unique_id=1485285680]
+z_index = 2
+position = Vector2(1605, 1030)
+texture = ExtResource("10_2yxt2")
+
+[node name="BTN_Settings" type="Sprite2D" parent="TaskbarBottom" unique_id=517627573]
+z_index = 2
+position = Vector2(1815, 1030)
+texture = ExtResource("11_n713f")
+
+[node name="TaskbarTop" type="Node2D" parent="." unique_id=402464405]
+
+[node name="BG_TaskbarTop" type="Sprite2D" parent="TaskbarTop" unique_id=410834137]
+position = Vector2(960, 50)
+texture = ExtResource("1_uckm5")
+
+[node name="Border_TaskbarTop" type="Sprite2D" parent="TaskbarTop" unique_id=397002813]
+z_index = 1
+position = Vector2(960, 50)
+texture = ExtResource("3_wutaj")
+
+[node name="IMG_TeamLogo" type="Sprite2D" parent="TaskbarTop" unique_id=160167556]
+z_index = 2
+
+[node name="TXT_ManagerName" type="Label" parent="TaskbarTop" unique_id=1725472772]
+z_index = 2
+offset_left = 90.0
+offset_top = 47.0
+offset_right = 327.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 30
+text = "MARSEILLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_TeamName" type="Label" parent="TaskbarTop" unique_id=1199286960]
+z_index = 2
+offset_left = 113.0
+offset_top = 7.0
+offset_right = 305.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 30
+text = "GEAIRE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_CardYellow" type="Label" parent="TaskbarTop" unique_id=1568703552]
+z_index = 2
+offset_left = 577.0
+offset_top = 9.0
+offset_right = 736.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 32
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IMG_CardNumbers" type="Sprite2D" parent="TaskbarTop" unique_id=777049210]

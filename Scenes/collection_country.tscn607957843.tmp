@@ -1,0 +1,320 @@
+[gd_scene format=3 uid="uid://bnvv1rn1qx818"]
+
+[ext_resource type="Script" uid="uid://is2aac5b8sba" path="res://Scripts/collection_country.gd" id="1_4u0ix"]
+[ext_resource type="Texture2D" uid="uid://hjejqqvcal5n" path="res://Sprites/background.jpg" id="1_yb44k"]
+[ext_resource type="Texture2D" uid="uid://c5jom8mmlhb0g" path="res://Sprites/grid.png" id="2_5oh88"]
+[ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="3_5oh88"]
+[ext_resource type="Texture2D" uid="uid://d2fxq0cewyowc" path="res://Sprites/card_background_300x200.png" id="3_jpcxk"]
+[ext_resource type="Texture2D" uid="uid://5heaf2s1np5n" path="res://Sprites/btn_help.png" id="4_jpcxk"]
+[ext_resource type="Texture2D" uid="uid://bpcqq5pns0ar5" path="res://Sprites/btn_circle.png" id="6_5ycs6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ycs6"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u0ix"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="CollectionCountry" type="Node2D" unique_id=1040942874]
+script = ExtResource("1_4u0ix")
+
+[node name="BG_Collection" type="Sprite2D" parent="." unique_id=458505218]
+position = Vector2(960, 540)
+texture = ExtResource("1_yb44k")
+
+[node name="BG_GridCollection" type="Sprite2D" parent="." unique_id=215009257]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(960, 540)
+texture = ExtResource("2_5oh88")
+
+[node name="IMG_FlagTitle" type="Sprite2D" parent="." unique_id=1904364645]
+position = Vector2(1750, 213)
+scale = Vector2(2, 2)
+texture = ExtResource("3_5oh88")
+
+[node name="TXT_CountryName" type="Label" parent="." unique_id=878516621]
+offset_left = 1354.0
+offset_top = 243.0
+offset_right = 1639.0
+offset_bottom = 288.0
+theme_override_font_sizes/font_size = 28
+text = "FRANCE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BTN_HelpCollection" type="Sprite2D" parent="." unique_id=1258396448]
+position = Vector2(1498, 191)
+texture = ExtResource("4_jpcxk")
+
+[node name="TXT_PopupCollection" type="Label" parent="BTN_HelpCollection" unique_id=1224644172]
+visible = false
+z_index = 10
+offset_left = -692.0
+offset_top = 42.0
+offset_right = 325.0
+offset_bottom = 303.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ycs6")
+text = "- Seuls les joueurs de 30 ans minimum sont éligibles.
+- Un joueur déposé dans une collection sera retiré de votre effectif.
+- Ajoutez une carte en cliquant sur le ballon dans le détail des cartes.
+- Appui long pour retirer une carte."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Slot1" type="Sprite2D" parent="." unique_id=1129771479]
+position = Vector2(250, 210)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot2" type="Sprite2D" parent="." unique_id=2019332083]
+position = Vector2(570, 210)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot3" type="Sprite2D" parent="." unique_id=1966247030]
+position = Vector2(890, 210)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot4" type="Sprite2D" parent="." unique_id=37327079]
+position = Vector2(1210, 210)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot5" type="Sprite2D" parent="." unique_id=2113139634]
+position = Vector2(250, 430)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot6" type="Sprite2D" parent="." unique_id=1026075469]
+position = Vector2(570, 430)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot7" type="Sprite2D" parent="." unique_id=263550311]
+position = Vector2(890, 430)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot8" type="Sprite2D" parent="." unique_id=1775106342]
+position = Vector2(1210, 430)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot9" type="Sprite2D" parent="." unique_id=1387443883]
+position = Vector2(250, 650)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot10" type="Sprite2D" parent="." unique_id=719874256]
+position = Vector2(570, 650)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot11" type="Sprite2D" parent="." unique_id=1475557089]
+position = Vector2(890, 650)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot12" type="Sprite2D" parent="." unique_id=382850545]
+position = Vector2(1210, 650)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot13" type="Sprite2D" parent="." unique_id=1964111052]
+position = Vector2(250, 870)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot14" type="Sprite2D" parent="." unique_id=1123172053]
+position = Vector2(570, 870)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot15" type="Sprite2D" parent="." unique_id=856426055]
+position = Vector2(890, 870)
+texture = ExtResource("3_jpcxk")
+
+[node name="Slot16" type="Sprite2D" parent="." unique_id=1453009747]
+position = Vector2(1210, 870)
+texture = ExtResource("3_jpcxk")
+
+[node name="Popup_Confirm" type="Node2D" parent="." unique_id=612371493]
+visible = false
+
+[node name="TXT_Confirm" type="Label" parent="Popup_Confirm" unique_id=1153027610]
+z_index = 10
+offset_left = 485.0
+offset_top = 395.0
+offset_right = 981.0
+offset_bottom = 675.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ycs6")
+text = "
+Attention ! Si vous confirmez le retrait du joueur, il sera définitivement supprimé."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Yes" type="Sprite2D" parent="Popup_Confirm" unique_id=1023617683]
+modulate = Color(0, 1, 0, 1)
+z_index = 11
+position = Vector2(917, 620)
+texture = ExtResource("6_5ycs6")
+
+[node name="BTN_No" type="Sprite2D" parent="Popup_Confirm" unique_id=1344527616]
+modulate = Color(1, 0, 0, 1)
+z_index = 11
+position = Vector2(550, 620)
+texture = ExtResource("6_5ycs6")
+
+[node name="TXT_TitleConditionsRewards" type="Label" parent="." unique_id=258592254]
+offset_left = 1380.0
+offset_top = 350.0
+offset_right = 1900.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "Conditions = Rewards"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward1" type="Label" parent="." unique_id=1074266537]
+offset_left = 1380.0
+offset_top = 400.0
+offset_right = 1900.0
+offset_bottom = 450.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "14 positions filled = 2 seconds positions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward2" type="Label" parent="." unique_id=1461541491]
+offset_left = 1380.0
+offset_top = 450.0
+offset_right = 1900.0
+offset_bottom = 500.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "24 positions total = 3 seconds positions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward3" type="Label" parent="." unique_id=2071852700]
+offset_left = 1380.0
+offset_top = 500.0
+offset_right = 1900.0
+offset_bottom = 550.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "20 specialties total = 3 specialties"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward4" type="Label" parent="." unique_id=2130912303]
+offset_left = 1380.0
+offset_top = 550.0
+offset_right = 1900.0
+offset_bottom = 600.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "2 cards of each color = 1 magenta card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward5" type="Label" parent="." unique_id=1336043268]
+offset_left = 1380.0
+offset_top = 600.0
+offset_right = 1900.0
+offset_bottom = 650.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "16 yellow cards = 1 yellow card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward6" type="Label" parent="." unique_id=148185540]
+offset_left = 1380.0
+offset_top = 650.0
+offset_right = 1900.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "14 orange cards = 1 orange card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward7" type="Label" parent="." unique_id=889117516]
+offset_left = 1380.0
+offset_top = 700.0
+offset_right = 1900.0
+offset_bottom = 750.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "12 red cards = 1 red card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward8" type="Label" parent="." unique_id=804286541]
+offset_left = 1380.0
+offset_top = 750.0
+offset_right = 1900.0
+offset_bottom = 800.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "10 white cards = 1 white card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward9" type="Label" parent="." unique_id=1413242584]
+offset_left = 1380.0
+offset_top = 800.0
+offset_right = 1900.0
+offset_bottom = 850.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "8 magenta cards = 1 magenta card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward10" type="Label" parent="." unique_id=2059222973]
+offset_left = 1380.0
+offset_top = 850.0
+offset_right = 1900.0
+offset_bottom = 900.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "3 blue cards = 1 blue card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward11" type="Label" parent="." unique_id=1322388732]
+offset_left = 1380.0
+offset_top = 900.0
+offset_right = 1900.0
+offset_bottom = 950.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "16 players aged 33 = 3 yellow cards"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Condition-Reward12" type="Label" parent="." unique_id=717360043]
+offset_left = 1380.0
+offset_top = 950.0
+offset_right = 1900.0
+offset_bottom = 1000.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4u0ix")
+text = "all conditions completed = 1 special card"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,13 +1,26 @@
 [gd_scene format=3 uid="uid://d3wv6hdctkpih"]
 
 [ext_resource type="Script" uid="uid://bpn8piugcb58" path="res://Scripts/login.gd" id="1_88cqn"]
+[ext_resource type="Texture2D" uid="uid://s320o46smhco" path="res://Sprites/Others/logo_fcm.png" id="3_5iow8"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="3_8164b"]
-[ext_resource type="Texture2D" uid="uid://dtmbafjwc3bjr" path="res://Sprites/logo_fcm.png" id="4_dpd3p"]
-[ext_resource type="Texture2D" uid="uid://b8vrf4y83wuts" path="res://Sprites/card_backgroundphysical.png" id="5_qrbpq"]
-[ext_resource type="Texture2D" uid="uid://ccqt5ft7gc3a1" path="res://Sprites/logo_google.png" id="6_d8m4u"]
+[ext_resource type="Texture2D" uid="uid://dqq6lj0isakm3" path="res://Sprites/Others/android_dark_rd_SU@4x.png" id="4_vrdhx"]
+[ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="5_5iow8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5iow8"]
 load_path = "res://.godot/imported/bg_login.jpg-1685255d7bf944ef95e5de9c2eeef7d3.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88cqn"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4117647, 0.4117647, 0.4117647, 0.6156863)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 46.0
 
 [node name="Login" type="Node2D" unique_id=2071326569]
 script = ExtResource("1_88cqn")
@@ -29,94 +42,66 @@ text = "Football Cards Manager"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="logo_FCM" type="Sprite2D" parent="." unique_id=1326612748]
+[node name="Logo_FCM" type="Sprite2D" parent="." unique_id=1326612748]
 z_index = 1
 position = Vector2(1646, 920)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_dpd3p")
+texture = ExtResource("3_5iow8")
 
-[node name="CardbackgroundGoogle" type="Sprite2D" parent="." unique_id=1256433006]
-modulate = Color(0, 0, 0, 1)
+[node name="BTN_Google" type="Sprite2D" parent="." unique_id=1490445893]
 z_index = 1
-position = Vector2(600, 400)
-rotation = 1.5707964
-texture = ExtResource("5_qrbpq")
+position = Vector2(630, 380)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_vrdhx")
 
-[node name="Logo_Google" type="Sprite2D" parent="." unique_id=47613503]
-z_index = 2
-position = Vector2(600, 383)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("6_d8m4u")
-
-[node name="TXT_SignInWithGoogle" type="Label" parent="." unique_id=304884863]
-z_index = 3
-offset_left = 400.0
-offset_top = 420.0
-offset_right = 800.0
-offset_bottom = 470.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "Sign in with Google"
+[node name="BTN_Email" type="Label" parent="." unique_id=1036051292]
+z_index = 1
+offset_left = 497.0
+offset_top = 450.0
+offset_right = 808.0
+offset_bottom = 530.0
+theme_override_fonts/font = ExtResource("5_5iow8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_88cqn")
+text = " Sign up with Email"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CardbackgroundEmail" type="Sprite2D" parent="." unique_id=612739043]
-modulate = Color(0, 0, 0, 1)
-z_index = 1
-position = Vector2(600, 600)
-rotation = 1.5707964
-texture = ExtResource("5_qrbpq")
-
-[node name="TXT_LogoMail" type="Label" parent="." unique_id=1852327000]
+[node name="Logo_Email" type="Label" parent="." unique_id=1852327000]
 z_index = 2
-offset_left = 400.0
-offset_top = 495.0
-offset_right = 800.0
-offset_bottom = 646.0
-theme_override_colors/font_color = Color(0.007843138, 0.5137255, 0.9098039, 1)
+offset_left = 467.0
+offset_top = 446.0
+offset_right = 523.0
+offset_bottom = 526.0
+theme_override_colors/font_color = Color(0, 0.011764706, 1, 1)
 theme_override_fonts/font = ExtResource("3_8164b")
-theme_override_font_sizes/font_size = 110
+theme_override_font_sizes/font_size = 50
 text = "@"
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 
-[node name="TXT_SignInWithEmail" type="Label" parent="." unique_id=73453758]
-z_index = 3
-offset_left = 400.0
-offset_top = 620.0
-offset_right = 800.0
-offset_bottom = 670.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "Sign in with Email"
-horizontal_alignment = 1
-
-[node name="CardbackgroundGuest" type="Sprite2D" parent="." unique_id=743613100]
-modulate = Color(0, 0, 0, 1)
+[node name="BTN_Guest" type="Label" parent="." unique_id=1482323535]
 z_index = 1
-position = Vector2(600, 800)
-rotation = 1.5707964
-texture = ExtResource("5_qrbpq")
+offset_left = 497.0
+offset_top = 560.0
+offset_right = 809.0
+offset_bottom = 640.0
+theme_override_fonts/font = ExtResource("5_5iow8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_88cqn")
+text = " Play as Guest"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TXT_LogoGuest" type="Label" parent="." unique_id=1534796761]
+[node name="Logo_Guest" type="Label" parent="." unique_id=1610093797]
 z_index = 2
-offset_left = 400.0
-offset_top = 695.0
-offset_right = 800.0
-offset_bottom = 846.0
-theme_override_colors/font_color = Color(0.007843138, 0.8627451, 0.16078432, 1)
+offset_left = 467.0
+offset_top = 558.0
+offset_right = 523.0
+offset_bottom = 638.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("3_8164b")
-theme_override_font_sizes/font_size = 110
+theme_override_font_sizes/font_size = 54
 text = "?"
 horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="TXT_PlayAsGuest" type="Label" parent="." unique_id=89102060]
-z_index = 3
-offset_left = 400.0
-offset_top = 820.0
-offset_right = 800.0
-offset_bottom = 870.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "Play as Guest"
-horizontal_alignment = 1
+vertical_alignment = 1

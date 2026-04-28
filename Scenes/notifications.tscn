@@ -1,37 +1,121 @@
 [gd_scene format=3 uid="uid://qhjb8wxm5mtp"]
 
 [ext_resource type="Script" uid="uid://cl4ihkw4lxvqv" path="res://Scripts/notifications.gd" id="1_3n02b"]
-[ext_resource type="Texture2D" uid="uid://bqrkjhm8xinn2" path="res://Sprites/Wallpapers/bg_black.jpg" id="1_i4giy"]
-[ext_resource type="Texture2D" uid="uid://c3o02fd63ge2d" path="res://Sprites/card_background.png" id="2_3n02b"]
-[ext_resource type="Texture2D" uid="uid://cneq40toha0am" path="res://Sprites/icon_bell.png" id="4_7htj6"]
-[ext_resource type="Texture2D" uid="uid://bd14j11tesdy2" path="res://Sprites/Flags/lang_fr.png" id="5_k0gq3"]
-[ext_resource type="Texture2D" uid="uid://dn5m5eq7rd5mt" path="res://Sprites/Flags/lang_en.png" id="6_v8ynq"]
-[ext_resource type="Texture2D" uid="uid://c0hmf617na1qj" path="res://Sprites/Flags/lang_de.png" id="7_5jsob"]
-[ext_resource type="Texture2D" uid="uid://baavlm82yu4kg" path="res://Sprites/Flags/lang_it.png" id="8_xahqb"]
-[ext_resource type="Texture2D" uid="uid://dvh01pn5nmjh0" path="res://Sprites/Flags/lang_es.png" id="9_if0s5"]
-[ext_resource type="Texture2D" uid="uid://jc87qpron1nn" path="res://Sprites/Flags/lang_pt.png" id="10_hdsqe"]
+[ext_resource type="Texture2D" uid="uid://bvemfy4nd8v01" path="res://Sprites/Flags/Flags Notifications/flag_notif_fr.png" id="2_p4yvo"]
+[ext_resource type="Texture2D" uid="uid://cl3tm5mbru2we" path="res://Sprites/Flags/Flags Notifications/flag_notif_en.png" id="3_irdw7"]
+[ext_resource type="Texture2D" path="res://Sprites/Others/bell.png" id="4_k0gq3"]
+[ext_resource type="Texture2D" uid="uid://c3vvo6eu2p21u" path="res://Sprites/Flags/Flags Notifications/flag_notif_de.png" id="4_v8ynq"]
+[ext_resource type="Texture2D" uid="uid://cg88vhoj285so" path="res://Sprites/Flags/Flags Notifications/flag_notif_it.png" id="5_5jsob"]
+[ext_resource type="Texture2D" uid="uid://bi5rlbk8h32kj" path="res://Sprites/Flags/Flags Notifications/flag_notif_es.png" id="6_xahqb"]
+[ext_resource type="Texture2D" uid="uid://dbhjqx0wi4h24" path="res://Sprites/Flags/Flags Notifications/flag_notif_pt.png" id="7_if0s5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4yvo"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irdw7"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0gq3"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Notifications" type="Node2D" unique_id=1104601523]
 script = ExtResource("1_3n02b")
 
-[node name="BG_Notifications" type="Sprite2D" parent="." unique_id=1920763936]
-modulate = Color(1, 1, 1, 0.6039216)
-position = Vector2(960, 540)
-texture = ExtResource("1_i4giy")
+[node name="OVL_DarkScreen" type="ColorRect" parent="." unique_id=1060592065]
+modulate = Color(1, 1, 1, 0.5882353)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
 
-[node name="Panel_Notifications" type="Sprite2D" parent="." unique_id=1488868047]
-position = Vector2(960, 800)
-texture = ExtResource("2_3n02b")
+[node name="CNT_Languages" type="HBoxContainer" parent="." unique_id=495956164]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 300.0
+offset_right = 1920.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
 
-[node name="IMG_Bell" type="Sprite2D" parent="." unique_id=1766447935]
-position = Vector2(960, 800)
-texture = ExtResource("4_7htj6")
+[node name="IMG_FlagFr" type="TextureRect" parent="CNT_Languages" unique_id=737994490]
+z_index = 1
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("2_p4yvo")
 
-[node name="TXT_Content" type="Label" parent="." unique_id=940427463]
-offset_left = 651.0
-offset_top = 594.0
-offset_right = 1270.0
-offset_bottom = 785.0
+[node name="IMG_FlagEn" type="TextureRect" parent="CNT_Languages" unique_id=757738014]
+z_index = 1
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("3_irdw7")
+
+[node name="IMG_FlagDe" type="TextureRect" parent="CNT_Languages" unique_id=3476972]
+z_index = 1
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("4_v8ynq")
+
+[node name="IMG_FlagIt" type="TextureRect" parent="CNT_Languages" unique_id=1144223813]
+z_index = 1
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("5_5jsob")
+
+[node name="IMG_FlagEs" type="TextureRect" parent="CNT_Languages" unique_id=332904947]
+z_index = 1
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("6_xahqb")
+
+[node name="IMG_FlagPt" type="TextureRect" parent="CNT_Languages" unique_id=1508055464]
+z_index = 1
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("7_if0s5")
+
+[node name="PNL_NotifPopup" type="PanelContainer" parent="." unique_id=545881239]
+anchors_preset = -1
+offset_left = 610.0
+offset_top = 650.0
+offset_right = 1310.0
+offset_bottom = 1030.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p4yvo")
+
+[node name="CNT_PopupContent" type="VBoxContainer" parent="PNL_NotifPopup" unique_id=1010674108]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="LBL_Content" type="Label" parent="PNL_NotifPopup/CNT_PopupContent" unique_id=940427463]
+z_index = 2
+custom_minimum_size = Vector2(600, 60)
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "Autoriser Football Cards Manager à vous envoyer des notifications ?"
@@ -39,64 +123,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="TXT_Accept" type="Label" parent="." unique_id=193603807]
-offset_left = 660.0
-offset_top = 860.0
-offset_right = 1260.0
-offset_bottom = 905.0
+[node name="IMG_Bell" type="TextureRect" parent="PNL_NotifPopup/CNT_PopupContent" unique_id=313518452]
+z_index = 10
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_k0gq3")
+expand_mode = 1
+
+[node name="BTN_Accept" type="Button" parent="PNL_NotifPopup/CNT_PopupContent" unique_id=1808763129]
+z_index = 2
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_irdw7")
 text = "Autoriser"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="TXT_Refuse" type="Label" parent="." unique_id=1614339987]
-offset_left = 660.0
-offset_top = 920.0
-offset_right = 1260.0
-offset_bottom = 965.0
+[node name="BTN_Refuse" type="Button" parent="PNL_NotifPopup/CNT_PopupContent" unique_id=1336194408]
+z_index = 2
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_k0gq3")
 text = "Ne pas autoriser"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TXT_Language" type="Label" parent="." unique_id=1443656400]
-offset_left = 651.0
-offset_top = 129.0
-offset_right = 1270.0
-offset_bottom = 233.0
-theme_override_font_sizes/font_size = 40
-text = "Langue"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Lang_FR" type="Sprite2D" parent="." unique_id=1934162445]
-position = Vector2(185, 340)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_k0gq3")
-
-[node name="Lang_EN" type="Sprite2D" parent="." unique_id=788958238]
-position = Vector2(495, 340)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("6_v8ynq")
-
-[node name="Lang_DE" type="Sprite2D" parent="." unique_id=555895891]
-position = Vector2(805, 340)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("7_5jsob")
-
-[node name="Lang_IT" type="Sprite2D" parent="." unique_id=1395402494]
-position = Vector2(1115, 340)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("8_xahqb")
-
-[node name="Lang_ES" type="Sprite2D" parent="." unique_id=4879968]
-position = Vector2(1425, 340)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("9_if0s5")
-
-[node name="Lang_PT" type="Sprite2D" parent="." unique_id=1531910369]
-position = Vector2(1735, 340)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("10_hdsqe")

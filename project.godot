@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FootballCardsManager"
-run/main_scene="uid://bnvv1rn1qx818"
+run/main_scene="uid://b1poi6n53q4u3"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 GameState="*uid://by4hxdbea4sim"
 Firebase="*uid://btrd78wgxifru"
+Taskbar="*uid://c52hum6s3qslo"
+SquadLoader="*uid://cv7h2dd3txr33"
 
 [display]
 

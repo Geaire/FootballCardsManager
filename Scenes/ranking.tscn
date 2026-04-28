@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cxo10shqblmfu"]
+
+[ext_resource type="Texture2D" uid="uid://hjejqqvcal5n" path="res://Sprites/background.jpg" id="1_eejnj"]
+[ext_resource type="Texture2D" uid="uid://c5jom8mmlhb0g" path="res://Sprites/grid.png" id="2_reyag"]
+
+[node name="Ranking" type="Node2D" unique_id=1435885901]
+
+[node name="BG_Ranking" type="Sprite2D" parent="." unique_id=402556432]
+position = Vector2(960, 540)
+texture = ExtResource("1_eejnj")
+
+[node name="BG_GridRanking" type="Sprite2D" parent="." unique_id=1734695373]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+position = Vector2(960, 540)
+texture = ExtResource("2_reyag")

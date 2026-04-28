@@ -25,6 +25,7 @@ var selected_concentration: int = 0
 var selected_motivation: int = 0
 var selected_anticipation: int = 0
 var selected_communication: int = 0
+var selected_card_id: String = ""
 
 # ── PARAMÈTRES GLOBAUX ────────────────────────────────────────────────────────
 var sound_on: bool = true
@@ -32,6 +33,30 @@ var language: String = "fr"
 var previous_scene: String = ""
 var selected_deco_index: int = 0
 var notifications_enabled: bool = false
+var selected_country: String = ""
+var diamonds: int = 0
+
+# ── PROFIL MANAGER ────────────────────────────────────────────────────────────
+var manager_name: String = ""
+var team_name: String = ""
+var team_logo_index: int = 0
+var seasons_played: int = 0
+var year: int = 1
+var competition_wins: int = 0
+
+# ── EFFECTIF MANAGER ──────────────────────────────────────────────────────────
+var cards_yellow:  Array = []
+var cards_orange:  Array = []
+var cards_red:     Array = []
+var cards_magenta: Array = []
+var cards_blue:    Array = []
+var cards_white:   Array = []
+var cards_special: Array = []
+var cards_loaded:  bool  = false
+
+# ── BONUS & TEAM ──────────────────────────────────────────────────────────────
+var selected_bonus1:    String = ""
+var bonus_slot_target:  int    = 0  # 1 ou 2 — quel slot on remplit au retour
 
 # ── CARTE DÉCO 1 ──────────────────────────────────────────────────────────────
 var deco1_note: int = 0

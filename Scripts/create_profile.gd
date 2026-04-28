@@ -1,6 +1,5 @@
 extends Node2D
 
-# ── NOEUDS ────────────────────────────────────────────────────────────────────
 @onready var lineedit_manager  = $LineEdit_Manager
 @onready var lineedit_team     = $LineEdit_TeamLabel
 @onready var btn_confirm       = $BTN_Confirm
@@ -10,12 +9,10 @@ extends Node2D
 @onready var txt_team_label    = $TXT_TeamLabel
 @onready var txt_confirm       = $TXT_Confirm
 
-# ── CONSTANTES ────────────────────────────────────────────────────────────────
 const MAX_NAME_LENGTH = 13
-const SCENE_MAIN_MENU = "res://Scenes/schedule.tscn"
+const SCENE_MAIN_MENU = "res://Scenes/main_menu.tscn"
 const ALLOWED_CHARS   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-'"
 
-# ── TRADUCTIONS ───────────────────────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {
 		"manager": "Nom du manager", "team": "Nom de l'équipe", "confirm": "Confirmer",
@@ -55,12 +52,10 @@ const TRANSLATIONS = {
 	}
 }
 
-# ── READY ─────────────────────────────────────────────────────────────────────
 func _ready():
-	lineedit_manager.max_length = MAX_NAME_LENGTH
-	lineedit_team.max_length    = MAX_NAME_LENGTH
-	txt_error_manager.visible   = false
-	txt_error_team.visible      = false
+	Taskbar.visible = false
+	lineedit_manager.max_length = MAX_NAME_LENGTH; lineedit_team.max_length = MAX_NAME_LENGTH
+	txt_error_manager.visible = false; txt_error_team.visible = false
 	_apply_translations()
 	Firebase.firestore_success.connect(_on_firestore_success)
 	Firebase.firestore_failed.connect(_on_firestore_failed)
@@ -74,7 +69,6 @@ func _is_valid_name(name: String) -> bool:
 		if not (c in ALLOWED_CHARS): return false
 	return true
 
-# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
 	if not (event is InputEventMouseButton): return
 	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
@@ -104,15 +98,121 @@ func _try_confirm():
 		"language": GameState.language, "sound_on": GameState.sound_on
 	})
 
-# ── FIRESTORE ─────────────────────────────────────────────────────────────────
+# ── PACK DE DÉPART ───────────────────────────────────────────────────────────
+const CARD_SCENE      = "res://Scenes/card_player.tscn"
+const STARTER_COLORS  = [
+	"yellow","yellow","yellow","yellow","yellow","yellow","yellow","yellow",
+	"orange","orange","orange","orange","orange","orange","orange","orange",
+	"red","red","red","red",
+	"magenta","magenta","magenta",
+	"blue","blue",
+	"white","white"
+]
+const ALL_POSITIONS = ["GB","DG","DD","DC","MG","MD","MDF","MC","MO","AG","AD","AC","ATT"]
+
+var _cards_pending: int = 0
+var _covered_positions: Array = []
+var _generated_cards: Array = []
+
+func _generate_starter_pack():
+	_cards_pending     = 0
+	_covered_positions = []
+	_generated_cards   = []
+	for color in STARTER_COLORS:
+		_generate_card_with_color(color)
+	_ensure_all_positions()
+	_save_all_cards()
+
+func _generate_card_with_color(color: String) -> Dictionary:
+	var card_scene = load(CARD_SCENE)
+	var card = card_scene.instantiate()
+	match color:
+		"yellow":  card.note = randi_range(60, 69)
+		"orange":  card.note = randi_range(70, 79)
+		"red":     card.note = randi_range(80, 89)
+		"magenta": card.note = randi_range(90, 99)
+		"blue":    card.note = randi_range(100, 129)
+		"white":   card.note = randi_range(40, 70)
+	card.color = color
+	card.generate_age_height_weight()
+	card.generate_nationality()
+	card.generate_positions()
+	card.generate_name()
+	card.generate_specialties()
+	card.generate_skills()
+	card.selected_card_id = str(Time.get_unix_time_from_system()) + "_" + str(randi())
+	var d = _card_to_dict(card)
+	_generated_cards.append(d)
+	if card.position1 not in _covered_positions:
+		_covered_positions.append(card.position1)
+	card.queue_free()
+	return d
+
+func _ensure_all_positions():
+	for pos in ALL_POSITIONS:
+		if pos not in _covered_positions:
+			var d = _generate_card_with_color("yellow")
+			d["position1"] = pos
+			d["position2"] = ""
+
+func _card_to_dict(card) -> Dictionary:
+	return {
+		"card_id": card.selected_card_id,
+		"note": card.note, "color": card.color,
+		"position1": card.position1, "position2": card.position2,
+		"position2_unlocked": 0,
+		"age": card.age, "height": card.height, "weight": card.weight,
+		"nationality": card.nationality,
+		"specialty1": card.specialty1, "specialty2": card.specialty2,
+		"firstname": card.firstname, "lastname": card.lastname,
+		"pin_color": "",
+		"strength": card.strength, "speed": card.speed,
+		"aggression": card.aggression, "positioning": card.positioning,
+		"stamina": card.stamina, "creativity": card.creativity,
+		"concentration": card.concentration, "motivation": card.motivation,
+		"anticipation": card.anticipation, "communication": card.communication
+	}
+
+func _save_all_cards():
+	_cards_pending = _generated_cards.size()
+	Firebase.firestore_success.connect(_on_card_saved)
+	Firebase.firestore_failed.connect(_on_card_save_failed)
+	for d in _generated_cards:
+		Firebase.update_document(
+			"managers/" + Firebase.user_id + "/cards",
+			d["card_id"], d)
+
+func _on_card_saved(_data: Dictionary):
+	_cards_pending -= 1
+	if _cards_pending <= 0:
+		if Firebase.firestore_success.is_connected(_on_card_saved):
+			Firebase.firestore_success.disconnect(_on_card_saved)
+		if Firebase.firestore_failed.is_connected(_on_card_save_failed):
+			Firebase.firestore_failed.disconnect(_on_card_save_failed)
+		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+
+func _on_card_save_failed(_error: String):
+	_cards_pending -= 1
+	if _cards_pending <= 0:
+		if Firebase.firestore_success.is_connected(_on_card_saved):
+			Firebase.firestore_success.disconnect(_on_card_saved)
+		if Firebase.firestore_failed.is_connected(_on_card_save_failed):
+			Firebase.firestore_failed.disconnect(_on_card_save_failed)
+		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+
 func _on_firestore_success(_data: Dictionary):
-	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+	# Profil créé → générer le pack de départ
+	if Firebase.firestore_success.is_connected(_on_firestore_success):
+		Firebase.firestore_success.disconnect(_on_firestore_success)
+	if Firebase.firestore_failed.is_connected(_on_firestore_failed):
+		Firebase.firestore_failed.disconnect(_on_firestore_failed)
+	_generate_starter_pack()
 
 func _on_firestore_failed(error: String):
 	print("Erreur Firestore : " + error)
 	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
 
-# ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
-	if not sprite.visible: return false
+	if not sprite.visible:
+		return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))

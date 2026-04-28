@@ -1,19 +1,16 @@
 extends Node
 
-# ── CONSTANTES ────────────────────────────────────────────────────────────────
 const API_KEY       = "AIzaSyCsGFJGO7gFPNMotP9O6OzprjwShqb7Dls"
 const PROJECT_ID    = "football-cards-manager"
 const AUTH_URL      = "https://identitytoolkit.googleapis.com/v1/accounts:"
 const FIRESTORE_URL = "https://firestore.googleapis.com/v1/projects/" + PROJECT_ID + "/databases/(default)/documents/"
 
-# ── VARIABLES ─────────────────────────────────────────────────────────────────
 var id_token:          String = ""
 var refresh_token:     String = ""
 var user_id:           String = ""
 var manager_email:     String = ""
 var manager_connected: bool   = false
 
-# ── SIGNAUX ───────────────────────────────────────────────────────────────────
 signal auth_success(user_id: String)
 signal auth_failed(error: String)
 signal firestore_success(data: Dictionary)
@@ -21,7 +18,6 @@ signal firestore_failed(error: String)
 signal password_reset_success
 signal password_reset_failed(error: String)
 
-# ── AUTH ──────────────────────────────────────────────────────────────────────
 func sign_up(email: String, password: String):
 	var url  = AUTH_URL + "signUp?key=" + API_KEY
 	var body = JSON.stringify({"email": email, "password": password, "returnSecureToken": true})
@@ -45,7 +41,6 @@ func send_password_reset(email: String):
 	var body = JSON.stringify({"requestType": "PASSWORD_RESET", "email": email})
 	_send_request(url, body, "_on_password_reset_response")
 
-# ── FIRESTORE ─────────────────────────────────────────────────────────────────
 func create_document(collection: String, doc_id: String, data: Dictionary):
 	var url  = FIRESTORE_URL + collection + "/" + doc_id
 	var body = JSON.stringify({"fields": _to_firestore(data)})
@@ -60,7 +55,14 @@ func update_document(collection: String, doc_id: String, data: Dictionary):
 	var body = JSON.stringify({"fields": _to_firestore(data)})
 	_send_request_auth(url, body, "_on_firestore_response", HTTPClient.METHOD_PATCH)
 
-# ── REQUÊTES HTTP ─────────────────────────────────────────────────────────────
+func get_collection(collection: String):
+	var url = FIRESTORE_URL + collection + "?pageSize=500"
+	_send_request_auth(url, "", "_on_collection_response", HTTPClient.METHOD_GET)
+
+func delete_document(collection: String, doc_id: String):
+	var url = FIRESTORE_URL + collection + "/" + doc_id
+	_send_request_auth(url, "", "_on_firestore_response", HTTPClient.METHOD_DELETE)
+
 func _send_request(url: String, body: String, callback: String):
 	var http = HTTPRequest.new()
 	add_child(http)
@@ -74,15 +76,14 @@ func _send_request_auth(url: String, body: String, callback: String, method: int
 	var headers = ["Content-Type: application/json", "Authorization: Bearer " + id_token]
 	http.request(url, headers, method, body)
 
-# ── CALLBACKS ─────────────────────────────────────────────────────────────────
 func _on_auth_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	if response_code == 200:
-		id_token = response.get("idToken", "")
-		refresh_token = response.get("refreshToken", "")
-		user_id = response.get("localId", "")
-		manager_email = response.get("email", "")
+		id_token          = response.get("idToken", "")
+		refresh_token     = response.get("refreshToken", "")
+		user_id           = response.get("localId", "")
+		manager_email     = response.get("email", "")
 		manager_connected = true
 		emit_signal("auth_success", user_id)
 	else:
@@ -104,15 +105,28 @@ func _on_firestore_response(_result, response_code, _headers, body, http):
 	else:
 		emit_signal("firestore_failed", response.get("error", {}).get("message", "Erreur inconnue"))
 
-# ── CONVERSION FIRESTORE ──────────────────────────────────────────────────────
+func _on_collection_response(_result, response_code, _headers, body, http):
+	http.queue_free()
+	var response = JSON.parse_string(body.get_string_from_utf8())
+	if response_code == 200:
+		var documents = response.get("documents", [])
+		var result = []
+		for doc in documents:
+			var parsed = _from_firestore(doc)
+			if not parsed.is_empty():
+				result.append(parsed)
+		emit_signal("firestore_success", {"documents": result})
+	else:
+		emit_signal("firestore_failed", response.get("error", {}).get("message", "Erreur inconnue"))
+
 func _to_firestore(data: Dictionary) -> Dictionary:
 	var fields = {}
 	for key in data:
 		var val = data[key]
-		if typeof(val) == TYPE_STRING:    fields[key] = {"stringValue": val}
-		elif typeof(val) == TYPE_INT:     fields[key] = {"integerValue": str(val)}
-		elif typeof(val) == TYPE_FLOAT:   fields[key] = {"doubleValue": val}
-		elif typeof(val) == TYPE_BOOL:    fields[key] = {"booleanValue": val}
+		if typeof(val) == TYPE_STRING:       fields[key] = {"stringValue": val}
+		elif typeof(val) == TYPE_INT:        fields[key] = {"integerValue": str(val)}
+		elif typeof(val) == TYPE_FLOAT:      fields[key] = {"doubleValue": val}
+		elif typeof(val) == TYPE_BOOL:       fields[key] = {"booleanValue": val}
 		elif typeof(val) == TYPE_DICTIONARY: fields[key] = {"mapValue": {"fields": _to_firestore(val)}}
 		elif typeof(val) == TYPE_ARRAY:
 			var arr = []

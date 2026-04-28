@@ -1,0 +1,556 @@
+[gd_scene format=3 uid="uid://bwhrarjrtwopg"]
+
+[ext_resource type="Texture2D" uid="uid://hjejqqvcal5n" path="res://Sprites/background.jpg" id="1_ck41f"]
+[ext_resource type="Script" uid="uid://8c41203juajn" path="res://Scripts/team.gd" id="1_h3a6e"]
+[ext_resource type="Texture2D" uid="uid://c5jom8mmlhb0g" path="res://Sprites/grid.png" id="2_0ib3d"]
+[ext_resource type="Texture2D" uid="uid://d2fxq0cewyowc" path="res://Sprites/card_background_300x200.png" id="3_uuywt"]
+[ext_resource type="Texture2D" uid="uid://dx1if6kmim4ej" path="res://Sprites/Others/cardborder.png" id="4_d6co1"]
+[ext_resource type="Texture2D" uid="uid://d2iyjmr727l4u" path="res://Sprites/Others/cardbackgroundwhite.png" id="5_1he0g"]
+[ext_resource type="Texture2D" uid="uid://ccul2qdqtbmvk" path="res://Sprites/Others/cardsilhouette.png" id="6_nak4y"]
+[ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="6_vyr1m"]
+[ext_resource type="Texture2D" uid="uid://u5otqy4bayrx" path="res://Sprites/shot_competition.png" id="7_bdi2c"]
+[ext_resource type="Texture2D" uid="uid://r6fi6whs1xat" path="res://Sprites/ovl_shot.png" id="8_h3a6e"]
+[ext_resource type="Texture2D" uid="uid://c06gqj2a6jbej" path="res://Sprites/ovl_popup.png" id="8_srdj2"]
+[ext_resource type="Texture2D" uid="uid://b57v5ottfkxhd" path="res://Sprites/grid_popup.png" id="9_h3a6e"]
+[ext_resource type="Texture2D" uid="uid://bpcqq5pns0ar5" path="res://Sprites/btn_circle.png" id="10_d6co1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyr1m"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="Team" type="Node2D" unique_id=602493284]
+script = ExtResource("1_h3a6e")
+
+[node name="BG_Team" type="Sprite2D" parent="." unique_id=547844146]
+position = Vector2(960, 540)
+texture = ExtResource("1_ck41f")
+
+[node name="BG_GridTeam" type="Sprite2D" parent="." unique_id=1403436104]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(960, 540)
+texture = ExtResource("2_0ib3d")
+
+[node name="Slots_BonusPlayers" type="Node2D" parent="." unique_id=619918233]
+
+[node name="SlotBonus1" type="Label" parent="Slots_BonusPlayers" unique_id=423905265]
+offset_left = 20.0
+offset_top = 110.0
+offset_right = 860.0
+offset_bottom = 270.0
+theme_override_font_sizes/font_size = 40
+text = "Clic to choose Bonus"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotBonus2" type="Label" parent="Slots_BonusPlayers" unique_id=125585368]
+offset_left = 20.0
+offset_top = 280.0
+offset_right = 860.0
+offset_bottom = 440.0
+theme_override_font_sizes/font_size = 40
+text = "Clic to choose Bonus"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotCardPlayer1" type="Sprite2D" parent="Slots_BonusPlayers" unique_id=984343060]
+position = Vector2(960, 190)
+texture = ExtResource("4_d6co1")
+
+[node name="SlotCardPlayer2" type="Sprite2D" parent="Slots_BonusPlayers" unique_id=846821378]
+position = Vector2(1230, 190)
+texture = ExtResource("4_d6co1")
+
+[node name="SlotCardPlayer3" type="Sprite2D" parent="Slots_BonusPlayers" unique_id=1284497371]
+position = Vector2(1500, 190)
+texture = ExtResource("4_d6co1")
+
+[node name="SlotCardPlayer4" type="Sprite2D" parent="Slots_BonusPlayers" unique_id=719502298]
+position = Vector2(1770, 190)
+texture = ExtResource("4_d6co1")
+
+[node name="SlotCardPlayer5" type="Sprite2D" parent="Slots_BonusPlayers" unique_id=220598065]
+position = Vector2(960, 360)
+texture = ExtResource("4_d6co1")
+
+[node name="SlotCardPlayer6" type="Sprite2D" parent="Slots_BonusPlayers" unique_id=458253705]
+position = Vector2(1230, 360)
+texture = ExtResource("4_d6co1")
+
+[node name="SlotCardPlayer7" type="Sprite2D" parent="Slots_BonusPlayers" unique_id=1623527711]
+position = Vector2(1500, 360)
+texture = ExtResource("4_d6co1")
+
+[node name="SlotCardPlayer8" type="Sprite2D" parent="Slots_BonusPlayers" unique_id=1825309797]
+position = Vector2(1770, 360)
+texture = ExtResource("4_d6co1")
+
+[node name="TotalCardsPlayer" type="Node2D" parent="." unique_id=1968206054]
+
+[node name="CardsYellow" type="Node2D" parent="TotalCardsPlayer" unique_id=1619310259]
+
+[node name="CardBackground" type="Sprite2D" parent="TotalCardsPlayer/CardsYellow" unique_id=1389755191]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(150, 540)
+texture = ExtResource("5_1he0g")
+
+[node name="CardSilhouette" type="Sprite2D" parent="TotalCardsPlayer/CardsYellow" unique_id=505001997]
+position = Vector2(180, 540)
+texture = ExtResource("6_nak4y")
+
+[node name="NoteMinMax" type="Label" parent="TotalCardsPlayer/CardsYellow" unique_id=42925563]
+z_index = 5
+offset_left = 34.0
+offset_top = 470.0
+offset_right = 174.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 32
+text = "111 - 111"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Count" type="Label" parent="TotalCardsPlayer/CardsYellow" unique_id=804791488]
+z_index = 5
+offset_left = 34.0
+offset_top = 540.0
+offset_right = 174.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 34
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardsOrange" type="Node2D" parent="TotalCardsPlayer" unique_id=800515850]
+
+[node name="CardBackground" type="Sprite2D" parent="TotalCardsPlayer/CardsOrange" unique_id=709787504]
+modulate = Color(1, 0.39215687, 0, 1)
+position = Vector2(420, 540)
+texture = ExtResource("5_1he0g")
+
+[node name="CardSilhouette" type="Sprite2D" parent="TotalCardsPlayer/CardsOrange" unique_id=1618870653]
+position = Vector2(450, 540)
+texture = ExtResource("6_nak4y")
+
+[node name="NoteMinMax" type="Label" parent="TotalCardsPlayer/CardsOrange" unique_id=189200270]
+z_index = 5
+offset_left = 304.0
+offset_top = 470.0
+offset_right = 444.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 32
+text = "70 - 79"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Count" type="Label" parent="TotalCardsPlayer/CardsOrange" unique_id=654613199]
+z_index = 5
+offset_left = 304.0
+offset_top = 540.0
+offset_right = 444.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 34
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardsRed" type="Node2D" parent="TotalCardsPlayer" unique_id=1311129483]
+
+[node name="CardBackground" type="Sprite2D" parent="TotalCardsPlayer/CardsRed" unique_id=659012857]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(690, 540)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_uuywt")
+
+[node name="CardSilhouette" type="Sprite2D" parent="TotalCardsPlayer/CardsRed" unique_id=134142436]
+position = Vector2(690, 540)
+scale = Vector2(0.4, 0.4)
+
+[node name="NoteMinMax" type="Label" parent="TotalCardsPlayer/CardsRed" unique_id=1210320456]
+z_index = 5
+offset_left = 574.0
+offset_top = 470.0
+offset_right = 714.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 32
+text = "80 - 89"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Count" type="Label" parent="TotalCardsPlayer/CardsRed" unique_id=403774989]
+z_index = 5
+offset_left = 574.0
+offset_top = 540.0
+offset_right = 714.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 34
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardsMagenta" type="Node2D" parent="TotalCardsPlayer" unique_id=1937920180]
+
+[node name="CardBackground" type="Sprite2D" parent="TotalCardsPlayer/CardsMagenta" unique_id=1117006941]
+modulate = Color(0.7058824, 0, 0.5882353, 1)
+position = Vector2(960, 540)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_uuywt")
+
+[node name="CardSilhouette" type="Sprite2D" parent="TotalCardsPlayer/CardsMagenta" unique_id=1909092446]
+position = Vector2(960, 540)
+scale = Vector2(0.4, 0.4)
+
+[node name="NoteMinMax" type="Label" parent="TotalCardsPlayer/CardsMagenta" unique_id=860108297]
+z_index = 5
+offset_left = 844.0
+offset_top = 470.0
+offset_right = 984.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 32
+text = "90 - 99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Count" type="Label" parent="TotalCardsPlayer/CardsMagenta" unique_id=357820642]
+z_index = 5
+offset_left = 844.0
+offset_top = 540.0
+offset_right = 984.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 34
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardsWhite" type="Node2D" parent="TotalCardsPlayer" unique_id=1501450337]
+
+[node name="CardBackground" type="Sprite2D" parent="TotalCardsPlayer/CardsWhite" unique_id=218239654]
+position = Vector2(1230, 540)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_uuywt")
+
+[node name="CardSilhouette" type="Sprite2D" parent="TotalCardsPlayer/CardsWhite" unique_id=716182671]
+position = Vector2(1230, 540)
+scale = Vector2(0.4, 0.4)
+
+[node name="NoteMinMax" type="Label" parent="TotalCardsPlayer/CardsWhite" unique_id=1573304531]
+z_index = 5
+offset_left = 1114.0
+offset_top = 470.0
+offset_right = 1254.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 32
+text = "40 - 112"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Count" type="Label" parent="TotalCardsPlayer/CardsWhite" unique_id=2064037531]
+z_index = 5
+offset_left = 1114.0
+offset_top = 540.0
+offset_right = 1254.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 34
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardsBlue" type="Node2D" parent="TotalCardsPlayer" unique_id=996517501]
+
+[node name="CardBackground" type="Sprite2D" parent="TotalCardsPlayer/CardsBlue" unique_id=1521264792]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(1500, 540)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_uuywt")
+
+[node name="CardSilhouette" type="Sprite2D" parent="TotalCardsPlayer/CardsBlue" unique_id=1627094321]
+position = Vector2(1500, 540)
+scale = Vector2(0.4, 0.4)
+
+[node name="NoteMinMax" type="Label" parent="TotalCardsPlayer/CardsBlue" unique_id=1834151173]
+z_index = 5
+offset_left = 1384.0
+offset_top = 470.0
+offset_right = 1524.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 32
+text = "100 - 131"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Count" type="Label" parent="TotalCardsPlayer/CardsBlue" unique_id=1235821925]
+z_index = 5
+offset_left = 1384.0
+offset_top = 540.0
+offset_right = 1524.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 34
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardsSpecial" type="Node2D" parent="TotalCardsPlayer" unique_id=1179235501]
+
+[node name="CardBackground" type="Sprite2D" parent="TotalCardsPlayer/CardsSpecial" unique_id=1615419910]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(1770, 540)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_uuywt")
+
+[node name="CardSilhouette" type="Sprite2D" parent="TotalCardsPlayer/CardsSpecial" unique_id=671312481]
+position = Vector2(1770, 540)
+scale = Vector2(0.4, 0.4)
+
+[node name="TXT_Count" type="Label" parent="TotalCardsPlayer/CardsSpecial" unique_id=1379186190]
+z_index = 5
+offset_left = 1654.0
+offset_top = 470.0
+offset_right = 1794.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 32
+text = "100 - 131"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalCardSpecial" type="Label" parent="TotalCardsPlayer/CardsSpecial" unique_id=978083876]
+z_index = 5
+offset_left = 1654.0
+offset_top = 540.0
+offset_right = 1794.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_vyr1m")
+theme_override_font_sizes/font_size = 34
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shots_Competitions" type="Node2D" parent="." unique_id=311314753]
+
+[node name="Shot1" type="Node2D" parent="Shots_Competitions" unique_id=830870150]
+
+[node name="CardBackground" type="Sprite2D" parent="Shots_Competitions/Shot1" unique_id=1395527503]
+position = Vector2(960, 720)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_bdi2c")
+
+[node name="OVL_Shot" type="Sprite2D" parent="Shots_Competitions/Shot1" unique_id=2016795131]
+modulate = Color(1, 1, 1, 0.6862745)
+position = Vector2(960, 720)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_h3a6e")
+
+[node name="TXT_Time" type="Label" parent="Shots_Competitions/Shot1" unique_id=1066511953]
+z_index = 7
+offset_left = 885.0
+offset_top = 650.0
+offset_right = 1035.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyr1m")
+text = "0h - 3h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot2" type="Node2D" parent="Shots_Competitions" unique_id=2081255358]
+position = Vector2(270, 0)
+
+[node name="CardBackground" type="Sprite2D" parent="Shots_Competitions/Shot2" unique_id=1764094853]
+position = Vector2(960, 720)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_bdi2c")
+
+[node name="TXT_Time" type="Label" parent="Shots_Competitions/Shot2" unique_id=1205540423]
+z_index = 7
+offset_left = 885.0
+offset_top = 650.0
+offset_right = 1035.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyr1m")
+text = "3h - 6h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot3" type="Node2D" parent="Shots_Competitions" unique_id=1346229842]
+position = Vector2(540, 0)
+
+[node name="CardBackground" type="Sprite2D" parent="Shots_Competitions/Shot3" unique_id=1586126517]
+position = Vector2(960, 720)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_bdi2c")
+
+[node name="TXT_Time" type="Label" parent="Shots_Competitions/Shot3" unique_id=1400542289]
+z_index = 7
+offset_left = 885.0
+offset_top = 650.0
+offset_right = 1035.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyr1m")
+text = "6h - 9h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot4" type="Node2D" parent="Shots_Competitions" unique_id=150249434]
+position = Vector2(810, 0)
+
+[node name="CardBackground" type="Sprite2D" parent="Shots_Competitions/Shot4" unique_id=912743989]
+position = Vector2(960, 720)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_bdi2c")
+
+[node name="TXT_Time" type="Label" parent="Shots_Competitions/Shot4" unique_id=1591655738]
+z_index = 7
+offset_left = 885.0
+offset_top = 650.0
+offset_right = 1035.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyr1m")
+text = "9h - 12h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot5" type="Node2D" parent="Shots_Competitions" unique_id=1226562286]
+position = Vector2(0, 170)
+
+[node name="CardBackground" type="Sprite2D" parent="Shots_Competitions/Shot5" unique_id=1302570503]
+position = Vector2(960, 720)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_bdi2c")
+
+[node name="TXT_Time" type="Label" parent="Shots_Competitions/Shot5" unique_id=1730665490]
+z_index = 7
+offset_left = 885.0
+offset_top = 650.0
+offset_right = 1035.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyr1m")
+text = "12h - 15h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot6" type="Node2D" parent="Shots_Competitions" unique_id=1927010902]
+position = Vector2(270, 170)
+
+[node name="CardBackground" type="Sprite2D" parent="Shots_Competitions/Shot6" unique_id=1112285286]
+position = Vector2(960, 720)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_bdi2c")
+
+[node name="TXT_Time" type="Label" parent="Shots_Competitions/Shot6" unique_id=189396860]
+z_index = 7
+offset_left = 885.0
+offset_top = 650.0
+offset_right = 1035.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyr1m")
+text = "15h - 18h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot7" type="Node2D" parent="Shots_Competitions" unique_id=641401088]
+position = Vector2(540, 170)
+
+[node name="CardBackground" type="Sprite2D" parent="Shots_Competitions/Shot7" unique_id=322156002]
+position = Vector2(960, 720)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_bdi2c")
+
+[node name="TXT_Time" type="Label" parent="Shots_Competitions/Shot7" unique_id=255043191]
+z_index = 7
+offset_left = 885.0
+offset_top = 650.0
+offset_right = 1035.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyr1m")
+text = "18h - 21h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shot8" type="Node2D" parent="Shots_Competitions" unique_id=4175380]
+position = Vector2(810, 170)
+
+[node name="CardBackground" type="Sprite2D" parent="Shots_Competitions/Shot8" unique_id=346897012]
+position = Vector2(960, 720)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_bdi2c")
+
+[node name="TXT_Time" type="Label" parent="Shots_Competitions/Shot8" unique_id=478035712]
+z_index = 7
+offset_left = 885.0
+offset_top = 650.0
+offset_right = 1035.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyr1m")
+text = "21h - 24h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Popup_Cards" type="Node2D" parent="." unique_id=1996014285]
+visible = false
+
+[node name="BG_Popup" type="Sprite2D" parent="Popup_Cards" unique_id=1123524651]
+z_index = 10
+position = Vector2(960, 763.5)
+texture = ExtResource("8_srdj2")
+
+[node name="BG_GridPopup" type="Sprite2D" parent="Popup_Cards" unique_id=1920555249]
+modulate = Color(0, 0, 1, 1)
+z_index = 11
+position = Vector2(960, 763.5)
+texture = ExtResource("9_h3a6e")
+
+[node name="BTN_ClosePopup" type="Sprite2D" parent="Popup_Cards" unique_id=662074442]
+modulate = Color(1, 0, 0, 1)
+z_index = 12
+position = Vector2(1837, 537)
+texture = ExtResource("10_d6co1")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Popup_Cards" unique_id=48043608]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardGrid" type="GridContainer" parent="Popup_Cards/ScrollContainer" unique_id=930151096]
+layout_mode = 2
+columns = 7

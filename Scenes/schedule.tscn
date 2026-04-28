@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://ioadjvqsgwh5" path="res://Scripts/schedule.gd" id="1_qej65"]
 [ext_resource type="Texture2D" uid="uid://hjejqqvcal5n" path="res://Sprites/background.jpg" id="2_hu0cf"]
 [ext_resource type="Texture2D" uid="uid://e8yj4xf6itqh" path="res://Sprites/swipe_down.png" id="3_a7fnj"]
-[ext_resource type="Texture2D" uid="uid://d2fxq0cewyowc" path="res://Sprites/card_background_300x200.png" id="3_qffxc"]
 [ext_resource type="Texture2D" uid="uid://c5jom8mmlhb0g" path="res://Sprites/grid.png" id="3_qtqtb"]
 [ext_resource type="Texture2D" uid="uid://5heaf2s1np5n" path="res://Sprites/btn_help.png" id="4_qffxc"]
 [ext_resource type="Texture2D" uid="uid://h5sy5diu63gp" path="res://Sprites/ovl_lock_300x200.png" id="5_1sw8w"]
 [ext_resource type="Texture2D" uid="uid://ddec8qyuesmds" path="res://Sprites/bg_popup.png" id="5_gi3xp"]
+[ext_resource type="Texture2D" uid="uid://d2iyjmr727l4u" path="res://Sprites/Others/cardbackgroundwhite.png" id="7_1sw8w"]
 [ext_resource type="Texture2D" uid="uid://bscxswprobd1e" path="res://Sprites/swipe_up.png" id="7_a7fnj"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="9_1sw8w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtqtb"]
-bg_color = Color(0, 0, 1, 1)
+bg_color = Color(1, 0.5019608, 0, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -25,7 +25,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0, 1, 1)
+border_color = Color(1, 0.5019608, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsp7w"]
 border_width_left = 1
@@ -83,7 +83,7 @@ position = Vector2(960, 540)
 texture = ExtResource("2_hu0cf")
 
 [node name="BG_GridSchedule" type="Sprite2D" parent="." unique_id=1311035966]
-modulate = Color(0, 0, 1, 1)
+modulate = Color(1, 0.5019608, 0, 1)
 z_index = 1
 position = Vector2(960, 540)
 texture = ExtResource("3_qtqtb")
@@ -110,7 +110,6 @@ position = Vector2(1362, 173)
 texture = ExtResource("4_qffxc")
 
 [node name="TXT_PopupCompetitions" type="Label" parent="." unique_id=1012508371]
-visible = false
 z_index = 10
 offset_left = 456.0
 offset_top = 239.0
@@ -132,7 +131,7 @@ autowrap_mode = 2
 
 [node name="Swipe_Down" type="Sprite2D" parent="." unique_id=1297102007]
 z_index = 2
-position = Vector2(1870, 1010)
+position = Vector2(1850, 940)
 texture = ExtResource("3_a7fnj")
 
 [node name="Shot_1" type="Node2D" parent="." unique_id=1879677896]
@@ -141,14 +140,14 @@ z_index = 2
 [node name="Card_Background_Shot" type="Sprite2D" parent="Shot_1" unique_id=1568341534]
 z_index = 3
 position = Vector2(300, 210)
-texture = ExtResource("3_qffxc")
+texture = ExtResource("7_1sw8w")
 
 [node name="TXT_Time" type="Label" parent="Shot_1" unique_id=1404057024]
 z_index = 7
 offset_left = 225.0
-offset_top = 120.0
+offset_top = 138.0
 offset_right = 375.0
-offset_bottom = 167.0
+offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
@@ -181,15 +180,15 @@ z_index = 2
 
 [node name="Card_Background_Shot" type="Sprite2D" parent="Shot_2" unique_id=690195862]
 z_index = 3
-position = Vector2(300, 440)
-texture = ExtResource("3_qffxc")
+position = Vector2(300, 430)
+texture = ExtResource("7_1sw8w")
 
 [node name="TXT_Time" type="Label" parent="Shot_2" unique_id=1941617043]
 z_index = 7
 offset_left = 225.0
-offset_top = 350.0
+offset_top = 358.0
 offset_right = 375.0
-offset_bottom = 397.0
+offset_bottom = 405.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
@@ -200,9 +199,9 @@ vertical_alignment = 1
 [node name="TXT_Competition" type="Label" parent="Shot_2" unique_id=1600533975]
 z_index = 5
 offset_left = 150.0
-offset_top = 410.0
+offset_top = 400.0
 offset_right = 450.0
-offset_bottom = 533.0
+offset_bottom = 523.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Competition"
@@ -222,15 +221,15 @@ z_index = 2
 
 [node name="Card_Background_Shot" type="Sprite2D" parent="Shot_3" unique_id=1066899040]
 z_index = 3
-position = Vector2(300, 670)
-texture = ExtResource("3_qffxc")
+position = Vector2(300, 650)
+texture = ExtResource("7_1sw8w")
 
 [node name="TXT_Time" type="Label" parent="Shot_3" unique_id=1515013442]
 z_index = 7
-offset_left = 225.0
-offset_top = 580.0
-offset_right = 375.0
-offset_bottom = 627.0
+offset_left = 227.0
+offset_top = 581.0
+offset_right = 377.0
+offset_bottom = 628.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
@@ -241,9 +240,9 @@ vertical_alignment = 1
 [node name="TXT_Competition" type="Label" parent="Shot_3" unique_id=1203894481]
 z_index = 5
 offset_left = 150.0
-offset_top = 640.0
+offset_top = 620.0
 offset_right = 450.0
-offset_bottom = 763.0
+offset_bottom = 743.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Competition"
@@ -263,15 +262,15 @@ z_index = 2
 
 [node name="Card_Background_Shot" type="Sprite2D" parent="Shot_4" unique_id=225972923]
 z_index = 3
-position = Vector2(300, 900)
-texture = ExtResource("3_qffxc")
+position = Vector2(300, 870)
+texture = ExtResource("7_1sw8w")
 
 [node name="TXT_Time" type="Label" parent="Shot_4" unique_id=1081842360]
 z_index = 7
-offset_left = 225.0
-offset_top = 810.0
-offset_right = 375.0
-offset_bottom = 857.0
+offset_left = 227.0
+offset_top = 801.0
+offset_right = 377.0
+offset_bottom = 848.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
@@ -282,9 +281,9 @@ vertical_alignment = 1
 [node name="TXT_Competition" type="Label" parent="Shot_4" unique_id=634485273]
 z_index = 5
 offset_left = 150.0
-offset_top = 870.0
+offset_top = 840.0
 offset_right = 450.0
-offset_bottom = 993.0
+offset_bottom = 963.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Competition"
@@ -305,14 +304,14 @@ z_index = 2
 [node name="Card_Background_Shot" type="Sprite2D" parent="Shot_5" unique_id=1068440840]
 z_index = 3
 position = Vector2(1630, 210)
-texture = ExtResource("3_qffxc")
+texture = ExtResource("7_1sw8w")
 
 [node name="TXT_Time" type="Label" parent="Shot_5" unique_id=1222681336]
 z_index = 7
 offset_left = 1555.0
-offset_top = 120.0
+offset_top = 138.0
 offset_right = 1705.0
-offset_bottom = 167.0
+offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
@@ -345,15 +344,15 @@ z_index = 2
 
 [node name="Card_Background_Shot" type="Sprite2D" parent="Shot_6" unique_id=72356594]
 z_index = 3
-position = Vector2(1630, 440)
-texture = ExtResource("3_qffxc")
+position = Vector2(1630, 430)
+texture = ExtResource("7_1sw8w")
 
 [node name="TXT_Time" type="Label" parent="Shot_6" unique_id=1307953072]
 z_index = 7
 offset_left = 1555.0
-offset_top = 350.0
+offset_top = 358.0
 offset_right = 1705.0
-offset_bottom = 397.0
+offset_bottom = 405.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
@@ -364,9 +363,9 @@ vertical_alignment = 1
 [node name="TXT_Competition" type="Label" parent="Shot_6" unique_id=1610653849]
 z_index = 5
 offset_left = 1480.0
-offset_top = 410.0
+offset_top = 400.0
 offset_right = 1780.0
-offset_bottom = 533.0
+offset_bottom = 523.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Competition"
@@ -386,15 +385,15 @@ z_index = 2
 
 [node name="Card_Background_Shot" type="Sprite2D" parent="Shot_7" unique_id=985402139]
 z_index = 3
-position = Vector2(1630, 670)
-texture = ExtResource("3_qffxc")
+position = Vector2(1630, 650)
+texture = ExtResource("7_1sw8w")
 
 [node name="TXT_Time" type="Label" parent="Shot_7" unique_id=1636064079]
 z_index = 7
 offset_left = 1555.0
-offset_top = 580.0
+offset_top = 579.0
 offset_right = 1705.0
-offset_bottom = 627.0
+offset_bottom = 626.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
@@ -405,9 +404,9 @@ vertical_alignment = 1
 [node name="TXT_Competition" type="Label" parent="Shot_7" unique_id=839710699]
 z_index = 5
 offset_left = 1480.0
-offset_top = 640.0
+offset_top = 620.0
 offset_right = 1780.0
-offset_bottom = 763.0
+offset_bottom = 743.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Competition"
@@ -427,15 +426,15 @@ z_index = 2
 
 [node name="Card_Background_Shot" type="Sprite2D" parent="Shot_8" unique_id=238942225]
 z_index = 3
-position = Vector2(1630, 900)
-texture = ExtResource("3_qffxc")
+position = Vector2(1630, 870)
+texture = ExtResource("7_1sw8w")
 
 [node name="TXT_Time" type="Label" parent="Shot_8" unique_id=1980658408]
 z_index = 7
 offset_left = 1555.0
-offset_top = 810.0
+offset_top = 799.0
 offset_right = 1705.0
-offset_bottom = 857.0
+offset_bottom = 846.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tsp7w")
@@ -446,9 +445,9 @@ vertical_alignment = 1
 [node name="TXT_Competition" type="Label" parent="Shot_8" unique_id=921360529]
 z_index = 5
 offset_left = 1480.0
-offset_top = 870.0
+offset_top = 840.0
 offset_right = 1780.0
-offset_bottom = 993.0
+offset_bottom = 963.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Competition"
@@ -556,7 +555,7 @@ position = Vector2(960, 1620)
 texture = ExtResource("2_hu0cf")
 
 [node name="BG_GridSchedule" type="Sprite2D" parent="Page2" unique_id=141734025]
-self_modulate = Color(0, 0, 1, 1)
+self_modulate = Color(1, 0.5019608, 0, 1)
 z_index = 1
 position = Vector2(960, 1620)
 texture = ExtResource("3_qtqtb")
@@ -652,6 +651,7 @@ position = Vector2(1362, 1771)
 texture = ExtResource("4_qffxc")
 
 [node name="TXT_PopupEvolution" type="Label" parent="Page2" unique_id=342623633]
+visible = false
 z_index = 10
 offset_left = 451.0
 offset_top = 1833.0
@@ -669,7 +669,7 @@ autowrap_mode = 2
 
 [node name="Swipe_Up" type="Sprite2D" parent="Page2" unique_id=1888043378]
 z_index = 2
-position = Vector2(1870, 1150)
+position = Vector2(1850, 1220)
 texture = ExtResource("7_a7fnj")
 
 [node name="TXT_Bonus" type="Label" parent="Page2" unique_id=1069415909]

@@ -2,16 +2,38 @@
 
 [ext_resource type="Texture2D" uid="uid://eqe0xk17nf27" path="res://Sprites/Wallpapers/bg_detailcardplayer.jpg" id="1_gswx7"]
 [ext_resource type="Script" uid="uid://crd7xr1rnehck" path="res://Scripts/detail_card_player.gd" id="1_u8okc"]
-[ext_resource type="PackedScene" uid="uid://bkfpyr8yi4g2m" path="res://Scenes/card_player.tscn" id="2_v5e6n"]
-[ext_resource type="Texture2D" uid="uid://c3o02fd63ge2d" path="res://Sprites/card_background.png" id="3_ngsar"]
-[ext_resource type="Texture2D" uid="uid://mikkmg4nkqhm" path="res://Sprites/card_border.png" id="4_oh0sr"]
-[ext_resource type="Texture2D" uid="uid://crnk1dsofiomg" path="res://Sprites/card_silhouette.png" id="5_cqtoe"]
+[ext_resource type="Texture2D" uid="uid://b261jcbf3yr5h" path="res://Sprites/Detail Card Player/dcp_cardbackground.png" id="4_4fdco"]
+[ext_resource type="Texture2D" uid="uid://ox3nljf14snf" path="res://Sprites/Detail Card Player/dcp_cardborder.png" id="5_w3era"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="6_oh0sr"]
-[ext_resource type="Texture2D" uid="uid://b8vrf4y83wuts" path="res://Sprites/card_backgroundphysical.png" id="7_cqtoe"]
-[ext_resource type="Texture2D" uid="uid://djpyktraqd11s" path="res://Sprites/card_borderphysical.png" id="8_b10uk"]
-[ext_resource type="Texture2D" uid="uid://bpcqq5pns0ar5" path="res://Sprites/btn_circle.png" id="9_meft2"]
+[ext_resource type="Texture2D" uid="uid://vc040g54alaj" path="res://Sprites/Detail Card Player/dcp_cardsilhouette.png" id="7_w3era"]
+[ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="8_8t0j4"]
+[ext_resource type="FontFile" uid="uid://d345ux4b2dmhk" path="res://Fonts/Roboto-Regular.ttf" id="9_kgodw"]
 [ext_resource type="FontFile" uid="uid://djse4v8s8ul4d" path="res://Fonts/MPLUS1p-Bold.ttf" id="10_6o6a0"]
+[ext_resource type="Texture2D" uid="uid://crq8r4sbrv8i2" path="res://Sprites/Specialties/specialty_tackling.png" id="10_h1anc"]
+[ext_resource type="Texture2D" uid="uid://powvw137cca2" path="res://Sprites/Others/circle.png" id="11_1nbe8"]
+[ext_resource type="Texture2D" uid="uid://dugyg7kkokyba" path="res://Sprites/Specialties/specialty_crossing.png" id="11_mfqbj"]
 [ext_resource type="FontFile" uid="uid://qchfwvdcm00i" path="res://Fonts/MPLUS1p-Black.ttf" id="11_u8okc"]
+[ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="12_4fdco"]
+[ext_resource type="Texture2D" uid="uid://qrl4gu1nu4k" path="res://Sprites/Detail Card Player/dcp_cardbackground2.png" id="15_e7tvd"]
+[ext_resource type="Texture2D" uid="uid://dmf8mkx4j1mmi" path="res://Sprites/Others/soccerball.png" id="15_w3era"]
+[ext_resource type="Texture2D" uid="uid://dq5lmq416fvr1" path="res://Sprites/Detail Card Player/dcp_cardborder2.png" id="16_ngjs2"]
+[ext_resource type="Texture2D" uid="uid://d0egkw3iik5v8" path="res://Sprites/Detail Card Player/dcp_cardbackground3.png" id="18_h1anc"]
+[ext_resource type="Texture2D" uid="uid://ee7n8ubwv57l" path="res://Sprites/Detail Card Player/dcp_cardborder3.png" id="19_mfqbj"]
+[ext_resource type="Texture2D" uid="uid://bhwvy4mh2g5mk" path="res://Sprites/Detail Card Player/dcp_cardbackground4.png" id="20_w3era"]
+[ext_resource type="Texture2D" uid="uid://bv37xbvoqcm3p" path="res://Sprites/Detail Card Player/dcp_cardborder4.png" id="21_e7tvd"]
+[ext_resource type="Texture2D" uid="uid://dcd88f26cuxwo" path="res://Sprites/Others/diamond.png" id="22_ngjs2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fdco"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ffgkw"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
 
 [node name="Detail_Card_Player" type="Node2D" unique_id=1937574575]
 script = ExtResource("1_u8okc")
@@ -20,31 +42,183 @@ script = ExtResource("1_u8okc")
 position = Vector2(960, 540)
 texture = ExtResource("1_gswx7")
 
-[node name="BTN_CloseDetailCardPlayer" type="Sprite2D" parent="." unique_id=1596337298]
+[node name="BTN_Close" type="Sprite2D" parent="." unique_id=1596337298]
+modulate = Color(1, 0, 0, 1)
 z_index = 2
-position = Vector2(1780, 70)
-texture = ExtResource("9_meft2")
+position = Vector2(1850, 90)
+texture = ExtResource("11_1nbe8")
 
-[node name="CardPreview" parent="." unique_id=1206912900 instance=ExtResource("2_v5e6n")]
+[node name="BTN_Help" type="Sprite2D" parent="." unique_id=473951052]
+position = Vector2(1850, 200)
+texture = ExtResource("15_w3era")
+
+[node name="TXT_Popup" type="Label" parent="BTN_Help" unique_id=338651291]
+visible = false
+z_index = 20
+offset_left = -808.0
+offset_top = 57.0
+offset_right = 36.0
+offset_bottom = 651.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4fdco")
+text = "Rename player :
+- Blue, white, and special cards only.
+
+Attributte Position et specialty :
+- Earned through rewards.
+
+Pin Color :
+- Organize using colors.
+
+Training Pro :
+- +1 every 20 matches (1 match/day).
+
+Training Formation :
+- Use diamonds to upgrade (1 level/season)."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Player" type="Node2D" parent="." unique_id=685870784]
+
+[node name="BG_CardBackground" type="Sprite2D" parent="Player" unique_id=453454340]
 z_index = 1
-position = Vector2(400, 300)
+position = Vector2(400, 280)
+texture = ExtResource("4_4fdco")
+
+[node name="BG_CardBorder" type="Sprite2D" parent="Player" unique_id=1992331348]
+z_index = 3
+position = Vector2(400, 280)
+texture = ExtResource("5_w3era")
+
+[node name="BG_CardSilhouette" type="Sprite2D" parent="Player" unique_id=901787414]
+z_index = 2
+position = Vector2(333, 280)
+texture = ExtResource("7_w3era")
+
+[node name="TXT_Note" type="Label" parent="Player" unique_id=2047377376]
+z_index = 4
+offset_left = 469.0
+offset_top = 65.0
+offset_right = 695.0
+offset_bottom = 202.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 100
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Position1" type="Label" parent="Player" unique_id=1783205425]
+z_index = 4
+offset_left = 173.0
+offset_top = 84.0
+offset_right = 417.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_8t0j4")
+theme_override_font_sizes/font_size = 88
+text = "Pos1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Position2" type="Label" parent="Player" unique_id=2079123604]
+z_index = 4
+offset_left = 173.0
+offset_top = 186.0
+offset_right = 417.0
+offset_bottom = 290.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 88
+text = "Pos2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IMG_Specialty1" type="Sprite2D" parent="Player" unique_id=534192437]
+z_index = 4
+position = Vector2(582, 250)
+scale = Vector2(2, 2)
+texture = ExtResource("10_h1anc")
+
+[node name="IMG_Specialty2" type="Sprite2D" parent="Player" unique_id=778589490]
+z_index = 4
+position = Vector2(582, 389)
+scale = Vector2(2, 2)
+texture = ExtResource("11_mfqbj")
+
+[node name="IMG_Flag" type="Sprite2D" parent="Player" unique_id=910125159]
+z_index = 3
+position = Vector2(128, 191)
+texture = ExtResource("12_4fdco")
+
+[node name="TXT_FirstName" type="Label" parent="Player" unique_id=2016125971]
+z_index = 4
+offset_left = 102.0
+offset_top = 285.0
+offset_right = 527.0
+offset_bottom = 376.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 65
+text = "First Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_LastName" type="Label" parent="Player" unique_id=680775656]
+z_index = 4
+offset_left = 102.0
+offset_top = 364.0
+offset_right = 527.0
+offset_bottom = 455.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_u8okc")
+theme_override_font_sizes/font_size = 65
+text = "Last Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IMG_SoccerBall" type="Sprite2D" parent="Player" unique_id=1529209069]
+z_index = 4
+position = Vector2(124.99999, 97.000015)
+texture = ExtResource("15_w3era")
+
+[node name="BTN_PinColor" type="Sprite2D" parent="Player" unique_id=361542004]
+z_index = 3
+position = Vector2(128, 283)
+texture = ExtResource("11_1nbe8")
 
 [node name="Skills" type="Node2D" parent="." unique_id=469869775]
+position = Vector2(0, 60)
 
-[node name="CardBackgroundSkills" type="Sprite2D" parent="Skills" unique_id=1113663137]
+[node name="TXT_SkillsTitle" type="Label" parent="Skills" unique_id=398328358]
+z_index = 4
+offset_left = 107.0
+offset_top = 541.0
+offset_right = 697.0
+offset_bottom = 606.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "SKILLS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BG_CardBackground" type="Sprite2D" parent="Skills" unique_id=1113663137]
 z_index = 1
 position = Vector2(400, 800)
-texture = ExtResource("3_ngsar")
+texture = ExtResource("4_4fdco")
 
-[node name="CardSilhouetteSkills" type="Sprite2D" parent="Skills" unique_id=192292123]
-z_index = 2
-position = Vector2(400, 800)
-texture = ExtResource("5_cqtoe")
-
-[node name="CardBorderSkills" type="Sprite2D" parent="Skills" unique_id=838634187]
+[node name="BG_CardBorder" type="Sprite2D" parent="Skills" unique_id=838634187]
 z_index = 3
 position = Vector2(400, 800)
-texture = ExtResource("4_oh0sr")
+texture = ExtResource("5_w3era")
+
+[node name="BG_CardSilhouette" type="Sprite2D" parent="Skills" unique_id=192292123]
+z_index = 2
+position = Vector2(333, 800)
+texture = ExtResource("7_w3era")
 
 [node name="TXT_StrengthLabel" type="Label" parent="Skills" unique_id=1047299356]
 z_index = 4
@@ -292,16 +466,29 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Physical" type="Node2D" parent="." unique_id=540855286]
+position = Vector2(0, 60)
 
-[node name="CardBackgroundPhysical" type="Sprite2D" parent="Physical" unique_id=408385372]
+[node name="TXT_PhysicalTitle" type="Label" parent="Physical" unique_id=725503410]
+z_index = 4
+offset_left = 672.0
+offset_top = 541.0
+offset_right = 954.0
+offset_bottom = 606.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "PHYSICAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BG_CardBackground" type="Sprite2D" parent="Physical" unique_id=408385372]
 z_index = 1
 position = Vector2(810, 800)
-texture = ExtResource("7_cqtoe")
+texture = ExtResource("15_e7tvd")
 
-[node name="CardBorderPhysical" type="Sprite2D" parent="Physical" unique_id=1969539343]
+[node name="BG_CardBorder" type="Sprite2D" parent="Physical" unique_id=1969539343]
 z_index = 3
 position = Vector2(810, 800)
-texture = ExtResource("8_b10uk")
+texture = ExtResource("16_ngjs2")
 
 [node name="TXT_AgeLabel" type="Label" parent="Physical" unique_id=758081042]
 z_index = 4
@@ -378,193 +565,825 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player Evolution" type="Node2D" parent="." unique_id=507651848]
+[node name="Evolution" type="Node2D" parent="." unique_id=507651848]
 
-[node name="BTN_Rename" type="Sprite2D" parent="Player Evolution" unique_id=2077760092]
+[node name="TXT_RenamePlayer" type="Label" parent="Evolution" unique_id=299735104]
 z_index = 1
-position = Vector2(815, 140)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePosition2" type="Sprite2D" parent="Player Evolution" unique_id=1328749480]
-z_index = 1
-position = Vector2(815, 220)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributeSpecialty1" type="Sprite2D" parent="Player Evolution" unique_id=1384146759]
-z_index = 1
-position = Vector2(815, 300)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributeSpecialty2" type="Sprite2D" parent="Player Evolution" unique_id=1456557657]
-z_index = 1
-position = Vector2(815, 380)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePinColor" type="Sprite2D" parent="Player Evolution" unique_id=310793502]
-z_index = 1
-position = Vector2(815, 460)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#00CED1" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=554204814]
-z_index = 1
-position = Vector2(100, 0)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#003366" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=236256697]
-z_index = 1
-position = Vector2(200, 0)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#FF69B4" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=2107656202]
-z_index = 1
-position = Vector2(300, 0)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#6A0DAD" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=802899850]
-z_index = 1
-position = Vector2(400, 0)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#B8B8B8" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=881260373]
-z_index = 1
-position = Vector2(500, 0)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#8B4513" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1829074168]
-z_index = 1
-position = Vector2(600, 0)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#FF6B6B" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1356779211]
-z_index = 1
-position = Vector2(700, 0)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#800020" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=1233534402]
-z_index = 1
-position = Vector2(800, 0)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#95D5B2" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=644254331]
-z_index = 1
-position = Vector2(900, 0)
-texture = ExtResource("9_meft2")
-
-[node name="BTN_AttributePin#2D6A4F" type="Sprite2D" parent="Player Evolution/BTN_AttributePinColor" unique_id=273819443]
-z_index = 1
-position = Vector2(1000, 0)
-texture = ExtResource("9_meft2")
-
-[node name="TXT_Rename" type="Label" parent="Player Evolution" unique_id=299735104]
-z_index = 1
-offset_left = 870.0
-offset_top = 108.0
-offset_right = 1070.0
-offset_bottom = 173.0
+offset_left = 840.0
+offset_top = 140.0
+offset_right = 1040.0
+offset_bottom = 205.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 text = "Rename"
 vertical_alignment = 1
 
-[node name="TXT_RenameFirstName" type="Label" parent="Player Evolution" unique_id=261132362]
+[node name="BTN_RenamePlayer" type="Sprite2D" parent="Evolution" unique_id=2077760092]
 z_index = 1
-offset_left = 1060.0
-offset_top = 90.0
-offset_right = 1475.0
-offset_bottom = 175.0
-theme_override_fonts/font = ExtResource("10_6o6a0")
-theme_override_font_sizes/font_size = 60
-text = "First Name"
-horizontal_alignment = 2
-vertical_alignment = 1
+position = Vector2(774, 170)
+texture = ExtResource("11_1nbe8")
 
-[node name="LineEdit_FirstName" type="LineEdit" parent="Player Evolution" unique_id=418160183]
-offset_left = 1060.0
-offset_top = 85.0
-offset_right = 1475.0
-offset_bottom = 178.0
+[node name="LineEdit_FirstName" type="LineEdit" parent="Evolution" unique_id=418160183]
+offset_left = 930.0
+offset_top = 50.0
+offset_right = 1345.0
+offset_bottom = 140.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 alignment = 1
 
-[node name="TXT_RenameLastName" type="Label" parent="Player Evolution" unique_id=671564548]
-z_index = 1
-offset_left = 1500.0
-offset_top = 90.0
-offset_right = 1915.0
-offset_bottom = 175.0
-theme_override_fonts/font = ExtResource("11_u8okc")
-theme_override_font_sizes/font_size = 60
-text = "Last Name"
-vertical_alignment = 1
-
-[node name="LineEdit_LastName" type="LineEdit" parent="Player Evolution" unique_id=1142479911]
-offset_left = 1500.0
-offset_top = 85.0
-offset_right = 1915.0
-offset_bottom = 178.0
+[node name="LineEdit_LastName" type="LineEdit" parent="Evolution" unique_id=1142479911]
+offset_left = 1355.0
+offset_top = 50.0
+offset_right = 1770.0
+offset_bottom = 140.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 alignment = 1
 
-[node name="TXT_AttributePosition2" type="Label" parent="Player Evolution" unique_id=1154836499]
+[node name="TXT_AttributePosition2" type="Label" parent="Evolution" unique_id=1154836499]
 z_index = 1
-offset_left = 870.0
-offset_top = 188.0
-offset_right = 1370.0
-offset_bottom = 253.0
+offset_left = 840.0
+offset_top = 220.0
+offset_right = 1340.0
+offset_bottom = 285.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 text = "Attribute Position 2"
 vertical_alignment = 1
 
-[node name="TXT_AttributeSpecialty1" type="Label" parent="Player Evolution" unique_id=155777934]
+[node name="BTN_AttributePosition2" type="Sprite2D" parent="Evolution" unique_id=1328749480]
 z_index = 1
-offset_left = 870.0
-offset_top = 268.0
-offset_right = 1370.0
-offset_bottom = 333.0
+position = Vector2(774, 250)
+texture = ExtResource("11_1nbe8")
+
+[node name="TXT_AttributeSpecialty1" type="Label" parent="Evolution" unique_id=155777934]
+z_index = 1
+offset_left = 840.0
+offset_top = 300.0
+offset_right = 1340.0
+offset_bottom = 365.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 text = "Attribute Specialty 1"
 vertical_alignment = 1
 
-[node name="TXT_AttributeSpecialty2" type="Label" parent="Player Evolution" unique_id=330612274]
+[node name="BTN_AttributeSpecialty1" type="Sprite2D" parent="Evolution" unique_id=1384146759]
 z_index = 1
-offset_left = 870.0
-offset_top = 348.0
-offset_right = 1370.0
-offset_bottom = 413.0
+position = Vector2(774, 330)
+texture = ExtResource("11_1nbe8")
+
+[node name="TXT_AttributeSpecialty2" type="Label" parent="Evolution" unique_id=330612274]
+z_index = 1
+offset_left = 840.0
+offset_top = 380.0
+offset_right = 1340.0
+offset_bottom = 445.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 text = "Attribute Specialty 2"
 vertical_alignment = 1
 
-[node name="TXT_AttributePinColor" type="Label" parent="Player Evolution" unique_id=1947795996]
-visible = false
+[node name="BTN_AttributeSpecialty2" type="Sprite2D" parent="Evolution" unique_id=1456557657]
 z_index = 1
-offset_left = 870.0
-offset_top = 428.0
-offset_right = 1370.0
-offset_bottom = 493.0
+position = Vector2(774, 410)
+texture = ExtResource("11_1nbe8")
+
+[node name="TXT_AttributePinColor" type="Label" parent="Evolution" unique_id=1947795996]
+z_index = 1
+offset_left = 840.0
+offset_top = 460.0
+offset_right = 1340.0
+offset_bottom = 525.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 text = "Attribute Pin Color"
 vertical_alignment = 1
 
-[node name="BTN_Achievements" type="Sprite2D" parent="." unique_id=1554284939]
-z_index = 2
-position = Vector2(1780, 980)
-texture = ExtResource("9_meft2")
-
-[node name="TXT_Achievements" type="Label" parent="." unique_id=70223637]
+[node name="BTN_AttributePinColor" type="Sprite2D" parent="Evolution" unique_id=310793502]
 z_index = 1
-offset_left = 1320.0
-offset_top = 945.0
-offset_right = 1720.0
-offset_bottom = 1015.0
+position = Vector2(774, 490)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#00CED1" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=554204814]
+visible = false
+z_index = 1
+position = Vector2(100, 0)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#003366" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=236256697]
+visible = false
+z_index = 5
+position = Vector2(100, 75)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#FF69B4" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=2107656202]
+visible = false
+z_index = 5
+position = Vector2(200, 0)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#6A0DAD" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=802899850]
+visible = false
+z_index = 5
+position = Vector2(200, 75)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#FF6B6B" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=1356779211]
+visible = false
+z_index = 5
+position = Vector2(300, 0)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#800020" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=1233534402]
+visible = false
+z_index = 5
+position = Vector2(300, 75)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#B8B8B8" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=881260373]
+visible = false
+z_index = 5
+position = Vector2(400, 0)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#8B4513" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=1829074168]
+visible = false
+z_index = 5
+position = Vector2(400, 75)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#95D5B2" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=644254331]
+visible = false
+z_index = 5
+position = Vector2(500, 0)
+texture = ExtResource("11_1nbe8")
+
+[node name="BTN_AttributePin#2D6A4F" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=273819443]
+visible = false
+z_index = 5
+position = Vector2(500, 75)
+texture = ExtResource("11_1nbe8")
+
+[node name="Achievements" type="Node2D" parent="." unique_id=1452908079]
+position = Vector2(0, 60)
+
+[node name="TXT_AchievementsTitle" type="Label" parent="Achievements" unique_id=1496283505]
+z_index = 4
+offset_left = 923.0
+offset_top = 541.0
+offset_right = 1334.0
+offset_bottom = 606.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "ACHIEVEMENTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BG_CardBackground" type="Sprite2D" parent="Achievements" unique_id=710422587]
+position = Vector2(1130, 798)
+texture = ExtResource("18_h1anc")
+
+[node name="BG_CardBorder" type="Sprite2D" parent="Achievements" unique_id=1258924470]
+position = Vector2(1130, 798)
+texture = ExtResource("19_mfqbj")
+
+[node name="TXT_PlayedLabel" type="Label" parent="Achievements" unique_id=856624864]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 925.0
+offset_top = 620.0
+offset_right = 1191.0
+offset_bottom = 685.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
-text = "Achievements"
-horizontal_alignment = 2
+text = "Played"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_PlayedValue" type="Label" parent="Achievements" unique_id=854943522]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 1208.0
+offset_top = 620.0
+offset_right = 1342.0
+offset_bottom = 685.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_WinsLabel" type="Label" parent="Achievements" unique_id=160163981]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 925.0
+offset_top = 680.0
+offset_right = 1191.0
+offset_bottom = 745.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Wins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_WinsValue" type="Label" parent="Achievements" unique_id=1475545200]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 1208.0
+offset_top = 680.0
+offset_right = 1342.0
+offset_bottom = 745.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_LossesLabel" type="Label" parent="Achievements" unique_id=824702223]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 925.0
+offset_top = 740.0
+offset_right = 1191.0
+offset_bottom = 805.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Losses"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_LossesValue" type="Label" parent="Achievements" unique_id=398253319]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 1208.0
+offset_top = 740.0
+offset_right = 1342.0
+offset_bottom = 805.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_WinRateLabel" type="Label" parent="Achievements" unique_id=1950478326]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 925.0
+offset_top = 800.0
+offset_right = 1191.0
+offset_bottom = 865.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Win Rate %"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_WinRateValue" type="Label" parent="Achievements" unique_id=302740138]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 1208.0
+offset_top = 800.0
+offset_right = 1342.0
+offset_bottom = 865.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_CompetitionsPlayedLabel" type="Label" parent="Achievements" unique_id=2101589318]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 925.0
+offset_top = 860.0
+offset_right = 1191.0
+offset_bottom = 985.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Competitions Played"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TXT_CompetitionsPlayedValue" type="Label" parent="Achievements" unique_id=1633731807]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 1208.0
+offset_top = 860.0
+offset_right = 1342.0
+offset_bottom = 985.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 46
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Training" type="Node2D" parent="." unique_id=969207217]
+position = Vector2(-20, 60)
+
+[node name="BG_CardBackground" type="Sprite2D" parent="Training" unique_id=691537094]
+position = Vector2(1600, 600)
+texture = ExtResource("20_w3era")
+
+[node name="BG_CardBorder" type="Sprite2D" parent="Training" unique_id=1065042745]
+position = Vector2(1600, 600)
+texture = ExtResource("21_e7tvd")
+
+[node name="TrainingFormation" type="Node2D" parent="Training" unique_id=1393811794]
+visible = false
+
+[node name="TXT_TrainingTitle" type="Label" parent="Training/TrainingFormation" unique_id=1539550038]
+z_index = 4
+offset_left = 1394.0
+offset_top = 135.0
+offset_right = 1805.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "Training Formation"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round1" type="Label" parent="Training/TrainingFormation" unique_id=659674589]
+offset_left = 1419.0
+offset_top = 225.0
+offset_right = 1735.0
+offset_bottom = 275.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "+ 15 for 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round1" unique_id=111092977]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round2" type="Label" parent="Training/TrainingFormation" unique_id=2121038840]
+offset_left = 1419.0
+offset_top = 295.0
+offset_right = 1735.0
+offset_bottom = 345.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "+ 9 for 200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round2" unique_id=1560578873]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round3" type="Label" parent="Training/TrainingFormation" unique_id=966381034]
+offset_left = 1419.0
+offset_top = 365.0
+offset_right = 1735.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "+ 8 for 300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round3" unique_id=1091874027]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round4" type="Label" parent="Training/TrainingFormation" unique_id=1891680119]
+offset_left = 1419.0
+offset_top = 435.0
+offset_right = 1735.0
+offset_bottom = 485.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "+ 7 for 400"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round4" unique_id=1730813475]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round5" type="Label" parent="Training/TrainingFormation" unique_id=47329954]
+offset_left = 1419.0
+offset_top = 505.0
+offset_right = 1735.0
+offset_bottom = 555.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "+ 6 for 500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round5" unique_id=688597769]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round6" type="Label" parent="Training/TrainingFormation" unique_id=977581386]
+offset_left = 1419.0
+offset_top = 575.0
+offset_right = 1735.0
+offset_bottom = 625.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "+ 5 for 600"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round6" unique_id=1302216100]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round7" type="Label" parent="Training/TrainingFormation" unique_id=556496389]
+offset_left = 1419.0
+offset_top = 645.0
+offset_right = 1735.0
+offset_bottom = 695.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "+ 4 for 700"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round7" unique_id=54844664]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round8" type="Label" parent="Training/TrainingFormation" unique_id=977836095]
+offset_left = 1419.0
+offset_top = 715.0
+offset_right = 1735.0
+offset_bottom = 765.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "+ 3 for 800"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round8" unique_id=1017856736]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round9" type="Label" parent="Training/TrainingFormation" unique_id=1193849940]
+offset_left = 1419.0
+offset_top = 785.0
+offset_right = 1735.0
+offset_bottom = 835.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "+ 2 for 900"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round9" unique_id=776016838]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round10" type="Label" parent="Training/TrainingFormation" unique_id=147381210]
+offset_left = 1419.0
+offset_top = 855.0
+offset_right = 1735.0
+offset_bottom = 905.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = " + 1 position for "
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round10" unique_id=401770568]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TXT_Round11" type="Label" parent="Training/TrainingFormation" unique_id=1519436255]
+offset_left = 1419.0
+offset_top = 925.0
+offset_right = 1735.0
+offset_bottom = 975.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = " + 1 specialty for"
+vertical_alignment = 1
+
+[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round11" unique_id=248596648]
+z_index = 10
+position = Vector2(314, 25)
+texture = ExtResource("22_ngjs2")
+
+[node name="TrainingClassic" type="Node2D" parent="Training" unique_id=781255706]
+
+[node name="TXT_TrainingTitle" type="Label" parent="Training/TrainingClassic" unique_id=1098760906]
+z_index = 4
+offset_left = 1384.0
+offset_top = 135.0
+offset_right = 1795.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "Training Pro"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_MatchesLabel" type="Label" parent="Training/TrainingClassic" unique_id=1893482100]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 1400.0
+offset_top = 205.0
+offset_right = 1810.0
+offset_bottom = 270.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Matchs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round1" type="Label" parent="Training/TrainingClassic" unique_id=104905866]
+offset_left = 1500.0
+offset_top = 280.0
+offset_right = 1550.0
+offset_bottom = 330.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round2" type="Label" parent="Training/TrainingClassic" unique_id=1364474253]
+offset_left = 1500.0
+offset_top = 350.0
+offset_right = 1550.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round3" type="Label" parent="Training/TrainingClassic" unique_id=1789798643]
+offset_left = 1500.0
+offset_top = 420.0
+offset_right = 1550.0
+offset_bottom = 470.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round4" type="Label" parent="Training/TrainingClassic" unique_id=1129495604]
+offset_left = 1500.0
+offset_top = 490.0
+offset_right = 1550.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round5" type="Label" parent="Training/TrainingClassic" unique_id=1412638238]
+offset_left = 1500.0
+offset_top = 560.0
+offset_right = 1550.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round6" type="Label" parent="Training/TrainingClassic" unique_id=1718483766]
+offset_left = 1500.0
+offset_top = 630.0
+offset_right = 1550.0
+offset_bottom = 680.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round7" type="Label" parent="Training/TrainingClassic" unique_id=33385270]
+offset_left = 1500.0
+offset_top = 700.0
+offset_right = 1550.0
+offset_bottom = 750.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round8" type="Label" parent="Training/TrainingClassic" unique_id=1623259482]
+offset_left = 1500.0
+offset_top = 770.0
+offset_right = 1550.0
+offset_bottom = 820.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round9" type="Label" parent="Training/TrainingClassic" unique_id=353747420]
+offset_left = 1500.0
+offset_top = 840.0
+offset_right = 1550.0
+offset_bottom = 890.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round10" type="Label" parent="Training/TrainingClassic" unique_id=755859028]
+offset_left = 1500.0
+offset_top = 910.0
+offset_right = 1550.0
+offset_bottom = 960.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round11" type="Label" parent="Training/TrainingClassic" unique_id=907959228]
+offset_left = 1650.0
+offset_top = 280.0
+offset_right = 1700.0
+offset_bottom = 330.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round12" type="Label" parent="Training/TrainingClassic" unique_id=1477346963]
+offset_left = 1650.0
+offset_top = 350.0
+offset_right = 1700.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round13" type="Label" parent="Training/TrainingClassic" unique_id=1816270253]
+offset_left = 1650.0
+offset_top = 420.0
+offset_right = 1700.0
+offset_bottom = 470.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round14" type="Label" parent="Training/TrainingClassic" unique_id=1649300519]
+offset_left = 1650.0
+offset_top = 490.0
+offset_right = 1700.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round15" type="Label" parent="Training/TrainingClassic" unique_id=1965379639]
+offset_left = 1650.0
+offset_top = 560.0
+offset_right = 1700.0
+offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round16" type="Label" parent="Training/TrainingClassic" unique_id=126849828]
+offset_left = 1650.0
+offset_top = 630.0
+offset_right = 1700.0
+offset_bottom = 680.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round17" type="Label" parent="Training/TrainingClassic" unique_id=889001634]
+offset_left = 1650.0
+offset_top = 700.0
+offset_right = 1700.0
+offset_bottom = 750.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round18" type="Label" parent="Training/TrainingClassic" unique_id=1328823649]
+offset_left = 1650.0
+offset_top = 770.0
+offset_right = 1700.0
+offset_bottom = 820.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round19" type="Label" parent="Training/TrainingClassic" unique_id=2001248640]
+offset_left = 1650.0
+offset_top = 840.0
+offset_right = 1700.0
+offset_bottom = 890.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TXT_Round20" type="Label" parent="Training/TrainingClassic" unique_id=1222703861]
+offset_left = 1650.0
+offset_top = 910.0
+offset_right = 1700.0
+offset_bottom = 960.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
+text = "X"
+horizontal_alignment = 1
 vertical_alignment = 1
