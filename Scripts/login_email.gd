@@ -24,20 +24,17 @@ var _mode: String = ""
 # ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
 	Taskbar.visible = false
-	# Tout caché par défaut
 	lbl_incorrect_email.visible    = false
 	lbl_incorrect_password.visible = false
-	btn_forgot.visible             = false   # ← visible seulement sur mauvais mdp
+	btn_forgot.visible             = false
 	inp_forgot.visible             = false
 	img_send_reset.visible         = false
 	btn_send_reset.visible         = false
 	lbl_reset_confirm.visible      = false
-	# Limites
 	inp_email.max_length    = MAX_EMAIL_LENGTH
 	inp_password.max_length = MAX_PASSWORD_LENGTH
 	inp_forgot.max_length   = MAX_EMAIL_LENGTH
-	# Pas de secret — supprimé intentionnellement
-	# Signaux
+	# Pas de secret sur le mot de passe — intentionnel
 	btn_login.gui_input.connect(_on_btn_login_input)
 	btn_signup.gui_input.connect(_on_btn_signup_input)
 	btn_forgot.gui_input.connect(_on_btn_forgot_input)
@@ -124,7 +121,7 @@ func _on_auth_failed(_error: String):
 		lbl_incorrect_email.visible = true
 	else:
 		lbl_incorrect_password.visible = true
-		btn_forgot.visible             = true   # ← apparaît seulement ici
+		btn_forgot.visible             = true
 
 # ── VALIDATION ────────────────────────────────────────────────────────────────
 func _is_valid_email(email: String) -> bool:

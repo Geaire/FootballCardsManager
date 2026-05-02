@@ -1,19 +1,20 @@
 extends Node2D
 
 # ── NŒUDS ─────────────────────────────────────────────────────────────────────
-@onready var lbl_manager          = $LBL_Manager
-@onready var inp_manager          = $INP_Manager
-@onready var lbl_incorrect_manager= $LBL_IncorrectManager
-@onready var lbl_team             = $LBL_Team
-@onready var inp_team             = $INP_Team
-@onready var lbl_incorrect_team   = $LBL_IncorrectTeam
-@onready var btn_confirm          = $BTN_Confirm   # Label — Mouse Filter Stop
+@onready var lbl_manager           = $LBL_Manager
+@onready var inp_manager           = $INP_Manager
+@onready var lbl_incorrect_manager = $LBL_IncorrectManager
+@onready var lbl_team              = $LBL_Team
+@onready var inp_team              = $INP_Team
+@onready var lbl_incorrect_team    = $LBL_IncorrectTeam
+@onready var btn_confirm           = $BTN_Confirm   # Label — Mouse Filter Stop
 
 # ── CONSTANTES ────────────────────────────────────────────────────────────────
 const MAX_NAME_LENGTH = 13
-const SCENE_MAIN_MENU = "res://Scenes/main_menu.tscn"
+const SCENE_SCHEDULE  = "res://Scenes/schedule.tscn"
 const ALLOWED_CHARS   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-'"
 
+# ── TRADUCTIONS — popup uniquement ────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {
 		"manager": "Nom du manager", "team": "Nom de l'équipe", "confirm": "Confirmer",
@@ -83,7 +84,7 @@ const STARTER_COLORS = [
 ]
 const ALL_POSITIONS = ["GB","DG","DD","DC","MG","MD","MDF","MC","MO","AG","AD","AC","ATT"]
 
-var _cards_pending: int    = 0
+var _cards_pending: int       = 0
 var _covered_positions: Array = []
 var _generated_cards: Array   = []
 
@@ -102,9 +103,9 @@ func _ready():
 # ── TRADUCTIONS ────────────────────────────────────────────────────────────────
 func _apply_translations():
 	var t = TRANSLATIONS[GameState.language]
-	lbl_manager.text  = t["manager"]
-	lbl_team.text     = t["team"]
-	btn_confirm.text  = t["confirm"]
+	lbl_manager.text = t["manager"]
+	lbl_team.text    = t["team"]
+	btn_confirm.text = t["confirm"]
 
 # ── VALIDATION NOM ────────────────────────────────────────────────────────────
 func _is_valid_name(name: String) -> bool:
@@ -112,7 +113,7 @@ func _is_valid_name(name: String) -> bool:
 		if not (c in ALLOWED_CHARS): return false
 	return true
 
-# ── INPUT BTN_Confirm (Label → gui_input) ─────────────────────────────────────
+# ── INPUT BTN_Confirm ─────────────────────────────────────────────────────────
 func _on_btn_confirm_input(event: InputEvent):
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
@@ -169,8 +170,8 @@ func _on_firestore_success(_data: Dictionary):
 	_generate_starter_pack()
 
 func _on_firestore_failed(error: String):
-	print("Erreur Firestore : " + error)
-	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+	print("Erreur Firestore create_profile : " + error)
+	get_tree().change_scene_to_file(SCENE_SCHEDULE)
 
 # ── GÉNÉRATION STARTER PACK ───────────────────────────────────────────────────
 func _generate_starter_pack():
@@ -227,7 +228,7 @@ func _card_to_dict(card) -> Dictionary:
 		"specialty2":         card.specialty2,
 		"firstname":          card.firstname,
 		"lastname":           card.lastname,
-		"pin_color":          "",
+		"ball_color":         "",
 		"strength":           card.strength,
 		"speed":              card.speed,
 		"aggression":         card.aggression,
@@ -257,7 +258,7 @@ func _on_card_saved(_data: Dictionary):
 			Firebase.firestore_success.disconnect(_on_card_saved)
 		if Firebase.firestore_failed.is_connected(_on_card_save_failed):
 			Firebase.firestore_failed.disconnect(_on_card_save_failed)
-		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+		get_tree().change_scene_to_file(SCENE_SCHEDULE)
 
 func _on_card_save_failed(_error: String):
 	_cards_pending -= 1
@@ -266,4 +267,4 @@ func _on_card_save_failed(_error: String):
 			Firebase.firestore_success.disconnect(_on_card_saved)
 		if Firebase.firestore_failed.is_connected(_on_card_save_failed):
 			Firebase.firestore_failed.disconnect(_on_card_save_failed)
-		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+		get_tree().change_scene_to_file(SCENE_SCHEDULE)

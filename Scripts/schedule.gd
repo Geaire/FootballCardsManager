@@ -42,40 +42,29 @@ const WEEKLY_NEWS = {
 	"pt": ["Bem-vindo ao Football Cards Manager!", "Campeonato Clássico disponível.", "", "", ""],
 }
 
+# ── TRADUCTIONS — popup uniquement ────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {
-		"title_competitions": "Compétitions de la semaine", "news_title": "Newsletter !",
-		"bonus": "BONUS", "competitions": "COMPÉTITIONS", "design": "DESIGN", "others": "AUTRES", "bugs": "BUGS",
 		"popup_comp": "- FCM s'adapte à votre vie et à vos envies.\n- Choisissez quand jouer et quoi jouer.\n- Programmez vos compétitions pour la semaine prochaine.\n- Glissez / Déposez. Glissez / Retirez.\n- 1 championnat occupe 2 Shots espacés de 6h.\n- Planning verrouillé le dimanche à 18h.",
 		"popup_evo": "- FCM évoluera avec vos idées.\n- Cliquez sur votre thématique, soyez le plus précis possible.\n- Nous sélectionnerons et intégrerons vos meilleures suggestions.",
 	},
 	"en": {
-		"title_competitions": "Next week competitions", "news_title": "Newsletter!",
-		"bonus": "BONUS", "competitions": "COMPETITIONS", "design": "DESIGN", "others": "OTHERS", "bugs": "BUGS",
 		"popup_comp": "- FCM adapts to your life and desires.\n- Choose when to play and what to play.\n- Schedule your competitions for next week.\n- Drag / Drop. Drag / Remove.\n- 1 championship occupies 2 Shots spaced 6h apart.\n- Schedule locked on Sunday at 18h.",
 		"popup_evo": "- FCM will evolve with your ideas.\n- Click on your topic, be as precise as possible.\n- We will select and integrate your best suggestions.",
 	},
 	"es": {
-		"title_competitions": "Competiciones de la semana", "news_title": "Newsletter!",
-		"bonus": "BONUS", "competitions": "COMPETICIONES", "design": "DISEÑO", "others": "OTROS", "bugs": "BUGS",
 		"popup_comp": "- FCM se adapta a tu vida y deseos.\n- Elige cuándo y qué jugar.\n- Programa tus competiciones para la semana próxima.\n- Arrastra / Suelta. Arrastra / Retira.\n- 1 campeonato ocupa 2 Shots espaciados 6h.\n- Planificación bloqueada el domingo a las 18h.",
 		"popup_evo": "- FCM evolucionará con tus ideas.\n- Haz clic en tu tema, sé lo más preciso posible.\n- Seleccionaremos e integraremos tus mejores sugerencias.",
 	},
 	"de": {
-		"title_competitions": "Wettkämpfe der Woche", "news_title": "Newsletter!",
-		"bonus": "BONUS", "competitions": "WETTKÄMPFE", "design": "DESIGN", "others": "ANDERE", "bugs": "BUGS",
 		"popup_comp": "- FCM passt sich deinem Leben an.\n- Wähle wann und was du spielst.\n- Plane deine Lieblingsbewerbe für nächste Woche.\n- Ziehen / Ablegen. Ziehen / Entfernen.\n- 1 Meisterschaft belegt 2 Shots mit 6h Abstand.\n- Zeitplan gesperrt am Sonntag um 18h.",
 		"popup_evo": "- FCM wird mit deinen Ideen wachsen.\n- Klicke auf dein Thema, sei so präzise wie möglich.\n- Wir wählen deine besten Vorschläge aus.",
 	},
 	"it": {
-		"title_competitions": "Competizioni della settimana", "news_title": "Newsletter!",
-		"bonus": "BONUS", "competitions": "COMPETIZIONI", "design": "DESIGN", "others": "ALTRI", "bugs": "BUGS",
 		"popup_comp": "- FCM si adatta alla tua vita e ai tuoi desideri.\n- Scegli quando e cosa giocare.\n- Programma le tue competizioni per la prossima settimana.\n- Trascina / Rilascia. Trascina / Rimuovi.\n- 1 campionato occupa 2 Shot distanziati di 6h.\n- Pianificazione bloccata domenica alle 18h.",
 		"popup_evo": "- FCM evolverà con le tue idee.\n- Clicca sul tuo tema, sii il più preciso possibile.\n- Selezioneremo e integreremo i tuoi migliori suggerimenti.",
 	},
 	"pt": {
-		"title_competitions": "Competições da semana", "news_title": "Newsletter!",
-		"bonus": "BONUS", "competitions": "COMPETIÇÕES", "design": "DESIGN", "others": "OUTROS", "bugs": "BUGS",
 		"popup_comp": "- FCM adapta-se à sua vida e desejos.\n- Escolha quando e o que jogar.\n- Programe as suas competições para a semana próxima.\n- Arraste / Solte. Arraste / Retire.\n- 1 campeonato ocupa 2 Shots espaçados 6h.\n- Planeamento bloqueado no domingo às 18h.",
 		"popup_evo": "- FCM evoluirá com as suas ideias.\n- Clique no seu tema, seja o mais preciso possível.\n- Selecionaremos e integraremos as suas melhores sugestões.",
 	},
@@ -87,36 +76,46 @@ const SHOT_TIMES          = {1:"0h - 3h",2:"3h - 6h",3:"6h - 9h",4:"9h - 12h",5:
 const LONG_PRESS_DURATION = 0.5
 const SLIDE_DURATION      = 0.35
 
-var shot_data:Dictionary={}; var catalogue_available:Array=[]; var drag_active:bool=false
-var drag_comp_name:String=""; var drag_comp_type:String=""; var drag_origin_shot:int=-1
-var drag_origin_cat:int=-1; var drag_visual:Label=null; var press_slot:int=-1
-var press_timer:float=0.0; var press_holding:bool=false; var current_page:int=1
-var is_animating:bool=false; var touch_start:Vector2=Vector2.ZERO; var locked:bool=false
-var page1_nodes:Array=[]
+var shot_data:           Dictionary = {}
+var catalogue_available: Array      = []
+var drag_active:         bool       = false
+var drag_comp_name:      String     = ""
+var drag_comp_type:      String     = ""
+var drag_origin_shot:    int        = -1
+var drag_origin_cat:     int        = -1
+var drag_visual:         Label      = null
+var press_slot:          int        = -1
+var press_timer:         float      = 0.0
+var press_holding:       bool       = false
+var current_page:        int        = 1
+var is_animating:        bool       = false
+var touch_start:         Vector2    = Vector2.ZERO
+var locked:              bool       = false
+var page1_nodes:         Array      = []
 
 # ── NŒUDS ─────────────────────────────────────────────────────────────────────
-@onready var lbl_title_competitions = $LBL_TitleCompetitions   # Label
-@onready var btn_help_competitions  = $BTN_HelpCompetitions     # Sprite2D
-@onready var lbl_popup_competitions = $LBL_PopupCompetitions    # Label
-@onready var btn_next_page          = $BTN_NextPage             # Sprite2D
-@onready var pnl_competitions       = $PNL_Competitions         # PanelContainer
+@onready var lbl_title_competitions = $LBL_TitleCompetitions    # Label
+@onready var btn_help_competitions  = $BTN_HelpCompetitions      # Sprite2D
+@onready var lbl_popup_competitions = $LBL_PopupCompetitions     # Label
+@onready var btn_next_page          = $BTN_NextPage              # Sprite2D
+@onready var cnt_competitions       = $CNT_Competitions          # VBoxContainer ← corrigé
 
 @onready var page2               = $Page2
-@onready var btn_prev_page       = $Page2/BTN_PrevPage          # Sprite2D
-@onready var lbl_title_news      = $Page2/LBL_TitleNews         # Label
-@onready var lbl_news1           = $Page2/PNL_News/LBL_News1
-@onready var lbl_news2           = $Page2/PNL_News/LBL_News2
-@onready var lbl_news3           = $Page2/PNL_News/LBL_News3
-@onready var lbl_news4           = $Page2/PNL_News/LBL_News4
-@onready var lbl_news5           = $Page2/PNL_News/LBL_News5
-@onready var lbl_title_evolution = $Page2/LBL_TitleEvolution    # Label
-@onready var btn_help_evolution  = $Page2/BTN_HelpEvolution      # Sprite2D
-@onready var lbl_popup_evolution = $Page2/LBL_PopupEvolution     # Label
-@onready var btn_bonus           = $Page2/PNL_Evolution/BTN_Bonus          # Label
-@onready var btn_feat_comp       = $Page2/PNL_Evolution/BTN_Competitions   # Label
-@onready var btn_design          = $Page2/PNL_Evolution/BTN_Design         # Label
-@onready var btn_others          = $Page2/PNL_Evolution/BTN_Others         # Label
-@onready var btn_bugs            = $Page2/PNL_Evolution/BTN_Bugs           # Label
+@onready var btn_prev_page       = $Page2/BTN_PrevPage           # Sprite2D
+@onready var lbl_title_news      = $Page2/LBL_TitleNews          # Label
+@onready var lbl_news1           = $Page2/CNT_News/LBL_News1     # ← corrigé
+@onready var lbl_news2           = $Page2/CNT_News/LBL_News2
+@onready var lbl_news3           = $Page2/CNT_News/LBL_News3
+@onready var lbl_news4           = $Page2/CNT_News/LBL_News4
+@onready var lbl_news5           = $Page2/CNT_News/LBL_News5
+@onready var lbl_title_evolution = $Page2/LBL_TitleEvolution     # Label
+@onready var btn_help_evolution  = $Page2/BTN_HelpEvolution       # Sprite2D
+@onready var lbl_popup_evolution = $Page2/LBL_PopupEvolution      # Label
+@onready var btn_bonus           = $Page2/CNT_Evolution/BTN_Bonus          # ← corrigé
+@onready var btn_feat_comp       = $Page2/CNT_Evolution/BTN_Competitions
+@onready var btn_design          = $Page2/CNT_Evolution/BTN_Design
+@onready var btn_others          = $Page2/CNT_Evolution/BTN_Others
+@onready var btn_bugs            = $Page2/CNT_Evolution/BTN_Bugs
 
 var shot_nodes: Array = []
 var comp_btns:  Array = []
@@ -130,7 +129,7 @@ func _ready():
 	for i in range(WEEKLY_CATALOGUE.size()):
 		catalogue_available.append(true)
 	for i in range(1, WEEKLY_CATALOGUE.size() + 1):
-		comp_btns.append(pnl_competitions.get_node("BTN_Competition%d" % i))
+		comp_btns.append(cnt_competitions.get_node("BTN_Competition%d" % i))
 	lbl_popup_competitions.visible = false
 	lbl_popup_evolution.visible    = false
 	_setup_shot_times()
@@ -139,7 +138,7 @@ func _ready():
 	_apply_translations()
 	_refresh_shots()
 	_check_lock()
-	page1_nodes = [lbl_title_competitions, btn_help_competitions, btn_next_page, pnl_competitions]
+	page1_nodes = [lbl_title_competitions, btn_help_competitions, btn_next_page, cnt_competitions]
 	for i in range(1, 9):
 		page1_nodes.append(shot_nodes[i - 1])
 
@@ -164,23 +163,24 @@ func _setup_news():
 	var news   = WEEKLY_NEWS.get(GameState.language, WEEKLY_NEWS["fr"])
 	var labels = [lbl_news1, lbl_news2, lbl_news3, lbl_news4, lbl_news5]
 	for i in range(labels.size()):
-		var text      = news[i] if i < news.size() else ""
+		var text          = news[i] if i < news.size() else ""
 		labels[i].text    = text
 		labels[i].visible = (text != "")
 
-# ── TRADUCTIONS ────────────────────────────────────────────────────────────────
+# ── TRADUCTIONS — popup uniquement ────────────────────────────────────────────
 func _apply_translations():
 	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["fr"])
-	lbl_title_competitions.text = t["title_competitions"]
-	lbl_title_news.text         = t["news_title"]
-	lbl_title_evolution.text    = "Football Cards Manager Evolution"
-	btn_bonus.text              = t["bonus"]
-	btn_feat_comp.text          = t["competitions"]
-	btn_design.text             = t["design"]
-	btn_others.text             = t["others"]
-	btn_bugs.text               = t["bugs"]
 	lbl_popup_competitions.text = t["popup_comp"]
 	lbl_popup_evolution.text    = t["popup_evo"]
+	# Tout le reste en anglais
+	lbl_title_competitions.text = "Next week competitions"
+	lbl_title_news.text         = "Newsletter!"
+	lbl_title_evolution.text    = "Football Cards Manager Evolution"
+	btn_bonus.text              = "BONUS"
+	btn_feat_comp.text          = "COMPETITIONS"
+	btn_design.text             = "DESIGN"
+	btn_others.text             = "OTHERS"
+	btn_bugs.text               = "BUGS"
 
 # ── REFRESH SHOTS ─────────────────────────────────────────────────────────────
 func _refresh_shots():
@@ -267,22 +267,24 @@ func _input(event):
 			drag_visual.position = event.position - Vector2(drag_visual.size.x / 2, drag_visual.size.y / 2)
 
 func _on_press(pos: Vector2):
-	# Fermer popups si ouvertes
-	if lbl_popup_competitions.visible and _label_hit(lbl_popup_competitions, pos):
-		lbl_popup_competitions.visible = false; return
-	if lbl_popup_evolution.visible and _label_hit(lbl_popup_evolution, pos):
-		lbl_popup_evolution.visible = false; return
-	# Navigation pages — Sprite2D
+	# Navigation pages
 	if _sprite_hit(btn_next_page, pos) and current_page == 1:
 		_animate_to_page(2); return
 	if _sprite_hit(btn_prev_page, pos) and current_page == 2:
 		_animate_to_page(1); return
-	# Boutons aide — Sprite2D
+	# Toggle popups aide (même bouton = ouvre ET ferme)
 	if _sprite_hit(btn_help_competitions, pos) and current_page == 1:
-		lbl_popup_competitions.visible = true; return
+		lbl_popup_competitions.visible = not lbl_popup_competitions.visible
+		lbl_popup_evolution.visible    = false; return
 	if _sprite_hit(btn_help_evolution, pos) and current_page == 2:
-		lbl_popup_evolution.visible = true; return
-	# Page 2 — Evolution — Labels
+		lbl_popup_evolution.visible    = not lbl_popup_evolution.visible
+		lbl_popup_competitions.visible = false; return
+	# Fermer popup si clic ailleurs
+	if lbl_popup_competitions.visible:
+		lbl_popup_competitions.visible = false; return
+	if lbl_popup_evolution.visible:
+		lbl_popup_evolution.visible = false; return
+	# Page 2 — Evolution
 	if current_page == 2:
 		if _label_hit(btn_bonus, pos):     OS.shell_open(FEATUREBASE_URL + "?category=bonus"); return
 		if _label_hit(btn_feat_comp, pos): OS.shell_open(FEATUREBASE_URL + "?category=competitions"); return
@@ -308,7 +310,7 @@ func _on_release(pos: Vector2):
 	if not drag_active: return
 	for i in range(1, 9):
 		if _shot_hit(i, pos): _drop_on_shot(i); return
-	if drag_origin_shot > 0 and _pnl_hit(pos):
+	if drag_origin_shot > 0 and _cnt_hit(pos):
 		_clear_shot(drag_origin_shot); _end_drag(); _refresh_shots(); return
 	_end_drag()
 
@@ -316,7 +318,7 @@ func _on_release(pos: Vector2):
 func _start_drag(comp_name: String, comp_type: String, origin_shot: int, origin_cat: int):
 	drag_active = true; drag_comp_name = comp_name; drag_comp_type = comp_type
 	drag_origin_shot = origin_shot; drag_origin_cat = origin_cat
-	drag_visual = Label.new()
+	drag_visual          = Label.new()
 	drag_visual.text     = comp_name
 	drag_visual.modulate = COMP_COLORS[comp_type]
 	add_child(drag_visual)
@@ -371,9 +373,9 @@ func _shot_hit(slot: int, pos: Vector2) -> bool:
 	if bg == null: return false
 	return bg.get_global_rect().has_point(pos)
 
-func _pnl_hit(pos: Vector2) -> bool:
-	if pnl_competitions == null: return false
-	return pnl_competitions.get_global_rect().has_point(pos)
+func _cnt_hit(pos: Vector2) -> bool:
+	if cnt_competitions == null: return false
+	return cnt_competitions.get_global_rect().has_point(pos)
 
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if sprite == null or not sprite.visible: return false

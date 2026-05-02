@@ -7,16 +7,14 @@ extends Node2D
 
 # ── CONSTANTES ────────────────────────────────────────────────────────────────
 const SCENE_CREATE_PROFILE = "res://Scenes/create_profile.tscn"
-const SCENE_MAIN_MENU      = "res://Scenes/main_menu.tscn"
+const SCENE_SCHEDULE       = "res://Scenes/schedule.tscn"
 const SCENE_LOGIN_EMAIL    = "res://Scenes/login_email.tscn"
 
 # ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
 	Taskbar.visible = false
-	# BTN_Email et BTN_Guest = Labels → gui_input
 	btn_email.gui_input.connect(_on_btn_email_input)
 	btn_guest.gui_input.connect(_on_btn_guest_input)
-	# Connexion Firebase
 	Firebase.auth_success.connect(_on_auth_success)
 	Firebase.auth_failed.connect(_on_auth_failed)
 
@@ -52,7 +50,7 @@ func _on_profile_found(_data: Dictionary):
 		Firebase.firestore_success.disconnect(_on_profile_found)
 	if Firebase.firestore_failed.is_connected(_on_profile_not_found):
 		Firebase.firestore_failed.disconnect(_on_profile_not_found)
-	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+	get_tree().change_scene_to_file(SCENE_SCHEDULE)
 
 func _on_profile_not_found(_error: String):
 	if Firebase.firestore_success.is_connected(_on_profile_found):
@@ -61,10 +59,10 @@ func _on_profile_not_found(_error: String):
 		Firebase.firestore_failed.disconnect(_on_profile_not_found)
 	get_tree().change_scene_to_file(SCENE_CREATE_PROFILE)
 
-func _on_auth_failed(error: String):
-	print("Erreur connexion : " + error)
+func _on_auth_failed(_error: String):
+	pass
 
-# ── HIT DETECTION (uniquement BTN_Google Sprite2D) ────────────────────────────
+# ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
-	if not sprite.visible: return false
+	if sprite == null or not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))

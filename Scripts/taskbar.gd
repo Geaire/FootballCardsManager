@@ -1,43 +1,39 @@
 extends CanvasLayer
 
+# ── COULEURS BORDURE PAR SCÈNE ────────────────────────────────────────────────
 const SCENE_COLORS = {
-	"res://Scenes/schedule.tscn":           Color(1.0, 0.5,  0.0),
-	"res://Scenes/collection_flags.tscn":   Color(0.0, 1.0,  0.0),
-	"res://Scenes/collection_country.tscn": Color(0.0, 1.0,  0.0),
-	"res://Scenes/competition.tscn":        Color(0.0, 0.75, 1.0),
-	"res://Scenes/team.tscn":               Color(0.0, 0.0,  1.0),
-	"res://Scenes/bonus.tscn":              Color(1.0, 0.85, 0.0),
-	"res://Scenes/transfer.tscn":           Color(0.6, 0.0,  1.0),
-	"res://Scenes/association.tscn":        Color(1.0, 1.0,  1.0),
-	"res://Scenes/ranking.tscn":            Color(0.9, 0.1,  0.1),
-	"res://Scenes/settings.tscn":           Color(0.5, 0.5,  0.5),
-	"res://Scenes/main_menu.tscn":          Color(1.0, 1.0,  1.0),
+	"res://Scenes/schedule.tscn":              Color(0.0, 0.4,  1.0),
+	"res://Scenes/collection_flags.tscn":      Color(0.0, 0.8,  0.2),
+	"res://Scenes/collection_country.tscn":    Color(0.0, 0.8,  0.2),
+	"res://Scenes/detail_card_player.tscn":    Color(1.0, 0.85, 0.0),
+	"res://Scenes/main_menu.tscn":             Color(1.0, 1.0,  1.0),
 }
 const DEFAULT_COLOR = Color(1.0, 1.0, 1.0)
 
+# ── SCÈNES ACTIVES ────────────────────────────────────────────────────────────
 const SCENE_PATHS = {
-	"competition": "res://Scenes/competition.tscn",
+	"schedule":    "res://Scenes/schedule.tscn",
+	"collection":  "res://Scenes/collection_flags.tscn",
+	"competition": "",
 	"teams":       "",
 	"bonus":       "",
 	"transfer":    "",
 	"settings":    "",
-	"schedule":    "res://Scenes/schedule.tscn",
 	"history":     "",
-	"collection":  "res://Scenes/collection_flags.tscn",
 	"association": "",
 }
 
-# IMPORTANT : noms exacts des nœuds dans ta scène (minuscule taskbarBottom)
+# ── NŒUDS ─────────────────────────────────────────────────────────────────────
 @onready var border_bottom    = $TaskbarBottom/Border_TaskbarBottom
 @onready var border_top       = $TaskbarTop/Border_TaskbarTop
-@onready var txt_manager_name = $TaskbarTop/TXT_ManagerName
-@onready var txt_team_name    = $TaskbarTop/TXT_TeamName
+@onready var lbl_manager_name = $TaskbarTop/LBL_ManagerName
+@onready var lbl_team_name    = $TaskbarTop/LBL_TeamName
 @onready var img_team_logo    = $TaskbarTop/IMG_TeamLogo
 
 @onready var btn_competition = $TaskbarBottom/BTN_Competition
-@onready var btn_teams       = $TaskbarBottom/BTN_Team
+@onready var btn_teams       = $TaskbarBottom/BTN_Teams
 @onready var btn_bonus       = $TaskbarBottom/BTN_Bonus
-@onready var btn_transfer    = $TaskbarBottom/BTN_Transfert
+@onready var btn_transfer    = $TaskbarBottom/BTN_Transfer
 @onready var btn_settings    = $TaskbarBottom/BTN_Settings
 @onready var btn_schedule    = $TaskbarBottom/BTN_Schedule
 @onready var btn_history     = $TaskbarBottom/BTN_History
@@ -46,6 +42,7 @@ const SCENE_PATHS = {
 
 var btn_map: Dictionary = {}
 
+# ── READY ─────────────────────────────────────────────────────────────────────
 func _ready():
 	btn_map = {
 		"competition": btn_competition,
@@ -62,9 +59,10 @@ func _ready():
 	_update_border_color()
 	get_tree().root.child_entered_tree.connect(_on_scene_changed)
 
+# ── BARRE DU HAUT ─────────────────────────────────────────────────────────────
 func _update_top_bar():
-	txt_manager_name.text = GameState.manager_name
-	txt_team_name.text    = GameState.team_name
+	lbl_manager_name.text = GameState.manager_name
+	lbl_team_name.text    = GameState.team_name
 	_load_team_logo()
 
 func _load_team_logo():
@@ -72,6 +70,7 @@ func _load_team_logo():
 	if ResourceLoader.exists(path):
 		img_team_logo.texture = load(path)
 
+# ── COULEUR BORDURE ───────────────────────────────────────────────────────────
 func _update_border_color():
 	var scene_path = ""
 	if get_tree().current_scene:
@@ -84,29 +83,25 @@ func _on_scene_changed(_node):
 	await get_tree().process_frame
 	_update_border_color()
 
+# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
-	if not (event is InputEventMouseButton):
-		return
-	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
-		return
+	if not (event is InputEventMouseButton): return
+	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
 	var pos = event.position
 	for key in btn_map:
 		if _sprite_hit(btn_map[key], pos):
-			_navigate_to(key)
-			return
+			_navigate_to(key); return
 
 func _navigate_to(key: String):
 	var path = SCENE_PATHS.get(key, "")
-	if path == "":
-		return
+	if path == "": return
 	var current = ""
 	if get_tree().current_scene:
 		current = get_tree().current_scene.scene_file_path
-	if current == path:
-		return
+	if current == path: return
 	get_tree().change_scene_to_file(path)
 
+# ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
-	if sprite == null or not sprite.visible:
-		return false
+	if sprite == null or not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))

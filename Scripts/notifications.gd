@@ -11,6 +11,7 @@ extends Node2D
 @onready var btn_accept  = $PNL_NotifPopup/CNT_PopupContent/BTN_Accept
 @onready var btn_refuse  = $PNL_NotifPopup/CNT_PopupContent/BTN_Refuse
 
+# ── TRADUCTIONS — popup uniquement ────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {
 		"content": "Autoriser Football Cards Manager à vous envoyer des notifications ?",
