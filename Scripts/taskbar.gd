@@ -2,43 +2,40 @@ extends CanvasLayer
 
 # ── COULEURS BORDURE PAR SCÈNE ────────────────────────────────────────────────
 const SCENE_COLORS = {
-	"res://Scenes/schedule.tscn":              Color(0.0, 0.4,  1.0),
-	"res://Scenes/collection_flags.tscn":      Color(0.0, 0.8,  0.2),
-	"res://Scenes/collection_country.tscn":    Color(0.0, 0.8,  0.2),
-	"res://Scenes/detail_card_player.tscn":    Color(1.0, 0.85, 0.0),
-	"res://Scenes/main_menu.tscn":             Color(1.0, 1.0,  1.0),
+	"res://Scenes/schedule.tscn":           Color(0.0, 0.4,  1.0),
+	"res://Scenes/collection_flags.tscn":   Color(0.0, 0.8,  0.2),
+	"res://Scenes/collection_country.tscn": Color(0.0, 0.8,  0.2),
+	"res://Scenes/detail_card_player.tscn": Color(1.0, 0.85, 0.0),
+	"res://Scenes/main_menu.tscn":          Color(1.0, 1.0,  1.0),
 }
 const DEFAULT_COLOR = Color(1.0, 1.0, 1.0)
 
 # ── SCÈNES ACTIVES ────────────────────────────────────────────────────────────
 const SCENE_PATHS = {
+	"competition": "",
+	"team":        "",
+	"bonus":       "",
+	"transfert":   "",
+	"association": "",
 	"schedule":    "res://Scenes/schedule.tscn",
 	"collection":  "res://Scenes/collection_flags.tscn",
-	"competition": "",
-	"teams":       "",
-	"bonus":       "",
-	"transfer":    "",
-	"settings":    "",
 	"history":     "",
-	"association": "",
+	"settings":    "",
 }
 
 # ── NŒUDS ─────────────────────────────────────────────────────────────────────
-@onready var border_bottom    = $TaskbarBottom/Border_TaskbarBottom
-@onready var border_top       = $TaskbarTop/Border_TaskbarTop
-@onready var lbl_manager_name = $TaskbarTop/LBL_ManagerName
-@onready var lbl_team_name    = $TaskbarTop/LBL_TeamName
-@onready var img_team_logo    = $TaskbarTop/IMG_TeamLogo
+@onready var bg_taskbar_bottom = $TaskbarBottom/BG_TaskbarBottom  # PanelContainer
+@onready var bg_taskbar_top    = $TaskbarTop/BG_TaskbarTop        # PanelContainer
 
-@onready var btn_competition = $TaskbarBottom/BTN_Competition
-@onready var btn_teams       = $TaskbarBottom/BTN_Teams
-@onready var btn_bonus       = $TaskbarBottom/BTN_Bonus
-@onready var btn_transfer    = $TaskbarBottom/BTN_Transfer
-@onready var btn_settings    = $TaskbarBottom/BTN_Settings
-@onready var btn_schedule    = $TaskbarBottom/BTN_Schedule
-@onready var btn_history     = $TaskbarBottom/BTN_History
-@onready var btn_collection  = $TaskbarBottom/BTN_Collection
-@onready var btn_association = $TaskbarBottom/BTN_Association
+@onready var btn_competition = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Competition
+@onready var btn_team        = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Team
+@onready var btn_bonus       = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Bonus
+@onready var btn_transfert   = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Transfert
+@onready var btn_association = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Association
+@onready var btn_schedule    = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Schedule
+@onready var btn_collection  = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Collection
+@onready var btn_history     = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_History
+@onready var btn_settings    = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Settings
 
 var btn_map: Dictionary = {}
 
@@ -46,38 +43,31 @@ var btn_map: Dictionary = {}
 func _ready():
 	btn_map = {
 		"competition": btn_competition,
-		"teams":       btn_teams,
+		"team":        btn_team,
 		"bonus":       btn_bonus,
-		"transfer":    btn_transfer,
-		"settings":    btn_settings,
-		"schedule":    btn_schedule,
-		"history":     btn_history,
-		"collection":  btn_collection,
+		"transfert":   btn_transfert,
 		"association": btn_association,
+		"schedule":    btn_schedule,
+		"collection":  btn_collection,
+		"history":     btn_history,
+		"settings":    btn_settings,
 	}
-	_update_top_bar()
 	_update_border_color()
 	get_tree().root.child_entered_tree.connect(_on_scene_changed)
 
-# ── BARRE DU HAUT ─────────────────────────────────────────────────────────────
-func _update_top_bar():
-	lbl_manager_name.text = GameState.manager_name
-	lbl_team_name.text    = GameState.team_name
-	_load_team_logo()
-
-func _load_team_logo():
-	var path = "res://Sprites/Logos/logo_%d.png" % GameState.team_logo_index
-	if ResourceLoader.exists(path):
-		img_team_logo.texture = load(path)
-
-# ── COULEUR BORDURE ───────────────────────────────────────────────────────────
+# ── COULEUR BORDURE via StyleBoxFlat ──────────────────────────────────────────
 func _update_border_color():
 	var scene_path = ""
 	if get_tree().current_scene:
 		scene_path = get_tree().current_scene.scene_file_path
 	var col = SCENE_COLORS.get(scene_path, DEFAULT_COLOR)
-	border_bottom.modulate = col
-	border_top.modulate    = col
+	_set_border_color(bg_taskbar_bottom, col)
+	_set_border_color(bg_taskbar_top, col)
+
+func _set_border_color(panel: PanelContainer, col: Color):
+	var style = panel.get_theme_stylebox("panel").duplicate()
+	style.border_color = col
+	panel.add_theme_stylebox_override("panel", style)
 
 func _on_scene_changed(_node):
 	await get_tree().process_frame
