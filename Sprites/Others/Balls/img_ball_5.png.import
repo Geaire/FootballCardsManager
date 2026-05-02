@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp70ajwiina5l"
-path="res://.godot/imported/cardbackground_black.png-b4e524ebeb4dab75ba8ef6cf89d7d89b.ctex"
+uid="uid://1crmolvv2m56"
+path="res://.godot/imported/img_ball_5.png-1db74d2feb587c6c122d4ea8bf3198e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Others1/cardbackground_black.png"
-dest_files=["res://.godot/imported/cardbackground_black.png-b4e524ebeb4dab75ba8ef6cf89d7d89b.ctex"]
+source_file="res://Sprites/Others/Balls/img_ball_5.png"
+dest_files=["res://.godot/imported/img_ball_5.png-1db74d2feb587c6c122d4ea8bf3198e6.ctex"]
 
 [params]
 

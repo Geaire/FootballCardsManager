@@ -3,7 +3,7 @@ extends Node2D
 @onready var bar_loading = $BAR_Loading
 
 const SCENE_NOTIFICATIONS = "res://Scenes/notifications.tscn"
-const SCENE_MAIN_MENU     = "res://Scenes/schedule.tscn"
+const SCENE_MAIN_MENU     = "res://Scenes/main_menu.tscn"
 const LOAD_DURATION       = 3.0
 
 func _ready():

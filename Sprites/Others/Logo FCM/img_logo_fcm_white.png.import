@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vc040g54alaj"
-path="res://.godot/imported/dcp_cardsilhouette.png-bd9b662f16c031378060edf1ee3c0b01.ctex"
+uid="uid://yuxkn5223hme"
+path="res://.godot/imported/img_logo_fcm_white.png-18d8dfc80fc820ced6de12a1d18b3663.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Detail Card Player/dcp_cardsilhouette.png"
-dest_files=["res://.godot/imported/dcp_cardsilhouette.png-bd9b662f16c031378060edf1ee3c0b01.ctex"]
+source_file="res://Sprites/Others/Logo FCM/img_logo_fcm_white.png"
+dest_files=["res://.godot/imported/img_logo_fcm_white.png-18d8dfc80fc820ced6de12a1d18b3663.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yuxkn5223hme"
-path="res://.godot/imported/img_logo_fcm_white.png-a46a4055ca3b88d78831f5a3ce41f497.ctex"
+uid="uid://bu5hagbygrrmp"
+path="res://.godot/imported/img_card_silhouette.png-8568bbce2630af577d0aca61c82bf21c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Others/img_logo_fcm_white.png"
-dest_files=["res://.godot/imported/img_logo_fcm_white.png-a46a4055ca3b88d78831f5a3ce41f497.ctex"]
+source_file="res://Sprites/Others/img_card_silhouette.png"
+dest_files=["res://.godot/imported/img_card_silhouette.png-8568bbce2630af577d0aca61c82bf21c.ctex"]
 
 [params]
 

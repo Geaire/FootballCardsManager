@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eqe0xk17nf27"
-path="res://.godot/imported/bg_detailcardplayer.jpg-1a99b673d7b199da34b121e832d3202c.ctex"
+uid="uid://dttto55bqaeo1"
+path="res://.godot/imported/img_oval.png-e420f948434874d92f7f3e7b0af7014c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Wallpapers/bg_detailcardplayer.jpg"
-dest_files=["res://.godot/imported/bg_detailcardplayer.jpg-1a99b673d7b199da34b121e832d3202c.ctex"]
+source_file="res://Sprites/Others/img_oval.png"
+dest_files=["res://.godot/imported/img_oval.png-e420f948434874d92f7f3e7b0af7014c.ctex"]
 
 [params]
 

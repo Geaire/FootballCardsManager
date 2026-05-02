@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://b0g3x03jf4kko"]
 
 [ext_resource type="Script" uid="uid://c36jp8qdx3bw7" path="res://Scripts/collection_flags.gd" id="1_3y8ut"]
-[ext_resource type="Texture2D" uid="uid://hjejqqvcal5n" path="res://Sprites/background.jpg" id="1_t5ujk"]
-[ext_resource type="Texture2D" uid="uid://c5jom8mmlhb0g" path="res://Sprites/grid.png" id="2_7wo4i"]
+[ext_resource type="Texture2D" uid="uid://dv03oh1ng7i0n" path="res://Sprites/Backgrounds/bg_grid.png" id="2_o7jel"]
+[ext_resource type="Texture2D" uid="uid://dj3vvhlcd0txt" path="res://Sprites/Others/btn_next_page.png" id="3_3y8ut"]
 [ext_resource type="Texture2D" uid="uid://chxkfnjepxr16" path="res://Sprites/Flags/flag_ae.png" id="3_8i5w5"]
-[ext_resource type="Texture2D" uid="uid://e8yj4xf6itqh" path="res://Sprites/swipe_down.png" id="3_lkdbg"]
 [ext_resource type="Texture2D" uid="uid://cmuegq05gwqow" path="res://Sprites/Flags/flag_ao.png" id="4_sum4u"]
 [ext_resource type="Texture2D" uid="uid://cvsvb0epp0yl7" path="res://Sprites/Flags/flag_ar.png" id="5_51paj"]
 [ext_resource type="Texture2D" uid="uid://b8p5boiejiip7" path="res://Sprites/Flags/flag_at.png" id="6_d5bk3"]
@@ -44,7 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://41jnyx1bo634" path="res://Sprites/Flags/flag_il.png" id="41_x3nx7"]
 [ext_resource type="Texture2D" uid="uid://bkgctbsw88wt" path="res://Sprites/Flags/flag_iq.png" id="42_7exn4"]
 [ext_resource type="Texture2D" uid="uid://dsmfh7cbb44tf" path="res://Sprites/Flags/flag_ir.png" id="43_vhilb"]
-[ext_resource type="Texture2D" uid="uid://bscxswprobd1e" path="res://Sprites/swipe_up.png" id="44_o7jel"]
+[ext_resource type="Texture2D" uid="uid://dwxpbevac70nm" path="res://Sprites/Others/btn_prev_page.png" id="44_i0bty"]
 [ext_resource type="Texture2D" uid="uid://d277n0bsf1l3v" path="res://Sprites/Flags/flag_it.png" id="44_pms3r"]
 [ext_resource type="Texture2D" uid="uid://chheg73iddfqw" path="res://Sprites/Flags/flag_jm.png" id="45_aum6o"]
 [ext_resource type="Texture2D" uid="uid://dpg7rjxr02471" path="res://Sprites/Flags/flag_jp.png" id="46_n0xv7"]
@@ -97,19 +96,20 @@ script = ExtResource("1_3y8ut")
 
 [node name="Page1" type="Node2D" parent="." unique_id=537669689]
 
-[node name="BG_Collection" type="Sprite2D" parent="Page1" unique_id=690649481]
-position = Vector2(960, 540)
-texture = ExtResource("1_t5ujk")
+[node name="BG_Collection" type="ColorRect" parent="Page1" unique_id=1813317186]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
 
 [node name="BG_GridCollection" type="Sprite2D" parent="Page1" unique_id=1519661671]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(960, 540)
-texture = ExtResource("2_7wo4i")
+texture = ExtResource("2_o7jel")
 
-[node name="Swipe_Down" type="Sprite2D" parent="Page1" unique_id=1270719893]
+[node name="BTN_NextPage" type="Sprite2D" parent="Page1" unique_id=1270719893]
 z_index = 2
-position = Vector2(1850, 940)
-texture = ExtResource("3_lkdbg")
+position = Vector2(1860, 940)
+texture = ExtResource("3_3y8ut")
 
 [node name="AE" type="Node2D" parent="Page1" unique_id=583719842]
 
@@ -124,7 +124,7 @@ offset_right = 320.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -141,7 +141,7 @@ offset_right = 520.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -158,7 +158,7 @@ offset_right = 720.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -175,7 +175,7 @@ offset_right = 920.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -192,7 +192,7 @@ offset_right = 1120.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -209,7 +209,7 @@ offset_right = 1320.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -226,7 +226,7 @@ offset_right = 1520.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -243,7 +243,7 @@ offset_right = 1720.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -260,7 +260,7 @@ offset_right = 320.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -277,7 +277,7 @@ offset_right = 520.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -294,7 +294,7 @@ offset_right = 720.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -311,7 +311,7 @@ offset_right = 920.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -328,7 +328,7 @@ offset_right = 1120.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -345,7 +345,7 @@ offset_right = 1320.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -362,7 +362,7 @@ offset_right = 1520.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -379,7 +379,7 @@ offset_right = 1720.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -396,7 +396,7 @@ offset_right = 320.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -413,7 +413,7 @@ offset_right = 520.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -430,7 +430,7 @@ offset_right = 720.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -447,7 +447,7 @@ offset_right = 920.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -464,7 +464,7 @@ offset_right = 1120.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -481,7 +481,7 @@ offset_right = 1320.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -498,7 +498,7 @@ offset_right = 1520.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -515,7 +515,7 @@ offset_right = 1720.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -532,7 +532,7 @@ offset_right = 320.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -549,7 +549,7 @@ offset_right = 520.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -566,7 +566,7 @@ offset_right = 720.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -583,7 +583,7 @@ offset_right = 920.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -600,7 +600,7 @@ offset_right = 1120.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -617,7 +617,7 @@ offset_right = 1320.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -634,7 +634,7 @@ offset_right = 1520.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -651,7 +651,7 @@ offset_right = 1720.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -668,7 +668,7 @@ offset_right = 320.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -685,7 +685,7 @@ offset_right = 520.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -702,7 +702,7 @@ offset_right = 720.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -719,7 +719,7 @@ offset_right = 920.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -736,7 +736,7 @@ offset_right = 1120.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -753,7 +753,7 @@ offset_right = 1320.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -770,7 +770,7 @@ offset_right = 1520.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -787,26 +787,27 @@ offset_right = 1720.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Page2" type="Node2D" parent="." unique_id=1475400499]
 position = Vector2(0, 1080)
 
-[node name="BG_Collection" type="Sprite2D" parent="Page2" unique_id=1677993143]
-position = Vector2(960, 540)
-texture = ExtResource("1_t5ujk")
+[node name="BG_Collection" type="ColorRect" parent="Page2" unique_id=591089642]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
 
 [node name="BG_GridCollection" type="Sprite2D" parent="Page2" unique_id=1557436778]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(960, 540)
-texture = ExtResource("2_7wo4i")
+texture = ExtResource("2_o7jel")
 
-[node name="Swipe_Up" type="Sprite2D" parent="Page2" unique_id=350170039]
+[node name="BTN_PrevPage" type="Sprite2D" parent="Page2" unique_id=350170039]
 z_index = 2
-position = Vector2(1850, 140)
-texture = ExtResource("44_o7jel")
+position = Vector2(1860, 140)
+texture = ExtResource("44_i0bty")
 
 [node name="IT" type="Node2D" parent="Page2" unique_id=306964865]
 
@@ -821,7 +822,7 @@ offset_right = 320.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -838,7 +839,7 @@ offset_right = 520.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -855,7 +856,7 @@ offset_right = 720.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -872,7 +873,7 @@ offset_right = 920.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -889,7 +890,7 @@ offset_right = 1120.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -906,7 +907,7 @@ offset_right = 1320.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -923,7 +924,7 @@ offset_right = 1520.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -940,7 +941,7 @@ offset_right = 1720.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -957,7 +958,7 @@ offset_right = 320.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -974,7 +975,7 @@ offset_right = 520.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -991,7 +992,7 @@ offset_right = 720.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1008,7 +1009,7 @@ offset_right = 920.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1025,7 +1026,7 @@ offset_right = 1120.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1042,7 +1043,7 @@ offset_right = 1320.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1059,7 +1060,7 @@ offset_right = 1520.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1076,7 +1077,7 @@ offset_right = 1720.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1093,7 +1094,7 @@ offset_right = 320.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1110,7 +1111,7 @@ offset_right = 520.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1127,7 +1128,7 @@ offset_right = 720.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1144,7 +1145,7 @@ offset_right = 920.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1161,7 +1162,7 @@ offset_right = 1120.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1178,7 +1179,7 @@ offset_right = 1320.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1195,7 +1196,7 @@ offset_right = 1520.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1212,7 +1213,7 @@ offset_right = 1720.0
 offset_bottom = 610.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1229,7 +1230,7 @@ offset_right = 320.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1246,7 +1247,7 @@ offset_right = 520.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1263,7 +1264,7 @@ offset_right = 720.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1280,7 +1281,7 @@ offset_right = 920.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1297,7 +1298,7 @@ offset_right = 1120.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1314,7 +1315,7 @@ offset_right = 1320.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1331,7 +1332,7 @@ offset_right = 1520.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1348,7 +1349,7 @@ offset_right = 1720.0
 offset_bottom = 790.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1365,7 +1366,7 @@ offset_right = 320.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1382,7 +1383,7 @@ offset_right = 520.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1399,7 +1400,7 @@ offset_right = 720.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1416,7 +1417,7 @@ offset_right = 920.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1433,7 +1434,7 @@ offset_right = 1120.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1450,6 +1451,6 @@ offset_right = 1320.0
 offset_bottom = 970.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_0x61o")
-text = "0/12"
+text = "0/17"
 horizontal_alignment = 1
 vertical_alignment = 1

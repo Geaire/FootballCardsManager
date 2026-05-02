@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqq6lj0isakm3"
-path="res://.godot/imported/android_dark_rd_SU@4x.png-56da87adfd9edb0066136e837a240d83.ctex"
+uid="uid://d05rvti8f2a15"
+path="res://.godot/imported/btn_google.png-1f5485a99307710ac394013ca05bda8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Others1/android_dark_rd_SU@4x.png"
-dest_files=["res://.godot/imported/android_dark_rd_SU@4x.png-56da87adfd9edb0066136e837a240d83.ctex"]
+source_file="res://Sprites/Others/btn_google.png"
+dest_files=["res://.godot/imported/btn_google.png-1f5485a99307710ac394013ca05bda8d.ctex"]
 
 [params]
 

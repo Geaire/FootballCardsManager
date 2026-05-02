@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0i0qvdv1yxm7"
-path="res://.godot/imported/clic_down.png-9a4ce85e8d746b5ca4a8d6e7d46f110d.ctex"
+uid="uid://bmnpum8gng16c"
+path="res://.godot/imported/img_logo_fcm_red.png-183a3381390cd9ac3beff7030b518941.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Others1/clic_down.png"
-dest_files=["res://.godot/imported/clic_down.png-9a4ce85e8d746b5ca4a8d6e7d46f110d.ctex"]
+source_file="res://Sprites/Others/Logo FCM/img_logo_fcm_red.png"
+dest_files=["res://.godot/imported/img_logo_fcm_red.png-183a3381390cd9ac3beff7030b518941.ctex"]
 
 [params]
 

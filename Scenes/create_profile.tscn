@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://btbdqdtcaw42a"]
 
 [ext_resource type="Script" uid="uid://y64hd14x0fef" path="res://Scripts/create_profile.gd" id="1_opci1"]
-[ext_resource type="Texture2D" uid="uid://eqe0xk17nf27" path="res://Sprites/Wallpapers/bg_detailcardplayer.jpg" id="2_opci1"]
-[ext_resource type="Texture2D" uid="uid://dtmbafjwc3bjr" path="res://Sprites/logo_fcm.png" id="3_vrwtu"]
+[ext_resource type="Texture2D" uid="uid://77m1qlwpjk8u" path="res://Sprites/Backgrounds/bg_CreateProfile_DetailCardPlayer.jpg" id="2_vrwtu"]
+[ext_resource type="Texture2D" uid="uid://yuxkn5223hme" path="res://Sprites/Others/Logo FCM/img_logo_fcm_white.png" id="3_vrwtu"]
+[ext_resource type="Texture2D" uid="uid://dttto55bqaeo1" path="res://Sprites/Others/img_oval.png" id="4_3y2mj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3y2mj"]
 bg_color = Color(0, 0, 0, 0.19607843)
@@ -11,18 +12,21 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_opci1"]
-load_path = "res://.godot/imported/btn_playmainmenu.png-fffee8b0187fc1ade17f9a28c9e8a39a.ctex"
-
 [node name="Create_Profile" type="Node2D" unique_id=1645773724]
 script = ExtResource("1_opci1")
 
 [node name="BG_CreateProfile" type="Sprite2D" parent="." unique_id=1218993420]
 z_index = 1
 position = Vector2(960, 540)
-texture = ExtResource("2_opci1")
+texture = ExtResource("2_vrwtu")
 
-[node name="TXT_ManagerLabel" type="Label" parent="." unique_id=515572719]
+[node name="IMG_LogoFcmWhite" type="Sprite2D" parent="." unique_id=582749013]
+z_index = 1
+position = Vector2(1633, 952)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_vrwtu")
+
+[node name="LBL_Manager" type="Label" parent="." unique_id=515572719]
 z_index = 1
 offset_left = 100.0
 offset_top = 150.0
@@ -33,7 +37,7 @@ text = "Manager Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LineEdit_Manager" type="LineEdit" parent="." unique_id=1211493045]
+[node name="INP_Manager" type="LineEdit" parent="." unique_id=1211493045]
 z_index = 1
 offset_left = 100.0
 offset_top = 250.0
@@ -43,7 +47,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_3y2mj")
 alignment = 1
 
-[node name="TXT_IncorrectManager" type="Label" parent="." unique_id=442864056]
+[node name="LBL_IncorrectManager" type="Label" parent="." unique_id=442864056]
 z_index = 1
 offset_left = 50.0
 offset_top = 355.0
@@ -55,7 +59,7 @@ text = "Incorrect Manager Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_TeamLabel" type="Label" parent="." unique_id=1920985183]
+[node name="LBL_Team" type="Label" parent="." unique_id=1920985183]
 z_index = 1
 offset_left = 100.0
 offset_top = 500.0
@@ -66,7 +70,7 @@ text = "Team Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LineEdit_TeamLabel" type="LineEdit" parent="." unique_id=1993208428]
+[node name="INP_Team" type="LineEdit" parent="." unique_id=1993208428]
 z_index = 1
 offset_left = 100.0
 offset_top = 600.0
@@ -76,7 +80,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_3y2mj")
 alignment = 1
 
-[node name="TXT_IncorrectTeam" type="Label" parent="." unique_id=383246451]
+[node name="LBL_IncorrectTeam" type="Label" parent="." unique_id=383246451]
 z_index = 1
 offset_left = 50.0
 offset_top = 705.0
@@ -88,23 +92,17 @@ text = "Incorrect Team Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Logo_FCM" type="Sprite2D" parent="." unique_id=582749013]
-z_index = 1
-position = Vector2(1566, 847)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_vrwtu")
-
-[node name="BTN_Confirm" type="Sprite2D" parent="." unique_id=1741883717]
-modulate = Color(0, 0.6156863, 0.011764706, 1)
+[node name="IMG_Confirm" type="Sprite2D" parent="." unique_id=1741883717]
+modulate = Color(0, 0.60784316, 0, 1)
 z_index = 1
 position = Vector2(339, 868)
-texture = SubResource("CompressedTexture2D_opci1")
+texture = ExtResource("4_3y2mj")
 
-[node name="TXT_Confirm" type="Label" parent="." unique_id=859952850]
+[node name="BTN_Confirm" type="Label" parent="." unique_id=859952850]
 z_index = 1
-offset_left = 100.0
+offset_left = 139.0
 offset_top = 800.0
-offset_right = 600.0
+offset_right = 541.0
 offset_bottom = 937.0
 theme_override_font_sizes/font_size = 40
 text = "Confirm"

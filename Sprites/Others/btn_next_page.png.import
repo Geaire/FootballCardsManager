@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxl780cdv2v7j"
-path="res://.godot/imported/img_logo_fcm_blue.png-630d2ec57ef12317ab2ef97468839610.ctex"
+uid="uid://dj3vvhlcd0txt"
+path="res://.godot/imported/btn_next_page.png-a6a945265dcdd8f7eacaf2ceb2d11834.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Others/img_logo_fcm_blue.png"
-dest_files=["res://.godot/imported/img_logo_fcm_blue.png-630d2ec57ef12317ab2ef97468839610.ctex"]
+source_file="res://Sprites/Others/btn_next_page.png"
+dest_files=["res://.godot/imported/btn_next_page.png-a6a945265dcdd8f7eacaf2ceb2d11834.ctex"]
 
 [params]
 

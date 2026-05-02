@@ -1,27 +1,30 @@
 [gd_scene format=3 uid="uid://cf8hw8cjf51g8"]
 
-[ext_resource type="Texture2D" uid="uid://eqe0xk17nf27" path="res://Sprites/Wallpapers/bg_detailcardplayer.jpg" id="1_gswx7"]
 [ext_resource type="Script" uid="uid://crd7xr1rnehck" path="res://Scripts/detail_card_player.gd" id="1_u8okc"]
-[ext_resource type="Texture2D" uid="uid://b261jcbf3yr5h" path="res://Sprites/Detail Card Player/dcp_cardbackground.png" id="4_4fdco"]
-[ext_resource type="Texture2D" uid="uid://ox3nljf14snf" path="res://Sprites/Detail Card Player/dcp_cardborder.png" id="5_w3era"]
+[ext_resource type="Texture2D" uid="uid://77m1qlwpjk8u" path="res://Sprites/Backgrounds/bg_CreateProfile_DetailCardPlayer.jpg" id="2_ngjs2"]
+[ext_resource type="Texture2D" uid="uid://bx4vmh3nlamwq" path="res://Sprites/Others/btn_yes_no.png" id="3_ffgkw"]
+[ext_resource type="Texture2D" uid="uid://cxrs8pg05tiac" path="res://Sprites/Others/Balls/img_ball_4.png" id="4_h1w81"]
+[ext_resource type="Texture2D" uid="uid://1crmolvv2m56" path="res://Sprites/Others/Balls/img_ball_5.png" id="5_r8pf6"]
+[ext_resource type="Texture2D" uid="uid://bu5hagbygrrmp" path="res://Sprites/Others/img_card_silhouette.png" id="6_4fdco"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="6_oh0sr"]
-[ext_resource type="Texture2D" uid="uid://vc040g54alaj" path="res://Sprites/Detail Card Player/dcp_cardsilhouette.png" id="7_w3era"]
 [ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="8_8t0j4"]
 [ext_resource type="FontFile" uid="uid://d345ux4b2dmhk" path="res://Fonts/Roboto-Regular.ttf" id="9_kgodw"]
 [ext_resource type="FontFile" uid="uid://djse4v8s8ul4d" path="res://Fonts/MPLUS1p-Bold.ttf" id="10_6o6a0"]
 [ext_resource type="Texture2D" uid="uid://crq8r4sbrv8i2" path="res://Sprites/Specialties/specialty_tackling.png" id="10_h1anc"]
-[ext_resource type="Texture2D" uid="uid://powvw137cca2" path="res://Sprites/Others/circle.png" id="11_1nbe8"]
+[ext_resource type="Texture2D" uid="uid://dhqj6a4huc8sl" path="res://Sprites/Others/Balls/img_ball_2.png" id="10_w3era"]
 [ext_resource type="Texture2D" uid="uid://dugyg7kkokyba" path="res://Sprites/Specialties/specialty_crossing.png" id="11_mfqbj"]
 [ext_resource type="FontFile" uid="uid://qchfwvdcm00i" path="res://Fonts/MPLUS1p-Black.ttf" id="11_u8okc"]
 [ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="12_4fdco"]
-[ext_resource type="Texture2D" uid="uid://qrl4gu1nu4k" path="res://Sprites/Detail Card Player/dcp_cardbackground2.png" id="15_e7tvd"]
-[ext_resource type="Texture2D" uid="uid://dmf8mkx4j1mmi" path="res://Sprites/Others/soccerball.png" id="15_w3era"]
-[ext_resource type="Texture2D" uid="uid://dq5lmq416fvr1" path="res://Sprites/Detail Card Player/dcp_cardborder2.png" id="16_ngjs2"]
-[ext_resource type="Texture2D" uid="uid://d0egkw3iik5v8" path="res://Sprites/Detail Card Player/dcp_cardbackground3.png" id="18_h1anc"]
-[ext_resource type="Texture2D" uid="uid://ee7n8ubwv57l" path="res://Sprites/Detail Card Player/dcp_cardborder3.png" id="19_mfqbj"]
-[ext_resource type="Texture2D" uid="uid://bhwvy4mh2g5mk" path="res://Sprites/Detail Card Player/dcp_cardbackground4.png" id="20_w3era"]
-[ext_resource type="Texture2D" uid="uid://bv37xbvoqcm3p" path="res://Sprites/Detail Card Player/dcp_cardborder4.png" id="21_e7tvd"]
-[ext_resource type="Texture2D" uid="uid://dcd88f26cuxwo" path="res://Sprites/Others/diamond.png" id="22_ngjs2"]
+[ext_resource type="Texture2D" uid="uid://bpcqq5pns0ar5" path="res://Sprites/btn_circle.png" id="16_e7tvd"]
+[ext_resource type="Texture2D" uid="uid://bxpn0ir8rbfdc" path="res://Sprites/Others/img_diamond.png" id="17_8t0j4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc8sd"]
+bg_color = Color(0, 0, 0.023529412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fdco"]
 bg_color = Color(0, 0, 0, 1)
@@ -30,6 +33,75 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngjs2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 5
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t0j4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1w81"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfqbj"]
+bg_color = Color(0.6, 0.6, 0.019607844, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3era"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1anc"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgodw"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+corner_detail = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ffgkw"]
 bg_color = Color(1, 1, 1, 1)
@@ -40,25 +112,83 @@ script = ExtResource("1_u8okc")
 
 [node name="BG_DetailCardPlayer" type="Sprite2D" parent="." unique_id=548986546]
 position = Vector2(960, 540)
-texture = ExtResource("1_gswx7")
+texture = ExtResource("2_ngjs2")
 
 [node name="BTN_Close" type="Sprite2D" parent="." unique_id=1596337298]
 modulate = Color(1, 0, 0, 1)
 z_index = 2
 position = Vector2(1850, 90)
-texture = ExtResource("11_1nbe8")
+texture = ExtResource("3_ffgkw")
+
+[node name="BTN_PlayerFuture" type="Sprite2D" parent="." unique_id=411856780]
+position = Vector2(1850, 320)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_h1w81")
+
+[node name="PNL_PlayerFuture" type="PanelContainer" parent="." unique_id=138529826]
+visible = false
+z_index = 10
+offset_left = 1197.0
+offset_top = 385.0
+offset_right = 1890.0
+offset_bottom = 806.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rc8sd")
+
+[node name="CNT_PlayerFuture" type="VBoxContainer" parent="PNL_PlayerFuture" unique_id=1795217459]
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(302, 268)
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="LBL_PlayerFuture" type="Label" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=1727682730]
+visible = false
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Attention ! L'action choisi est sans retour possible."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_SignPro" type="Button" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=1786302257]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sign Pro"
+
+[node name="BTN_SignPantheon" type="Button" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=1979550605]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sign Pantheon"
+
+[node name="BTN_SignCollection" type="Button" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=610187015]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sign Collection
+"
+
+[node name="BTN_SignEndOfCareer" type="Button" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=991203927]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "End of Career
+"
 
 [node name="BTN_Help" type="Sprite2D" parent="." unique_id=473951052]
 position = Vector2(1850, 200)
-texture = ExtResource("15_w3era")
+texture = ExtResource("5_r8pf6")
 
-[node name="TXT_Popup" type="Label" parent="BTN_Help" unique_id=338651291]
+[node name="LBL_Help" type="Label" parent="." unique_id=338651291]
 visible = false
 z_index = 20
-offset_left = -808.0
-offset_top = 57.0
-offset_right = 36.0
-offset_bottom = 651.0
+offset_left = 1049.0
+offset_top = 258.0
+offset_right = 1893.0
+offset_bottom = 852.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/font_size = 24
@@ -66,10 +196,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4fdco")
 text = "Rename player :
 - Blue, white, and special cards only.
 
-Attributte Position et specialty :
+Attributte Position et Specialty :
 - Earned through rewards.
 
-Pin Color :
+Ball Color :
 - Organize using colors.
 
 Training Pro :
@@ -83,59 +213,19 @@ autowrap_mode = 2
 
 [node name="Player" type="Node2D" parent="." unique_id=685870784]
 
-[node name="BG_CardBackground" type="Sprite2D" parent="Player" unique_id=453454340]
+[node name="BG_CardBackground" type="PanelContainer" parent="Player" unique_id=17143823]
 z_index = 1
-position = Vector2(400, 280)
-texture = ExtResource("4_4fdco")
+custom_minimum_size = Vector2(600, 400)
+offset_left = 100.0
+offset_top = 80.0
+offset_right = 700.0
+offset_bottom = 480.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ngjs2")
 
-[node name="BG_CardBorder" type="Sprite2D" parent="Player" unique_id=1992331348]
-z_index = 3
-position = Vector2(400, 280)
-texture = ExtResource("5_w3era")
-
-[node name="BG_CardSilhouette" type="Sprite2D" parent="Player" unique_id=901787414]
+[node name="IMG_CardSilhouette" type="Sprite2D" parent="Player" unique_id=901787414]
 z_index = 2
-position = Vector2(333, 280)
-texture = ExtResource("7_w3era")
-
-[node name="TXT_Note" type="Label" parent="Player" unique_id=2047377376]
-z_index = 4
-offset_left = 469.0
-offset_top = 65.0
-offset_right = 695.0
-offset_bottom = 202.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_oh0sr")
-theme_override_font_sizes/font_size = 100
-text = "999"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TXT_Position1" type="Label" parent="Player" unique_id=1783205425]
-z_index = 4
-offset_left = 173.0
-offset_top = 84.0
-offset_right = 417.0
-offset_bottom = 188.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_8t0j4")
-theme_override_font_sizes/font_size = 88
-text = "Pos1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TXT_Position2" type="Label" parent="Player" unique_id=2079123604]
-z_index = 4
-offset_left = 173.0
-offset_top = 186.0
-offset_right = 417.0
-offset_bottom = 290.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("9_kgodw")
-theme_override_font_sizes/font_size = 88
-text = "Pos2"
-horizontal_alignment = 1
-vertical_alignment = 1
+position = Vector2(333, 274)
+texture = ExtResource("6_4fdco")
 
 [node name="IMG_Specialty1" type="Sprite2D" parent="Player" unique_id=534192437]
 z_index = 4
@@ -154,7 +244,59 @@ z_index = 3
 position = Vector2(128, 191)
 texture = ExtResource("12_4fdco")
 
-[node name="TXT_FirstName" type="Label" parent="Player" unique_id=2016125971]
+[node name="IMG_BallColor" type="Sprite2D" parent="Player" unique_id=361542004]
+z_index = 3
+position = Vector2(128, 100)
+texture = ExtResource("10_w3era")
+
+[node name="PNL_BallColor" type="PanelContainer" parent="Player" unique_id=664240210]
+z_index = 3
+offset_left = 83.0
+offset_top = 49.0
+offset_right = 173.0
+offset_bottom = 139.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8t0j4")
+
+[node name="LBL_Note" type="Label" parent="Player" unique_id=2047377376]
+z_index = 4
+offset_left = 469.0
+offset_top = 65.0
+offset_right = 695.0
+offset_bottom = 202.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 100
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_Position1" type="Label" parent="Player" unique_id=1783205425]
+z_index = 4
+offset_left = 173.0
+offset_top = 84.0
+offset_right = 417.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_8t0j4")
+theme_override_font_sizes/font_size = 88
+text = "Pos1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_Position2" type="Label" parent="Player" unique_id=2079123604]
+z_index = 4
+offset_left = 173.0
+offset_top = 186.0
+offset_right = 417.0
+offset_bottom = 290.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 88
+text = "Pos2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_FirstName" type="Label" parent="Player" unique_id=2016125971]
 z_index = 4
 offset_left = 102.0
 offset_top = 285.0
@@ -167,7 +309,7 @@ text = "First Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_LastName" type="Label" parent="Player" unique_id=680775656]
+[node name="LBL_LastName" type="Label" parent="Player" unique_id=680775656]
 z_index = 4
 offset_left = 102.0
 offset_top = 364.0
@@ -180,20 +322,24 @@ text = "Last Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IMG_SoccerBall" type="Sprite2D" parent="Player" unique_id=1529209069]
-z_index = 4
-position = Vector2(124.99999, 97.000015)
-texture = ExtResource("15_w3era")
-
-[node name="BTN_PinColor" type="Sprite2D" parent="Player" unique_id=361542004]
-z_index = 3
-position = Vector2(128, 283)
-texture = ExtResource("11_1nbe8")
-
 [node name="Skills" type="Node2D" parent="." unique_id=469869775]
 position = Vector2(0, 60)
 
-[node name="TXT_SkillsTitle" type="Label" parent="Skills" unique_id=398328358]
+[node name="BG_CardBackground" type="PanelContainer" parent="Skills" unique_id=271232731]
+z_index = 1
+custom_minimum_size = Vector2(600, 400)
+offset_left = 100.0
+offset_top = 600.0
+offset_right = 700.0
+offset_bottom = 1000.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ngjs2")
+
+[node name="IMG_CardSilhouette" type="Sprite2D" parent="Skills" unique_id=192292123]
+z_index = 2
+position = Vector2(333, 794)
+texture = ExtResource("6_4fdco")
+
+[node name="LBL_SkillsTitle" type="Label" parent="Skills" unique_id=398328358]
 z_index = 4
 offset_left = 107.0
 offset_top = 541.0
@@ -205,22 +351,7 @@ text = "SKILLS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BG_CardBackground" type="Sprite2D" parent="Skills" unique_id=1113663137]
-z_index = 1
-position = Vector2(400, 800)
-texture = ExtResource("4_4fdco")
-
-[node name="BG_CardBorder" type="Sprite2D" parent="Skills" unique_id=838634187]
-z_index = 3
-position = Vector2(400, 800)
-texture = ExtResource("5_w3era")
-
-[node name="BG_CardSilhouette" type="Sprite2D" parent="Skills" unique_id=192292123]
-z_index = 2
-position = Vector2(333, 800)
-texture = ExtResource("7_w3era")
-
-[node name="TXT_StrengthLabel" type="Label" parent="Skills" unique_id=1047299356]
+[node name="LBL_StrengthLabel" type="Label" parent="Skills" unique_id=1047299356]
 z_index = 4
 offset_left = 175.0
 offset_top = 630.0
@@ -231,7 +362,7 @@ theme_override_font_sizes/font_size = 36
 text = "Strength"
 vertical_alignment = 1
 
-[node name="TXT_SpeedLabel" type="Label" parent="Skills" unique_id=1619013880]
+[node name="LBL_SpeedLabel" type="Label" parent="Skills" unique_id=1619013880]
 z_index = 4
 offset_left = 175.0
 offset_top = 700.0
@@ -242,7 +373,7 @@ theme_override_font_sizes/font_size = 36
 text = "Speed"
 vertical_alignment = 1
 
-[node name="TXT_AggressionLabel" type="Label" parent="Skills" unique_id=1089035036]
+[node name="LBL_AggressionLabel" type="Label" parent="Skills" unique_id=1089035036]
 z_index = 4
 offset_left = 175.0
 offset_top = 770.0
@@ -253,7 +384,7 @@ theme_override_font_sizes/font_size = 36
 text = "Aggression"
 vertical_alignment = 1
 
-[node name="TXT_PositioningLabel" type="Label" parent="Skills" unique_id=39960429]
+[node name="LBL_PositioningLabel" type="Label" parent="Skills" unique_id=39960429]
 z_index = 4
 offset_left = 175.0
 offset_top = 840.0
@@ -264,7 +395,7 @@ theme_override_font_sizes/font_size = 36
 text = "Positioning"
 vertical_alignment = 1
 
-[node name="TXT_StaminaLabel" type="Label" parent="Skills" unique_id=1347666037]
+[node name="LBL_StaminaLabel" type="Label" parent="Skills" unique_id=1347666037]
 z_index = 4
 offset_left = 175.0
 offset_top = 910.0
@@ -275,7 +406,7 @@ theme_override_font_sizes/font_size = 36
 text = "Stamina"
 vertical_alignment = 1
 
-[node name="TXT_ConcentrationLabel" type="Label" parent="Skills" unique_id=54323237]
+[node name="LBL_ConcentrationLabel" type="Label" parent="Skills" unique_id=54323237]
 z_index = 4
 offset_left = 325.0
 offset_top = 630.0
@@ -287,7 +418,7 @@ text = "Concentration"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TXT_CommunicationLabel" type="Label" parent="Skills" unique_id=277941004]
+[node name="LBL_CommunicationLabel" type="Label" parent="Skills" unique_id=277941004]
 z_index = 4
 offset_left = 325.0
 offset_top = 700.0
@@ -299,7 +430,7 @@ text = "Communication"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TXT_MotivationLabel" type="Label" parent="Skills" unique_id=1476187155]
+[node name="LBL_MotivationLabel" type="Label" parent="Skills" unique_id=1476187155]
 z_index = 4
 offset_left = 325.0
 offset_top = 770.0
@@ -311,7 +442,7 @@ text = "Motivation"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TXT_CreativityLabel" type="Label" parent="Skills" unique_id=972205070]
+[node name="LBL_CreativityLabel" type="Label" parent="Skills" unique_id=972205070]
 z_index = 4
 offset_left = 325.0
 offset_top = 840.0
@@ -323,7 +454,7 @@ text = "Creativity"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TXT_AnticipationLabel" type="Label" parent="Skills" unique_id=1056766221]
+[node name="LBL_AnticipationLabel" type="Label" parent="Skills" unique_id=1056766221]
 z_index = 4
 offset_left = 325.0
 offset_top = 910.0
@@ -335,7 +466,7 @@ text = "Anticipation"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TXT_StrengthValue" type="Label" parent="Skills" unique_id=865999818]
+[node name="LBL_StrengthValue" type="Label" parent="Skills" unique_id=865999818]
 z_index = 4
 offset_left = 110.0
 offset_top = 630.0
@@ -348,7 +479,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_SpeedValue" type="Label" parent="Skills" unique_id=1586993595]
+[node name="LBL_SpeedValue" type="Label" parent="Skills" unique_id=1586993595]
 z_index = 4
 offset_left = 110.0
 offset_top = 700.0
@@ -361,7 +492,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_AggressionValue" type="Label" parent="Skills" unique_id=579437533]
+[node name="LBL_AggressionValue" type="Label" parent="Skills" unique_id=579437533]
 z_index = 4
 offset_left = 110.0
 offset_top = 770.0
@@ -374,7 +505,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_PositioningValue" type="Label" parent="Skills" unique_id=638138619]
+[node name="LBL_PositioningValue" type="Label" parent="Skills" unique_id=638138619]
 z_index = 4
 offset_left = 110.0
 offset_top = 840.0
@@ -387,7 +518,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_StaminaValue" type="Label" parent="Skills" unique_id=2035677897]
+[node name="LBL_StaminaValue" type="Label" parent="Skills" unique_id=2035677897]
 z_index = 4
 offset_left = 110.0
 offset_top = 910.0
@@ -400,7 +531,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_ConcentrationValue" type="Label" parent="Skills" unique_id=528636003]
+[node name="LBL_ConcentrationValue" type="Label" parent="Skills" unique_id=528636003]
 z_index = 4
 offset_left = 625.0
 offset_top = 630.0
@@ -413,7 +544,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_CommunicationValue" type="Label" parent="Skills" unique_id=1470219974]
+[node name="LBL_CommunicationValue" type="Label" parent="Skills" unique_id=1470219974]
 z_index = 4
 offset_left = 625.0
 offset_top = 700.0
@@ -426,7 +557,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_MotivationValue" type="Label" parent="Skills" unique_id=1696494977]
+[node name="LBL_MotivationValue" type="Label" parent="Skills" unique_id=1696494977]
 z_index = 4
 offset_left = 625.0
 offset_top = 770.0
@@ -439,7 +570,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_CreativityValue" type="Label" parent="Skills" unique_id=1754169887]
+[node name="LBL_CreativityValue" type="Label" parent="Skills" unique_id=1754169887]
 z_index = 4
 offset_left = 625.0
 offset_top = 840.0
@@ -452,7 +583,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_AnticipationValue" type="Label" parent="Skills" unique_id=232545363]
+[node name="LBL_AnticipationValue" type="Label" parent="Skills" unique_id=232545363]
 z_index = 4
 offset_left = 625.0
 offset_top = 910.0
@@ -468,7 +599,15 @@ vertical_alignment = 1
 [node name="Physical" type="Node2D" parent="." unique_id=540855286]
 position = Vector2(0, 60)
 
-[node name="TXT_PhysicalTitle" type="Label" parent="Physical" unique_id=725503410]
+[node name="BG_CardBackground" type="PanelContainer" parent="Physical" unique_id=752903517]
+z_index = 1
+offset_left = 735.0
+offset_top = 600.0
+offset_right = 885.0
+offset_bottom = 1000.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1w81")
+
+[node name="LBL_PhysicalTitle" type="Label" parent="Physical" unique_id=725503410]
 z_index = 4
 offset_left = 672.0
 offset_top = 541.0
@@ -480,17 +619,7 @@ text = "PHYSICAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BG_CardBackground" type="Sprite2D" parent="Physical" unique_id=408385372]
-z_index = 1
-position = Vector2(810, 800)
-texture = ExtResource("15_e7tvd")
-
-[node name="BG_CardBorder" type="Sprite2D" parent="Physical" unique_id=1969539343]
-z_index = 3
-position = Vector2(810, 800)
-texture = ExtResource("16_ngjs2")
-
-[node name="TXT_AgeLabel" type="Label" parent="Physical" unique_id=758081042]
+[node name="LBL_AgeLabel" type="Label" parent="Physical" unique_id=758081042]
 z_index = 4
 offset_left = 700.0
 offset_top = 620.0
@@ -502,7 +631,7 @@ text = "Age"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_HeightLabel" type="Label" parent="Physical" unique_id=1025113050]
+[node name="LBL_HeightLabel" type="Label" parent="Physical" unique_id=1025113050]
 z_index = 4
 offset_left = 700.0
 offset_top = 740.0
@@ -514,7 +643,7 @@ text = "Height"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_WeightLabel" type="Label" parent="Physical" unique_id=866068434]
+[node name="LBL_WeightLabel" type="Label" parent="Physical" unique_id=866068434]
 z_index = 4
 offset_left = 700.0
 offset_top = 860.0
@@ -526,7 +655,7 @@ text = "Weight"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_AgeValue" type="Label" parent="Physical" unique_id=210940479]
+[node name="LBL_AgeValue" type="Label" parent="Physical" unique_id=210940479]
 z_index = 4
 offset_left = 700.0
 offset_top = 670.0
@@ -539,7 +668,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_HeightValue" type="Label" parent="Physical" unique_id=523719253]
+[node name="LBL_HeightValue" type="Label" parent="Physical" unique_id=523719253]
 z_index = 4
 offset_left = 700.0
 offset_top = 790.0
@@ -552,7 +681,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_WeightValue" type="Label" parent="Physical" unique_id=80963128]
+[node name="LBL_WeightValue" type="Label" parent="Physical" unique_id=80963128]
 z_index = 4
 offset_left = 700.0
 offset_top = 910.0
@@ -567,23 +696,23 @@ vertical_alignment = 1
 
 [node name="Evolution" type="Node2D" parent="." unique_id=507651848]
 
-[node name="TXT_RenamePlayer" type="Label" parent="Evolution" unique_id=299735104]
-z_index = 1
-offset_left = 840.0
-offset_top = 140.0
-offset_right = 1040.0
-offset_bottom = 205.0
-theme_override_fonts/font = ExtResource("10_6o6a0")
-theme_override_font_sizes/font_size = 36
-text = "Rename"
-vertical_alignment = 1
-
 [node name="BTN_RenamePlayer" type="Sprite2D" parent="Evolution" unique_id=2077760092]
 z_index = 1
 position = Vector2(774, 170)
-texture = ExtResource("11_1nbe8")
+texture = ExtResource("16_e7tvd")
 
-[node name="LineEdit_FirstName" type="LineEdit" parent="Evolution" unique_id=418160183]
+[node name="LBL_RenamePlayer" type="Label" parent="Evolution" unique_id=299735104]
+z_index = 1
+offset_left = 840.0
+offset_top = 140.0
+offset_right = 1132.0
+offset_bottom = 205.0
+theme_override_fonts/font = ExtResource("10_6o6a0")
+theme_override_font_sizes/font_size = 36
+text = "Rename Player"
+vertical_alignment = 1
+
+[node name="INP_FirstName" type="LineEdit" parent="Evolution" unique_id=418160183]
 offset_left = 930.0
 offset_top = 50.0
 offset_right = 1345.0
@@ -592,7 +721,7 @@ theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 alignment = 1
 
-[node name="LineEdit_LastName" type="LineEdit" parent="Evolution" unique_id=1142479911]
+[node name="INP_LastName" type="LineEdit" parent="Evolution" unique_id=1142479911]
 offset_left = 1355.0
 offset_top = 50.0
 offset_right = 1770.0
@@ -601,7 +730,12 @@ theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 alignment = 1
 
-[node name="TXT_AttributePosition2" type="Label" parent="Evolution" unique_id=1154836499]
+[node name="BTN_AttributePosition2" type="Sprite2D" parent="Evolution" unique_id=1328749480]
+z_index = 1
+position = Vector2(774, 250)
+texture = ExtResource("16_e7tvd")
+
+[node name="LBL_AttributePosition2" type="Label" parent="Evolution" unique_id=1154836499]
 z_index = 1
 offset_left = 840.0
 offset_top = 220.0
@@ -612,12 +746,12 @@ theme_override_font_sizes/font_size = 36
 text = "Attribute Position 2"
 vertical_alignment = 1
 
-[node name="BTN_AttributePosition2" type="Sprite2D" parent="Evolution" unique_id=1328749480]
+[node name="BTN_AttributeSpecialty1" type="Sprite2D" parent="Evolution" unique_id=1384146759]
 z_index = 1
-position = Vector2(774, 250)
-texture = ExtResource("11_1nbe8")
+position = Vector2(774, 330)
+texture = ExtResource("16_e7tvd")
 
-[node name="TXT_AttributeSpecialty1" type="Label" parent="Evolution" unique_id=155777934]
+[node name="LBL_AttributeSpecialty1" type="Label" parent="Evolution" unique_id=155777934]
 z_index = 1
 offset_left = 840.0
 offset_top = 300.0
@@ -628,12 +762,12 @@ theme_override_font_sizes/font_size = 36
 text = "Attribute Specialty 1"
 vertical_alignment = 1
 
-[node name="BTN_AttributeSpecialty1" type="Sprite2D" parent="Evolution" unique_id=1384146759]
+[node name="BTN_AttributeSpecialty2" type="Sprite2D" parent="Evolution" unique_id=1456557657]
 z_index = 1
-position = Vector2(774, 330)
-texture = ExtResource("11_1nbe8")
+position = Vector2(774, 410)
+texture = ExtResource("16_e7tvd")
 
-[node name="TXT_AttributeSpecialty2" type="Label" parent="Evolution" unique_id=330612274]
+[node name="LBL_AttributeSpecialty2" type="Label" parent="Evolution" unique_id=330612274]
 z_index = 1
 offset_left = 840.0
 offset_top = 380.0
@@ -644,12 +778,12 @@ theme_override_font_sizes/font_size = 36
 text = "Attribute Specialty 2"
 vertical_alignment = 1
 
-[node name="BTN_AttributeSpecialty2" type="Sprite2D" parent="Evolution" unique_id=1456557657]
+[node name="BTN_AttributeBallColor" type="Sprite2D" parent="Evolution" unique_id=310793502]
 z_index = 1
-position = Vector2(774, 410)
-texture = ExtResource("11_1nbe8")
+position = Vector2(774, 490)
+texture = ExtResource("16_e7tvd")
 
-[node name="TXT_AttributePinColor" type="Label" parent="Evolution" unique_id=1947795996]
+[node name="LBL_AttributeBallColor" type="Label" parent="Evolution" unique_id=1947795996]
 z_index = 1
 offset_left = 840.0
 offset_top = 460.0
@@ -657,78 +791,190 @@ offset_right = 1340.0
 offset_bottom = 525.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
-text = "Attribute Pin Color"
+text = "Attribute Ball Color"
 vertical_alignment = 1
 
-[node name="BTN_AttributePinColor" type="Sprite2D" parent="Evolution" unique_id=310793502]
+[node name="PNL_AttributeBallColor" type="PanelContainer" parent="Evolution" unique_id=1681428265]
+modulate = Color(0.9098039, 0.8392157, 0, 1)
 z_index = 1
-position = Vector2(774, 490)
-texture = ExtResource("11_1nbe8")
+offset_left = 841.0
+offset_top = 440.0
+offset_right = 1360.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mfqbj")
 
-[node name="BTN_AttributePin#00CED1" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=554204814]
-visible = false
+[node name="BTN_AttributeBall#00CED1" type="Sprite2D" parent="Evolution" unique_id=554204814]
+z_index = 5
+position = Vector2(900, 490)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
+
+[node name="PNL_AttributeBall#00CED1" type="PanelContainer" parent="Evolution" unique_id=1435534936]
 z_index = 1
-position = Vector2(100, 0)
-texture = ExtResource("11_1nbe8")
+custom_minimum_size = Vector2(89, 89)
+offset_left = 871.0
+offset_top = 457.00006
+offset_right = 960.0
+offset_bottom = 546.00006
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
-[node name="BTN_AttributePin#003366" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=236256697]
-visible = false
+[node name="BTN_AttributeBall#003366" type="Sprite2D" parent="Evolution" unique_id=236256697]
 z_index = 5
-position = Vector2(100, 75)
-texture = ExtResource("11_1nbe8")
+position = Vector2(900, 560)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
 
-[node name="BTN_AttributePin#FF69B4" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=2107656202]
-visible = false
-z_index = 5
-position = Vector2(200, 0)
-texture = ExtResource("11_1nbe8")
+[node name="PNL_AttributeBall#003366" type="PanelContainer" parent="Evolution" unique_id=1203708513]
+z_index = 1
+custom_minimum_size = Vector2(89, 89)
+offset_left = 871.0
+offset_top = 527.0
+offset_right = 960.0
+offset_bottom = 616.0
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
-[node name="BTN_AttributePin#6A0DAD" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=802899850]
-visible = false
+[node name="BTN_AttributeBall#FF69B4" type="Sprite2D" parent="Evolution" unique_id=2107656202]
 z_index = 5
-position = Vector2(200, 75)
-texture = ExtResource("11_1nbe8")
+position = Vector2(1000, 490)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
 
-[node name="BTN_AttributePin#FF6B6B" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=1356779211]
-visible = false
-z_index = 5
-position = Vector2(300, 0)
-texture = ExtResource("11_1nbe8")
+[node name="PNL_AttributeBall#FF69B4" type="PanelContainer" parent="Evolution" unique_id=466420399]
+z_index = 1
+custom_minimum_size = Vector2(89, 89)
+offset_left = 971.0
+offset_top = 457.0
+offset_right = 1060.0
+offset_bottom = 546.0
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
-[node name="BTN_AttributePin#800020" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=1233534402]
-visible = false
+[node name="BTN_AttributeBall#6A0DAD" type="Sprite2D" parent="Evolution" unique_id=802899850]
 z_index = 5
-position = Vector2(300, 75)
-texture = ExtResource("11_1nbe8")
+position = Vector2(1000, 560)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
 
-[node name="BTN_AttributePin#B8B8B8" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=881260373]
-visible = false
-z_index = 5
-position = Vector2(400, 0)
-texture = ExtResource("11_1nbe8")
+[node name="PNL_AttributeBall#6A0DAD" type="PanelContainer" parent="Evolution" unique_id=234174652]
+z_index = 1
+custom_minimum_size = Vector2(89, 89)
+offset_left = 971.0
+offset_top = 527.0
+offset_right = 1060.0
+offset_bottom = 616.0
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
-[node name="BTN_AttributePin#8B4513" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=1829074168]
-visible = false
+[node name="BTN_AttributeBall#FF6B6B" type="Sprite2D" parent="Evolution" unique_id=1356779211]
 z_index = 5
-position = Vector2(400, 75)
-texture = ExtResource("11_1nbe8")
+position = Vector2(1100, 490)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
 
-[node name="BTN_AttributePin#95D5B2" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=644254331]
-visible = false
-z_index = 5
-position = Vector2(500, 0)
-texture = ExtResource("11_1nbe8")
+[node name="PNL_AttributeBall#FF6B6B" type="PanelContainer" parent="Evolution" unique_id=1780068097]
+z_index = 1
+custom_minimum_size = Vector2(89, 89)
+offset_left = 1071.0
+offset_top = 457.0
+offset_right = 1160.0
+offset_bottom = 546.0
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
-[node name="BTN_AttributePin#2D6A4F" type="Sprite2D" parent="Evolution/BTN_AttributePinColor" unique_id=273819443]
-visible = false
+[node name="BTN_AttributeBall#800020" type="Sprite2D" parent="Evolution" unique_id=1233534402]
 z_index = 5
-position = Vector2(500, 75)
-texture = ExtResource("11_1nbe8")
+position = Vector2(1100, 560)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
+
+[node name="PNL_AttributeBall#800020" type="PanelContainer" parent="Evolution" unique_id=1277412533]
+z_index = 1
+custom_minimum_size = Vector2(89, 89)
+offset_left = 1071.0
+offset_top = 527.0
+offset_right = 1160.0
+offset_bottom = 616.0
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
+
+[node name="BTN_AttributeBall#B8B8B8" type="Sprite2D" parent="Evolution" unique_id=881260373]
+z_index = 5
+position = Vector2(1200, 490)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
+
+[node name="PNL_AttributeBall#B8B8B8" type="PanelContainer" parent="Evolution" unique_id=1822047523]
+z_index = 1
+custom_minimum_size = Vector2(89, 89)
+offset_left = 1171.0
+offset_top = 457.0
+offset_right = 1260.0
+offset_bottom = 546.0
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
+
+[node name="BTN_AttributeBall#8B4513" type="Sprite2D" parent="Evolution" unique_id=1829074168]
+z_index = 5
+position = Vector2(1200, 560)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
+
+[node name="PNL_AttributeBall#8B4513" type="PanelContainer" parent="Evolution" unique_id=97124898]
+z_index = 1
+custom_minimum_size = Vector2(89, 89)
+offset_left = 1171.0
+offset_top = 527.0
+offset_right = 1260.0
+offset_bottom = 616.0
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
+
+[node name="BTN_AttributeBall#95D5B2" type="Sprite2D" parent="Evolution" unique_id=644254331]
+z_index = 5
+position = Vector2(1300, 490)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
+
+[node name="PNL_AttributeBall#95D5B2" type="PanelContainer" parent="Evolution" unique_id=1297051742]
+z_index = 1
+custom_minimum_size = Vector2(89, 89)
+offset_left = 1271.0
+offset_top = 457.0
+offset_right = 1360.0
+offset_bottom = 546.0
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
+
+[node name="BTN_AttributeBall#2D6A4F" type="Sprite2D" parent="Evolution" unique_id=273819443]
+z_index = 5
+position = Vector2(1300, 560)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_w3era")
+
+[node name="PNL_AttributeBall#2D6A4F" type="PanelContainer" parent="Evolution" unique_id=602188947]
+z_index = 1
+custom_minimum_size = Vector2(89, 89)
+offset_left = 1271.0
+offset_top = 527.0
+offset_right = 1360.0
+offset_bottom = 616.0
+scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
 [node name="Achievements" type="Node2D" parent="." unique_id=1452908079]
 position = Vector2(0, 60)
 
-[node name="TXT_AchievementsTitle" type="Label" parent="Achievements" unique_id=1496283505]
+[node name="BG_CardBackground" type="PanelContainer" parent="Achievements" unique_id=1827278448]
+custom_minimum_size = Vector2(400, 400)
+offset_left = 920.0
+offset_top = 600.0
+offset_right = 1330.0
+offset_bottom = 1000.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1anc")
+
+[node name="LBL_AchievementsTitle" type="Label" parent="Achievements" unique_id=1496283505]
 z_index = 4
 offset_left = 923.0
 offset_top = 541.0
@@ -740,15 +986,7 @@ text = "ACHIEVEMENTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BG_CardBackground" type="Sprite2D" parent="Achievements" unique_id=710422587]
-position = Vector2(1130, 798)
-texture = ExtResource("18_h1anc")
-
-[node name="BG_CardBorder" type="Sprite2D" parent="Achievements" unique_id=1258924470]
-position = Vector2(1130, 798)
-texture = ExtResource("19_mfqbj")
-
-[node name="TXT_PlayedLabel" type="Label" parent="Achievements" unique_id=856624864]
+[node name="LBL_PlayedLabel" type="Label" parent="Achievements" unique_id=856624864]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 925.0
@@ -761,7 +999,7 @@ text = "Played"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_PlayedValue" type="Label" parent="Achievements" unique_id=854943522]
+[node name="LBL_PlayedValue" type="Label" parent="Achievements" unique_id=854943522]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 1208.0
@@ -774,7 +1012,7 @@ text = "999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_WinsLabel" type="Label" parent="Achievements" unique_id=160163981]
+[node name="LBL_WinsLabel" type="Label" parent="Achievements" unique_id=160163981]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 925.0
@@ -787,7 +1025,7 @@ text = "Wins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_WinsValue" type="Label" parent="Achievements" unique_id=1475545200]
+[node name="LBL_WinsValue" type="Label" parent="Achievements" unique_id=1475545200]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 1208.0
@@ -800,7 +1038,7 @@ text = "999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_LossesLabel" type="Label" parent="Achievements" unique_id=824702223]
+[node name="LBL_LossesLabel" type="Label" parent="Achievements" unique_id=824702223]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 925.0
@@ -813,7 +1051,7 @@ text = "Losses"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_LossesValue" type="Label" parent="Achievements" unique_id=398253319]
+[node name="LBL_LossesValue" type="Label" parent="Achievements" unique_id=398253319]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 1208.0
@@ -826,7 +1064,7 @@ text = "999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_WinRateLabel" type="Label" parent="Achievements" unique_id=1950478326]
+[node name="LBL_WinRateLabel" type="Label" parent="Achievements" unique_id=1950478326]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 925.0
@@ -839,7 +1077,7 @@ text = "Win Rate %"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_WinRateValue" type="Label" parent="Achievements" unique_id=302740138]
+[node name="LBL_WinRateValue" type="Label" parent="Achievements" unique_id=302740138]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 1208.0
@@ -852,7 +1090,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_CompetitionsPlayedLabel" type="Label" parent="Achievements" unique_id=2101589318]
+[node name="LBL_CompetitionsPlayedLabel" type="Label" parent="Achievements" unique_id=2101589318]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 925.0
@@ -866,7 +1104,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="TXT_CompetitionsPlayedValue" type="Label" parent="Achievements" unique_id=1633731807]
+[node name="LBL_CompetitionsPlayedValue" type="Label" parent="Achievements" unique_id=1633731807]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 1208.0
@@ -882,18 +1120,18 @@ vertical_alignment = 1
 [node name="Training" type="Node2D" parent="." unique_id=969207217]
 position = Vector2(-20, 60)
 
-[node name="BG_CardBackground" type="Sprite2D" parent="Training" unique_id=691537094]
-position = Vector2(1600, 600)
-texture = ExtResource("20_w3era")
-
-[node name="BG_CardBorder" type="Sprite2D" parent="Training" unique_id=1065042745]
-position = Vector2(1600, 600)
-texture = ExtResource("21_e7tvd")
+[node name="BG_CardBackground" type="PanelContainer" parent="Training" unique_id=1296992108]
+custom_minimum_size = Vector2(400, 800)
+offset_left = 1400.0
+offset_top = 195.0
+offset_right = 1800.0
+offset_bottom = 1000.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kgodw")
 
 [node name="TrainingFormation" type="Node2D" parent="Training" unique_id=1393811794]
 visible = false
 
-[node name="TXT_TrainingTitle" type="Label" parent="Training/TrainingFormation" unique_id=1539550038]
+[node name="LBL_TrainingTitle" type="Label" parent="Training/TrainingFormation" unique_id=1539550038]
 z_index = 4
 offset_left = 1394.0
 offset_top = 135.0
@@ -905,7 +1143,7 @@ text = "Training Formation"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round1" type="Label" parent="Training/TrainingFormation" unique_id=659674589]
+[node name="LBL_Round1" type="Label" parent="Training/TrainingFormation" unique_id=659674589]
 offset_left = 1419.0
 offset_top = 225.0
 offset_right = 1735.0
@@ -918,12 +1156,12 @@ text = "+ 15 for 100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round1" unique_id=111092977]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round1" unique_id=111092977]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round2" type="Label" parent="Training/TrainingFormation" unique_id=2121038840]
+[node name="LBL_Round2" type="Label" parent="Training/TrainingFormation" unique_id=2121038840]
 offset_left = 1419.0
 offset_top = 295.0
 offset_right = 1735.0
@@ -936,12 +1174,12 @@ text = "+ 9 for 200"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round2" unique_id=1560578873]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round2" unique_id=1560578873]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round3" type="Label" parent="Training/TrainingFormation" unique_id=966381034]
+[node name="LBL_Round3" type="Label" parent="Training/TrainingFormation" unique_id=966381034]
 offset_left = 1419.0
 offset_top = 365.0
 offset_right = 1735.0
@@ -954,12 +1192,12 @@ text = "+ 8 for 300"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round3" unique_id=1091874027]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round3" unique_id=1091874027]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round4" type="Label" parent="Training/TrainingFormation" unique_id=1891680119]
+[node name="LBL_Round4" type="Label" parent="Training/TrainingFormation" unique_id=1891680119]
 offset_left = 1419.0
 offset_top = 435.0
 offset_right = 1735.0
@@ -972,12 +1210,12 @@ text = "+ 7 for 400"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round4" unique_id=1730813475]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round4" unique_id=1730813475]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round5" type="Label" parent="Training/TrainingFormation" unique_id=47329954]
+[node name="LBL_Round5" type="Label" parent="Training/TrainingFormation" unique_id=47329954]
 offset_left = 1419.0
 offset_top = 505.0
 offset_right = 1735.0
@@ -990,12 +1228,12 @@ text = "+ 6 for 500"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round5" unique_id=688597769]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round5" unique_id=688597769]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round6" type="Label" parent="Training/TrainingFormation" unique_id=977581386]
+[node name="LBL_Round6" type="Label" parent="Training/TrainingFormation" unique_id=977581386]
 offset_left = 1419.0
 offset_top = 575.0
 offset_right = 1735.0
@@ -1008,12 +1246,12 @@ text = "+ 5 for 600"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round6" unique_id=1302216100]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round6" unique_id=1302216100]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round7" type="Label" parent="Training/TrainingFormation" unique_id=556496389]
+[node name="LBL_Round7" type="Label" parent="Training/TrainingFormation" unique_id=556496389]
 offset_left = 1419.0
 offset_top = 645.0
 offset_right = 1735.0
@@ -1026,12 +1264,12 @@ text = "+ 4 for 700"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round7" unique_id=54844664]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round7" unique_id=54844664]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round8" type="Label" parent="Training/TrainingFormation" unique_id=977836095]
+[node name="LBL_Round8" type="Label" parent="Training/TrainingFormation" unique_id=977836095]
 offset_left = 1419.0
 offset_top = 715.0
 offset_right = 1735.0
@@ -1044,12 +1282,12 @@ text = "+ 3 for 800"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round8" unique_id=1017856736]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round8" unique_id=1017856736]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round9" type="Label" parent="Training/TrainingFormation" unique_id=1193849940]
+[node name="LBL_Round9" type="Label" parent="Training/TrainingFormation" unique_id=1193849940]
 offset_left = 1419.0
 offset_top = 785.0
 offset_right = 1735.0
@@ -1062,12 +1300,12 @@ text = "+ 2 for 900"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round9" unique_id=776016838]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round9" unique_id=776016838]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round10" type="Label" parent="Training/TrainingFormation" unique_id=147381210]
+[node name="LBL_Round10" type="Label" parent="Training/TrainingFormation" unique_id=147381210]
 offset_left = 1419.0
 offset_top = 855.0
 offset_right = 1735.0
@@ -1079,12 +1317,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
 text = " + 1 position for "
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round10" unique_id=401770568]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round10" unique_id=401770568]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
-[node name="TXT_Round11" type="Label" parent="Training/TrainingFormation" unique_id=1519436255]
+[node name="LBL_Round11" type="Label" parent="Training/TrainingFormation" unique_id=1519436255]
 offset_left = 1419.0
 offset_top = 925.0
 offset_right = 1735.0
@@ -1096,14 +1334,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ffgkw")
 text = " + 1 specialty for"
 vertical_alignment = 1
 
-[node name="Diamond" type="Sprite2D" parent="Training/TrainingFormation/TXT_Round11" unique_id=248596648]
+[node name="IMG_Diamond" type="Sprite2D" parent="Training/TrainingFormation/LBL_Round11" unique_id=248596648]
 z_index = 10
 position = Vector2(314, 25)
-texture = ExtResource("22_ngjs2")
+texture = ExtResource("17_8t0j4")
 
 [node name="TrainingClassic" type="Node2D" parent="Training" unique_id=781255706]
 
-[node name="TXT_TrainingTitle" type="Label" parent="Training/TrainingClassic" unique_id=1098760906]
+[node name="LBL_TrainingTitle" type="Label" parent="Training/TrainingClassic" unique_id=1098760906]
 z_index = 4
 offset_left = 1384.0
 offset_top = 135.0
@@ -1115,7 +1353,7 @@ text = "Training Pro"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_MatchesLabel" type="Label" parent="Training/TrainingClassic" unique_id=1893482100]
+[node name="LBL_MatchesLabel" type="Label" parent="Training/TrainingClassic" unique_id=1893482100]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = 1400.0
@@ -1128,7 +1366,7 @@ text = "Matchs"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round1" type="Label" parent="Training/TrainingClassic" unique_id=104905866]
+[node name="LBL_Round1" type="Label" parent="Training/TrainingClassic" unique_id=104905866]
 offset_left = 1500.0
 offset_top = 280.0
 offset_right = 1550.0
@@ -1141,7 +1379,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round2" type="Label" parent="Training/TrainingClassic" unique_id=1364474253]
+[node name="LBL_Round2" type="Label" parent="Training/TrainingClassic" unique_id=1364474253]
 offset_left = 1500.0
 offset_top = 350.0
 offset_right = 1550.0
@@ -1154,7 +1392,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round3" type="Label" parent="Training/TrainingClassic" unique_id=1789798643]
+[node name="LBL_Round3" type="Label" parent="Training/TrainingClassic" unique_id=1789798643]
 offset_left = 1500.0
 offset_top = 420.0
 offset_right = 1550.0
@@ -1167,7 +1405,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round4" type="Label" parent="Training/TrainingClassic" unique_id=1129495604]
+[node name="LBL_Round4" type="Label" parent="Training/TrainingClassic" unique_id=1129495604]
 offset_left = 1500.0
 offset_top = 490.0
 offset_right = 1550.0
@@ -1180,7 +1418,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round5" type="Label" parent="Training/TrainingClassic" unique_id=1412638238]
+[node name="LBL_Round5" type="Label" parent="Training/TrainingClassic" unique_id=1412638238]
 offset_left = 1500.0
 offset_top = 560.0
 offset_right = 1550.0
@@ -1193,7 +1431,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round6" type="Label" parent="Training/TrainingClassic" unique_id=1718483766]
+[node name="LBL_Round6" type="Label" parent="Training/TrainingClassic" unique_id=1718483766]
 offset_left = 1500.0
 offset_top = 630.0
 offset_right = 1550.0
@@ -1206,7 +1444,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round7" type="Label" parent="Training/TrainingClassic" unique_id=33385270]
+[node name="LBL_Round7" type="Label" parent="Training/TrainingClassic" unique_id=33385270]
 offset_left = 1500.0
 offset_top = 700.0
 offset_right = 1550.0
@@ -1219,7 +1457,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round8" type="Label" parent="Training/TrainingClassic" unique_id=1623259482]
+[node name="LBL_Round8" type="Label" parent="Training/TrainingClassic" unique_id=1623259482]
 offset_left = 1500.0
 offset_top = 770.0
 offset_right = 1550.0
@@ -1232,7 +1470,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round9" type="Label" parent="Training/TrainingClassic" unique_id=353747420]
+[node name="LBL_Round9" type="Label" parent="Training/TrainingClassic" unique_id=353747420]
 offset_left = 1500.0
 offset_top = 840.0
 offset_right = 1550.0
@@ -1245,7 +1483,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round10" type="Label" parent="Training/TrainingClassic" unique_id=755859028]
+[node name="LBL_Round10" type="Label" parent="Training/TrainingClassic" unique_id=755859028]
 offset_left = 1500.0
 offset_top = 910.0
 offset_right = 1550.0
@@ -1258,7 +1496,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round11" type="Label" parent="Training/TrainingClassic" unique_id=907959228]
+[node name="LBL_Round11" type="Label" parent="Training/TrainingClassic" unique_id=907959228]
 offset_left = 1650.0
 offset_top = 280.0
 offset_right = 1700.0
@@ -1271,7 +1509,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round12" type="Label" parent="Training/TrainingClassic" unique_id=1477346963]
+[node name="LBL_Round12" type="Label" parent="Training/TrainingClassic" unique_id=1477346963]
 offset_left = 1650.0
 offset_top = 350.0
 offset_right = 1700.0
@@ -1284,7 +1522,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round13" type="Label" parent="Training/TrainingClassic" unique_id=1816270253]
+[node name="LBL_Round13" type="Label" parent="Training/TrainingClassic" unique_id=1816270253]
 offset_left = 1650.0
 offset_top = 420.0
 offset_right = 1700.0
@@ -1297,7 +1535,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round14" type="Label" parent="Training/TrainingClassic" unique_id=1649300519]
+[node name="LBL_Round14" type="Label" parent="Training/TrainingClassic" unique_id=1649300519]
 offset_left = 1650.0
 offset_top = 490.0
 offset_right = 1700.0
@@ -1310,7 +1548,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round15" type="Label" parent="Training/TrainingClassic" unique_id=1965379639]
+[node name="LBL_Round15" type="Label" parent="Training/TrainingClassic" unique_id=1965379639]
 offset_left = 1650.0
 offset_top = 560.0
 offset_right = 1700.0
@@ -1323,7 +1561,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round16" type="Label" parent="Training/TrainingClassic" unique_id=126849828]
+[node name="LBL_Round16" type="Label" parent="Training/TrainingClassic" unique_id=126849828]
 offset_left = 1650.0
 offset_top = 630.0
 offset_right = 1700.0
@@ -1336,7 +1574,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round17" type="Label" parent="Training/TrainingClassic" unique_id=889001634]
+[node name="LBL_Round17" type="Label" parent="Training/TrainingClassic" unique_id=889001634]
 offset_left = 1650.0
 offset_top = 700.0
 offset_right = 1700.0
@@ -1349,7 +1587,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round18" type="Label" parent="Training/TrainingClassic" unique_id=1328823649]
+[node name="LBL_Round18" type="Label" parent="Training/TrainingClassic" unique_id=1328823649]
 offset_left = 1650.0
 offset_top = 770.0
 offset_right = 1700.0
@@ -1362,7 +1600,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round19" type="Label" parent="Training/TrainingClassic" unique_id=2001248640]
+[node name="LBL_Round19" type="Label" parent="Training/TrainingClassic" unique_id=2001248640]
 offset_left = 1650.0
 offset_top = 840.0
 offset_right = 1700.0
@@ -1375,7 +1613,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Round20" type="Label" parent="Training/TrainingClassic" unique_id=1222703861]
+[node name="LBL_Round20" type="Label" parent="Training/TrainingClassic" unique_id=1222703861]
 offset_left = 1650.0
 offset_top = 910.0
 offset_right = 1700.0

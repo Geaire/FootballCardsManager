@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://d3wv6hdctkpih"]
 
 [ext_resource type="Script" uid="uid://bpn8piugcb58" path="res://Scripts/login.gd" id="1_88cqn"]
-[ext_resource type="Texture2D" uid="uid://s320o46smhco" path="res://Sprites/Others/logo_fcm.png" id="3_5iow8"]
+[ext_resource type="Texture2D" uid="uid://ckkhf4bqxthcc" path="res://Sprites/Others/Balls/img_ball_3.png" id="2_88cqn"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="3_8164b"]
-[ext_resource type="Texture2D" uid="uid://dqq6lj0isakm3" path="res://Sprites/Others/android_dark_rd_SU@4x.png" id="4_vrdhx"]
+[ext_resource type="Texture2D" uid="uid://dt5ov4xindyrg" path="res://Sprites/Others/Logo FCM/img_logo_fcm_black.png" id="3_m7a0j"]
 [ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="5_5iow8"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5iow8"]
-load_path = "res://.godot/imported/bg_login.jpg-1685255d7bf944ef95e5de9c2eeef7d3.ctex"
+[ext_resource type="Texture2D" uid="uid://d05rvti8f2a15" path="res://Sprites/Others/btn_google.png" id="5_88cqn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88cqn"]
+content_margin_left = 60.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
@@ -20,20 +22,31 @@ corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
-expand_margin_left = 46.0
+expand_margin_left = 50.0
 
 [node name="Login" type="Node2D" unique_id=2071326569]
 script = ExtResource("1_88cqn")
 
-[node name="BG_Login" type="Sprite2D" parent="." unique_id=118706105]
-position = Vector2(960, 540)
-texture = SubResource("CompressedTexture2D_5iow8")
+[node name="BG_Login" type="ColorRect" parent="." unique_id=1276068886]
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="TXT_Title" type="Label" parent="." unique_id=1393627049]
+[node name="IMG_Ball" type="Sprite2D" parent="." unique_id=670484975]
+z_index = 2
+position = Vector2(1500, 540)
+texture = ExtResource("2_88cqn")
+
+[node name="IMG_LogoFcmBlack" type="Sprite2D" parent="." unique_id=1326612748]
+z_index = 3
+position = Vector2(300, 955)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_m7a0j")
+
+[node name="LBL_Title" type="Label" parent="." unique_id=1393627049]
 z_index = 1
-offset_left = 460.0
+offset_left = 450.0
 offset_top = 50.0
-offset_right = 1460.0
+offset_right = 1450.0
 offset_bottom = 170.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_8164b")
@@ -42,66 +55,68 @@ text = "Football Cards Manager"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Logo_FCM" type="Sprite2D" parent="." unique_id=1326612748]
-z_index = 1
-position = Vector2(1646, 920)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_5iow8")
-
 [node name="BTN_Google" type="Sprite2D" parent="." unique_id=1490445893]
 z_index = 1
-position = Vector2(630, 380)
+position = Vector2(300, 380)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_vrdhx")
+texture = ExtResource("5_88cqn")
 
-[node name="BTN_Email" type="Label" parent="." unique_id=1036051292]
+[node name="BTN_Email" type="Label" parent="." unique_id=137733270]
 z_index = 1
-offset_left = 497.0
-offset_top = 450.0
-offset_right = 808.0
-offset_bottom = 530.0
+offset_left = 171.0
+offset_top = 441.0
+offset_right = 479.0
+offset_bottom = 521.0
+size_flags_horizontal = 4
+mouse_filter = 0
 theme_override_fonts/font = ExtResource("5_5iow8")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_88cqn")
-text = " Sign up with Email"
+text = "Sign up with Email"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Logo_Email" type="Label" parent="." unique_id=1852327000]
+[node name="LBL_EmailIcon" type="Label" parent="." unique_id=276361343]
 z_index = 2
-offset_left = 467.0
-offset_top = 446.0
-offset_right = 523.0
-offset_bottom = 526.0
-theme_override_colors/font_color = Color(0, 0.011764706, 1, 1)
+offset_left = 142.0
+offset_top = 442.0
+offset_right = 187.0
+offset_bottom = 511.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_constants/line_spacing = 3
 theme_override_fonts/font = ExtResource("3_8164b")
 theme_override_font_sizes/font_size = 50
 text = "@"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BTN_Guest" type="Label" parent="." unique_id=1482323535]
+[node name="BTN_Guest" type="Label" parent="." unique_id=1252047971]
 z_index = 1
-offset_left = 497.0
-offset_top = 560.0
-offset_right = 809.0
-offset_bottom = 640.0
+offset_left = 171.0
+offset_top = 541.0
+offset_right = 479.0
+offset_bottom = 621.0
+size_flags_horizontal = 4
+mouse_filter = 0
 theme_override_fonts/font = ExtResource("5_5iow8")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_88cqn")
-text = " Play as Guest"
+text = "Play as Guest"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Logo_Guest" type="Label" parent="." unique_id=1610093797]
+[node name="LBL_GuestIcon" type="Label" parent="." unique_id=520620349]
 z_index = 2
-offset_left = 467.0
-offset_top = 558.0
-offset_right = 523.0
-offset_bottom = 638.0
+offset_left = 144.0
+offset_top = 540.0
+offset_right = 189.0
+offset_bottom = 618.0
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/line_spacing = 3
 theme_override_fonts/font = ExtResource("3_8164b")
-theme_override_font_sizes/font_size = 54
+theme_override_font_sizes/font_size = 55
 text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1

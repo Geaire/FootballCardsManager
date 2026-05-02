@@ -1,75 +1,54 @@
 [gd_scene format=3 uid="uid://bkfpyr8yi4g2m"]
 
 [ext_resource type="Script" uid="uid://dbn3aa8r7oq7v" path="res://Scripts/card_player.gd" id="1_6d7mh"]
-[ext_resource type="Texture2D" uid="uid://dx1if6kmim4ej" path="res://Sprites/Others/cardborder.png" id="3_b12v8"]
-[ext_resource type="Texture2D" uid="uid://ccul2qdqtbmvk" path="res://Sprites/Others/cardsilhouette.png" id="4_6d7mh"]
+[ext_resource type="Texture2D" uid="uid://bu5hagbygrrmp" path="res://Sprites/Others/img_card_silhouette.png" id="2_aanve"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="4_b12v8"]
 [ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="5_r57cx"]
 [ext_resource type="FontFile" uid="uid://d345ux4b2dmhk" path="res://Fonts/Roboto-Regular.ttf" id="6_0i6fe"]
+[ext_resource type="Texture2D" uid="uid://dhqj6a4huc8sl" path="res://Sprites/Others/Balls/img_ball_2.png" id="6_aanve"]
 [ext_resource type="Texture2D" uid="uid://dugyg7kkokyba" path="res://Sprites/Specialties/specialty_crossing.png" id="7_1v2uw"]
 [ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="8_8tm0q"]
 [ext_resource type="Texture2D" uid="uid://crq8r4sbrv8i2" path="res://Sprites/Specialties/specialty_tackling.png" id="8_ajqki"]
 [ext_resource type="FontFile" uid="uid://djse4v8s8ul4d" path="res://Fonts/MPLUS1p-Bold.ttf" id="9_fhld7"]
 [ext_resource type="FontFile" uid="uid://qchfwvdcm00i" path="res://Fonts/MPLUS1p-Black.ttf" id="10_dtb0m"]
-[ext_resource type="Texture2D" uid="uid://dmf8mkx4j1mmi" path="res://Sprites/Others/soccerball.png" id="13_b12v8"]
-[ext_resource type="Texture2D" uid="uid://powvw137cca2" path="res://Sprites/Others/circle.png" id="14_b12v8"]
 
-[sub_resource type="Theme" id="Theme_b12v8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6d7mh"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r57cx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aanve"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 12
 
 [node name="Card_Player" type="Node2D" unique_id=1206912900]
 script = ExtResource("1_6d7mh")
 
-[node name="BG_CardBackground" type="Sprite2D" parent="." unique_id=1334964318]
+[node name="BG_CardBackground" type="PanelContainer" parent="." unique_id=1579739554]
+custom_minimum_size = Vector2(240, 160)
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6d7mh")
 
-[node name="BG_CardBorder" type="Sprite2D" parent="." unique_id=590357485]
-modulate = Color(0, 0, 0, 1)
-z_index = 2
-texture = ExtResource("3_b12v8")
-
-[node name="BG_CardSilhouette" type="Sprite2D" parent="." unique_id=1698343987]
+[node name="IMG_CardSilhouette" type="Sprite2D" parent="." unique_id=1698343987]
 z_index = 1
-texture = ExtResource("4_6d7mh")
-
-[node name="TXT_Note" type="Label" parent="." unique_id=221002004]
-z_index = 4
-offset_left = 31.0
-offset_top = -85.0
-offset_right = 118.0
-offset_bottom = -30.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_b12v8")
-theme_override_font_sizes/font_size = 40
-text = "999"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TXT_Position1" type="Label" parent="." unique_id=1973637261]
-z_index = 4
-offset_left = -84.0
-offset_top = -77.0
-offset_right = 3.0
-offset_bottom = -35.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_r57cx")
-theme_override_font_sizes/font_size = 35
-text = "Pos1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TXT_Position2" type="Label" parent="." unique_id=907523274]
-z_index = 4
-offset_left = -84.0
-offset_top = -36.0
-offset_right = 3.0
-offset_bottom = 6.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_0i6fe")
-theme_override_font_sizes/font_size = 35
-text = "Pos2"
-horizontal_alignment = 1
-vertical_alignment = 1
+position = Vector2(-30, -2.3)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_aanve")
 
 [node name="IMG_Specialty1" type="Sprite2D" parent="." unique_id=1806895979]
 z_index = 4
@@ -89,7 +68,60 @@ position = Vector2(-109, -34)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("8_8tm0q")
 
-[node name="TXT_FirstName" type="Label" parent="." unique_id=1348867650]
+[node name="IMG_BallColor" type="Sprite2D" parent="." unique_id=75564132]
+z_index = 14
+position = Vector2(-108, -73)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_aanve")
+
+[node name="PNL_BallColor" type="PanelContainer" parent="." unique_id=27268617]
+z_index = 13
+offset_left = -130.0
+offset_top = -98.0
+offset_right = -86.0
+offset_bottom = -54.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aanve")
+
+[node name="LBL_Note" type="Label" parent="." unique_id=221002004]
+z_index = 4
+offset_left = 31.0
+offset_top = -85.0
+offset_right = 118.0
+offset_bottom = -30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_b12v8")
+theme_override_font_sizes/font_size = 40
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_Position1" type="Label" parent="." unique_id=1973637261]
+z_index = 4
+offset_left = -84.0
+offset_top = -77.0
+offset_right = 3.0
+offset_bottom = -35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_r57cx")
+theme_override_font_sizes/font_size = 35
+text = "Pos1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_Position2" type="Label" parent="." unique_id=907523274]
+z_index = 4
+offset_left = -84.0
+offset_top = -36.0
+offset_right = 3.0
+offset_bottom = 6.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_0i6fe")
+theme_override_font_sizes/font_size = 35
+text = "Pos2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_FirstName" type="Label" parent="." unique_id=1348867650]
 z_index = 4
 offset_left = -114.0
 offset_top = 3.0
@@ -102,7 +134,7 @@ text = "First Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_LastName" type="Label" parent="." unique_id=739092819]
+[node name="LBL_LastName" type="Label" parent="." unique_id=739092819]
 z_index = 4
 offset_left = -114.0
 offset_top = 34.0
@@ -114,83 +146,3 @@ theme_override_font_sizes/font_size = 26
 text = "Last Name"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="BTN_SoccerBall" type="Sprite2D" parent="." unique_id=75564132]
-z_index = 13
-position = Vector2(-109, -72)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("13_b12v8")
-
-[node name="TXT_Help" type="Label" parent="." unique_id=1706195474]
-visible = false
-modulate = Color(0.02745098, 0.9137255, 0.9490196, 1)
-z_index = 12
-offset_left = -140.0
-offset_top = -139.0
-offset_right = 224.0
-offset_bottom = -94.0
-theme = SubResource("Theme_b12v8")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_r57cx")
-text = " Your action is irreversible‼️"
-
-[node name="BTN_Collection" type="Label" parent="." unique_id=2021078414]
-visible = false
-modulate = Color(0.02745098, 0.9137255, 0.9490196, 1)
-z_index = 12
-offset_left = -80.0
-offset_top = -90.0
-offset_right = 170.0
-offset_bottom = -45.0
-theme = SubResource("Theme_b12v8")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_r57cx")
-text = " - Collection"
-
-[node name="BTN_Pantheon" type="Label" parent="." unique_id=1511124298]
-visible = false
-modulate = Color(0.02745098, 0.9137255, 0.9490196, 1)
-z_index = 12
-offset_left = -80.0
-offset_top = -45.0
-offset_right = 170.0
-theme = SubResource("Theme_b12v8")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_r57cx")
-text = " - Pantheon"
-
-[node name="BTN_SignPro" type="Label" parent="." unique_id=1841455072]
-visible = false
-modulate = Color(0.02745098, 0.9137255, 0.9490196, 1)
-z_index = 12
-offset_left = -80.0
-offset_right = 170.0
-offset_bottom = 45.0
-theme = SubResource("Theme_b12v8")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_r57cx")
-text = " - Sign Pro"
-
-[node name="BTN_EndOfCareer" type="Label" parent="." unique_id=829972757]
-visible = false
-modulate = Color(0.02745098, 0.9137255, 0.9490196, 1)
-z_index = 12
-offset_left = -80.0
-offset_top = 45.0
-offset_right = 170.0
-offset_bottom = 90.0
-theme = SubResource("Theme_b12v8")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_r57cx")
-text = " - End of career"
-
-[node name="BTN_PinColor" type="Sprite2D" parent="." unique_id=1321180052]
-z_index = 3
-position = Vector2(-108, 2.9999924)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("14_b12v8")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmf8mkx4j1mmi"
-path="res://.godot/imported/soccerball.png-f5d2bd52cdaaf5875731b07dcc40d154.ctex"
+uid="uid://ckkhf4bqxthcc"
+path="res://.godot/imported/img_ball_3.png-1472b764f6fa84209c6ce7c2f0d3cde5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Others1/soccerball.png"
-dest_files=["res://.godot/imported/soccerball.png-f5d2bd52cdaaf5875731b07dcc40d154.ctex"]
+source_file="res://Sprites/Others/Balls/img_ball_3.png"
+dest_files=["res://.godot/imported/img_ball_3.png-1472b764f6fa84209c6ce7c2f0d3cde5.ctex"]
 
 [params]
 

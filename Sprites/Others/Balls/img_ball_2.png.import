@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccul2qdqtbmvk"
-path="res://.godot/imported/cardsilhouette.png-6c847a5bc6515174191356193b778e7e.ctex"
+uid="uid://dhqj6a4huc8sl"
+path="res://.godot/imported/img_ball_2.png-f9fdc1160f9ab209ff8cc5999a5f6db7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Others1/cardsilhouette.png"
-dest_files=["res://.godot/imported/cardsilhouette.png-6c847a5bc6515174191356193b778e7e.ctex"]
+source_file="res://Sprites/Others/Balls/img_ball_2.png"
+dest_files=["res://.godot/imported/img_ball_2.png-f9fdc1160f9ab209ff8cc5999a5f6db7.ctex"]
 
 [params]
 
