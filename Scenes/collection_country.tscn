@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://is2aac5b8sba" path="res://Scripts/collection_country.gd" id="1_4u0ix"]
 [ext_resource type="Texture2D" uid="uid://dv03oh1ng7i0n" path="res://Sprites/Backgrounds/bg_grid.png" id="2_jpcxk"]
 [ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="3_5oh88"]
-[ext_resource type="Texture2D" uid="uid://1crmolvv2m56" path="res://Sprites/Others/Balls/img_ball_5.png" id="4_5ycs6"]
+[ext_resource type="Texture2D" uid="uid://1crmolvv2m56" path="res://Sprites/Balls/img_ball_5.png" id="4_jpcxk"]
 [ext_resource type="Texture2D" uid="uid://bx4vmh3nlamwq" path="res://Sprites/Others/btn_yes_no.png" id="5_jpcxk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ycs6"]
@@ -35,10 +35,8 @@ border_color = Color(0, 1, 0, 1)
 script = ExtResource("1_4u0ix")
 
 [node name="BG_Collection" type="ColorRect" parent="." unique_id=1747828418]
-offset_left = -20.0
-offset_top = -3.0
-offset_right = 1900.0
-offset_bottom = 1077.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="BG_GridCollection" type="Sprite2D" parent="." unique_id=215009257]
@@ -47,15 +45,15 @@ position = Vector2(960, 540)
 texture = ExtResource("2_jpcxk")
 
 [node name="IMG_Flag" type="Sprite2D" parent="." unique_id=1904364645]
-position = Vector2(1730, 180)
+position = Vector2(1745, 188)
 scale = Vector2(2, 2)
 texture = ExtResource("3_5oh88")
 
 [node name="LBL_CountryName" type="Label" parent="." unique_id=878516621]
 offset_left = 1166.0
-offset_top = 102.0
+offset_top = 114.0
 offset_right = 1593.0
-offset_bottom = 147.0
+offset_bottom = 159.0
 theme_override_font_sizes/font_size = 28
 text = "FRANCE"
 horizontal_alignment = 2
@@ -63,9 +61,10 @@ vertical_alignment = 1
 
 [node name="BTN_HelpCollection" type="Sprite2D" parent="." unique_id=1258396448]
 position = Vector2(1553, 215)
-texture = ExtResource("4_5ycs6")
+texture = ExtResource("4_jpcxk")
 
 [node name="LBL_PopupCollection" type="Label" parent="." unique_id=1224644172]
+visible = false
 z_index = 10
 offset_left = 45.0
 offset_top = 120.0
@@ -89,7 +88,7 @@ offset_left = 50.0
 offset_top = 100.0
 offset_right = 1160.0
 offset_bottom = 980.0
-theme_override_constants/separation = 80
+theme_override_constants/separation = 70
 alignment = 1
 
 [node name="CNT_Row1" type="HBoxContainer" parent="CNT_GridSlots" unique_id=176248909]
@@ -241,6 +240,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="Popup_Confirm" type="Node2D" parent="." unique_id=612371493]
+visible = false
 
 [node name="LBL_Confirm" type="Label" parent="Popup_Confirm" unique_id=1153027610]
 z_index = 10
@@ -271,7 +271,7 @@ texture = ExtResource("5_jpcxk")
 [node name="PNL_ConditionsRewards" type="PanelContainer" parent="." unique_id=165094209]
 offset_left = 1211.0
 offset_top = 274.0
-offset_right = 1850.0
+offset_right = 1865.0
 offset_bottom = 980.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kbedr")
 

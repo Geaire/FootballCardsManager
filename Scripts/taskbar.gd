@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-# ── COULEURS BORDURE PAR SCÈNE ────────────────────────────────────────────────
 const SCENE_COLORS = {
 	"res://Scenes/schedule.tscn":           Color(0.0, 0.4,  1.0),
 	"res://Scenes/collection_flags.tscn":   Color(0.0, 0.8,  0.2),
@@ -10,7 +9,6 @@ const SCENE_COLORS = {
 }
 const DEFAULT_COLOR = Color(1.0, 1.0, 1.0)
 
-# ── SCÈNES ACTIVES ────────────────────────────────────────────────────────────
 const SCENE_PATHS = {
 	"competition": "",
 	"team":        "",
@@ -23,9 +21,8 @@ const SCENE_PATHS = {
 	"settings":    "",
 }
 
-# ── NŒUDS ─────────────────────────────────────────────────────────────────────
-@onready var bg_taskbar_bottom = $TaskbarBottom/BG_TaskbarBottom  # PanelContainer
-@onready var bg_taskbar_top    = $TaskbarTop/BG_TaskbarTop        # PanelContainer
+@onready var bg_taskbar_bottom = $TaskbarBottom/BG_TaskbarBottom
+@onready var bg_taskbar_top    = $TaskbarTop/BG_TaskbarTop
 
 @onready var btn_competition = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Competition
 @onready var btn_team        = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Team
@@ -39,7 +36,6 @@ const SCENE_PATHS = {
 
 var btn_map: Dictionary = {}
 
-# ── READY ─────────────────────────────────────────────────────────────────────
 func _ready():
 	btn_map = {
 		"competition": btn_competition,
@@ -55,7 +51,6 @@ func _ready():
 	_update_border_color()
 	get_tree().root.child_entered_tree.connect(_on_scene_changed)
 
-# ── COULEUR BORDURE via StyleBoxFlat ──────────────────────────────────────────
 func _update_border_color():
 	var scene_path = ""
 	if get_tree().current_scene:
@@ -71,9 +66,9 @@ func _set_border_color(panel: PanelContainer, col: Color):
 
 func _on_scene_changed(_node):
 	await get_tree().process_frame
+	await get_tree().process_frame
 	_update_border_color()
 
-# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
 	if not (event is InputEventMouseButton): return
 	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
@@ -91,7 +86,6 @@ func _navigate_to(key: String):
 	if current == path: return
 	get_tree().change_scene_to_file(path)
 
-# ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if sprite == null or not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))

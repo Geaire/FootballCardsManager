@@ -94,24 +94,24 @@ var locked:              bool       = false
 var page1_nodes:         Array      = []
 
 # ── NŒUDS ─────────────────────────────────────────────────────────────────────
-@onready var lbl_title_competitions = $LBL_TitleCompetitions    # Label
+@onready var lbl_title_competitions = $LBL_TitleCompetitions
 @onready var btn_help_competitions  = $BTN_HelpCompetitions      # Sprite2D
-@onready var lbl_popup_competitions = $LBL_PopupCompetitions     # Label
+@onready var lbl_popup_competitions = $LBL_PopupCompetitions
 @onready var btn_next_page          = $BTN_NextPage              # Sprite2D
-@onready var cnt_competitions       = $CNT_Competitions          # VBoxContainer ← corrigé
+@onready var cnt_competitions       = $CNT_Competitions          # VBoxContainer ← pas PNL_
 
 @onready var page2               = $Page2
 @onready var btn_prev_page       = $Page2/BTN_PrevPage           # Sprite2D
-@onready var lbl_title_news      = $Page2/LBL_TitleNews          # Label
-@onready var lbl_news1           = $Page2/CNT_News/LBL_News1     # ← corrigé
+@onready var lbl_title_news      = $Page2/LBL_TitleNews
+@onready var lbl_news1           = $Page2/CNT_News/LBL_News1     # ← CNT_News pas PNL_News
 @onready var lbl_news2           = $Page2/CNT_News/LBL_News2
 @onready var lbl_news3           = $Page2/CNT_News/LBL_News3
 @onready var lbl_news4           = $Page2/CNT_News/LBL_News4
 @onready var lbl_news5           = $Page2/CNT_News/LBL_News5
-@onready var lbl_title_evolution = $Page2/LBL_TitleEvolution     # Label
+@onready var lbl_title_evolution = $Page2/LBL_TitleEvolution
 @onready var btn_help_evolution  = $Page2/BTN_HelpEvolution       # Sprite2D
-@onready var lbl_popup_evolution = $Page2/LBL_PopupEvolution      # Label
-@onready var btn_bonus           = $Page2/CNT_Evolution/BTN_Bonus          # ← corrigé
+@onready var lbl_popup_evolution = $Page2/LBL_PopupEvolution
+@onready var btn_bonus           = $Page2/CNT_Evolution/BTN_Bonus          # ← CNT_Evolution
 @onready var btn_feat_comp       = $Page2/CNT_Evolution/BTN_Competitions
 @onready var btn_design          = $Page2/CNT_Evolution/BTN_Design
 @onready var btn_others          = $Page2/CNT_Evolution/BTN_Others
@@ -120,9 +120,9 @@ var page1_nodes:         Array      = []
 var shot_nodes: Array = []
 var comp_btns:  Array = []
 
-# ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
 	Taskbar.visible = true
+	Taskbar._update_border_color()
 	for i in range(1, 9):
 		shot_data[i] = {}
 		shot_nodes.append(get_node("Shot_%d" % i))
@@ -142,12 +142,10 @@ func _ready():
 	for i in range(1, 9):
 		page1_nodes.append(shot_nodes[i - 1])
 
-# ── HEURES SHOTS ──────────────────────────────────────────────────────────────
 func _setup_shot_times():
 	for i in range(1, 9):
 		shot_nodes[i - 1].get_node("LBL_Time").text = SHOT_TIMES[i]
 
-# ── CATALOGUE ─────────────────────────────────────────────────────────────────
 func _setup_catalogue():
 	var lang = GameState.language
 	for i in range(comp_btns.size()):
@@ -158,7 +156,6 @@ func _setup_catalogue():
 		comp_btns[i].modulate = COMP_COLORS[ct]
 		comp_btns[i].visible  = catalogue_available[i]
 
-# ── NEWS ──────────────────────────────────────────────────────────────────────
 func _setup_news():
 	var news   = WEEKLY_NEWS.get(GameState.language, WEEKLY_NEWS["fr"])
 	var labels = [lbl_news1, lbl_news2, lbl_news3, lbl_news4, lbl_news5]
@@ -172,7 +169,6 @@ func _apply_translations():
 	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["fr"])
 	lbl_popup_competitions.text = t["popup_comp"]
 	lbl_popup_evolution.text    = t["popup_evo"]
-	# Tout le reste en anglais
 	lbl_title_competitions.text = "Next week competitions"
 	lbl_title_news.text         = "Newsletter!"
 	lbl_title_evolution.text    = "Football Cards Manager Evolution"
@@ -182,7 +178,6 @@ func _apply_translations():
 	btn_others.text             = "OTHERS"
 	btn_bugs.text               = "BUGS"
 
-# ── REFRESH SHOTS ─────────────────────────────────────────────────────────────
 func _refresh_shots():
 	for i in range(1, 9):
 		var lbl_c = shot_nodes[i - 1].get_node("LBL_Competition")
@@ -201,7 +196,6 @@ func _set_bg_color(panel: PanelContainer, color: Color):
 	style.bg_color = color
 	panel.add_theme_stylebox_override("panel", style)
 
-# ── DISPONIBILITÉ SHOTS ───────────────────────────────────────────────────────
 func _update_shot_availability():
 	if not drag_active or drag_comp_type not in CHAMPIONSHIP_TYPES:
 		for i in range(1, 9): shot_nodes[i - 1].modulate = Color(1, 1, 1)
@@ -217,14 +211,12 @@ func _is_shot_available_for_champ(slot: int) -> bool:
 		if CHAMPIONSHIP_PAIRS.get(drag_origin_shot, -1) != pair: return false
 	return true
 
-# ── VERROU DIMANCHE 18H ───────────────────────────────────────────────────────
 func _check_lock():
 	var now = Time.get_datetime_dict_from_system()
 	locked = (now["weekday"] == 0 and now["hour"] >= 18)
 	for i in range(1, 9):
 		shot_nodes[i - 1].get_node("OVL_Lock").visible = locked
 
-# ── PROCESS — appui long ──────────────────────────────────────────────────────
 func _process(delta):
 	if press_holding and press_slot > 0:
 		press_timer += delta
@@ -234,7 +226,6 @@ func _process(delta):
 				var slot = press_slot; press_slot = -1
 				_end_drag(); _clear_shot(slot); _refresh_shots()
 
-# ── ANIMATION PAGE ────────────────────────────────────────────────────────────
 func _animate_to_page(page: int):
 	if is_animating: return
 	is_animating = true
@@ -252,7 +243,6 @@ func _animate_to_page(page: int):
 		tween.tween_property(page2, "position:y", 0.0, SLIDE_DURATION)
 		tween.tween_callback(func(): for n in page1_nodes: n.visible = true; is_animating = false)
 
-# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -267,39 +257,33 @@ func _input(event):
 			drag_visual.position = event.position - Vector2(drag_visual.size.x / 2, drag_visual.size.y / 2)
 
 func _on_press(pos: Vector2):
-	# Navigation pages
 	if _sprite_hit(btn_next_page, pos) and current_page == 1:
 		_animate_to_page(2); return
 	if _sprite_hit(btn_prev_page, pos) and current_page == 2:
 		_animate_to_page(1); return
-	# Toggle popups aide (même bouton = ouvre ET ferme)
+	# Toggle popups — même bouton ouvre ET ferme
 	if _sprite_hit(btn_help_competitions, pos) and current_page == 1:
 		lbl_popup_competitions.visible = not lbl_popup_competitions.visible
 		lbl_popup_evolution.visible    = false; return
 	if _sprite_hit(btn_help_evolution, pos) and current_page == 2:
 		lbl_popup_evolution.visible    = not lbl_popup_evolution.visible
 		lbl_popup_competitions.visible = false; return
-	# Fermer popup si clic ailleurs
 	if lbl_popup_competitions.visible:
 		lbl_popup_competitions.visible = false; return
 	if lbl_popup_evolution.visible:
 		lbl_popup_evolution.visible = false; return
-	# Page 2 — Evolution
 	if current_page == 2:
 		if _label_hit(btn_bonus, pos):     OS.shell_open(FEATUREBASE_URL + "?category=bonus"); return
 		if _label_hit(btn_feat_comp, pos): OS.shell_open(FEATUREBASE_URL + "?category=competitions"); return
 		if _label_hit(btn_design, pos):    OS.shell_open(FEATUREBASE_URL + "?category=design"); return
 		if _label_hit(btn_others, pos):    OS.shell_open(FEATUREBASE_URL + "?category=others"); return
 		if _label_hit(btn_bugs, pos):      OS.shell_open(FEATUREBASE_URL + "?category=bugs"); return
-	# Page 1 uniquement
 	if current_page != 1 or locked: return
-	# Appui long sur shot occupé
 	for i in range(1, 9):
 		if _shot_hit(i, pos) and not shot_data[i].is_empty():
 			press_slot = i; press_holding = true; press_timer = 0.0
 			_start_drag(shot_data[i]["name"], shot_data[i]["type"], i, shot_data[i].get("cat_idx", -1))
 			return
-	# Drag depuis catalogue
 	for i in range(WEEKLY_CATALOGUE.size()):
 		if catalogue_available[i] and _label_hit(comp_btns[i], pos):
 			_start_drag(comp_btns[i].text, WEEKLY_CATALOGUE[i][0], -1, i)
@@ -314,7 +298,6 @@ func _on_release(pos: Vector2):
 		_clear_shot(drag_origin_shot); _end_drag(); _refresh_shots(); return
 	_end_drag()
 
-# ── DRAG ──────────────────────────────────────────────────────────────────────
 func _start_drag(comp_name: String, comp_type: String, origin_shot: int, origin_cat: int):
 	drag_active = true; drag_comp_name = comp_name; drag_comp_type = comp_type
 	drag_origin_shot = origin_shot; drag_origin_cat = origin_cat
@@ -367,7 +350,6 @@ func _clear_shot(slot: int):
 	if cat_idx >= 0: catalogue_available[cat_idx] = true
 	shot_data[slot] = {}
 
-# ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _shot_hit(slot: int, pos: Vector2) -> bool:
 	var bg = shot_nodes[slot - 1].get_node_or_null("BG_Shot")
 	if bg == null: return false

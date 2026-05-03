@@ -5,6 +5,27 @@ const FLAG_PATH      = "res://Sprites/Flags/flag_%s.png"
 const MAX_CONDITIONS = 17
 const LONG_PRESS_DURATION = 0.5
 
+const COUNTRY_NAMES = {
+	"AE":"United Arab Emirates","AO":"Angola","AR":"Argentina","AT":"Austria",
+	"AU":"Australia","BA":"Bosnia","BE":"Belgium","BG":"Bulgaria","BO":"Bolivia",
+	"BR":"Brazil","CA":"Canada","CD":"Congo DR","CH":"Switzerland",
+	"CI":"Ivory Coast","CL":"Chile","CM":"Cameroon","CN":"China","CO":"Colombia",
+	"CR":"Costa Rica","CU":"Cuba","CZ":"Czech Republic","DE":"Germany",
+	"DK":"Denmark","DZ":"Algeria","EC":"Ecuador","EG":"Egypt","ES":"Spain",
+	"FR":"France","GB":"England","GH":"Ghana","GR":"Greece","HN":"Honduras",
+	"HR":"Croatia","HT":"Haiti","HU":"Hungary","ID":"Indonesia","IE":"Ireland",
+	"IL":"Israel","IQ":"Iraq","IR":"Iran","IT":"Italy","JM":"Jamaica",
+	"JP":"Japan","KP":"North Korea","KR":"South Korea","KW":"Kuwait",
+	"MA":"Morocco","MX":"Mexico","NG":"Nigeria","NI":"Nicaragua",
+	"NL":"Netherlands","NO":"Norway","NZ":"New Zealand","PA":"Panama",
+	"PE":"Peru","PL":"Poland","PT":"Portugal","PY":"Paraguay","QA":"Qatar",
+	"RO":"Romania","RS":"Serbia","RU":"Russia","SA":"Saudi Arabia",
+	"SC":"Seychelles","SE":"Sweden","SI":"Slovenia","SK":"Slovakia",
+	"SN":"Senegal","SV":"El Salvador","TG":"Togo","TN":"Tunisia","TR":"Turkey",
+	"TT":"Trinidad","UA":"Ukraine","US":"USA","UY":"Uruguay","WA":"Wales",
+	"ZA":"South Africa"
+}
+
 # ── CONDITIONS / REWARDS (anglais uniquement) ─────────────────────────────────
 const CONDITIONS_REWARDS = [
 	"16 cards = 1 red card",
@@ -54,7 +75,6 @@ const TRANSLATIONS = {
 	},
 }
 
-# ── ÉTAT ──────────────────────────────────────────────────────────────────────
 var slot_card_ids: Array   = ["","","","","","","","","","","","","","","",""]
 var press_slot:    int     = -1
 var press_timer:   float   = 0.0
@@ -63,11 +83,10 @@ var touch_start:   Vector2 = Vector2.ZERO
 var collection_data: Dictionary = {}
 var conditions_completed: Array = []
 
-# ── NŒUDS ─────────────────────────────────────────────────────────────────────
 @onready var img_flag             = $IMG_Flag
 @onready var lbl_country_name     = $LBL_CountryName
 @onready var btn_help             = $BTN_HelpCollection        # Sprite2D
-@onready var lbl_popup            = $LBL_PopupCollection       # Label
+@onready var lbl_popup            = $LBL_PopupCollection
 @onready var popup_confirm        = $Popup_Confirm
 @onready var lbl_confirm          = $Popup_Confirm/LBL_Confirm
 @onready var btn_yes              = $Popup_Confirm/BTN_Yes     # Sprite2D
@@ -78,18 +97,16 @@ var conditions_completed: Array = []
 var slot_nodes:      Array = []
 var condition_nodes: Array = []
 
-# ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
 	Taskbar.visible = true
+	Taskbar._update_border_color()
 	lbl_popup.visible     = false
 	popup_confirm.visible = false
-	# Slots via CNT_GridSlots → CNT_Row1-4 → BG_Slot1-16
 	var row_names = ["CNT_Row1","CNT_Row2","CNT_Row3","CNT_Row4"]
 	for row_name in row_names:
 		var row = $CNT_GridSlots.get_node(row_name)
 		for i in range(1, 5):
 			slot_nodes.append(row.get_node("BG_Slot%d" % (slot_nodes.size() + 1)))
-	# Conditions
 	var cnt = $PNL_ConditionsRewards/CNT_ConditionsRewards
 	for i in range(1, MAX_CONDITIONS + 1):
 		condition_nodes.append(cnt.get_node("LBL_ConditionReward%d" % i))
@@ -100,28 +117,33 @@ func _ready():
 	_setup_conditions()
 	_load_collection()
 
-# ── TRADUCTIONS ────────────────────────────────────────────────────────────────
 func _apply_translations():
 	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["fr"])
 	lbl_popup.text   = t["popup"]
 	lbl_confirm.text = t["confirm"]
 	lbl_title_conditions.text = "Conditions = Rewards"
 
-# ── DRAPEAU ET NOM DU PAYS ────────────────────────────────────────────────────
 func _setup_flag():
 	var code = GameState.selected_country
-	var tex  = load(FLAG_PATH % code.to_lower()) if ResourceLoader.exists(FLAG_PATH % code.to_lower()) else null
+	var fp   = FLAG_PATH % code.to_lower()
+	var tex  = load(fp) if ResourceLoader.exists(fp) else null
 	if tex: img_flag.texture = tex
-	lbl_country_name.text = code
+	lbl_country_name.text = COUNTRY_NAMES.get(code, code)
 
-# ── CONDITIONS / REWARDS ──────────────────────────────────────────────────────
 func _setup_conditions():
 	for i in range(condition_nodes.size()):
 		if i < CONDITIONS_REWARDS.size():
 			condition_nodes[i].text    = CONDITIONS_REWARDS[i]
 			condition_nodes[i].visible = not conditions_completed[i]
 
-# ── CHARGEMENT FIREBASE ───────────────────────────────────────────────────────
+# ── CARTES DE TEST (FR uniquement) ────────────────────────────────────────────
+func _inject_test_cards():
+	if GameState.selected_country != "FR": return
+	if slot_card_ids[0] == "": slot_card_ids[0] = "test_blue_001"
+	if slot_card_ids[1] == "": slot_card_ids[1] = "test_white_001"
+	if slot_card_ids[2] == "": slot_card_ids[2] = "test_yellow_001"
+	_refresh_slots()
+
 func _load_collection():
 	Firebase.firestore_success.connect(_on_collection_loaded)
 	Firebase.firestore_failed.connect(_on_collection_failed)
@@ -140,6 +162,7 @@ func _on_collection_loaded(data: Dictionary):
 		conditions_completed[i] = bool(data.get("condition_%d" % (i + 1), false))
 	_refresh_slots()
 	_setup_conditions()
+	_inject_test_cards()
 
 func _on_collection_failed(_error: String):
 	if Firebase.firestore_success.is_connected(_on_collection_loaded):
@@ -147,22 +170,21 @@ func _on_collection_failed(_error: String):
 	if Firebase.firestore_failed.is_connected(_on_collection_failed):
 		Firebase.firestore_failed.disconnect(_on_collection_failed)
 	_refresh_slots()
+	_inject_test_cards()
 
-# ── REFRESH SLOTS ─────────────────────────────────────────────────────────────
 func _refresh_slots():
 	for i in range(16):
 		var bg = slot_nodes[i]
 		if slot_card_ids[i] != "":
-			_set_slot_color(bg, Color(0.2, 0.6, 1.0))  # bleu = occupé
+			_set_slot_color(bg, Color(0.2, 0.6, 1.0))
 		else:
-			_set_slot_color(bg, Color(1, 1, 1))         # blanc = vide
+			_set_slot_color(bg, Color(1, 1, 1))
 
 func _set_slot_color(panel: PanelContainer, color: Color):
 	var style = panel.get_theme_stylebox("panel").duplicate()
 	style.bg_color = color
 	panel.add_theme_stylebox_override("panel", style)
 
-# ── SAUVEGARDE FIREBASE ───────────────────────────────────────────────────────
 func _save_collection():
 	var code = GameState.selected_country
 	var data: Dictionary = {}
@@ -180,11 +202,9 @@ func _update_global_counter():
 		if id != "": count += 1
 	Firebase.update_document(
 		"managers/" + Firebase.user_id + "/collection",
-		"progress",
-		{code: count}
+		"progress", {code: count}
 	)
 
-# ── SUPPRESSION CARTE ─────────────────────────────────────────────────────────
 func _remove_card_from_slot(slot_index: int):
 	var card_id = slot_card_ids[slot_index]
 	if card_id == "": return
@@ -193,7 +213,6 @@ func _remove_card_from_slot(slot_index: int):
 	_save_collection()
 	_refresh_slots()
 
-# ── PROCESS — appui long ──────────────────────────────────────────────────────
 func _process(delta):
 	if press_holding and press_slot >= 0:
 		press_timer += delta
@@ -202,19 +221,16 @@ func _process(delta):
 			if slot_card_ids[press_slot] != "":
 				popup_confirm.visible = true
 
-# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
 	if not (event is InputEventMouseButton): return
 	if event.button_index != MOUSE_BUTTON_LEFT: return
 	var pos = event.position
 	if event.pressed:
-		touch_start = pos
-		_on_press(pos)
+		touch_start = pos; _on_press(pos)
 	else:
 		_on_release(pos)
 
 func _on_press(pos: Vector2):
-	# Popup confirm ouverte
 	if popup_confirm.visible:
 		if _sprite_hit(btn_yes, pos):
 			_remove_card_from_slot(press_slot)
@@ -222,19 +238,14 @@ func _on_press(pos: Vector2):
 		if _sprite_hit(btn_no, pos):
 			popup_confirm.visible = false; press_slot = -1; return
 		return
-	# Toggle popup help
 	if _sprite_hit(btn_help, pos):
 		lbl_popup.visible = not lbl_popup.visible; return
-	# Fermer popup help si clic ailleurs
 	if lbl_popup.visible:
 		lbl_popup.visible = false; return
-	# Slots
 	for i in range(16):
 		if _panel_hit(slot_nodes[i], pos):
 			if slot_card_ids[i] != "":
-				press_slot    = i
-				press_holding = true
-				press_timer   = 0.0
+				press_slot = i; press_holding = true; press_timer = 0.0
 			else:
 				GameState.collection_slot_target = i
 				GameState.collection_country     = GameState.selected_country
@@ -244,7 +255,6 @@ func _on_press(pos: Vector2):
 func _on_release(_pos: Vector2):
 	press_holding = false; press_timer = 0.0
 
-# ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if sprite == null or not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))

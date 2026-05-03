@@ -1,22 +1,17 @@
 extends Node2D
 
-# ── CONSTANTES ────────────────────────────────────────────────────────────────
-const SCENE_BONUS   = "res://Scenes/bonus.tscn"
-const CARD_SCENE    = preload("res://Scenes/card_player.tscn")
-const SHOT_TIMES    = {
-	1:"0h - 3h", 2:"3h - 6h", 3:"6h - 9h", 4:"9h - 12h",
-	5:"12h - 15h", 6:"15h - 18h", 7:"18h - 21h", 8:"21h - 24h"
-}
+const CARD_SCENE          = "res://Scenes/card_player.tscn"
+const SCENE_DCP           = "res://Scenes/detail_card_player.tscn"
 const LONG_PRESS_DURATION = 0.5
 
-const CARD_COLORS_GODOT = {
+const CARD_COLORS = {
 	"yellow":  Color(1.0, 0.85, 0.0),
 	"orange":  Color(1.0, 0.5,  0.0),
 	"red":     Color(0.9, 0.1,  0.1),
 	"magenta": Color(0.56, 0.016, 0.56),
-	"white":   Color(1.0, 1.0,  1.0),
-	"blue":    Color(0.2, 0.5,  1.0),
-	"special": Color(0.0, 0.8,  0.4),
+	"blue":    Color(0.2,  0.5,  1.0),
+	"white":   Color(1.0,  1.0,  1.0),
+	"special": Color(0.0,  0.8,  0.4),
 }
 
 const NOTE_RANGES = {
@@ -24,387 +19,324 @@ const NOTE_RANGES = {
 	"orange":  "70 - 79",
 	"red":     "80 - 89",
 	"magenta": "90 - 99",
-	"white":   "40 - 112",
 	"blue":    "100 - 131",
-	"special": "100 - 131",
-}
-
-const COMP_COLORS = {
-	"championnat_classique": Color(0.0,   0.200, 0.400),
-	"coupe_classique":       Color(0.0,   0.808, 0.820),
-	"championnat_pantheon":  Color(0.416, 0.051, 0.678),
-	"coupe_pantheon":        Color(1.0,   0.412, 0.706),
-	"championnat_jeunes":    Color(0.545, 0.271, 0.075),
-	"coupe_jeunes":          Color(0.722, 0.722, 0.722),
-	"championnat_asso":      Color(0.502, 0.0,   0.125),
-	"coupe_asso":            Color(1.0,   0.420, 0.420),
-	"championnat_special":   Color(0.176, 0.416, 0.310),
-	"autre":                 Color(0.584, 0.835, 0.698),
-}
-
-const TRANSLATIONS = {
-	"fr": {
-		"choose_bonus":  "Clic pour choisir un Bonus",
-		"missing":       "Joueurs manquants : ",
-		"validate":      "Valider",
-		"btn_ok":        "OK",
-	},
-	"en": {
-		"choose_bonus":  "Click to choose a Bonus",
-		"missing":       "Missing players: ",
-		"validate":      "Validate",
-		"btn_ok":        "OK",
-	},
-	"es": {
-		"choose_bonus":  "Clic para elegir un Bono",
-		"missing":       "Jugadores faltantes: ",
-		"validate":      "Validar",
-		"btn_ok":        "OK",
-	},
-	"de": {
-		"choose_bonus":  "Klicken um Bonus zu wählen",
-		"missing":       "Fehlende Spieler: ",
-		"validate":      "Bestätigen",
-		"btn_ok":        "OK",
-	},
-	"it": {
-		"choose_bonus":  "Clicca per scegliere un Bonus",
-		"missing":       "Giocatori mancanti: ",
-		"validate":      "Valida",
-		"btn_ok":        "OK",
-	},
-	"pt": {
-		"choose_bonus":  "Clique para escolher um Bônus",
-		"missing":       "Jogadores em falta: ",
-		"validate":      "Validar",
-		"btn_ok":        "OK",
-	},
+	"white":   "40 - 112",
+	"special": "???",
 }
 
 # ── ÉTAT ──────────────────────────────────────────────────────────────────────
-var active_shot:          int        = -1
-var popup_open:           bool       = false
-var popup_color:          String     = ""
-var card_instances_popup: Array      = []
-var bonus1_id:            String     = ""
-var bonus2_id:            String     = ""
-var player_slots:         Array      = ["","","","","","","",""]
-var player_instances:     Array      = [null,null,null,null,null,null,null,null]
-var drag_active:          bool       = false
-var drag_card_id:         String     = ""
-var drag_card_dict:       Dictionary = {}
-var drag_visual:          Node       = null
-var drag_from_slot:       int        = -1
-var touch_start:          Vector2    = Vector2.ZERO
-var press_slot:           int        = -1
-var press_timer:          float      = 0.0
-var press_holding:        bool       = false
-var schedule_data:        Dictionary = {}
+var slot_card_ids:          Array      = ["","","","","","","",""]
+var slot_card_data:         Array      = [{},{},{},{},{},{},{},{}]
+var current_popup_color:    String     = ""
+var current_popup_cards:    Array      = []
+var popup_card_nodes:       Array      = []
+
+var drag_active:            bool       = false
+var drag_card_data:         Dictionary = {}
+var drag_visual:            Node       = null
+var press_timer:            float      = 0.0
+var press_holding:          bool       = false
+var press_card_index:       int        = -1
+var touch_start:            Vector2    = Vector2.ZERO
 
 # ── NŒUDS ─────────────────────────────────────────────────────────────────────
-@onready var slot_bonus1     = $Slots_BonusPlayers/SlotBonus1
-@onready var slot_bonus2     = $Slots_BonusPlayers/SlotBonus2
-@onready var slot_card_nodes = [
-	$Slots_BonusPlayers/SlotCardPlayer1,
-	$Slots_BonusPlayers/SlotCardPlayer2,
-	$Slots_BonusPlayers/SlotCardPlayer3,
-	$Slots_BonusPlayers/SlotCardPlayer4,
-	$Slots_BonusPlayers/SlotCardPlayer5,
-	$Slots_BonusPlayers/SlotCardPlayer6,
-	$Slots_BonusPlayers/SlotCardPlayer7,
-	$Slots_BonusPlayers/SlotCardPlayer8,
-]
-@onready var cards_yellow  = $TotalCardsPlayer/CardsYellow
-@onready var cards_orange  = $TotalCardsPlayer/CardsOrange
-@onready var cards_red     = $TotalCardsPlayer/CardsRed
-@onready var cards_magenta = $TotalCardsPlayer/CardsMagenta
-@onready var cards_white   = $TotalCardsPlayer/CardsWhite
-@onready var cards_blue    = $TotalCardsPlayer/CardsBlue
-@onready var cards_special = $TotalCardsPlayer/CardsSpecial
-@onready var shot_nodes = [
-	$Shots_Competitions/Shot1, $Shots_Competitions/Shot2,
-	$Shots_Competitions/Shot3, $Shots_Competitions/Shot4,
-	$Shots_Competitions/Shot5, $Shots_Competitions/Shot6,
-	$Shots_Competitions/Shot7, $Shots_Competitions/Shot8,
-]
+@onready var btn_help        = $BTN_Help
+@onready var lbl_help        = $LBL_Help
+@onready var btn_bonus1      = $SlotsBonuses/BTN_SlotBonus1
+@onready var btn_bonus2      = $SlotsBonuses/BTN_SlotBonus2
+
+@onready var yellow_bg       = $TotalCards/YellowCards/BTN_CardBackground
+@onready var orange_bg       = $TotalCards/OrangeCards/BTN_CardBackground
+@onready var red_bg          = $TotalCards/RedCards/BTN_CardBackground
+@onready var magenta_bg      = $TotalCards/MagentaCards/BTN_CardBackground
+@onready var blue_bg         = $TotalCards/BlueCards/BTN_CardBackground
+@onready var white_bg        = $TotalCards/WhiteCards/BTN_CardBackground
+@onready var special_bg      = $TotalCards/SpecialCards/BTN_CardBackground
+
+@onready var yellow_counter  = $TotalCards/YellowCards/LBL_Counter
+@onready var orange_counter  = $TotalCards/OrangeCards/LBL_Counter
+@onready var red_counter     = $TotalCards/RedCards/LBL_Counter
+@onready var magenta_counter = $TotalCards/MagentaCards/LBL_Counter
+@onready var blue_counter    = $TotalCards/BlueCards/LBL_Counter
+@onready var white_counter   = $TotalCards/WhiteCards/LBL_Counter
+@onready var special_counter = $TotalCards/SpecialCards/LBL_Counter
+
+@onready var yellow_minmax   = $TotalCards/YellowCards/LBL_NoteMinMax
+@onready var orange_minmax   = $TotalCards/OrangeCards/LBL_NoteMinMax
+@onready var red_minmax      = $TotalCards/RedCards/LBL_NoteMinMax
+@onready var magenta_minmax  = $TotalCards/MagentaCards/LBL_NoteMinMax
+@onready var blue_minmax     = $TotalCards/BlueCards/LBL_NoteMinMax
+@onready var white_minmax    = $TotalCards/WhiteCards/LBL_NoteMinMax
+@onready var special_minmax  = $TotalCards/SpecialCards/LBL_NoteMinMax
+
 @onready var popup_cards     = $Popup_Cards
 @onready var btn_close_popup = $Popup_Cards/BTN_ClosePopup
 @onready var card_grid       = $Popup_Cards/ScrollContainer/CardGrid
-@onready var overlay_terrain    = $Overlay_Terrain
-@onready var btn_close_overlay  = $Overlay_Terrain/BTN_CloseOverlay
-@onready var btn_validate       = $Overlay_Terrain/BTN_Validate
-@onready var txt_validate       = $Overlay_Terrain/TXT_Validate
-@onready var txt_missing        = $Overlay_Terrain/TXT_MissingPlayers
 
-var color_card_nodes: Dictionary = {}
+var slot_nodes: Array = []
+var shot_nodes: Array = []
 
-# ── READY ─────────────────────────────────────────────────────────────────────
+# ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
-	color_card_nodes = {
-		"yellow":  cards_yellow,  "orange":  cards_orange,
-		"red":     cards_red,     "magenta": cards_magenta,
-		"white":   cards_white,   "blue":    cards_blue,
-		"special": cards_special,
-	}
-	popup_cards.visible     = false
-	overlay_terrain.visible = false
-	_apply_translations()
+	Taskbar.visible = true
+	Taskbar._update_border_color()
+	lbl_help.visible    = false
+	popup_cards.visible = false
+
+	# ── Slots joueurs ─────────────────────────────────────────────────────────
+	var row1 = $SlotsBonuses/CNT_SlotsCardsPlayers/CNT_Row1
+	var row2 = $SlotsBonuses/CNT_SlotsCardsPlayers/CNT_Row2
+	for i in range(1, 5):
+		slot_nodes.append(row1.get_node("BG_SlotCardPlayer%d" % i))
+	for i in range(5, 9):
+		slot_nodes.append(row2.get_node("BG_SlotCardPlayer%d" % i))
+
+	# ── Shots compétitions ────────────────────────────────────────────────────
+	var srow1 = $ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row1
+	var srow2 = $ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row2
+	for i in range(1, 5):
+		shot_nodes.append(srow1.get_node("BG_ShotCompetition%d" % i))
+	for i in range(5, 9):
+		shot_nodes.append(srow2.get_node("BG_ShotCompetition%d" % i))
+
 	_setup_color_cards()
-	_load_schedule_data()
-	_update_active_shot()
-	if GameState.bonus_slot_target > 0:
-		_apply_bonus_from_bonus_scene()
+	_setup_counters()
 
-func _apply_translations():
-	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["en"])
-	slot_bonus1.text  = t["choose_bonus"]
-	slot_bonus2.text  = t["choose_bonus"]
-	txt_validate.text = t["validate"]
+	# Charger les cartes si pas encore fait
+	if not GameState.cards_loaded:
+		SquadLoader.squad_loaded.connect(_on_squad_loaded)
+		SquadLoader.load_squad()
+	else:
+		_load_team_data()
 
+func _on_squad_loaded():
+	if SquadLoader.squad_loaded.is_connected(_on_squad_loaded):
+		SquadLoader.squad_loaded.disconnect(_on_squad_loaded)
+	_setup_counters()
+	_load_team_data()
+
+# ── SETUP COULEURS ────────────────────────────────────────────────────────────
 func _setup_color_cards():
-	for color in color_card_nodes:
-		var node  = color_card_nodes[color]
-		var bg    = node.get_node_or_null("CardBackground")
-		var notes = node.get_node_or_null("NoteMinMax")
-		var count = node.get_node_or_null("TXT_Count")
-		if bg:    bg.modulate = CARD_COLORS_GODOT[color]
-		if notes: notes.text  = NOTE_RANGES[color]
-		if count:
-			count.text = str(SquadLoader.get_cards_by_color(color).size())
+	_set_panel_color(yellow_bg,  CARD_COLORS["yellow"])
+	_set_panel_color(orange_bg,  CARD_COLORS["orange"])
+	_set_panel_color(red_bg,     CARD_COLORS["red"])
+	_set_panel_color(magenta_bg, CARD_COLORS["magenta"])
+	_set_panel_color(blue_bg,    CARD_COLORS["blue"])
+	_set_panel_color(white_bg,   CARD_COLORS["white"])
+	_set_panel_color(special_bg, CARD_COLORS["special"])
+	yellow_minmax.text  = NOTE_RANGES["yellow"]
+	orange_minmax.text  = NOTE_RANGES["orange"]
+	red_minmax.text     = NOTE_RANGES["red"]
+	magenta_minmax.text = NOTE_RANGES["magenta"]
+	blue_minmax.text    = NOTE_RANGES["blue"]
+	white_minmax.text   = NOTE_RANGES["white"]
+	special_minmax.text = NOTE_RANGES["special"]
 
-# ── SCHEDULE ──────────────────────────────────────────────────────────────────
-func _load_schedule_data():
-	Firebase.firestore_success.connect(_on_schedule_loaded)
-	Firebase.firestore_failed.connect(_on_schedule_failed)
-	Firebase.get_document("managers/" + Firebase.user_id, "schedule")
+# ── COMPTEURS ─────────────────────────────────────────────────────────────────
+func _setup_counters():
+	yellow_counter.text  = str(GameState.cards_yellow.size()).lpad(4, "0")
+	orange_counter.text  = str(GameState.cards_orange.size()).lpad(4, "0")
+	red_counter.text     = str(GameState.cards_red.size()).lpad(4, "0")
+	magenta_counter.text = str(GameState.cards_magenta.size()).lpad(4, "0")
+	blue_counter.text    = str(GameState.cards_blue.size()).lpad(4, "0")
+	white_counter.text   = str(GameState.cards_white.size()).lpad(4, "0")
+	special_counter.text = str(GameState.cards_special.size()).lpad(4, "0")
 
-func _on_schedule_loaded(data: Dictionary):
-	if Firebase.firestore_success.is_connected(_on_schedule_loaded):
-		Firebase.firestore_success.disconnect(_on_schedule_loaded)
-	if Firebase.firestore_failed.is_connected(_on_schedule_failed):
-		Firebase.firestore_failed.disconnect(_on_schedule_failed)
-	schedule_data = data
-	_refresh_shots()
-	_load_team_composition()
+# ── FIREBASE LOAD ─────────────────────────────────────────────────────────────
+func _load_team_data():
+	Firebase.firestore_success.connect(_on_team_loaded)
+	Firebase.firestore_failed.connect(_on_team_failed)
+	Firebase.get_document("managers/" + Firebase.user_id + "/team", "current_week")
 
-func _on_schedule_failed(_error: String):
-	if Firebase.firestore_success.is_connected(_on_schedule_loaded):
-		Firebase.firestore_success.disconnect(_on_schedule_loaded)
-	if Firebase.firestore_failed.is_connected(_on_schedule_failed):
-		Firebase.firestore_failed.disconnect(_on_schedule_failed)
-	_refresh_shots()
-
-func _refresh_shots():
+func _on_team_loaded(data: Dictionary):
+	if Firebase.firestore_success.is_connected(_on_team_loaded):
+		Firebase.firestore_success.disconnect(_on_team_loaded)
+	if Firebase.firestore_failed.is_connected(_on_team_failed):
+		Firebase.firestore_failed.disconnect(_on_team_failed)
 	for i in range(8):
-		var shot_node = shot_nodes[i]
-		var bg        = shot_node.get_node_or_null("CardBackground")
-		var txt_time  = shot_node.get_node_or_null("TXT_Time")
-		var txt_comp  = shot_node.get_node_or_null("TXT_Competition")
-		var ovl_lock  = shot_node.get_node_or_null("OVL_Lock")
-		if txt_time: txt_time.text = SHOT_TIMES[i + 1]
-		var key       = "shot_%d" % (i + 1)
-		var comp      = schedule_data.get(key, {})
-		var comp_name = comp.get("competition", "")
-		var comp_type = comp.get("type", "")
-		if txt_comp: txt_comp.text = comp_name
-		var is_active = (i + 1 == active_shot) and comp_name != ""
-		if bg:
-			if is_active:
-				bg.modulate = COMP_COLORS.get(comp_type, Color(0.3, 0.3, 0.3))
-			else:
-				bg.modulate = Color(0.3, 0.3, 0.3)
-		if ovl_lock:
-			ovl_lock.visible = not is_active
+		slot_card_ids[i] = data.get("slot_%d" % (i + 1), "")
+	_rebuild_slot_card_data()
+	_refresh_slots()
 
-func _update_active_shot():
-	var hour = Time.get_datetime_dict_from_system()["hour"]
-	if   hour < 3:  active_shot = 1
-	elif hour < 6:  active_shot = 2
-	elif hour < 9:  active_shot = 3
-	elif hour < 12: active_shot = 4
-	elif hour < 15: active_shot = 5
-	elif hour < 18: active_shot = 6
-	elif hour < 21: active_shot = 7
-	else:           active_shot = 8
+func _on_team_failed(_error: String):
+	if Firebase.firestore_success.is_connected(_on_team_loaded):
+		Firebase.firestore_success.disconnect(_on_team_loaded)
+	if Firebase.firestore_failed.is_connected(_on_team_failed):
+		Firebase.firestore_failed.disconnect(_on_team_failed)
+	_refresh_slots()
 
-# ── COMPOSITION ───────────────────────────────────────────────────────────────
-func _load_team_composition():
-	if active_shot < 1:
-		return
-	Firebase.firestore_success.connect(_on_composition_loaded)
-	Firebase.firestore_failed.connect(_on_composition_failed)
-	Firebase.get_document(
-		"managers/" + Firebase.user_id + "/team_composition",
-		"shot_%d" % active_shot)
-
-func _on_composition_loaded(data: Dictionary):
-	if Firebase.firestore_success.is_connected(_on_composition_loaded):
-		Firebase.firestore_success.disconnect(_on_composition_loaded)
-	if Firebase.firestore_failed.is_connected(_on_composition_failed):
-		Firebase.firestore_failed.disconnect(_on_composition_failed)
-	bonus1_id = data.get("bonus1_id", "")
-	bonus2_id = data.get("bonus2_id", "")
-	var b1_players = data.get("bonus1_players", [])
-	var b2_players = data.get("bonus2_players", [])
-	var all_players = b1_players + b2_players
-	for i in range(min(all_players.size(), 8)):
-		player_slots[i] = all_players[i]
-	_refresh_bonus_display()
-	_refresh_player_slots()
-
-func _on_composition_failed(_error: String):
-	if Firebase.firestore_success.is_connected(_on_composition_loaded):
-		Firebase.firestore_success.disconnect(_on_composition_loaded)
-	if Firebase.firestore_failed.is_connected(_on_composition_failed):
-		Firebase.firestore_failed.disconnect(_on_composition_failed)
-
-func _save_team_composition():
-	if active_shot < 1:
-		return
-	var max_slots  = 8 if bonus2_id == "" else 4
-	var b1_players = []
-	var b2_players = []
-	for i in range(min(max_slots, 8)):
-		if player_slots[i] != "":
-			b1_players.append(player_slots[i])
-	if bonus2_id != "":
-		for i in range(4, 8):
-			if player_slots[i] != "":
-				b2_players.append(player_slots[i])
-	Firebase.update_document(
-		"managers/" + Firebase.user_id + "/team_composition",
-		"shot_%d" % active_shot, {
-			"bonus1_id":      bonus1_id,
-			"bonus2_id":      bonus2_id,
-			"bonus1_players": b1_players,
-			"bonus2_players": b2_players,
-		})
-
-# ── BONUS ─────────────────────────────────────────────────────────────────────
-func _apply_bonus_from_bonus_scene():
-	var target    = GameState.bonus_slot_target
-	var new_bonus = GameState.selected_bonus1
-	if target == 1:
-		bonus1_id = new_bonus
-	elif target == 2:
-		bonus2_id = new_bonus
-	GameState.bonus_slot_target = 0
-	_refresh_bonus_display()
-	_save_team_composition()
-
-func _refresh_bonus_display():
-	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["en"])
-	slot_bonus1.text = bonus1_id if bonus1_id != "" else t["choose_bonus"]
-	slot_bonus2.text = bonus2_id if bonus2_id != "" else t["choose_bonus"]
-	var max_slots = 8 if bonus2_id == "" else 4
+func _rebuild_slot_card_data():
+	var all_cards = SquadLoader.get_all_cards()
 	for i in range(8):
-		slot_card_nodes[i].visible = (i < max_slots)
+		slot_card_data[i] = {}
+		if slot_card_ids[i] == "": continue
+		for card in all_cards:
+			if card.get("card_id", "") == slot_card_ids[i]:
+				slot_card_data[i] = card
+				break
 
-# ── SLOTS JOUEURS ─────────────────────────────────────────────────────────────
-func _refresh_player_slots():
+# ── REFRESH SLOTS ─────────────────────────────────────────────────────────────
+func _refresh_slots():
 	for i in range(8):
-		if player_instances[i] != null:
-			player_instances[i].queue_free()
-			player_instances[i] = null
-		if player_slots[i] != "":
-			_spawn_card_in_slot(i)
+		var bg = slot_nodes[i]
+		if slot_card_ids[i] != "":
+			var cd = slot_card_data[i]
+			var c  = CARD_COLORS.get(cd.get("color", ""), Color(0.7, 0.7, 0.7))
+			_set_panel_color(bg, c)
+		else:
+			_set_panel_color(bg, Color(1, 1, 1))
 
-func _spawn_card_in_slot(idx: int):
-	var d = _find_card_by_id(player_slots[idx])
-	if d.is_empty():
-		return
-	var card = CARD_SCENE.instantiate()
-	card.note               = int(d.get("note", 0))
-	card.color              = str(d.get("color", ""))
-	card.position1          = str(d.get("position1", ""))
-	card.position2          = str(d.get("position2", ""))
-	card.position2_unlocked = int(d.get("position2_unlocked", 0))
-	card.age                = int(d.get("age", 0))
-	card.height             = int(d.get("height", 0))
-	card.weight             = int(d.get("weight", 0))
-	card.nationality        = str(d.get("nationality", ""))
-	card.specialty1         = str(d.get("specialty1", ""))
-	card.specialty2         = str(d.get("specialty2", ""))
-	card.firstname          = str(d.get("firstname", ""))
-	card.lastname           = str(d.get("lastname", ""))
-	card.pin_color          = str(d.get("pin_color", ""))
-	card.strength           = int(d.get("strength", 0))
-	card.speed              = int(d.get("speed", 0))
-	card.aggression         = int(d.get("aggression", 0))
-	card.positioning        = int(d.get("positioning", 0))
-	card.stamina            = int(d.get("stamina", 0))
-	card.creativity         = int(d.get("creativity", 0))
-	card.concentration      = int(d.get("concentration", 0))
-	card.motivation         = int(d.get("motivation", 0))
-	card.anticipation       = int(d.get("anticipation", 0))
-	card.communication      = int(d.get("communication", 0))
-	card.clickable          = false
-	card.display()
-	add_child(card)
-	card.global_position    = slot_card_nodes[idx].global_position
-	player_instances[idx]   = card
-
-func _find_card_by_id(card_id: String) -> Dictionary:
-	for arr in [GameState.cards_yellow, GameState.cards_orange, GameState.cards_red,
-				GameState.cards_magenta, GameState.cards_blue, GameState.cards_white,
-				GameState.cards_special]:
-		for d in arr:
-			if d.get("card_id", "") == card_id:
-				return d
-	return {}
+# ── FIREBASE SAVE ─────────────────────────────────────────────────────────────
+func _save_team():
+	var data: Dictionary = {}
+	for i in range(8):
+		data["slot_%d" % (i + 1)] = slot_card_ids[i]
+	Firebase.update_document("managers/" + Firebase.user_id + "/team", "current_week", data)
 
 # ── POPUP CARTES ──────────────────────────────────────────────────────────────
 func _open_popup(color: String):
-	popup_color = color
-	popup_open  = true
-	popup_cards.visible         = true
-	Taskbar.visible             = false
-	$Shots_Competitions.visible = false
-	for child in card_grid.get_children():
-		child.queue_free()
-	card_instances_popup = []
-	for d in SquadLoader.get_cards_by_color(color):
-		var card = CARD_SCENE.instantiate()
-		card.note               = int(d.get("note", 0))
-		card.color              = str(d.get("color", ""))
-		card.position1          = str(d.get("position1", ""))
-		card.position2          = str(d.get("position2", ""))
-		card.position2_unlocked = int(d.get("position2_unlocked", 0))
-		card.age                = int(d.get("age", 0))
-		card.height             = int(d.get("height", 0))
-		card.weight             = int(d.get("weight", 0))
-		card.nationality        = str(d.get("nationality", ""))
-		card.specialty1         = str(d.get("specialty1", ""))
-		card.specialty2         = str(d.get("specialty2", ""))
-		card.firstname          = str(d.get("firstname", ""))
-		card.lastname           = str(d.get("lastname", ""))
-		card.pin_color          = str(d.get("pin_color", ""))
-		card.clickable          = false
-		card.display()
-		if d.get("card_id","") in player_slots:
-			card.modulate = Color(0.4, 0.4, 0.4)
-		card_grid.add_child(card)
-		card_instances_popup.append({"node": card, "data": d})
+	current_popup_color = color
+	var cards = _get_cards_by_color(color).duplicate()
+	cards.sort_custom(func(a, b): return int(a.get("note", 0)) > int(b.get("note", 0)))
+	current_popup_cards = cards
+	_populate_card_grid(cards)
+	popup_cards.visible = true
 
 func _close_popup():
-	popup_open              = false
-	popup_cards.visible     = false
-	Taskbar.visible         = true
-	$Shots_Competitions.visible = true
+	popup_cards.visible = false
+	current_popup_color = ""
+	current_popup_cards = []
 	for child in card_grid.get_children():
 		child.queue_free()
-	card_instances_popup = []
-	if drag_active:
-		_end_drag()
+	popup_card_nodes.clear()
+	_end_drag()
+
+func _get_cards_by_color(color: String) -> Array:
+	match color:
+		"yellow":  return GameState.cards_yellow
+		"orange":  return GameState.cards_orange
+		"red":     return GameState.cards_red
+		"magenta": return GameState.cards_magenta
+		"blue":    return GameState.cards_blue
+		"white":   return GameState.cards_white
+		"special": return GameState.cards_special
+	return []
+
+func _populate_card_grid(cards: Array):
+	for child in card_grid.get_children():
+		child.queue_free()
+	popup_card_nodes.clear()
+	for card_data in cards:
+		var cs   = load(CARD_SCENE)
+		var card = cs.instantiate()
+		card.clickable          = false
+		card.note               = int(card_data.get("note", 0))
+		card.color              = card_data.get("color", "yellow")
+		card.position1          = card_data.get("position1", "")
+		card.position2          = card_data.get("position2", "")
+		card.position2_unlocked = int(card_data.get("position2_unlocked", 0))
+		card.nationality        = card_data.get("nationality", "")
+		card.firstname          = card_data.get("firstname", "")
+		card.lastname           = card_data.get("lastname", "")
+		card.ball_color         = card_data.get("ball_color", "")
+		card.specialty1         = card_data.get("specialty1", "")
+		card.specialty2         = card_data.get("specialty2", "")
+		card.selected_card_id   = card_data.get("card_id", "")
+		# Grisée si déjà dans un slot
+		if card_data.get("card_id", "") in slot_card_ids:
+			card.modulate = Color(0.5, 0.5, 0.5, 0.8)
+		card_grid.add_child(card)
+		card.display()
+		popup_card_nodes.append(card)
 
 # ── PROCESS — appui long ──────────────────────────────────────────────────────
 func _process(delta):
-	if press_holding and press_slot >= 0:
+	if press_holding and press_card_index >= 0:
 		press_timer += delta
 		if press_timer >= LONG_PRESS_DURATION:
-			press_holding = false
-			press_timer   = 0.0
-			_remove_card_from_slot(press_slot)
+			press_holding     = false
+			press_timer       = 0.0
+			_start_drag_from_popup(press_card_index)
+
+# ── DRAG ──────────────────────────────────────────────────────────────────────
+func _start_drag_from_popup(card_index: int):
+	if card_index >= current_popup_cards.size(): return
+	var card_data = current_popup_cards[card_index]
+	if card_data.get("card_id", "") in slot_card_ids: return
+	drag_active    = true
+	drag_card_data = card_data
+	var cs         = load(CARD_SCENE)
+	drag_visual    = cs.instantiate()
+	drag_visual.clickable   = false
+	drag_visual.note        = int(card_data.get("note", 0))
+	drag_visual.color       = card_data.get("color", "yellow")
+	drag_visual.position1   = card_data.get("position1", "")
+	drag_visual.nationality = card_data.get("nationality", "")
+	drag_visual.firstname   = card_data.get("firstname", "")
+	drag_visual.lastname    = card_data.get("lastname", "")
+	drag_visual.ball_color  = card_data.get("ball_color", "")
+	drag_visual.z_index     = 100
+	drag_visual.scale       = Vector2(0.45, 0.45)
+	add_child(drag_visual)
+	drag_visual.display()
+
+func _drop_on_slot(slot_index: int):
+	if not drag_active: return
+	var card_id = drag_card_data.get("card_id", "")
+	if card_id == "": return
+	slot_card_ids[slot_index]  = card_id
+	slot_card_data[slot_index] = drag_card_data
+	_end_drag()
+	_refresh_slots()
+	_populate_card_grid(current_popup_cards)
+	_save_team()
+
+func _remove_from_slot(slot_index: int):
+	slot_card_ids[slot_index]  = ""
+	slot_card_data[slot_index] = {}
+	_refresh_slots()
+	if popup_cards.visible:
+		_populate_card_grid(current_popup_cards)
+	_save_team()
+
+func _end_drag():
+	drag_active    = false
+	drag_card_data = {}
+	if drag_visual: drag_visual.queue_free(); drag_visual = null
+	press_card_index = -1
+
+# ── OUVRIR DCP ────────────────────────────────────────────────────────────────
+func _open_dcp(slot_index: int):
+	var data = slot_card_data[slot_index]
+	if data.is_empty(): return
+	GameState.selected_note               = int(data.get("note", 0))
+	GameState.selected_color              = data.get("color", "")
+	GameState.selected_position1          = data.get("position1", "")
+	GameState.selected_position2          = data.get("position2", "")
+	GameState.selected_position2_unlocked = int(data.get("position2_unlocked", 0))
+	GameState.selected_age                = int(data.get("age", 0))
+	GameState.selected_height             = int(data.get("height", 0))
+	GameState.selected_weight             = int(data.get("weight", 0))
+	GameState.selected_nationality        = data.get("nationality", "")
+	GameState.selected_specialty1         = data.get("specialty1", "")
+	GameState.selected_specialty2         = data.get("specialty2", "")
+	GameState.selected_firstname          = data.get("firstname", "")
+	GameState.selected_lastname           = data.get("lastname", "")
+	GameState.selected_ball_color         = data.get("ball_color", "")
+	GameState.selected_strength           = int(data.get("strength", 0))
+	GameState.selected_speed              = int(data.get("speed", 0))
+	GameState.selected_aggression         = int(data.get("aggression", 0))
+	GameState.selected_positioning        = int(data.get("positioning", 0))
+	GameState.selected_stamina            = int(data.get("stamina", 0))
+	GameState.selected_creativity         = int(data.get("creativity", 0))
+	GameState.selected_concentration      = int(data.get("concentration", 0))
+	GameState.selected_motivation         = int(data.get("motivation", 0))
+	GameState.selected_anticipation       = int(data.get("anticipation", 0))
+	GameState.selected_communication      = int(data.get("communication", 0))
+	GameState.selected_card_id            = data.get("card_id", "")
+	GameState.selected_deco_index         = 0
+	GameState.previous_scene              = "res://Scenes/team.tscn"
+	get_tree().change_scene_to_file(SCENE_DCP)
 
 # ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
@@ -415,134 +347,81 @@ func _input(event):
 		else:
 			_on_release(event.position)
 	elif event is InputEventMouseMotion:
-		if press_holding and event.position.distance_to(touch_start) > 10:
+		if press_holding and event.position.distance_to(touch_start) > 15:
 			press_holding = false; press_timer = 0.0
 		if drag_active and drag_visual:
-			drag_visual.position = event.position - Vector2(50, 70)
+			drag_visual.position = event.position - Vector2(50, 75)
 
 func _on_press(pos: Vector2):
-	# Popup cartes ouvert
-	if popup_open:
+	# Toggle aide
+	if _sprite_hit(btn_help, pos):
+		lbl_help.visible = not lbl_help.visible; return
+	if lbl_help.visible:
+		lbl_help.visible = false; return
+
+	# Fermer popup
+	if popup_cards.visible:
 		if _sprite_hit(btn_close_popup, pos):
 			_close_popup(); return
-		for item in card_instances_popup:
-			var card = item["node"]
-			if _card_hit_global(card, pos):
-				var d = item["data"]
-				if d.get("card_id","") not in player_slots:
-					_start_drag(d, -1)
+
+	# Bonus
+	if _panel_hit(btn_bonus1, pos):
+		pass  # TODO : naviguer vers bonus.tscn
+		return
+	if _panel_hit(btn_bonus2, pos):
+		pass  # TODO : naviguer vers bonus.tscn
+		return
+
+	# Cartes couleur → ouvrir popup
+	if not popup_cards.visible:
+		if _panel_hit(yellow_bg, pos):  _open_popup("yellow");  return
+		if _panel_hit(orange_bg, pos):  _open_popup("orange");  return
+		if _panel_hit(red_bg, pos):     _open_popup("red");     return
+		if _panel_hit(magenta_bg, pos): _open_popup("magenta"); return
+		if _panel_hit(blue_bg, pos):    _open_popup("blue");    return
+		if _panel_hit(white_bg, pos):   _open_popup("white");   return
+		if _panel_hit(special_bg, pos): _open_popup("special"); return
+
+	# Appui long sur carte dans popup → prépare drag
+	if popup_cards.visible and not drag_active:
+		for i in range(popup_card_nodes.size()):
+			var card = popup_card_nodes[i]
+			if card.bg_card_background.get_global_rect().has_point(pos):
+				press_card_index = i
+				press_holding    = true
+				press_timer      = 0.0
 				return
-		return
-	# Overlay terrain ouvert
-	if overlay_terrain.visible:
-		if _sprite_hit(btn_close_overlay, pos):
-			overlay_terrain.visible = false; return
-		if _sprite_hit(btn_validate, pos):
-			_validate_composition(); return
-		return
-	# Bonus slots
-	if _label_hit(slot_bonus1, pos):
-		GameState.bonus_slot_target = 1
-		GameState.previous_scene    = "res://Scenes/team.tscn"
-		get_tree().change_scene_to_file(SCENE_BONUS); return
-	if _label_hit(slot_bonus2, pos):
-		GameState.bonus_slot_target = 2
-		GameState.previous_scene    = "res://Scenes/team.tscn"
-		get_tree().change_scene_to_file(SCENE_BONUS); return
-	# Cartes couleurs → popup
-	for color in color_card_nodes:
-		var node = color_card_nodes[color]
-		var bg   = node.get_node_or_null("CardBackground")
-		if bg and _sprite_hit(bg, pos):
-			_open_popup(color); return
-	# Slots joueurs → appui long
+
+	# Clic court sur slot occupé → DCP
 	for i in range(8):
-		if slot_card_nodes[i].visible and player_slots[i] != "":
-			if _sprite_hit(slot_card_nodes[i], pos) or _card_hit_global(player_instances[i], pos):
-				press_slot = i; press_holding = true; press_timer = 0.0; return
-	# Shot actif → overlay
-	if active_shot >= 1:
-		var shot = shot_nodes[active_shot - 1]
-		var bg   = shot.get_node_or_null("CardBackground")
-		if bg and _sprite_hit(bg, pos):
-			_open_overlay(); return
+		if _panel_hit(slot_nodes[i], pos):
+			if slot_card_ids[i] != "":
+				_open_dcp(i)
+			return
 
 func _on_release(pos: Vector2):
 	press_holding = false; press_timer = 0.0
-	if not drag_active:
-		return
+	if not drag_active: return
+
+	# Drop sur slot joueur
 	for i in range(8):
-		if slot_card_nodes[i].visible and _sprite_hit(slot_card_nodes[i], pos):
-			_drop_card_on_slot(i); return
+		if _panel_hit(slot_nodes[i], pos):
+			_drop_on_slot(i); return
+
+	# Drop hors slot → annuler drag
 	_end_drag()
 
-# ── DRAG ──────────────────────────────────────────────────────────────────────
-func _start_drag(card_dict: Dictionary, from_slot: int):
-	drag_active    = true
-	drag_card_id   = card_dict.get("card_id", "")
-	drag_card_dict = card_dict
-	drag_from_slot = from_slot
-	drag_visual    = Label.new()
-	drag_visual.text     = card_dict.get("firstname","") + " " + card_dict.get("lastname","")
-	drag_visual.modulate = CARD_COLORS_GODOT.get(card_dict.get("color",""), Color(1,1,1))
-	add_child(drag_visual)
-
-func _end_drag():
-	drag_active = false; drag_card_id = ""; drag_card_dict = {}; drag_from_slot = -1
-	if drag_visual:
-		drag_visual.queue_free(); drag_visual = null
-
-func _drop_card_on_slot(slot_idx: int):
-	var max_slots = 8 if bonus2_id == "" else 4
-	if slot_idx >= max_slots:
-		_end_drag(); return
-	if player_slots[slot_idx] != "" and drag_from_slot >= 0:
-		var temp = player_slots[slot_idx]
-		player_slots[slot_idx]       = drag_card_id
-		player_slots[drag_from_slot] = temp
-	else:
-		if drag_from_slot >= 0:
-			player_slots[drag_from_slot] = ""
-		player_slots[slot_idx] = drag_card_id
-	_end_drag()
-	_refresh_player_slots()
-	_save_team_composition()
-
-func _remove_card_from_slot(idx: int):
-	player_slots[idx] = ""
-	if player_instances[idx] != null:
-		player_instances[idx].queue_free()
-		player_instances[idx] = null
-	press_slot = -1
-	_refresh_player_slots()
-	_save_team_composition()
-
-# ── OVERLAY TERRAIN ───────────────────────────────────────────────────────────
-func _open_overlay():
-	overlay_terrain.visible = true
-	var t      = TRANSLATIONS.get(GameState.language, TRANSLATIONS["en"])
-	var filled = 0
-	for s in player_slots:
-		if s != "": filled += 1
-	var missing = 11 - filled
-	txt_missing.text = t["missing"] + str(missing) if missing > 0 else ""
-
-func _validate_composition():
-	overlay_terrain.visible = false
-	_save_team_composition()
+# ── PANEL COLOR ───────────────────────────────────────────────────────────────
+func _set_panel_color(panel: PanelContainer, c: Color):
+	var style = panel.get_theme_stylebox("panel").duplicate()
+	style.bg_color = c
+	panel.add_theme_stylebox_override("panel", style)
 
 # ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
-	if sprite == null or not sprite.visible:
-		return false
+	if sprite == null or not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))
 
-func _label_hit(label: Label, pos: Vector2) -> bool:
-	if label == null or not label.visible:
-		return false
-	return label.get_global_rect().has_point(pos)
-
-func _card_hit_global(card: Node, pos: Vector2) -> bool:
-	if card == null:
-		return false
-	return Rect2(card.global_position - Vector2(50, 70), Vector2(100, 140)).has_point(pos)
+func _panel_hit(panel: PanelContainer, pos: Vector2) -> bool:
+	if panel == null or not panel.visible: return false
+	return panel.get_global_rect().has_point(pos)

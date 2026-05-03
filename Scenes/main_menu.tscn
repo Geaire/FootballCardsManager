@@ -1,21 +1,37 @@
 [gd_scene format=3 uid="uid://cl4v3u3ejgvun"]
 
-[ext_resource type="Texture2D" uid="uid://da3056hj7yu1i" path="res://Sprites/Wallpapers/bg_mainmenu.jpg" id="1_28flt"]
 [ext_resource type="Script" uid="uid://w7khqwtx7c2t" path="res://Scripts/main_menu.gd" id="1_vtepg"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="2_1ehe0"]
-[ext_resource type="Texture2D" uid="uid://demwf8ogjm3cs" path="res://Sprites/btn_playmainmenu.png" id="3_ce3w2"]
-[ext_resource type="Texture2D" uid="uid://2pc21x0gtk0o" path="res://Sprites/btn_sound_on.png" id="4_n45e2"]
-[ext_resource type="Texture2D" uid="uid://bgqv5yvve3042" path="res://Sprites/btn_sound_off.png" id="5_opfnp"]
+[ext_resource type="Texture2D" uid="uid://dv03oh1ng7i0n" path="res://Sprites/Backgrounds/bg_grid.png" id="2_yhxw7"]
+[ext_resource type="Texture2D" uid="uid://ckkhf4bqxthcc" path="res://Sprites/Balls/img_ball_3.png" id="3_trj04"]
+[ext_resource type="Texture2D" uid="uid://bmnpum8gng16c" path="res://Sprites/Logo FCM/img_logo_fcm_red.png" id="4_16hvj"]
+[ext_resource type="Texture2D" uid="uid://c2xvsw6on68sh" path="res://Sprites/Others/btn_sound_on.png" id="6_vr1f0"]
+[ext_resource type="Texture2D" uid="uid://b3qc1wu4cx1sb" path="res://Sprites/Others/btn_sound_off.png" id="7_t1dhk"]
 [ext_resource type="PackedScene" uid="uid://bkfpyr8yi4g2m" path="res://Scenes/card_player.tscn" id="13_5egv6"]
 
 [node name="Main_Menu" type="Node2D" unique_id=1103332167]
 script = ExtResource("1_vtepg")
 
-[node name="BG_MainMenu" type="Sprite2D" parent="." unique_id=81000344]
-position = Vector2(960, 540)
-texture = ExtResource("1_28flt")
+[node name="BG_MainMenu" type="ColorRect" parent="." unique_id=65989614]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
 
-[node name="TXT_Title" type="Label" parent="." unique_id=896772358]
+[node name="BG_GridMainMenu" type="Sprite2D" parent="." unique_id=1440157917]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(960, 540)
+texture = ExtResource("2_yhxw7")
+
+[node name="IMG_Ball" type="Sprite2D" parent="." unique_id=623349337]
+position = Vector2(1536, 553)
+texture = ExtResource("3_trj04")
+
+[node name="IMG_LogoFcmRed" type="Sprite2D" parent="." unique_id=1271340733]
+position = Vector2(296, 942)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_16hvj")
+
+[node name="LBL_Title" type="Label" parent="." unique_id=896772358]
 z_index = 1
 offset_left = 460.0
 offset_top = 50.0
@@ -26,47 +42,41 @@ theme_override_font_sizes/font_size = 80
 text = "Football Cards Manager"
 horizontal_alignment = 1
 
-[node name="BTN_Play" type="Sprite2D" parent="." unique_id=1279859900]
-modulate = Color(0, 0, 0, 0.37254903)
-z_index = 1
-position = Vector2(950, 330)
-texture = ExtResource("3_ce3w2")
-
-[node name="TXT_Play" type="Label" parent="." unique_id=1579604426]
+[node name="BTN_Play" type="Label" parent="." unique_id=1579604426]
 z_index = 2
-offset_left = 747.0
-offset_top = 260.0
-offset_right = 1152.0
-offset_bottom = 401.0
+offset_left = 772.0
+offset_top = 317.0
+offset_right = 1177.0
+offset_bottom = 458.0
 theme_override_fonts/font = ExtResource("2_1ehe0")
 theme_override_font_sizes/font_size = 60
 text = "Jouer"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Slogan1" type="Label" parent="." unique_id=514433398]
+[node name="LBL_Slogan1" type="Label" parent="." unique_id=514433398]
 z_index = 1
-offset_left = 63.0
-offset_top = 593.0
-offset_right = 504.0
-offset_bottom = 643.0
+offset_left = 894.0
+offset_top = 949.0
+offset_right = 1335.0
+offset_bottom = 999.0
 theme_override_font_sizes/font_size = 35
 text = "Construis. Pense. Domine."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Slogan2" type="Label" parent="." unique_id=751701807]
+[node name="LBL_Slogan2" type="Label" parent="." unique_id=751701807]
 z_index = 1
-offset_left = 1003.0
-offset_top = 890.0
-offset_right = 1803.0
-offset_bottom = 940.0
+offset_left = 114.0
+offset_top = 628.0
+offset_right = 914.0
+offset_bottom = 678.0
 theme_override_font_sizes/font_size = 35
 text = "Pas de hasard, le meilleur gagne toujours."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TXT_Slogan3" type="Label" parent="." unique_id=694543978]
+[node name="LBL_Slogan3" type="Label" parent="." unique_id=694543978]
 z_index = 1
 offset_left = 460.0
 offset_top = 156.0
@@ -81,15 +91,15 @@ vertical_alignment = 1
 z_index = 1
 position = Vector2(1750, 100)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_n45e2")
+texture = ExtResource("6_vr1f0")
 
 [node name="BTN_SoundOff" type="Sprite2D" parent="." unique_id=709922196]
 z_index = 1
 position = Vector2(1750, 100)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_opfnp")
+texture = ExtResource("7_t1dhk")
 
-[node name="TXT_Version" type="Label" parent="." unique_id=2142098443]
+[node name="LBL_Version" type="Label" parent="." unique_id=2142098443]
 z_index = 1
 offset_left = 76.0
 offset_top = 980.0
@@ -101,7 +111,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Card_Player1" parent="." unique_id=1206912900 instance=ExtResource("13_5egv6")]
-position = Vector2(447, 859)
+position = Vector2(1110, 862)
 
 [node name="Card_Player2" parent="." unique_id=1442980625 instance=ExtResource("13_5egv6")]
-position = Vector2(1614, 680)
+position = Vector2(474, 547)

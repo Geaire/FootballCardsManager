@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ioadjvqsgwh5" path="res://Scripts/schedule.gd" id="1_qej65"]
 [ext_resource type="Texture2D" uid="uid://dv03oh1ng7i0n" path="res://Sprites/Backgrounds/bg_grid.png" id="3_gi3xp"]
 [ext_resource type="Texture2D" uid="uid://dj3vvhlcd0txt" path="res://Sprites/Others/btn_next_page.png" id="4_a7fnj"]
-[ext_resource type="Texture2D" uid="uid://1crmolvv2m56" path="res://Sprites/Others/Balls/img_ball_5.png" id="5_qtqtb"]
+[ext_resource type="Texture2D" uid="uid://1crmolvv2m56" path="res://Sprites/Balls/img_ball_5.png" id="5_qej65"]
 [ext_resource type="Texture2D" uid="uid://dwxpbevac70nm" path="res://Sprites/Others/btn_prev_page.png" id="7_qffxc"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="9_1sw8w"]
 
@@ -120,7 +120,7 @@ autowrap_mode = 2
 [node name="BTN_HelpCompetitions" type="Sprite2D" parent="." unique_id=2006301542]
 z_index = 3
 position = Vector2(1360, 165)
-texture = ExtResource("5_qtqtb")
+texture = ExtResource("5_qej65")
 
 [node name="LBL_PopupCompetitions" type="Label" parent="." unique_id=1012508371]
 z_index = 10
@@ -707,7 +707,7 @@ texture = ExtResource("3_gi3xp")
 
 [node name="BTN_PrevPage" type="Sprite2D" parent="Page2" unique_id=1888043378]
 z_index = 2
-position = Vector2(1860, 1240)
+position = Vector2(1860, 1228)
 texture = ExtResource("7_qffxc")
 
 [node name="LBL_TitleNews" type="Label" parent="Page2" unique_id=1277720990]
@@ -796,7 +796,7 @@ autowrap_mode = 2
 [node name="BTN_HelpEvolution" type="Sprite2D" parent="Page2" unique_id=1111438424]
 z_index = 3
 position = Vector2(1362, 1767)
-texture = ExtResource("5_qtqtb")
+texture = ExtResource("5_qej65")
 
 [node name="LBL_PopupEvolution" type="Label" parent="Page2" unique_id=342623633]
 visible = false

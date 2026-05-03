@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://y64hd14x0fef" path="res://Scripts/create_profile.gd" id="1_opci1"]
 [ext_resource type="Texture2D" uid="uid://77m1qlwpjk8u" path="res://Sprites/Backgrounds/bg_CreateProfile_DetailCardPlayer.jpg" id="2_vrwtu"]
-[ext_resource type="Texture2D" uid="uid://yuxkn5223hme" path="res://Sprites/Others/Logo FCM/img_logo_fcm_white.png" id="3_vrwtu"]
+[ext_resource type="Texture2D" uid="uid://yuxkn5223hme" path="res://Sprites/Logo FCM/img_logo_fcm_white.png" id="3_vrwtu"]
 [ext_resource type="Texture2D" uid="uid://dttto55bqaeo1" path="res://Sprites/Others/img_oval.png" id="4_3y2mj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3y2mj"]
@@ -104,6 +104,7 @@ offset_left = 139.0
 offset_top = 800.0
 offset_right = 541.0
 offset_bottom = 937.0
+mouse_filter = 0
 theme_override_font_sizes/font_size = 40
 text = "Confirm"
 horizontal_alignment = 1

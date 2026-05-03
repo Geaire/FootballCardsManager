@@ -1,20 +1,17 @@
 extends Node2D
 
-# ── NŒUDS ─────────────────────────────────────────────────────────────────────
 @onready var lbl_manager           = $LBL_Manager
 @onready var inp_manager           = $INP_Manager
 @onready var lbl_incorrect_manager = $LBL_IncorrectManager
 @onready var lbl_team              = $LBL_Team
 @onready var inp_team              = $INP_Team
 @onready var lbl_incorrect_team    = $LBL_IncorrectTeam
-@onready var btn_confirm           = $BTN_Confirm   # Label — Mouse Filter Stop
+@onready var btn_confirm           = $BTN_Confirm
 
-# ── CONSTANTES ────────────────────────────────────────────────────────────────
 const MAX_NAME_LENGTH = 13
 const SCENE_SCHEDULE  = "res://Scenes/schedule.tscn"
 const ALLOWED_CHARS   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-'"
 
-# ── TRADUCTIONS — popup uniquement ────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {
 		"manager": "Nom du manager", "team": "Nom de l'équipe", "confirm": "Confirmer",
@@ -72,23 +69,20 @@ const TRANSLATIONS = {
 	}
 }
 
-# ── STARTER PACK ──────────────────────────────────────────────────────────────
-const CARD_SCENE     = "res://Scenes/card_player.tscn"
-const STARTER_COLORS = [
-	"yellow","yellow","yellow","yellow","yellow","yellow","yellow","yellow",
-	"orange","orange","orange","orange","orange","orange","orange","orange",
-	"red","red","red","red",
-	"magenta","magenta","magenta",
-	"blue","blue",
-	"white","white"
-]
-const ALL_POSITIONS = ["GB","DG","DD","DC","MG","MD","MDF","MC","MO","AG","AD","AC","ATT"]
+# ── PACK DE TEST ──────────────────────────────────────────────────────────────
+const CARD_SCENE = "res://Scenes/card_player.tscn"
+const TEST_PACK = {
+	"yellow":  60,
+	"orange":  60,
+	"red":     60,
+	"magenta": 60,
+	"white":   10,
+	"blue":    10,
+}
 
-var _cards_pending: int       = 0
-var _covered_positions: Array = []
-var _generated_cards: Array   = []
+var _cards_pending:    int   = 0
+var _generated_cards:  Array = []
 
-# ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
 	Taskbar.visible = false
 	inp_manager.max_length = MAX_NAME_LENGTH
@@ -100,27 +94,23 @@ func _ready():
 	Firebase.firestore_success.connect(_on_firestore_success)
 	Firebase.firestore_failed.connect(_on_firestore_failed)
 
-# ── TRADUCTIONS ────────────────────────────────────────────────────────────────
 func _apply_translations():
 	var t = TRANSLATIONS[GameState.language]
 	lbl_manager.text = t["manager"]
 	lbl_team.text    = t["team"]
 	btn_confirm.text = t["confirm"]
 
-# ── VALIDATION NOM ────────────────────────────────────────────────────────────
 func _is_valid_name(name: String) -> bool:
 	for c in name:
 		if not (c in ALLOWED_CHARS): return false
 	return true
 
-# ── INPUT BTN_Confirm ─────────────────────────────────────────────────────────
 func _on_btn_confirm_input(event: InputEvent):
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.pressed:
 		_try_confirm()
 
-# ── VALIDATION & SAUVEGARDE ───────────────────────────────────────────────────
 func _try_confirm():
 	var t            = TRANSLATIONS[GameState.language]
 	var manager_name = inp_manager.text.strip_edges()
@@ -130,23 +120,23 @@ func _try_confirm():
 	lbl_incorrect_team.visible    = false
 
 	if manager_name == "":
-		lbl_incorrect_manager.text = t["err_mgr_empty"]
+		lbl_incorrect_manager.text    = t["err_mgr_empty"]
 		lbl_incorrect_manager.visible = true; valid = false
 	elif manager_name.length() > MAX_NAME_LENGTH:
-		lbl_incorrect_manager.text = t["err_mgr_length"]
+		lbl_incorrect_manager.text    = t["err_mgr_length"]
 		lbl_incorrect_manager.visible = true; valid = false
 	elif not _is_valid_name(manager_name):
-		lbl_incorrect_manager.text = t["err_mgr_chars"]
+		lbl_incorrect_manager.text    = t["err_mgr_chars"]
 		lbl_incorrect_manager.visible = true; valid = false
 
 	if team_name == "":
-		lbl_incorrect_team.text = t["err_team_empty"]
+		lbl_incorrect_team.text    = t["err_team_empty"]
 		lbl_incorrect_team.visible = true; valid = false
 	elif team_name.length() > MAX_NAME_LENGTH:
-		lbl_incorrect_team.text = t["err_team_length"]
+		lbl_incorrect_team.text    = t["err_team_length"]
 		lbl_incorrect_team.visible = true; valid = false
 	elif not _is_valid_name(team_name):
-		lbl_incorrect_team.text = t["err_team_chars"]
+		lbl_incorrect_team.text    = t["err_team_chars"]
 		lbl_incorrect_team.visible = true; valid = false
 
 	if not valid: return
@@ -161,29 +151,30 @@ func _try_confirm():
 		"sound_on":     GameState.sound_on
 	})
 
-# ── FIRESTORE : profil créé → générer le starter pack ─────────────────────────
 func _on_firestore_success(_data: Dictionary):
 	if Firebase.firestore_success.is_connected(_on_firestore_success):
 		Firebase.firestore_success.disconnect(_on_firestore_success)
 	if Firebase.firestore_failed.is_connected(_on_firestore_failed):
 		Firebase.firestore_failed.disconnect(_on_firestore_failed)
-	_generate_starter_pack()
+	_generate_test_pack()
 
 func _on_firestore_failed(error: String):
 	print("Erreur Firestore create_profile : " + error)
 	get_tree().change_scene_to_file(SCENE_SCHEDULE)
 
-# ── GÉNÉRATION STARTER PACK ───────────────────────────────────────────────────
-func _generate_starter_pack():
-	_cards_pending = 0; _covered_positions = []; _generated_cards = []
-	for color in STARTER_COLORS:
-		_generate_card_with_color(color)
-	_ensure_all_positions()
+# ── GÉNÉRATION PACK DE TEST ───────────────────────────────────────────────────
+func _generate_test_pack():
+	_generated_cards = []
+	for color in TEST_PACK:
+		var count = TEST_PACK[color]
+		for i in range(count):
+			var card = _generate_card(color)
+			_generated_cards.append(card)
 	_save_all_cards()
 
-func _generate_card_with_color(color: String) -> Dictionary:
+func _generate_card(color: String) -> Dictionary:
 	var card_scene = load(CARD_SCENE)
-	var card = card_scene.instantiate()
+	var card       = card_scene.instantiate()
 	match color:
 		"yellow":  card.note = randi_range(60, 69)
 		"orange":  card.note = randi_range(70, 79)
@@ -199,21 +190,7 @@ func _generate_card_with_color(color: String) -> Dictionary:
 	card.generate_specialties()
 	card.generate_skills()
 	card.selected_card_id = str(Time.get_unix_time_from_system()) + "_" + str(randi())
-	var d = _card_to_dict(card)
-	_generated_cards.append(d)
-	if card.position1 not in _covered_positions:
-		_covered_positions.append(card.position1)
-	card.queue_free()
-	return d
-
-func _ensure_all_positions():
-	for pos in ALL_POSITIONS:
-		if pos not in _covered_positions:
-			var d = _generate_card_with_color("yellow")
-			d["position1"] = pos; d["position2"] = ""
-
-func _card_to_dict(card) -> Dictionary:
-	return {
+	var d = {
 		"card_id":            card.selected_card_id,
 		"note":               card.note,
 		"color":              card.color,
@@ -240,6 +217,8 @@ func _card_to_dict(card) -> Dictionary:
 		"anticipation":       card.anticipation,
 		"communication":      card.communication
 	}
+	card.queue_free()
+	return d
 
 func _save_all_cards():
 	_cards_pending = _generated_cards.size()
