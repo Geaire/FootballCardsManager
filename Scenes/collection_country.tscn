@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dv03oh1ng7i0n" path="res://Sprites/Backgrounds/bg_grid.png" id="2_jpcxk"]
 [ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="3_5oh88"]
 [ext_resource type="Texture2D" uid="uid://1crmolvv2m56" path="res://Sprites/Balls/img_ball_5.png" id="4_jpcxk"]
+[ext_resource type="Shader" uid="uid://c43sj74hjfiqo" path="res://Scripts/slot_card.gdshader" id="5_5ycs6"]
 [ext_resource type="Texture2D" uid="uid://bx4vmh3nlamwq" path="res://Sprites/Others/btn_yes_no.png" id="5_jpcxk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ycs6"]
@@ -15,8 +16,11 @@ border_width_bottom = 1
 border_color = Color(0, 1, 0, 1)
 expand_margin_top = 31.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4u0ix"]
+shader = ExtResource("5_5ycs6")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wui7d"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 0)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -84,6 +88,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CNT_GridSlots" type="VBoxContainer" parent="." unique_id=620656247]
+material = SubResource("ShaderMaterial_4u0ix")
 offset_left = 50.0
 offset_top = 100.0
 offset_right = 1160.0
@@ -97,6 +102,8 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="BG_Slot1" type="PanelContainer" parent="CNT_GridSlots/CNT_Row1" unique_id=962189667]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -105,6 +112,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot2" type="PanelContainer" parent="CNT_GridSlots/CNT_Row1" unique_id=700327726]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -113,6 +121,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot3" type="PanelContainer" parent="CNT_GridSlots/CNT_Row1" unique_id=1079660949]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -121,6 +130,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot4" type="PanelContainer" parent="CNT_GridSlots/CNT_Row1" unique_id=1827647975]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -134,6 +144,7 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="BG_Slot5" type="PanelContainer" parent="CNT_GridSlots/CNT_Row2" unique_id=27072346]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -142,6 +153,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot6" type="PanelContainer" parent="CNT_GridSlots/CNT_Row2" unique_id=1201214008]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -150,6 +162,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot7" type="PanelContainer" parent="CNT_GridSlots/CNT_Row2" unique_id=1128715193]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -158,6 +171,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot8" type="PanelContainer" parent="CNT_GridSlots/CNT_Row2" unique_id=385115237]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -171,6 +185,7 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="BG_Slot9" type="PanelContainer" parent="CNT_GridSlots/CNT_Row3" unique_id=1622324436]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -179,6 +194,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot10" type="PanelContainer" parent="CNT_GridSlots/CNT_Row3" unique_id=279471076]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -187,6 +203,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot11" type="PanelContainer" parent="CNT_GridSlots/CNT_Row3" unique_id=743777664]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -195,6 +212,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot12" type="PanelContainer" parent="CNT_GridSlots/CNT_Row3" unique_id=454537717]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
