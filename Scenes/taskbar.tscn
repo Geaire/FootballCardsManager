@@ -52,6 +52,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pwn7j")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TaskbarBottom/BG_TaskbarBottom" unique_id=653874241]
 layout_mode = 2
+alignment = 1
 
 [node name="BTN_Competition" type="Sprite2D" parent="TaskbarBottom/BG_TaskbarBottom/HBoxContainer" unique_id=1595761943]
 z_index = 2

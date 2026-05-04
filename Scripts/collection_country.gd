@@ -1,7 +1,7 @@
 extends Node2D
 
-const SCENE_TEAM     = "res://Scenes/team.tscn"
-const FLAG_PATH      = "res://Sprites/Flags/flag_%s.png"
+const SCENE_TEAM = "res://Scenes/team.tscn"
+const FLAG_PATH = "res://Sprites/Flags/flag_%s.png"
 const MAX_CONDITIONS = 17
 const LONG_PRESS_DURATION = 0.5
 
@@ -26,28 +26,66 @@ const COUNTRY_NAMES = {
 	"ZA":"South Africa"
 }
 
-# ── CONDITIONS / REWARDS (anglais uniquement) ─────────────────────────────────
 const CONDITIONS_REWARDS = [
-	"16 cards = 1 red card",
-	"14 different positions = 2 second positions",
-	"24 positions total = 3 second positions",
-	"8 different specialties = 2 specialties",
-	"20 specialties total = 3 specialties",
-	"2 cards of each color = 1 magenta card",
-	"16 yellow cards = 1 yellow card",
-	"16 yellow cards = 1 yellow card",
-	"14 orange cards = 1 orange card",
-	"12 red cards = 1 red card",
-	"10 white cards = 1 white card",
-	"8 magenta cards = 1 magenta card",
-	"3 blue cards = 1 blue card",
-	"16 players aged 33 = 3 yellow cards",
-	"14 players Weight 95 = 3 orange cards",
-	"14 players Height 190 = 1 magenta card",
-	"All conditions completed = 1 special card",
+	"16 cards",
+	"14 different positions",
+	"24 positions total",
+	"8 different specialties",
+	"20 specialties total",
+	"2 cards of each color",
+	"16 yellow cards",
+	"16 yellow cards",
+	"14 orange cards",
+	"12 red cards",
+	"10 white cards",
+	"8 magenta cards",
+	"3 blue cards",
+	"16 players aged 33",
+	"14 players Weight 95",
+	"14 players Height 190",
+	"All conditions completed",
 ]
 
-# ── TRADUCTIONS — popup uniquement ────────────────────────────────────────────
+const CONDITIONS_REWARDS_RIGHT = [
+	"1 red card",
+	"2 positions",
+	"3 positions",
+	"2 specialties",
+	"3 specialties",
+	"1 magenta card",
+	"1 yellow card",
+	"1 yellow card",
+	"1 orange card",
+	"1 red card",
+	"1 white card",
+	"1 magenta card",
+	"1 blue card",
+	"3 yellow cards",
+	"3 orange cards",
+	"1 magenta card",
+	"1 special card ★",
+]
+
+const CONDITIONS_COLORS = [
+	"#e83b3b",
+	"#32c864",
+	"#32c864",
+	"#ffffff",
+	"#ffffff",
+	"#e83b8f",
+	"#f5c842",
+	"#f5c842",
+	"#ff6b35",
+	"#e83b3b",
+	"#ffffff",
+	"#e83b8f",
+	"#3b8fe8",
+	"#f5c842",
+	"#ff6b35",
+	"#e83b8f",
+	"#ff69b4",
+]
+
 const TRANSLATIONS = {
 	"fr": {
 		"popup": "- Ajoutez / Supprimer des cartes pour compléter la collection.\n- Seuls les joueurs de 30 ans minimum sont éligibles.\n- Un joueur déposé dans une collection sera supprimé de votre effectif.\n- Ajoutez une carte dans le détail complet des joueurs.\n- Appui long pour supprimer une carte.",
@@ -75,68 +113,109 @@ const TRANSLATIONS = {
 	},
 }
 
-var slot_card_ids: Array   = ["","","","","","","","","","","","","","","",""]
-var press_slot:    int     = -1
-var press_timer:   float   = 0.0
-var press_holding: bool    = false
-var touch_start:   Vector2 = Vector2.ZERO
+var slot_card_ids: Array = ["","","","","","","","","","","","","","","",""]
+var press_slot: int = -1
+var press_timer: float = 0.0
+var press_holding: bool = false
+var touch_start: Vector2 = Vector2.ZERO
 var collection_data: Dictionary = {}
 var conditions_completed: Array = []
 
-@onready var img_flag             = $IMG_Flag
-@onready var lbl_country_name     = $LBL_CountryName
-@onready var btn_help             = $BTN_HelpCollection        # Sprite2D
-@onready var lbl_popup            = $LBL_PopupCollection
-@onready var popup_confirm        = $Popup_Confirm
-@onready var lbl_confirm          = $Popup_Confirm/LBL_Confirm
-@onready var btn_yes              = $Popup_Confirm/BTN_Yes     # Sprite2D
-@onready var btn_no               = $Popup_Confirm/BTN_No      # Sprite2D
-@onready var pnl_conditions       = $PNL_ConditionsRewards
+@onready var img_flag = $IMG_Flag
+@onready var lbl_country_name = $LBL_CountryName
+@onready var btn_help = $BTN_HelpCollection
+@onready var lbl_popup = $LBL_PopupCollection
+@onready var popup_confirm = $Popup_Confirm
+@onready var lbl_confirm = $Popup_Confirm/LBL_Confirm
+@onready var btn_yes = $Popup_Confirm/BTN_Yes
+@onready var btn_no = $Popup_Confirm/BTN_No
+@onready var pnl_conditions = $PNL_ConditionsRewards
 @onready var lbl_title_conditions = $PNL_ConditionsRewards/CNT_ConditionsRewards/LBL_TitleConditionsRewards
 
-var slot_nodes:      Array = []
+var slot_nodes: Array = []
 var condition_nodes: Array = []
 
 func _ready():
 	Taskbar.visible = true
 	Taskbar._update_border_color()
-	lbl_popup.visible     = false
+	lbl_popup.visible = false
 	popup_confirm.visible = false
+
 	var row_names = ["CNT_Row1","CNT_Row2","CNT_Row3","CNT_Row4"]
 	for row_name in row_names:
 		var row = $CNT_GridSlots.get_node(row_name)
 		for i in range(1, 5):
 			slot_nodes.append(row.get_node("BG_Slot%d" % (slot_nodes.size() + 1)))
+
 	var cnt = $PNL_ConditionsRewards/CNT_ConditionsRewards
 	for i in range(1, MAX_CONDITIONS + 1):
 		condition_nodes.append(cnt.get_node("LBL_ConditionReward%d" % i))
+
 	conditions_completed.resize(MAX_CONDITIONS)
 	conditions_completed.fill(false)
+
+	_style_panel()
 	_apply_translations()
 	_setup_flag()
 	_setup_conditions()
 	_load_collection()
 
-func _apply_translations():
-	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["fr"])
-	lbl_popup.text   = t["popup"]
-	lbl_confirm.text = t["confirm"]
-	lbl_title_conditions.text = "Conditions = Rewards"
+func _style_panel():
+	var style_panel = StyleBoxFlat.new()
+	style_panel.bg_color = Color(0.03, 0.07, 0.03, 0.96)
+	style_panel.border_color = Color(0.2, 1.0, 0.3, 0.4)
+	style_panel.set_border_width_all(1)
+	style_panel.set_corner_radius_all(12)
+	pnl_conditions.add_theme_stylebox_override("panel", style_panel)
 
 func _setup_flag():
 	var code = GameState.selected_country
-	var fp   = FLAG_PATH % code.to_lower()
-	var tex  = load(fp) if ResourceLoader.exists(fp) else null
+	var fp = FLAG_PATH % code.to_lower()
+	var tex = load(fp) if ResourceLoader.exists(fp) else null
 	if tex: img_flag.texture = tex
+	# Nom du pays centré sous le drapeau
 	lbl_country_name.text = COUNTRY_NAMES.get(code, code)
 
-func _setup_conditions():
-	for i in range(condition_nodes.size()):
-		if i < CONDITIONS_REWARDS.size():
-			condition_nodes[i].text    = CONDITIONS_REWARDS[i]
-			condition_nodes[i].visible = not conditions_completed[i]
+func _apply_translations():
+	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["fr"])
+	lbl_popup.text = t["popup"]
+	lbl_confirm.text = t["confirm"]
 
-# ── CARTES DE TEST (FR uniquement) ────────────────────────────────────────────
+func _setup_conditions():
+	var done_count = conditions_completed.count(true)
+	# Barre réduite à 16 blocs pour moins de place
+	var bar_filled = int((float(done_count) / MAX_CONDITIONS) * 16)
+	var bar_empty = 16 - bar_filled
+
+	lbl_title_conditions.bbcode_enabled = true
+	lbl_title_conditions.fit_content = true
+	lbl_title_conditions.scroll_active = false
+	lbl_title_conditions.text = (
+		"[center]"
+		+ "[b][font_size=30][color=#50ff80]Conditions[/color] [color=#ffffff]→[/color] [color=#50ff80]Rewards[/color][/font_size][/b]"
+		+ "\n[font_size=18]"
+		+ "[color=#32c864]" + "█".repeat(bar_filled) + "[/color]"
+		+ "[color=#1a2a1a]" + "█".repeat(bar_empty) + "[/color]"
+		+ "  [color=#50ff80]" + str(done_count) + "/" + str(MAX_CONDITIONS) + "[/color]"
+		+ "[/font_size][/center]"
+	)
+
+	for i in range(condition_nodes.size()):
+		if i >= CONDITIONS_REWARDS.size():
+			condition_nodes[i].visible = false
+			continue
+		var lbl = condition_nodes[i]
+		lbl.bbcode_enabled = true
+		lbl.fit_content = true
+		lbl.scroll_active = false
+		var is_done = conditions_completed[i] if i < conditions_completed.size() else false
+		var col = CONDITIONS_COLORS[i] if i < CONDITIONS_COLORS.size() else "#ffffff"
+		if is_done:
+			lbl.text = "[font_size=28][color=%s]✓  %s  →  %s[/color][/font_size]" % [col, CONDITIONS_REWARDS[i], CONDITIONS_REWARDS_RIGHT[i]]
+		else:
+			lbl.text = "[font_size=28][color=%s]●  %s[/color]  [color=#444444]→  %s[/color][/font_size]" % [col, CONDITIONS_REWARDS[i], CONDITIONS_REWARDS_RIGHT[i]]
+		lbl.visible = true
+
 func _inject_test_cards():
 	if GameState.selected_country != "FR": return
 	if slot_card_ids[0] == "": slot_card_ids[0] = "test_blue_001"
@@ -178,7 +257,7 @@ func _refresh_slots():
 		if slot_card_ids[i] != "":
 			_set_slot_color(bg, Color(0.2, 0.6, 1.0))
 		else:
-			_set_slot_color(bg, Color(1, 1, 1))
+			_set_slot_color(bg, Color(0.04, 0.09, 0.05, 1.0))
 
 func _set_slot_color(panel: PanelContainer, color: Color):
 	var style = panel.get_theme_stylebox("panel").duplicate()
@@ -196,7 +275,7 @@ func _save_collection():
 	_update_global_counter()
 
 func _update_global_counter():
-	var code  = GameState.selected_country
+	var code = GameState.selected_country
 	var count = 0
 	for id in slot_card_ids:
 		if id != "": count += 1
@@ -217,7 +296,8 @@ func _process(delta):
 	if press_holding and press_slot >= 0:
 		press_timer += delta
 		if press_timer >= LONG_PRESS_DURATION:
-			press_holding = false; press_timer = 0.0
+			press_holding = false
+			press_timer = 0.0
 			if slot_card_ids[press_slot] != "":
 				popup_confirm.visible = true
 
@@ -226,7 +306,8 @@ func _input(event):
 	if event.button_index != MOUSE_BUTTON_LEFT: return
 	var pos = event.position
 	if event.pressed:
-		touch_start = pos; _on_press(pos)
+		touch_start = pos
+		_on_press(pos)
 	else:
 		_on_release(pos)
 
@@ -234,26 +315,35 @@ func _on_press(pos: Vector2):
 	if popup_confirm.visible:
 		if _sprite_hit(btn_yes, pos):
 			_remove_card_from_slot(press_slot)
-			popup_confirm.visible = false; press_slot = -1; return
+			popup_confirm.visible = false
+			press_slot = -1
+			return
 		if _sprite_hit(btn_no, pos):
-			popup_confirm.visible = false; press_slot = -1; return
+			popup_confirm.visible = false
+			press_slot = -1
+			return
 		return
 	if _sprite_hit(btn_help, pos):
-		lbl_popup.visible = not lbl_popup.visible; return
+		lbl_popup.visible = not lbl_popup.visible
+		return
 	if lbl_popup.visible:
-		lbl_popup.visible = false; return
+		lbl_popup.visible = false
+		return
 	for i in range(16):
 		if _panel_hit(slot_nodes[i], pos):
 			if slot_card_ids[i] != "":
-				press_slot = i; press_holding = true; press_timer = 0.0
+				press_slot = i
+				press_holding = true
+				press_timer = 0.0
 			else:
 				GameState.collection_slot_target = i
-				GameState.collection_country     = GameState.selected_country
+				GameState.collection_country = GameState.selected_country
 				get_tree().change_scene_to_file(SCENE_TEAM)
 			return
 
 func _on_release(_pos: Vector2):
-	press_holding = false; press_timer = 0.0
+	press_holding = false
+	press_timer = 0.0
 
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if sprite == null or not sprite.visible: return false

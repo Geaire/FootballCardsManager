@@ -49,31 +49,32 @@ position = Vector2(960, 540)
 texture = ExtResource("2_jpcxk")
 
 [node name="IMG_Flag" type="Sprite2D" parent="." unique_id=1904364645]
-position = Vector2(1745, 188)
-scale = Vector2(2, 2)
+z_index = 14
+position = Vector2(1230, 160)
 texture = ExtResource("3_5oh88")
 
 [node name="LBL_CountryName" type="Label" parent="." unique_id=878516621]
-offset_left = 1166.0
-offset_top = 114.0
-offset_right = 1593.0
-offset_bottom = 159.0
-theme_override_font_sizes/font_size = 28
+z_index = 15
+offset_left = 1172.0
+offset_top = 200.0
+offset_right = 1368.0
+offset_bottom = 245.0
+theme_override_font_sizes/font_size = 24
 text = "FRANCE"
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="BTN_HelpCollection" type="Sprite2D" parent="." unique_id=1258396448]
-position = Vector2(1553, 215)
+z_index = 14
+position = Vector2(1860, 159)
 texture = ExtResource("4_jpcxk")
 
 [node name="LBL_PopupCollection" type="Label" parent="." unique_id=1224644172]
 visible = false
 z_index = 10
 offset_left = 45.0
-offset_top = 120.0
+offset_top = 140.0
 offset_right = 1164.0
-offset_bottom = 381.0
+offset_bottom = 401.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/font_size = 24
@@ -92,17 +93,17 @@ material = SubResource("ShaderMaterial_4u0ix")
 offset_left = 50.0
 offset_top = 100.0
 offset_right = 1160.0
-offset_bottom = 980.0
+offset_bottom = 985.0
 theme_override_constants/separation = 70
 alignment = 1
 
 [node name="CNT_Row1" type="HBoxContainer" parent="CNT_GridSlots" unique_id=176248909]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
 [node name="BG_Slot1" type="PanelContainer" parent="CNT_GridSlots/CNT_Row1" unique_id=962189667]
-modulate = Color(1, 1, 1, 0)
 use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
@@ -139,6 +140,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="CNT_Row2" type="HBoxContainer" parent="CNT_GridSlots" unique_id=1980600520]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
@@ -180,6 +182,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="CNT_Row3" type="HBoxContainer" parent="CNT_GridSlots" unique_id=173923181]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
@@ -221,11 +224,13 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="CNT_Row4" type="HBoxContainer" parent="CNT_GridSlots" unique_id=1271956945]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
 [node name="BG_Slot13" type="PanelContainer" parent="CNT_GridSlots/CNT_Row4" unique_id=342978467]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -234,6 +239,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot14" type="PanelContainer" parent="CNT_GridSlots/CNT_Row4" unique_id=449153535]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -242,6 +248,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot15" type="PanelContainer" parent="CNT_GridSlots/CNT_Row4" unique_id=987416541]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -250,6 +257,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wui7d")
 
 [node name="BG_Slot16" type="PanelContainer" parent="CNT_GridSlots/CNT_Row4" unique_id=334435648]
+use_parent_material = true
 clip_contents = true
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
@@ -287,9 +295,9 @@ position = Vector2(417, 636)
 texture = ExtResource("5_jpcxk")
 
 [node name="PNL_ConditionsRewards" type="PanelContainer" parent="." unique_id=165094209]
-offset_left = 1211.0
-offset_top = 274.0
-offset_right = 1865.0
+offset_left = 1210.0
+offset_top = 105.0
+offset_right = 1870.0
 offset_bottom = 980.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kbedr")
 
@@ -297,146 +305,164 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_kbedr")
 layout_mode = 2
 alignment = 1
 
-[node name="LBL_TitleConditionsRewards" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=258592254]
+[node name="LBL_TitleConditionsRewards" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1764330718]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 28
+bbcode_enabled = true
 text = "Conditions = Rewards"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward1" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=296725196]
+[node name="LBL_ConditionReward1" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1371152448]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "16 cards = 1 red card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward2" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=2043732271]
+[node name="LBL_ConditionReward2" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1624953914]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "14 different positions = 2 seconds positions"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward3" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1827541037]
+[node name="LBL_ConditionReward3" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=2104144627]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "24 positions total = 3 seconds positions"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward4" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1271247416]
+[node name="LBL_ConditionReward4" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=108753809]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "8 different specialties = 2 specialties"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward5" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1064988327]
+[node name="LBL_ConditionReward5" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1158298249]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "20 specialties total = 3 specialties"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward6" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1827561706]
+[node name="LBL_ConditionReward6" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=240355083]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "2 cards of each color = 1 magenta card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward7" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1158300181]
+[node name="LBL_ConditionReward7" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1681108609]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "16 yellow cards = 1 yellow card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward8" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1163503666]
+[node name="LBL_ConditionReward8" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=714817771]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "16 yellow cards = 1 yellow card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward9" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1635183746]
+[node name="LBL_ConditionReward9" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=966789450]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "14 orange cards = 1 orange card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward10" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1289716651]
+[node name="LBL_ConditionReward10" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=957244053]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "12 red cards = 1 red card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward11" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1210337862]
+[node name="LBL_ConditionReward11" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1410899188]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "10 white cards = 1 white card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward12" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1219484017]
+[node name="LBL_ConditionReward12" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=602416518]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "8 magenta cards = 1 magenta card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward13" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1626683503]
+[node name="LBL_ConditionReward13" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=852817128]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "3 blue cards = 1 blue card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward14" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=192069495]
+[node name="LBL_ConditionReward14" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=540926017]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "16 players aged 33 = 3 yellow cards"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward15" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=164376453]
+[node name="LBL_ConditionReward15" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1101321782]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "14 players Weight 95 = 3 orange cards"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward16" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=767676591]
+[node name="LBL_ConditionReward16" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=1029142591]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "14 players Height 190 = 1 magenta card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_ConditionReward17" type="Label" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=865512319]
+[node name="LBL_ConditionReward17" type="RichTextLabel" parent="PNL_ConditionsRewards/CNT_ConditionsRewards" unique_id=350606552]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "all conditions completed = 1 special card"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
