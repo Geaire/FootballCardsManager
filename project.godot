@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FootballCardsManager"
-run/main_scene="uid://b0g3x03jf4kko"
+run/main_scene="uid://drahv5tryxtpg"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
