@@ -806,7 +806,7 @@ texture = ExtResource("2_o7jel")
 
 [node name="BTN_PrevPage" type="Sprite2D" parent="Page2" unique_id=350170039]
 z_index = 2
-position = Vector2(1860, 145)
+position = Vector2(1860, 148)
 texture = ExtResource("44_i0bty")
 
 [node name="IT" type="Node2D" parent="Page2" unique_id=306964865]

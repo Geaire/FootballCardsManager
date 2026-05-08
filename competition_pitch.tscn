@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c2cqhcdevk02"]
+
+[ext_resource type="Texture2D" uid="uid://b1jp41ypc1x5v" path="res://Sprites/Balls/a773d7283d6e1e38836c2f7b8da7b05b5b0db85f4b9b685ee9877f1a291d8023.png" id="1_qtfp4"]
+[ext_resource type="Texture2D" uid="uid://u2swai3bf661" path="res://Sprites/Balls/a773d7283d6e1e38836c2f7b8da7b05b5b0db85f4b9b685ee9877f1a291d8023 1.png" id="2_h5xt2"]
+[ext_resource type="Texture2D" uid="uid://yuxkn5223hme" path="res://Sprites/Logo FCM/img_logo_fcm_white.png" id="3_nche8"]
+
+[node name="Competition_pitch" type="Node2D" unique_id=193013606]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=634683245]
+modulate = Color(0, 0, 0, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=554316064]
+position = Vector2(1453, 521)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_qtfp4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=960480473]
+position = Vector2(472.99997, 522)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_h5xt2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=217718752]
+position = Vector2(964, 257)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_nche8")

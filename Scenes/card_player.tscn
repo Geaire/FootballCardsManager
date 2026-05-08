@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="4_b12v8"]
 [ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="5_r57cx"]
 [ext_resource type="FontFile" uid="uid://d345ux4b2dmhk" path="res://Fonts/Roboto-Regular.ttf" id="6_0i6fe"]
-[ext_resource type="Texture2D" uid="uid://dhqj6a4huc8sl" path="res://Sprites/Others/Balls/img_ball_2.png" id="6_aanve"]
+[ext_resource type="Texture2D" uid="uid://dhqj6a4huc8sl" path="res://Sprites/Balls/img_ball_2.png" id="6_aanve"]
 [ext_resource type="Texture2D" uid="uid://dugyg7kkokyba" path="res://Sprites/Specialties/specialty_crossing.png" id="7_1v2uw"]
 [ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="8_8tm0q"]
 [ext_resource type="Texture2D" uid="uid://crq8r4sbrv8i2" path="res://Sprites/Specialties/specialty_tackling.png" id="8_ajqki"]
@@ -76,10 +76,10 @@ texture = ExtResource("6_aanve")
 
 [node name="PNL_BallColor" type="PanelContainer" parent="." unique_id=27268617]
 z_index = 13
-offset_left = -130.0
-offset_top = -98.0
-offset_right = -86.0
-offset_bottom = -54.0
+offset_left = -131.0
+offset_top = -97.0
+offset_right = -85.0
+offset_bottom = -52.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_aanve")
 
 [node name="LBL_Note" type="Label" parent="." unique_id=221002004]

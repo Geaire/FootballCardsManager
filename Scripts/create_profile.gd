@@ -9,7 +9,7 @@ extends Node2D
 @onready var btn_confirm           = $BTN_Confirm
 
 const MAX_NAME_LENGTH = 13
-const SCENE_SCHEDULE  = "res://Scenes/schedule.tscn"
+const SCENE_SCHEDULE  = "res://Scenes/collection_flags.tscn"
 const ALLOWED_CHARS   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-'"
 
 const TRANSLATIONS = {

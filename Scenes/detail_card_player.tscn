@@ -258,7 +258,7 @@ texture = ExtResource("10_w3era")
 [node name="PNL_BallColor" type="PanelContainer" parent="Player" unique_id=664240210]
 z_index = 3
 offset_left = 83.0
-offset_top = 49.0
+offset_top = 51.0
 offset_right = 173.0
 offset_bottom = 139.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8t0j4")
@@ -804,9 +804,9 @@ vertical_alignment = 1
 modulate = Color(0.9098039, 0.8392157, 0, 1)
 z_index = 1
 offset_left = 841.0
-offset_top = 440.0
+offset_top = 438.0
 offset_right = 1360.0
-offset_bottom = 600.0
+offset_bottom = 598.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mfqbj")
 
 [node name="BTN_AttributeBall_00CED1" type="Sprite2D" parent="Evolution" unique_id=554204814]
@@ -818,10 +818,10 @@ texture = ExtResource("10_w3era")
 [node name="PNL_AttributeBall_00CED1" type="PanelContainer" parent="Evolution" unique_id=1435534936]
 z_index = 1
 custom_minimum_size = Vector2(89, 89)
-offset_left = 871.0
-offset_top = 457.00006
-offset_right = 960.0
-offset_bottom = 546.00006
+offset_left = 871.00006
+offset_top = 458.0
+offset_right = 961.7692
+offset_bottom = 550.077
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_neb52")
 
@@ -837,7 +837,7 @@ custom_minimum_size = Vector2(89, 89)
 offset_left = 871.0
 offset_top = 527.0
 offset_right = 960.0
-offset_bottom = 616.0
+offset_bottom = 619.30774
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
@@ -850,10 +850,10 @@ texture = ExtResource("10_w3era")
 [node name="PNL_AttributeBall_FF69B4" type="PanelContainer" parent="Evolution" unique_id=466420399]
 z_index = 1
 custom_minimum_size = Vector2(89, 89)
-offset_left = 971.0
-offset_top = 457.0
-offset_right = 1060.0
-offset_bottom = 546.0
+offset_left = 971.00006
+offset_top = 459.0
+offset_right = 1061.769
+offset_bottom = 548.0
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
@@ -866,10 +866,10 @@ texture = ExtResource("10_w3era")
 [node name="PNL_AttributeBall_6A0DAD" type="PanelContainer" parent="Evolution" unique_id=234174652]
 z_index = 1
 custom_minimum_size = Vector2(89, 89)
-offset_left = 971.0
-offset_top = 527.0
-offset_right = 1060.0
-offset_bottom = 616.0
+offset_left = 971.00006
+offset_top = 529.0
+offset_right = 1061.769
+offset_bottom = 619.7692
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
@@ -883,9 +883,9 @@ texture = ExtResource("10_w3era")
 z_index = 1
 custom_minimum_size = Vector2(89, 89)
 offset_left = 1071.0
-offset_top = 457.0
-offset_right = 1160.0
-offset_bottom = 546.0
+offset_top = 459.0
+offset_right = 1161.7692
+offset_bottom = 549.53845
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
@@ -898,10 +898,10 @@ texture = ExtResource("10_w3era")
 [node name="PNL_AttributeBall_800020" type="PanelContainer" parent="Evolution" unique_id=1277412533]
 z_index = 1
 custom_minimum_size = Vector2(89, 89)
-offset_left = 1071.0
-offset_top = 527.0
-offset_right = 1160.0
-offset_bottom = 616.0
+offset_left = 1071.0001
+offset_top = 529.0
+offset_right = 1161.7692
+offset_bottom = 619.53845
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
@@ -915,9 +915,9 @@ texture = ExtResource("10_w3era")
 z_index = 1
 custom_minimum_size = Vector2(89, 89)
 offset_left = 1171.0
-offset_top = 457.0
-offset_right = 1260.0
-offset_bottom = 546.0
+offset_top = 458.0
+offset_right = 1261.7693
+offset_bottom = 550.0769
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
@@ -930,10 +930,10 @@ texture = ExtResource("10_w3era")
 [node name="PNL_AttributeBall_8B4513" type="PanelContainer" parent="Evolution" unique_id=97124898]
 z_index = 1
 custom_minimum_size = Vector2(89, 89)
-offset_left = 1171.0
-offset_top = 527.0
-offset_right = 1260.0
-offset_bottom = 616.0
+offset_left = 1170.0
+offset_top = 529.0
+offset_right = 1262.3077
+offset_bottom = 619.53845
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
@@ -947,9 +947,9 @@ texture = ExtResource("10_w3era")
 z_index = 1
 custom_minimum_size = Vector2(89, 89)
 offset_left = 1271.0
-offset_top = 457.0
+offset_top = 458.0
 offset_right = 1360.0
-offset_bottom = 546.0
+offset_bottom = 550.0769
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
@@ -962,10 +962,10 @@ texture = ExtResource("10_w3era")
 [node name="PNL_AttributeBall_2D6A4F" type="PanelContainer" parent="Evolution" unique_id=602188947]
 z_index = 1
 custom_minimum_size = Vector2(89, 89)
-offset_left = 1271.0
-offset_top = 527.0
-offset_right = 1360.0
-offset_bottom = 616.0
+offset_left = 1270.0
+offset_top = 527.99994
+offset_right = 1362.3077
+offset_bottom = 618.53845
 scale = Vector2(0.65, 0.65)
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
