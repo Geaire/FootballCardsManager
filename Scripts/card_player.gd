@@ -1,13 +1,13 @@
 extends Node2D
 
 # ── NŒUDS ─────────────────────────────────────────────────────────────────────
-@onready var bg_card_background  = $BG_CardBackground   # PanelContainer
+@onready var bg_card_background  = $BG_CardBackground
 @onready var img_card_silhouette = $IMG_CardSilhouette
 @onready var img_specialty1      = $IMG_Specialty1
 @onready var img_specialty2      = $IMG_Specialty2
 @onready var img_flag            = $IMG_Flag
-@onready var pnl_ball_color      = $PNL_BallColor       # PanelContainer — AVANT IMG_BallColor
-@onready var img_ball_color      = $IMG_BallColor       # Sprite2D — contour noir uniquement
+@onready var pnl_ball_color      = $PNL_BallColor
+@onready var img_ball_color      = $IMG_BallColor
 @onready var lbl_note            = $LBL_Note
 @onready var lbl_position1       = $LBL_Position1
 @onready var lbl_position2       = $LBL_Position2
@@ -224,6 +224,7 @@ func generate_skills():
 func display():
 	if color == "": return
 	_set_card_color(CARD_COLORS[color])
+	_setup_card_overlays()
 	lbl_note.text      = str(note)
 	lbl_position1.text = position1
 	if position2 != "" and position2_unlocked == 1:
@@ -233,7 +234,6 @@ func display():
 		lbl_position2.visible = false
 	lbl_firstname.text = firstname
 	lbl_lastname.text  = lastname
-	# Ball color via PNL_BallColor
 	if ball_color != "" and ball_color in BALL_COLORS:
 		_set_pnl_color(pnl_ball_color, BALL_COLORS[ball_color])
 		pnl_ball_color.visible = true
@@ -241,7 +241,6 @@ func display():
 	else:
 		pnl_ball_color.visible = false
 		img_ball_color.visible = false
-	# Spécialités
 	img_specialty1.visible = (specialty1 != "")
 	img_specialty2.visible = (specialty2 != "")
 	if specialty1 != "":
@@ -250,7 +249,6 @@ func display():
 	if specialty2 != "":
 		var p = "res://Sprites/Specialties/specialty_" + specialty2 + ".png"
 		img_specialty2.texture = load(p) if ResourceLoader.exists(p) else null
-	# Drapeau
 	var fp  = "res://Sprites/Flags/flag_" + nationality + ".png"
 	var tex = load(fp) if ResourceLoader.exists(fp) else null
 	img_flag.texture = tex
@@ -258,8 +256,37 @@ func display():
 
 func _set_card_color(c: Color):
 	var style = bg_card_background.get_theme_stylebox("panel").duplicate()
-	style.bg_color = c
+	style.bg_color      = c
+	style.shadow_color  = Color(c.r, c.g, c.b, 0.55)
+	style.shadow_size   = 8
+	style.shadow_offset = Vector2(0, 3)
 	bg_card_background.add_theme_stylebox_override("panel", style)
+
+func _setup_card_overlays():
+	# Créé une seule fois — évite les doublons
+	if bg_card_background.get_node_or_null("ShineOverlay") != null: return
+
+	var card_size = bg_card_background.size
+
+	# Reflet haut blanc
+	var shine = ColorRect.new()
+	shine.name = "ShineOverlay"
+	shine.size = Vector2(card_size.x, card_size.y * 0.42)
+	shine.position = Vector2(0, 0)
+	shine.color = Color(1.0, 1.0, 1.0, 0.22)
+	shine.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	shine.z_index = 1
+	bg_card_background.add_child(shine)
+
+	# Ombre bas prononcée
+	var shadow = ColorRect.new()
+	shadow.name = "ShadowOverlay"
+	shadow.size = Vector2(card_size.x, card_size.y * 0.30)
+	shadow.position = Vector2(0, card_size.y * 0.70)
+	shadow.color = Color(0.0, 0.0, 0.0, 0.28)
+	shadow.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	shadow.z_index = 1
+	bg_card_background.add_child(shadow)
 
 func _set_pnl_color(panel: PanelContainer, c: Color):
 	var style = panel.get_theme_stylebox("panel").duplicate()
