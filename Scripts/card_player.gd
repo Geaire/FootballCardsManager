@@ -258,8 +258,8 @@ func _set_card_color(c: Color):
 	var style = bg_card_background.get_theme_stylebox("panel").duplicate()
 	style.bg_color      = c
 	style.shadow_color  = Color(c.r, c.g, c.b, 0.55)
-	style.shadow_size   = 8
-	style.shadow_offset = Vector2(0, 3)
+	style.shadow_size   = 3
+	style.shadow_offset = Vector2(0, 0)
 	bg_card_background.add_theme_stylebox_override("panel", style)
 
 func _setup_card_overlays():
@@ -271,9 +271,9 @@ func _setup_card_overlays():
 	# Reflet haut blanc
 	var shine = ColorRect.new()
 	shine.name = "ShineOverlay"
-	shine.size = Vector2(card_size.x, card_size.y * 0.42)
+	shine.size = Vector2(card_size.x, card_size.y * 0)
 	shine.position = Vector2(0, 0)
-	shine.color = Color(1.0, 1.0, 1.0, 0.22)
+	shine.color = Color(1.0, 1.0, 1.0, 0.1)
 	shine.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	shine.z_index = 1
 	bg_card_background.add_child(shine)
@@ -376,31 +376,3 @@ func save_to_gamestate_deco2():
 	GameState.deco2_stamina=stamina; GameState.deco2_creativity=creativity
 	GameState.deco2_concentration=concentration; GameState.deco2_motivation=motivation
 	GameState.deco2_anticipation=anticipation; GameState.deco2_communication=communication
-
-func restore_from_gamestate_deco1():
-	note=GameState.deco1_note; color=GameState.deco1_color
-	position1=GameState.deco1_position1; position2=GameState.deco1_position2
-	position2_unlocked=GameState.deco1_position2_unlocked
-	age=GameState.deco1_age; height=GameState.deco1_height; weight=GameState.deco1_weight
-	nationality=GameState.deco1_nationality; specialty1=GameState.deco1_specialty1
-	specialty2=GameState.deco1_specialty2; firstname=GameState.deco1_firstname
-	lastname=GameState.deco1_lastname; ball_color=GameState.deco1_ball_color
-	strength=GameState.deco1_strength; speed=GameState.deco1_speed
-	aggression=GameState.deco1_aggression; positioning=GameState.deco1_positioning
-	stamina=GameState.deco1_stamina; creativity=GameState.deco1_creativity
-	concentration=GameState.deco1_concentration; motivation=GameState.deco1_motivation
-	anticipation=GameState.deco1_anticipation; communication=GameState.deco1_communication
-
-func restore_from_gamestate_deco2():
-	note=GameState.deco2_note; color=GameState.deco2_color
-	position1=GameState.deco2_position1; position2=GameState.deco2_position2
-	position2_unlocked=GameState.deco2_position2_unlocked
-	age=GameState.deco2_age; height=GameState.deco2_height; weight=GameState.deco2_weight
-	nationality=GameState.deco2_nationality; specialty1=GameState.deco2_specialty1
-	specialty2=GameState.deco2_specialty2; firstname=GameState.deco2_firstname
-	lastname=GameState.deco2_lastname; ball_color=GameState.deco2_ball_color
-	strength=GameState.deco2_strength; speed=GameState.deco2_speed
-	aggression=GameState.deco2_aggression; positioning=GameState.deco2_positioning
-	stamina=GameState.deco2_stamina; creativity=GameState.deco2_creativity
-	concentration=GameState.deco2_concentration; motivation=GameState.deco2_motivation
-	anticipation=GameState.deco2_anticipation; communication=GameState.deco2_communication
