@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://kr3aervwtcna" path="res://Scripts/login_email.gd" id="1_8cgga"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="1_kj54y"]
-[ext_resource type="Texture2D" uid="uid://ckkhf4bqxthcc" path="res://Sprites/Others/Balls/img_ball_3.png" id="2_0mh3r"]
-[ext_resource type="Texture2D" uid="uid://dxl780cdv2v7j" path="res://Sprites/Others/Logo FCM/img_logo_fcm_blue.png" id="3_qpywc"]
+[ext_resource type="Texture2D" uid="uid://dfh2afov7py5t" path="res://Sprites/Balls/img_ball_1.png" id="2_0mh3r"]
+[ext_resource type="Texture2D" uid="uid://dxl780cdv2v7j" path="res://Sprites/Logo FCM/img_logo_fcm_blue.png" id="3_qpywc"]
 [ext_resource type="Texture2D" uid="uid://dttto55bqaeo1" path="res://Sprites/Others/img_oval.png" id="5_0mh3r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kj54y"]

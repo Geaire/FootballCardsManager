@@ -1,27 +1,158 @@
 [gd_scene format=3 uid="uid://c2cqhcdevk02"]
 
-[ext_resource type="Texture2D" uid="uid://b1jp41ypc1x5v" path="res://Sprites/Balls/a773d7283d6e1e38836c2f7b8da7b05b5b0db85f4b9b685ee9877f1a291d8023.png" id="1_qtfp4"]
-[ext_resource type="Texture2D" uid="uid://u2swai3bf661" path="res://Sprites/Balls/a773d7283d6e1e38836c2f7b8da7b05b5b0db85f4b9b685ee9877f1a291d8023 1.png" id="2_h5xt2"]
-[ext_resource type="Texture2D" uid="uid://yuxkn5223hme" path="res://Sprites/Logo FCM/img_logo_fcm_white.png" id="3_nche8"]
+[ext_resource type="Texture2D" uid="uid://db01jhuys5p0c" path="res://Sprites/Others/img_pitch_1.png" id="1_c26vd"]
+[ext_resource type="Texture2D" uid="uid://ffur0rhigjm1" path="res://Sprites/Others/img_pitch_2.png" id="2_qtfp4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtfp4"]
+bg_color = Color(18.892157, 18.892157, 18.892157, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 12
 
 [node name="Competition_pitch" type="Node2D" unique_id=193013606]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=634683245]
-modulate = Color(0, 0, 0, 1)
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="ColorRect" type="ColorRect" parent="." unique_id=721620760]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=554316064]
-position = Vector2(1453, 521)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("1_qtfp4")
+[node name="Pitch 1" type="Sprite2D" parent="." unique_id=1062759822]
+z_index = 2
+position = Vector2(483.00003, 529)
+scale = Vector2(0.8057143, 0.89488375)
+texture = ExtResource("1_c26vd")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=960480473]
-position = Vector2(472.99997, 522)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_h5xt2")
+[node name="Pitch 2" type="Sprite2D" parent="." unique_id=996840065]
+z_index = 2
+position = Vector2(483, 530)
+scale = Vector2(0.81, 0.9)
+texture = ExtResource("2_qtfp4")
 
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=217718752]
-position = Vector2(964, 257)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_nche8")
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=211438536]
+z_index = 3
+offset_left = 375.0
+offset_top = 922.0
+offset_right = 635.0
+offset_bottom = 1082.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=2048017598]
+z_index = 3
+offset_left = 34.999996
+offset_top = 710.0
+offset_right = 295.00003
+offset_bottom = 870.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer3" type="PanelContainer" parent="." unique_id=272829935]
+z_index = 3
+offset_left = 261.0
+offset_top = 765.0
+offset_right = 521.0
+offset_bottom = 925.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer4" type="PanelContainer" parent="." unique_id=859549388]
+z_index = 3
+offset_left = 489.0
+offset_top = 765.0
+offset_right = 749.0
+offset_bottom = 925.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer5" type="PanelContainer" parent="." unique_id=106227495]
+z_index = 3
+offset_left = 719.0
+offset_top = 710.0
+offset_right = 979.0
+offset_bottom = 870.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer6" type="PanelContainer" parent="." unique_id=1205640976]
+z_index = 3
+offset_left = 106.0
+offset_top = 451.0
+offset_right = 366.0
+offset_bottom = 611.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer7" type="PanelContainer" parent="." unique_id=1253029155]
+z_index = 3
+offset_left = 1331.9999
+offset_top = 394.0
+offset_right = 1591.9999
+offset_bottom = 554.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer8" type="PanelContainer" parent="." unique_id=1670582278]
+z_index = 3
+offset_left = 370.0
+offset_top = 463.0
+offset_right = 630.0
+offset_bottom = 623.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer9" type="PanelContainer" parent="." unique_id=621457837]
+z_index = 3
+offset_left = 1301.0
+offset_top = 601.0
+offset_right = 1561.0
+offset_bottom = 761.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer10" type="PanelContainer" parent="." unique_id=2000502587]
+z_index = 3
+offset_left = 644.0
+offset_top = 444.0
+offset_right = 904.0
+offset_bottom = 604.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer11" type="PanelContainer" parent="." unique_id=1195739638]
+z_index = 3
+offset_left = 372.00003
+offset_top = 19.00003
+offset_right = 632.0
+offset_bottom = 179.00003
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer12" type="PanelContainer" parent="." unique_id=1413012969]
+z_index = 3
+offset_left = 1267.0
+offset_top = 250.0
+offset_right = 1527.0
+offset_bottom = 410.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer13" type="PanelContainer" parent="." unique_id=221683354]
+z_index = 3
+offset_left = 80.00003
+offset_top = 108.000015
+offset_right = 340.00003
+offset_bottom = 268.00003
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")
+
+[node name="PanelContainer14" type="PanelContainer" parent="." unique_id=16173189]
+z_index = 3
+offset_left = 672.0
+offset_top = 102.99999
+offset_right = 932.0
+offset_bottom = 263.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtfp4")

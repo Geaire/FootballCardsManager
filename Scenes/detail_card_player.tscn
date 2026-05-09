@@ -3,19 +3,25 @@
 [ext_resource type="Script" uid="uid://crd7xr1rnehck" path="res://Scripts/detail_card_player.gd" id="1_u8okc"]
 [ext_resource type="Texture2D" uid="uid://77m1qlwpjk8u" path="res://Sprites/Backgrounds/bg_CreateProfile_DetailCardPlayer.jpg" id="2_ngjs2"]
 [ext_resource type="Texture2D" uid="uid://bx4vmh3nlamwq" path="res://Sprites/Others/btn_yes_no.png" id="3_ffgkw"]
-[ext_resource type="Texture2D" uid="uid://cxrs8pg05tiac" path="res://Sprites/Balls/img_ball_4.png" id="4_h1w81"]
-[ext_resource type="Texture2D" uid="uid://1crmolvv2m56" path="res://Sprites/Balls/img_ball_5.png" id="5_r8pf6"]
+[ext_resource type="Texture2D" uid="uid://dq8i67li18ttv" path="res://Sprites/Balls/img_ball_4.png" id="4_h1w81"]
+[ext_resource type="Texture2D" uid="uid://c58tjl3cpq1nf" path="res://Sprites/Balls/img_ball_5.png" id="5_r8pf6"]
 [ext_resource type="Texture2D" uid="uid://bu5hagbygrrmp" path="res://Sprites/Others/img_card_silhouette.png" id="6_4fdco"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="6_oh0sr"]
 [ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="8_8t0j4"]
 [ext_resource type="FontFile" uid="uid://d345ux4b2dmhk" path="res://Fonts/Roboto-Regular.ttf" id="9_kgodw"]
 [ext_resource type="FontFile" uid="uid://djse4v8s8ul4d" path="res://Fonts/MPLUS1p-Bold.ttf" id="10_6o6a0"]
 [ext_resource type="Texture2D" uid="uid://crq8r4sbrv8i2" path="res://Sprites/Specialties/specialty_tackling.png" id="10_h1anc"]
-[ext_resource type="Texture2D" uid="uid://dhqj6a4huc8sl" path="res://Sprites/Balls/img_ball_2.png" id="10_w3era"]
+[ext_resource type="Texture2D" uid="uid://by3bvnj8fy4dg" path="res://Sprites/Balls/img_ball_12.png" id="10_w3era"]
 [ext_resource type="Texture2D" uid="uid://dugyg7kkokyba" path="res://Sprites/Specialties/specialty_crossing.png" id="11_mfqbj"]
 [ext_resource type="FontFile" uid="uid://qchfwvdcm00i" path="res://Fonts/MPLUS1p-Black.ttf" id="11_u8okc"]
 [ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="12_4fdco"]
+[ext_resource type="Texture2D" uid="uid://kq78nhnqn38p" path="res://Sprites/Balls/img_ball_6.png" id="16_e7tvd"]
 [ext_resource type="Texture2D" uid="uid://bxpn0ir8rbfdc" path="res://Sprites/Others/img_diamond.png" id="17_8t0j4"]
+[ext_resource type="Texture2D" uid="uid://cdk4gr6btpcfw" path="res://Sprites/Balls/img_ball_7.png" id="17_ngjs2"]
+[ext_resource type="Texture2D" uid="uid://cvsj40lwxtvju" path="res://Sprites/Balls/img_ball_8.png" id="18_ffgkw"]
+[ext_resource type="Texture2D" uid="uid://dm7vj6fklpq8e" path="res://Sprites/Balls/img_ball_9.png" id="19_h1w81"]
+[ext_resource type="Texture2D" uid="uid://dg6tyemb1gy0v" path="res://Sprites/Balls/img_ball_10.png" id="20_r8pf6"]
+[ext_resource type="Texture2D" uid="uid://cwd05ydbsa1ei" path="res://Sprites/Balls/img_ball_11.png" id="21_rc8sd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc8sd"]
 bg_color = Color(0, 0, 0.023529412, 1)
@@ -46,13 +52,6 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 corner_detail = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t0j4"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1w81"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 6
@@ -66,23 +65,8 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfqbj"]
-bg_color = Color(0.6, 0.6, 0.019607844, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neb52"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-corner_detail = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3era"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jvhg4"]
+load_path = "res://.godot/imported/img_ball_3.png-468e3fcde3fc2fa2fa96e667a1ee4fb2.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1anc"]
 bg_color = Color(1, 1, 1, 1)
@@ -253,15 +237,11 @@ texture = ExtResource("12_4fdco")
 [node name="IMG_BallColor" type="Sprite2D" parent="Player" unique_id=361542004]
 z_index = 4
 position = Vector2(128, 100)
-texture = ExtResource("10_w3era")
 
-[node name="PNL_BallColor" type="PanelContainer" parent="Player" unique_id=664240210]
+[node name="PNL_BallColor" type="Sprite2D" parent="Player" unique_id=1246186751]
 z_index = 3
-offset_left = 83.0
-offset_top = 51.0
-offset_right = 173.0
-offset_bottom = 139.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_8t0j4")
+position = Vector2(122, 92)
+texture = ExtResource("10_w3era")
 
 [node name="LBL_Note" type="Label" parent="Player" unique_id=2047377376]
 z_index = 4
@@ -800,174 +780,55 @@ theme_override_font_sizes/font_size = 36
 text = "Attribute Ball Color"
 vertical_alignment = 1
 
-[node name="PNL_AttributeBallColor" type="PanelContainer" parent="Evolution" unique_id=1681428265]
-modulate = Color(0.9098039, 0.8392157, 0, 1)
-z_index = 1
-offset_left = 841.0
-offset_top = 438.0
-offset_right = 1360.0
-offset_bottom = 598.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_mfqbj")
-
-[node name="BTN_AttributeBall_00CED1" type="Sprite2D" parent="Evolution" unique_id=554204814]
+[node name="BTN_AttributeBall1" type="Sprite2D" parent="Evolution" unique_id=554204814]
 z_index = 5
-position = Vector2(900, 490)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_w3era")
+position = Vector2(900, 478)
+texture = SubResource("CompressedTexture2D_jvhg4")
 
-[node name="PNL_AttributeBall_00CED1" type="PanelContainer" parent="Evolution" unique_id=1435534936]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 871.00006
-offset_top = 458.0
-offset_right = 961.7692
-offset_bottom = 550.077
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_neb52")
-
-[node name="BTN_AttributeBall_003366" type="Sprite2D" parent="Evolution" unique_id=236256697]
+[node name="BTN_AttributeBall2" type="Sprite2D" parent="Evolution" unique_id=236256697]
 z_index = 5
 position = Vector2(900, 560)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_w3era")
+texture = ExtResource("4_h1w81")
 
-[node name="PNL_AttributeBall_003366" type="PanelContainer" parent="Evolution" unique_id=1203708513]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 871.0
-offset_top = 527.0
-offset_right = 960.0
-offset_bottom = 619.30774
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
-
-[node name="BTN_AttributeBall_FF69B4" type="Sprite2D" parent="Evolution" unique_id=2107656202]
+[node name="BTN_AttributeBall3" type="Sprite2D" parent="Evolution" unique_id=2107656202]
 z_index = 5
-position = Vector2(1000, 490)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_w3era")
+position = Vector2(1000, 478)
+texture = ExtResource("5_r8pf6")
 
-[node name="PNL_AttributeBall_FF69B4" type="PanelContainer" parent="Evolution" unique_id=466420399]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 971.00006
-offset_top = 459.0
-offset_right = 1061.769
-offset_bottom = 548.0
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
-
-[node name="BTN_AttributeBall_6A0DAD" type="Sprite2D" parent="Evolution" unique_id=802899850]
+[node name="BTN_AttributeBall4" type="Sprite2D" parent="Evolution" unique_id=802899850]
 z_index = 5
 position = Vector2(1000, 560)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_w3era")
+texture = ExtResource("16_e7tvd")
 
-[node name="PNL_AttributeBall_6A0DAD" type="PanelContainer" parent="Evolution" unique_id=234174652]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 971.00006
-offset_top = 529.0
-offset_right = 1061.769
-offset_bottom = 619.7692
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
-
-[node name="BTN_AttributeBall_FF6B6B" type="Sprite2D" parent="Evolution" unique_id=1356779211]
+[node name="BTN_AttributeBall5" type="Sprite2D" parent="Evolution" unique_id=1356779211]
 z_index = 5
-position = Vector2(1100, 490)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_w3era")
+position = Vector2(1100, 478)
+texture = ExtResource("17_ngjs2")
 
-[node name="PNL_AttributeBall_FF6B6B" type="PanelContainer" parent="Evolution" unique_id=1780068097]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 1071.0
-offset_top = 459.0
-offset_right = 1161.7692
-offset_bottom = 549.53845
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
-
-[node name="BTN_AttributeBall_800020" type="Sprite2D" parent="Evolution" unique_id=1233534402]
+[node name="BTN_AttributeBall6" type="Sprite2D" parent="Evolution" unique_id=1233534402]
 z_index = 5
 position = Vector2(1100, 560)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_w3era")
+texture = ExtResource("18_ffgkw")
 
-[node name="PNL_AttributeBall_800020" type="PanelContainer" parent="Evolution" unique_id=1277412533]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 1071.0001
-offset_top = 529.0
-offset_right = 1161.7692
-offset_bottom = 619.53845
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
-
-[node name="BTN_AttributeBall_B8B8B8" type="Sprite2D" parent="Evolution" unique_id=881260373]
+[node name="BTN_AttributeBall7" type="Sprite2D" parent="Evolution" unique_id=881260373]
 z_index = 5
-position = Vector2(1200, 490)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_w3era")
+position = Vector2(1200, 478)
+texture = ExtResource("19_h1w81")
 
-[node name="PNL_AttributeBall_B8B8B8" type="PanelContainer" parent="Evolution" unique_id=1822047523]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 1171.0
-offset_top = 458.0
-offset_right = 1261.7693
-offset_bottom = 550.0769
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
-
-[node name="BTN_AttributeBall_8B4513" type="Sprite2D" parent="Evolution" unique_id=1829074168]
+[node name="BTN_AttributeBall8" type="Sprite2D" parent="Evolution" unique_id=1829074168]
 z_index = 5
 position = Vector2(1200, 560)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_w3era")
+texture = ExtResource("20_r8pf6")
 
-[node name="PNL_AttributeBall_8B4513" type="PanelContainer" parent="Evolution" unique_id=97124898]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 1170.0
-offset_top = 529.0
-offset_right = 1262.3077
-offset_bottom = 619.53845
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
-
-[node name="BTN_AttributeBall_95D5B2" type="Sprite2D" parent="Evolution" unique_id=644254331]
+[node name="BTN_AttributeBall9" type="Sprite2D" parent="Evolution" unique_id=644254331]
 z_index = 5
-position = Vector2(1300, 490)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_w3era")
+position = Vector2(1300, 478)
+texture = ExtResource("21_rc8sd")
 
-[node name="PNL_AttributeBall_95D5B2" type="PanelContainer" parent="Evolution" unique_id=1297051742]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 1271.0
-offset_top = 458.0
-offset_right = 1360.0
-offset_bottom = 550.0769
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
-
-[node name="BTN_AttributeBall_2D6A4F" type="Sprite2D" parent="Evolution" unique_id=273819443]
+[node name="BTN_AttributeBall10" type="Sprite2D" parent="Evolution" unique_id=273819443]
 z_index = 5
 position = Vector2(1300, 560)
-scale = Vector2(0.65, 0.65)
 texture = ExtResource("10_w3era")
-
-[node name="PNL_AttributeBall_2D6A4F" type="PanelContainer" parent="Evolution" unique_id=602188947]
-z_index = 1
-custom_minimum_size = Vector2(89, 89)
-offset_left = 1270.0
-offset_top = 527.99994
-offset_right = 1362.3077
-offset_bottom = 618.53845
-scale = Vector2(0.65, 0.65)
-theme_override_styles/panel = SubResource("StyleBoxFlat_w3era")
 
 [node name="Achievements" type="Node2D" parent="." unique_id=1452908079]
 position = Vector2(0, 60)

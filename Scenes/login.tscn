@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d3wv6hdctkpih"]
 
 [ext_resource type="Script" uid="uid://bpn8piugcb58" path="res://Scripts/login.gd" id="1_88cqn"]
-[ext_resource type="Texture2D" uid="uid://ckkhf4bqxthcc" path="res://Sprites/Others/Balls/img_ball_3.png" id="2_88cqn"]
+[ext_resource type="Texture2D" uid="uid://dfh2afov7py5t" path="res://Sprites/Balls/img_ball_1.png" id="2_88cqn"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="3_8164b"]
-[ext_resource type="Texture2D" uid="uid://dt5ov4xindyrg" path="res://Sprites/Others/Logo FCM/img_logo_fcm_black.png" id="3_m7a0j"]
+[ext_resource type="Texture2D" uid="uid://dt5ov4xindyrg" path="res://Sprites/Logo FCM/img_logo_fcm_black.png" id="3_m7a0j"]
 [ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="5_5iow8"]
 [ext_resource type="Texture2D" uid="uid://d05rvti8f2a15" path="res://Sprites/Others/btn_google.png" id="5_88cqn"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq8i67li18ttv"
-path="res://.godot/imported/img_ball_4.png-82db4e0e3ed82bcc0d5eadc4d3097c0b.ctex"
+uid="uid://tsp41op8kyx4"
+path="res://.godot/imported/1778307377733-Photoroom.png-c825b4d67010843085338901093c821f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Balls/img_ball_4.png"
-dest_files=["res://.godot/imported/img_ball_4.png-82db4e0e3ed82bcc0d5eadc4d3097c0b.ctex"]
+source_file="res://Sprites/Balls/1778307377733-Photoroom.png"
+dest_files=["res://.godot/imported/1778307377733-Photoroom.png-c825b4d67010843085338901093c821f.ctex"]
 
 [params]
 

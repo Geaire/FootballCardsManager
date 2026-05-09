@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="4_b12v8"]
 [ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="5_r57cx"]
 [ext_resource type="FontFile" uid="uid://d345ux4b2dmhk" path="res://Fonts/Roboto-Regular.ttf" id="6_0i6fe"]
-[ext_resource type="Texture2D" uid="uid://dhqj6a4huc8sl" path="res://Sprites/Balls/img_ball_2.png" id="6_aanve"]
+[ext_resource type="Texture2D" uid="uid://by3bvnj8fy4dg" path="res://Sprites/Balls/img_ball_12.png" id="6_aanve"]
 [ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="8_8tm0q"]
 [ext_resource type="Texture2D" uid="uid://crq8r4sbrv8i2" path="res://Sprites/Specialties/specialty_tackling.png" id="8_ajqki"]
 [ext_resource type="FontFile" uid="uid://djse4v8s8ul4d" path="res://Fonts/MPLUS1p-Bold.ttf" id="9_fhld7"]
@@ -23,14 +23,6 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
-corner_detail = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aanve"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
 corner_detail = 12
 
 [node name="Card_Player" type="Node2D" unique_id=1206912900]
@@ -70,17 +62,9 @@ texture = ExtResource("8_8tm0q")
 
 [node name="IMG_BallColor" type="Sprite2D" parent="." unique_id=75564132]
 z_index = 14
-position = Vector2(117, 27)
+position = Vector2(109, 24)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_aanve")
-
-[node name="PNL_BallColor" type="PanelContainer" parent="." unique_id=27268617]
-z_index = 13
-offset_left = 94.0
-offset_top = 3.0
-offset_right = 140.0
-offset_bottom = 48.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_aanve")
 
 [node name="LBL_Note" type="Label" parent="." unique_id=221002004]
 z_index = 4

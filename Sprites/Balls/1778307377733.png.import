@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfnd8mpjsv7ac"
-path="res://.godot/imported/img.ball_1.png-d9afdad254a75c8dbae0c623625f6d48.ctex"
+uid="uid://dee3vpwxl5fkm"
+path="res://.godot/imported/1778307377733.png-efc0e3e39ebde3274a4490ffcc5ab1b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Balls/img.ball_1.png"
-dest_files=["res://.godot/imported/img.ball_1.png-d9afdad254a75c8dbae0c623625f6d48.ctex"]
+source_file="res://Sprites/Balls/1778307377733.png"
+dest_files=["res://.godot/imported/1778307377733.png-efc0e3e39ebde3274a4490ffcc5ab1b9.ctex"]
 
 [params]
 
