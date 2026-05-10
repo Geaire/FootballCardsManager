@@ -1,5 +1,6 @@
 extends Node2D
 
+# ── NŒUDS ─────────────────────────────────────────────────────────────────────
 @onready var lbl_manager           = $LBL_Manager
 @onready var inp_manager           = $INP_Manager
 @onready var lbl_incorrect_manager = $LBL_IncorrectManager
@@ -8,100 +9,39 @@ extends Node2D
 @onready var lbl_incorrect_team    = $LBL_IncorrectTeam
 @onready var btn_confirm           = $BTN_Confirm
 
-const MAX_NAME_LENGTH = 13
-const SCENE_SCHEDULE  = "res://Scenes/collection_flags.tscn"
-const ALLOWED_CHARS   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-'"
+# ── CONSTANTES ────────────────────────────────────────────────────────────────
+const SCENE_MAIN_MENU   = "res://Scenes/main_menu.tscn"
+const CARD_SCENE        = "res://Scenes/card_player.tscn"
+const MAX_NAME_LENGTH   = 13
+const ALLOWED_CHARS     = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-'"
 
-const TRANSLATIONS = {
-	"fr": {
-		"manager": "Nom du manager", "team": "Nom de l'équipe", "confirm": "Confirmer",
-		"err_mgr_empty":  "Nom du manager : champ vide.",
-		"err_mgr_length": "Nom du manager : 13 caractères maximum.",
-		"err_mgr_chars":  "Nom du manager : caractères non autorisés.",
-		"err_team_empty":  "Nom d'équipe : champ vide.",
-		"err_team_length": "Nom d'équipe : 13 caractères maximum.",
-		"err_team_chars":  "Nom d'équipe : caractères non autorisés."
-	},
-	"en": {
-		"manager": "Manager name", "team": "Team name", "confirm": "Confirm",
-		"err_mgr_empty":  "Manager name: empty field.",
-		"err_mgr_length": "Manager name: 13 characters maximum.",
-		"err_mgr_chars":  "Manager name: invalid characters.",
-		"err_team_empty":  "Team name: empty field.",
-		"err_team_length": "Team name: 13 characters maximum.",
-		"err_team_chars":  "Team name: invalid characters."
-	},
-	"es": {
-		"manager": "Nombre del manager", "team": "Nombre del equipo", "confirm": "Confirmar",
-		"err_mgr_empty":  "Nombre del manager: campo vacío.",
-		"err_mgr_length": "Nombre del manager: máximo 13 caracteres.",
-		"err_mgr_chars":  "Nombre del manager: caracteres no permitidos.",
-		"err_team_empty":  "Nombre del equipo: campo vacío.",
-		"err_team_length": "Nombre del equipo: máximo 13 caracteres.",
-		"err_team_chars":  "Nombre del equipo: caracteres no permitidos."
-	},
-	"de": {
-		"manager": "Manager-Name", "team": "Teamname", "confirm": "Bestätigen",
-		"err_mgr_empty":  "Manager-Name: leeres Feld.",
-		"err_mgr_length": "Manager-Name: maximal 13 Zeichen.",
-		"err_mgr_chars":  "Manager-Name: ungültige Zeichen.",
-		"err_team_empty":  "Teamname: leeres Feld.",
-		"err_team_length": "Teamname: maximal 13 Zeichen.",
-		"err_team_chars":  "Teamname: ungültige Zeichen."
-	},
-	"it": {
-		"manager": "Nome del manager", "team": "Nome della squadra", "confirm": "Conferma",
-		"err_mgr_empty":  "Nome del manager: campo vuoto.",
-		"err_mgr_length": "Nome del manager: massimo 13 caratteri.",
-		"err_mgr_chars":  "Nome del manager: caratteri non consentiti.",
-		"err_team_empty":  "Nome della squadra: campo vuoto.",
-		"err_team_length": "Nome della squadra: massimo 13 caratteri.",
-		"err_team_chars":  "Nome della squadra: caratteri non consentiti."
-	},
-	"pt": {
-		"manager": "Nome do manager", "team": "Nome da equipa", "confirm": "Confirmar",
-		"err_mgr_empty":  "Nome do manager: campo vazio.",
-		"err_mgr_length": "Nome do manager: máximo 13 caracteres.",
-		"err_mgr_chars":  "Nome do manager: caracteres não permitidos.",
-		"err_team_empty":  "Nome da equipa: campo vazio.",
-		"err_team_length": "Nome da equipa: máximo 13 caracteres.",
-		"err_team_chars":  "Nome da equipa: caracteres não permitidos."
-	}
-}
-
-# ── PACK DE TEST ──────────────────────────────────────────────────────────────
-const CARD_SCENE = "res://Scenes/card_player.tscn"
-const TEST_PACK = {
+const STARTER_PACK = {
 	"yellow":  60,
 	"orange":  60,
 	"red":     60,
 	"magenta": 60,
-	"white":   10,
 	"blue":    10,
+	"white":   10,
 }
 
-var _cards_pending:    int   = 0
-var _generated_cards:  Array = []
+var _cards_pending:   int   = 0
+var _generated_cards: Array = []
 
+# ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
-	Taskbar.visible = false
-	inp_manager.max_length = MAX_NAME_LENGTH
-	inp_team.max_length    = MAX_NAME_LENGTH
+	Taskbar.visible               = false
+	inp_manager.max_length        = MAX_NAME_LENGTH
+	inp_team.max_length           = MAX_NAME_LENGTH
 	lbl_incorrect_manager.visible = false
 	lbl_incorrect_team.visible    = false
-	_apply_translations()
+	lbl_manager.text              = "Manager Name"
+	lbl_team.text                 = "Team Name"
+	btn_confirm.text              = "Confirm"
 	btn_confirm.gui_input.connect(_on_btn_confirm_input)
-	Firebase.firestore_success.connect(_on_firestore_success)
-	Firebase.firestore_failed.connect(_on_firestore_failed)
 
-func _apply_translations():
-	var t = TRANSLATIONS[GameState.language]
-	lbl_manager.text = t["manager"]
-	lbl_team.text    = t["team"]
-	btn_confirm.text = t["confirm"]
-
-func _is_valid_name(name: String) -> bool:
-	for c in name:
+# ── VALIDATION ────────────────────────────────────────────────────────────────
+func _is_valid_name(value: String) -> bool:
+	for c in value:
 		if not (c in ALLOWED_CHARS): return false
 	return true
 
@@ -112,7 +52,6 @@ func _on_btn_confirm_input(event: InputEvent):
 		_try_confirm()
 
 func _try_confirm():
-	var t            = TRANSLATIONS[GameState.language]
 	var manager_name = inp_manager.text.strip_edges()
 	var team_name    = inp_team.text.strip_edges()
 	var valid        = true
@@ -120,23 +59,23 @@ func _try_confirm():
 	lbl_incorrect_team.visible    = false
 
 	if manager_name == "":
-		lbl_incorrect_manager.text    = t["err_mgr_empty"]
+		lbl_incorrect_manager.text    = "Incorrect Manager Name: empty field."
 		lbl_incorrect_manager.visible = true; valid = false
 	elif manager_name.length() > MAX_NAME_LENGTH:
-		lbl_incorrect_manager.text    = t["err_mgr_length"]
+		lbl_incorrect_manager.text    = "Incorrect Manager Name: 13 characters maximum."
 		lbl_incorrect_manager.visible = true; valid = false
 	elif not _is_valid_name(manager_name):
-		lbl_incorrect_manager.text    = t["err_mgr_chars"]
+		lbl_incorrect_manager.text    = "Incorrect Manager Name: invalid characters."
 		lbl_incorrect_manager.visible = true; valid = false
 
 	if team_name == "":
-		lbl_incorrect_team.text    = t["err_team_empty"]
+		lbl_incorrect_team.text    = "Incorrect Team Name: empty field."
 		lbl_incorrect_team.visible = true; valid = false
 	elif team_name.length() > MAX_NAME_LENGTH:
-		lbl_incorrect_team.text    = t["err_team_length"]
+		lbl_incorrect_team.text    = "Incorrect Team Name: 13 characters maximum."
 		lbl_incorrect_team.visible = true; valid = false
 	elif not _is_valid_name(team_name):
-		lbl_incorrect_team.text    = t["err_team_chars"]
+		lbl_incorrect_team.text    = "Incorrect Team Name: invalid characters."
 		lbl_incorrect_team.visible = true; valid = false
 
 	if not valid: return
@@ -144,6 +83,14 @@ func _try_confirm():
 	GameState.manager_name = manager_name
 	GameState.team_name    = team_name
 
+	# ── Générer les cartes IMMÉDIATEMENT dans le cache local ──────────────────
+	# Indépendant de Firestore — le manager a toujours ses cartes même si Firebase
+	# est lent ou en erreur.
+	_generate_starter_pack()
+
+	# ── Sauvegarder le profil en Firestore (best-effort) ─────────────────────
+	Firebase.firestore_success.connect(_on_profile_saved)
+	Firebase.firestore_failed.connect(_on_profile_failed)
 	Firebase.create_document("managers", Firebase.user_id, {
 		"manager_name": manager_name,
 		"team_name":    team_name,
@@ -151,45 +98,51 @@ func _try_confirm():
 		"sound_on":     GameState.sound_on
 	})
 
-func _on_firestore_success(_data: Dictionary):
-	if Firebase.firestore_success.is_connected(_on_firestore_success):
-		Firebase.firestore_success.disconnect(_on_firestore_success)
-	if Firebase.firestore_failed.is_connected(_on_firestore_failed):
-		Firebase.firestore_failed.disconnect(_on_firestore_failed)
-	_generate_test_pack()
+# ── PROFIL FIRESTORE ──────────────────────────────────────────────────────────
+func _on_profile_saved(_data: Dictionary):
+	_disconnect_profile_signals()
+	_save_all_cards()
 
-func _on_firestore_failed(error: String):
-	print("Erreur Firestore create_profile : " + error)
-	get_tree().change_scene_to_file(SCENE_SCHEDULE)
+func _on_profile_failed(error: String):
+	print("Profile Firestore failed (non-blocking): " + error)
+	_disconnect_profile_signals()
+	_save_all_cards()
 
-# ── GÉNÉRATION PACK DE TEST ───────────────────────────────────────────────────
-func _generate_test_pack():
+func _disconnect_profile_signals():
+	if Firebase.firestore_success.is_connected(_on_profile_saved):
+		Firebase.firestore_success.disconnect(_on_profile_saved)
+	if Firebase.firestore_failed.is_connected(_on_profile_failed):
+		Firebase.firestore_failed.disconnect(_on_profile_failed)
+
+# ── GÉNÉRATION DU STARTER PACK ────────────────────────────────────────────────
+func _generate_starter_pack():
 	_generated_cards = []
-	for color in TEST_PACK:
-		var count = TEST_PACK[color]
-		for i in range(count):
+	for color in STARTER_PACK:
+		for i in range(STARTER_PACK[color]):
 			var card = _generate_card(color)
 			_generated_cards.append(card)
-	_save_all_cards()
+			SquadLoader.add_card(card)
+	GameState.cards_loaded = true
 
 func _generate_card(color: String) -> Dictionary:
 	var card_scene = load(CARD_SCENE)
 	var card       = card_scene.instantiate()
+	card.color     = color
 	match color:
 		"yellow":  card.note = randi_range(60, 69)
 		"orange":  card.note = randi_range(70, 79)
 		"red":     card.note = randi_range(80, 89)
 		"magenta": card.note = randi_range(90, 99)
 		"blue":    card.note = randi_range(100, 129)
-		"white":   card.note = randi_range(40, 70)
-	card.color = color
+		"white":   card.note = 40  # Toujours 40 — jamais randomisé
 	card.generate_age_height_weight()
 	card.generate_nationality()
 	card.generate_positions()
 	card.generate_name()
 	card.generate_specialties()
 	card.generate_skills()
-	card.selected_card_id = str(Time.get_unix_time_from_system()) + "_" + str(randi())
+	card.selected_card_id = str(Time.get_unix_time_from_system()) \
+		+ "_" + str(randi()) + "_" + str(_generated_cards.size())
 	var d = {
 		"card_id":            card.selected_card_id,
 		"note":               card.note,
@@ -215,13 +168,19 @@ func _generate_card(color: String) -> Dictionary:
 		"concentration":      card.concentration,
 		"motivation":         card.motivation,
 		"anticipation":       card.anticipation,
-		"communication":      card.communication
+		"communication":      card.communication,
+		"training_tier":      0,
+		"training_matches":   0,
 	}
 	card.queue_free()
 	return d
 
+# ── SAUVEGARDE FIRESTORE ──────────────────────────────────────────────────────
 func _save_all_cards():
 	_cards_pending = _generated_cards.size()
+	if _cards_pending == 0:
+		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+		return
 	Firebase.firestore_success.connect(_on_card_saved)
 	Firebase.firestore_failed.connect(_on_card_save_failed)
 	for d in _generated_cards:
@@ -233,17 +192,17 @@ func _save_all_cards():
 func _on_card_saved(_data: Dictionary):
 	_cards_pending -= 1
 	if _cards_pending <= 0:
-		if Firebase.firestore_success.is_connected(_on_card_saved):
-			Firebase.firestore_success.disconnect(_on_card_saved)
-		if Firebase.firestore_failed.is_connected(_on_card_save_failed):
-			Firebase.firestore_failed.disconnect(_on_card_save_failed)
-		get_tree().change_scene_to_file(SCENE_SCHEDULE)
+		_disconnect_card_signals()
+		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
 
 func _on_card_save_failed(_error: String):
 	_cards_pending -= 1
 	if _cards_pending <= 0:
-		if Firebase.firestore_success.is_connected(_on_card_saved):
-			Firebase.firestore_success.disconnect(_on_card_saved)
-		if Firebase.firestore_failed.is_connected(_on_card_save_failed):
-			Firebase.firestore_failed.disconnect(_on_card_save_failed)
-		get_tree().change_scene_to_file(SCENE_SCHEDULE)
+		_disconnect_card_signals()
+		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+
+func _disconnect_card_signals():
+	if Firebase.firestore_success.is_connected(_on_card_saved):
+		Firebase.firestore_success.disconnect(_on_card_saved)
+	if Firebase.firestore_failed.is_connected(_on_card_save_failed):
+		Firebase.firestore_failed.disconnect(_on_card_save_failed)

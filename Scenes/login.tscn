@@ -32,12 +32,12 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="IMG_Ball" type="Sprite2D" parent="." unique_id=670484975]
-z_index = 2
+z_index = 1
 position = Vector2(1500, 540)
 texture = ExtResource("2_88cqn")
 
-[node name="IMG_LogoFcmBlack" type="Sprite2D" parent="." unique_id=1326612748]
-z_index = 3
+[node name="IMG_Logo" type="Sprite2D" parent="." unique_id=1326612748]
+z_index = 1
 position = Vector2(300, 955)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_m7a0j")
@@ -91,7 +91,7 @@ text = "@"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BTN_Guest" type="Label" parent="." unique_id=1252047971]
+[node name="BTN_Mobile" type="Label" parent="." unique_id=1252047971]
 z_index = 1
 offset_left = 171.0
 offset_top = 541.0
@@ -102,11 +102,11 @@ mouse_filter = 0
 theme_override_fonts/font = ExtResource("5_5iow8")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_88cqn")
-text = "Play as Guest"
+text = "Save on Mobile"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBL_GuestIcon" type="Label" parent="." unique_id=520620349]
+[node name="LBL_MobileIcon" type="Label" parent="." unique_id=520620349]
 z_index = 2
 offset_left = 144.0
 offset_top = 540.0

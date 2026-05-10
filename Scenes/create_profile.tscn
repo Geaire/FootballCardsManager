@@ -15,14 +15,15 @@ border_width_bottom = 1
 [node name="Create_Profile" type="Node2D" unique_id=1645773724]
 script = ExtResource("1_opci1")
 
-[node name="BG_CreateProfile" type="Sprite2D" parent="." unique_id=1218993420]
+[node name="BG_CreateProfile" type="TextureRect" parent="." unique_id=893966415]
 z_index = 1
-position = Vector2(960, 540)
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("2_vrwtu")
 
-[node name="IMG_LogoFcmWhite" type="Sprite2D" parent="." unique_id=582749013]
+[node name="IMG_Logo" type="Sprite2D" parent="." unique_id=582749013]
 z_index = 1
-position = Vector2(1633, 952)
+position = Vector2(1630, 955)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_vrwtu")
 

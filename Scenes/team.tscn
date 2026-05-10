@@ -2,11 +2,19 @@
 
 [ext_resource type="Script" uid="uid://8c41203juajn" path="res://Scripts/team.gd" id="1_h3a6e"]
 [ext_resource type="Texture2D" uid="uid://dv03oh1ng7i0n" path="res://Sprites/Backgrounds/bg_grid.png" id="2_mv6eg"]
-[ext_resource type="Texture2D" uid="uid://1crmolvv2m56" path="res://Sprites/Balls/img_ball_5.png" id="3_0ib3d"]
 [ext_resource type="Texture2D" uid="uid://bu5hagbygrrmp" path="res://Sprites/Others/img_card_silhouette.png" id="3_ck41f"]
+[ext_resource type="Texture2D" uid="uid://xrpwxbub1hmj" path="res://Sprites/Balls/img_ball_2.png" id="3_vyr1m"]
 [ext_resource type="Texture2D" uid="uid://cpvcabigjuxrj" path="res://Sprites/Others/img_grid_popup.png" id="6_bdi2c"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="6_vyr1m"]
 [ext_resource type="Texture2D" uid="uid://bx4vmh3nlamwq" path="res://Sprites/Others/btn_yes_no.png" id="7_hxgd5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxgd5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyr1m"]
 bg_color = Color(1, 1, 1, 1)
@@ -88,15 +96,17 @@ texture = ExtResource("2_mv6eg")
 
 [node name="BTN_Help" type="Sprite2D" parent="." unique_id=696874220]
 position = Vector2(1864, 153)
-texture = ExtResource("3_0ib3d")
+texture = ExtResource("3_vyr1m")
 
 [node name="LBL_Help" type="Label" parent="." unique_id=472042502]
+visible = false
 z_index = 5
 offset_left = 25.0
 offset_top = 654.0
 offset_right = 633.0
 offset_bottom = 974.0
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_hxgd5")
 text = "1. Choose your bonuses.
 2. Drag your cards into the player slots.
 3. Drag your bonuses into the competitions shots."
@@ -504,7 +514,7 @@ text = "Shots Competitions"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="CTN_ShotsCompetitions" type="VBoxContainer" parent="ShotsCompetitions" unique_id=1915791135]
+[node name="CNT_ShotsCompetitions" type="VBoxContainer" parent="ShotsCompetitions" unique_id=1915791135]
 offset_left = 700.0
 offset_top = 625.0
 offset_right = 1810.0
@@ -512,62 +522,62 @@ offset_bottom = 980.0
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="CNT_Row1" type="HBoxContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions" unique_id=254145944]
+[node name="CNT_Row1" type="HBoxContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions" unique_id=254145944]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="BG_ShotCompetition1" type="PanelContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row1" unique_id=602494137]
+[node name="BG_ShotCompetition1" type="PanelContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row1" unique_id=602494137]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ib3d")
 
-[node name="BG_ShotCompetition2" type="PanelContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row1" unique_id=777707458]
+[node name="BG_ShotCompetition2" type="PanelContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row1" unique_id=777707458]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ib3d")
 
-[node name="BG_ShotCompetition3" type="PanelContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row1" unique_id=675084335]
+[node name="BG_ShotCompetition3" type="PanelContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row1" unique_id=675084335]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ib3d")
 
-[node name="BG_ShotCompetition4" type="PanelContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row1" unique_id=2123412998]
+[node name="BG_ShotCompetition4" type="PanelContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row1" unique_id=2123412998]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ib3d")
 
-[node name="CNT_Row2" type="HBoxContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions" unique_id=1464987528]
+[node name="CNT_Row2" type="HBoxContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions" unique_id=1464987528]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="BG_ShotCompetition5" type="PanelContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row2" unique_id=19922107]
+[node name="BG_ShotCompetition5" type="PanelContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row2" unique_id=19922107]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ib3d")
 
-[node name="BG_ShotCompetition6" type="PanelContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row2" unique_id=925668661]
+[node name="BG_ShotCompetition6" type="PanelContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row2" unique_id=925668661]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ib3d")
 
-[node name="BG_ShotCompetition7" type="PanelContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row2" unique_id=1713952626]
+[node name="BG_ShotCompetition7" type="PanelContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row2" unique_id=1713952626]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ib3d")
 
-[node name="BG_ShotCompetition8" type="PanelContainer" parent="ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row2" unique_id=1538285450]
+[node name="BG_ShotCompetition8" type="PanelContainer" parent="ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row2" unique_id=1538285450]
 custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ib3d")
 
-[node name="Popup_Cards" type="Node2D" parent="." unique_id=1996014285]
+[node name="PopupCards" type="Node2D" parent="." unique_id=1996014285]
 visible = false
 
-[node name="BG_Popup" type="PanelContainer" parent="Popup_Cards" unique_id=2031972699]
+[node name="BG_Popup" type="PanelContainer" parent="PopupCards" unique_id=2031972699]
 modulate = Color(0, 0, 0, 1)
 z_index = 100
 offset_top = 455.0
@@ -575,24 +585,24 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nak4y")
 
-[node name="BG_GridPopup" type="Sprite2D" parent="Popup_Cards" unique_id=1920555249]
+[node name="BG_GridPopup" type="Sprite2D" parent="PopupCards" unique_id=1920555249]
 modulate = Color(0, 0, 1, 1)
 z_index = 101
 position = Vector2(960, 764)
 texture = ExtResource("6_bdi2c")
 
-[node name="BTN_ClosePopup" type="Sprite2D" parent="Popup_Cards" unique_id=662074442]
+[node name="BTN_ClosePopup" type="Sprite2D" parent="PopupCards" unique_id=662074442]
 modulate = Color(1, 0, 0, 1)
 z_index = 102
 position = Vector2(1860, 510)
 texture = ExtResource("7_hxgd5")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Popup_Cards" unique_id=48043608]
+[node name="ScrollContainer" type="ScrollContainer" parent="PopupCards" unique_id=48043608]
 offset_top = 455.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="CardGrid" type="GridContainer" parent="Popup_Cards/ScrollContainer" unique_id=930151096]
+[node name="CardGrid" type="GridContainer" parent="PopupCards/ScrollContainer" unique_id=930151096]
 custom_minimum_size = Vector2(0, 625)
 layout_mode = 2
 theme_override_constants/h_separation = 10

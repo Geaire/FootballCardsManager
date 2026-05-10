@@ -1,5 +1,6 @@
 extends Node2D
 
+# ── NŒUDS ─────────────────────────────────────────────────────────────────────
 @onready var btn_sound_on  = $BTN_SoundOn
 @onready var btn_sound_off = $BTN_SoundOff
 @onready var card_deco1    = $Card_Player1
@@ -10,100 +11,78 @@ extends Node2D
 @onready var lbl_slogan2   = $LBL_Slogan2
 @onready var lbl_slogan3   = $LBL_Slogan3
 
-# ── TRADUCTIONS — slogans uniquement ──────────────────────────────────────────
-const TRANSLATIONS = {
-	"fr": {
-		"slogan1": "Construis. Pense. Domine.",
-		"slogan2": "Pas de hasard, le meilleur gagne toujours.",
-		"slogan3": "Oublie les tactiques. Maîtrise les bonus."
-	},
-	"en": {
-		"slogan1": "Build. Think. Dominate.",
-		"slogan2": "No luck, the best always wins.",
-		"slogan3": "Forget tactics. Master the bonuses."
-	},
-	"es": {
-		"slogan1": "Construye. Piensa. Domina.",
-		"slogan2": "Sin suerte, el mejor siempre gana.",
-		"slogan3": "Olvida las tácticas. Domina los bonos."
-	},
-	"de": {
-		"slogan1": "Baue. Denke. Dominiere.",
-		"slogan2": "Kein Zufall, der Beste gewinnt immer.",
-		"slogan3": "Vergiss Taktiken. Meistere die Boni."
-	},
-	"it": {
-		"slogan1": "Costruisci. Pensa. Domina.",
-		"slogan2": "Nessuna fortuna, il migliore vince sempre.",
-		"slogan3": "Dimentica le tattiche. Padroneggia i bonus."
-	},
-	"pt": {
-		"slogan1": "Constrói. Pensa. Domina.",
-		"slogan2": "Sem sorte, o melhor sempre vence.",
-		"slogan3": "Esqueça as táticas. Domine os bônus."
-	}
-}
+# ── CONSTANTES ────────────────────────────────────────────────────────────────
+const SCENE_TEAM = "res://Scenes/team.tscn"
+const SFX_CLICK  = "res://Audio/sfx_click.wav"
 
-const SFX_CLICK      = "res://Audio/sfx_click.wav"
-const SCENE_SCHEDULE = "res://Scenes/schedule.tscn"
+# Les slogans sont l'identité du jeu — traduits dans les 6 langues.
+# Tout le reste de la scène est en anglais fixe.
+const SLOGANS = {
+	"fr": ["Construis. Pense. Domine.", "Pas de hasard, le meilleur gagne toujours.", "Oublie les tactiques. Maîtrise les bonus."],
+	"en": ["Build. Think. Dominate.",   "No luck, the best always wins.",             "Forget tactics. Master the bonuses."],
+	"es": ["Construye. Piensa. Domina.","Sin suerte, el mejor siempre gana.",         "Olvida las tácticas. Domina los bonos."],
+	"de": ["Baue. Denke. Dominiere.",   "Kein Zufall, der Beste gewinnt immer.",      "Vergiss Taktiken. Meistere die Boni."],
+	"it": ["Costruisci. Pensa. Domina.","Nessuna fortuna, il migliore vince sempre.", "Dimentica le tattiche. Padroneggia i bonus."],
+	"pt": ["Constrói. Pensa. Domina.",  "Sem sorte, o melhor sempre vence.",          "Esqueça as táticas. Domine os bônus."],
+}
 
 # ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
-	Taskbar.visible       = false
-	lbl_version.text      = "V 0.1"
+	Taskbar.visible      = true
+	Taskbar._update_border_color
+	lbl_version.text     = "V 0.1"
+	btn_play.text        = "Play"
 	btn_sound_on.visible  = GameState.sound_on
 	btn_sound_off.visible = not GameState.sound_on
-	if GameState.deco1_color == "":
-		card_deco1.deco_index = 1; card_deco1.clickable = true
-		card_deco1.generate(); card_deco1.display(); card_deco1.save_to_gamestate_deco1()
+
+	# Slogans traduits
+	var s = SLOGANS.get(GameState.language, SLOGANS["en"])
+	lbl_slogan1.text = s[0]; lbl_slogan2.text = s[1]; lbl_slogan3.text = s[2]
+
+	# Cartes déco
+	_setup_deco_card(card_deco1, 1, GameState.deco1_color)
+	_setup_deco_card(card_deco2, 2, GameState.deco2_color)
+
+func _setup_deco_card(card: Node2D, idx: int, saved_color: String):
+	card.deco_index = idx
+	card.clickable  = true
+	if saved_color == "":
+		card.generate()
+		card.display()
+		if idx == 1: card.save_to_gamestate_deco1()
+		else:        card.save_to_gamestate_deco2()
 	else:
-		card_deco1.deco_index = 1; card_deco1.clickable = true
-		card_deco1.restore_from_gamestate_deco1(); card_deco1.display()
-	if GameState.deco2_color == "":
-		card_deco2.deco_index = 2; card_deco2.clickable = true
-		card_deco2.generate(); card_deco2.display(); card_deco2.save_to_gamestate_deco2()
-	else:
-		card_deco2.deco_index = 2; card_deco2.clickable = true
-		card_deco2.restore_from_gamestate_deco2(); card_deco2.display()
-	_apply_translations()
-	btn_play.gui_input.connect(_on_btn_play_input)
+		if idx == 1: card.restore_from_gamestate_deco1()
+		else:        card.restore_from_gamestate_deco2()
+		card.display()
 
-# ── TRADUCTIONS ────────────────────────────────────────────────────────────────
-func _apply_translations():
-	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["en"])
-	lbl_slogan1.text = t["slogan1"]
-	lbl_slogan2.text = t["slogan2"]
-	lbl_slogan3.text = t["slogan3"]
-	btn_play.text    = "Play"
-
-# ── BTN_Play — Label → gui_input ─────────────────────────────────────────────
-func _on_btn_play_input(event: InputEvent):
-	if event is InputEventMouseButton \
-	and event.button_index == MOUSE_BUTTON_LEFT \
-	and event.pressed:
-		play_click_sound()
-		await get_tree().create_timer(0.2).timeout
-		get_tree().change_scene_to_file(SCENE_SCHEDULE)
-
-# ── BTN_SoundOn / SoundOff — Sprite2D → _input ───────────────────────────────
+# ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
 	if not (event is InputEventMouseButton): return
 	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
 	var pos = event.position
+
+	if _label_hit(btn_play, pos):
+		_play_click_sound()
+		await get_tree().create_timer(0.2).timeout
+		get_tree().change_scene_to_file(SCENE_TEAM)
+		return
+
 	if _sprite_hit(btn_sound_on, pos) and btn_sound_on.visible:
 		GameState.sound_on    = false
 		btn_sound_on.visible  = false
 		btn_sound_off.visible = true
 		return
+
 	if _sprite_hit(btn_sound_off, pos) and btn_sound_off.visible:
 		GameState.sound_on    = true
 		btn_sound_on.visible  = true
 		btn_sound_off.visible = false
-		play_click_sound()
+		_play_click_sound()
 		return
 
-# ── SON ────────────────────────────────────────────────────────────────────────
-func play_click_sound():
+# ── SON ───────────────────────────────────────────────────────────────────────
+func _play_click_sound():
 	if not GameState.sound_on: return
 	var player = AudioStreamPlayer.new()
 	add_child(player)
@@ -116,3 +95,7 @@ func play_click_sound():
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if sprite == null or not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))
+
+func _label_hit(label: Label, pos: Vector2) -> bool:
+	if label == null or not label.visible: return false
+	return label.get_global_rect().has_point(pos)

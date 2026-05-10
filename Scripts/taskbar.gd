@@ -1,18 +1,21 @@
 extends CanvasLayer
 
 const SCENE_COLORS = {
-	"res://Scenes/schedule.tscn":           Color(0.0, 0.4, 1.0),
-	"res://Scenes/collection_flags.tscn":   Color(0.0, 0.8, 0.2),
-	"res://Scenes/collection_country.tscn": Color(0.0, 0.8, 0.2),
-	"res://Scenes/detail_card_player.tscn": Color(1.0, 0.85, 0.0),
-	"res://Scenes/main_menu.tscn":          Color(1.0, 1.0, 1.0),
+	# Orange RGB 255/128/0
+	"res://Scenes/schedule.tscn":           Color(1.0,  0.502, 0.0),
+	"res://Scenes/team.tscn":               Color(1.0,  1.0,   1.0),
+	"res://Scenes/collection_flags.tscn":   Color(0.0,  0.8,   0.2),
+	"res://Scenes/collection_country.tscn": Color(0.0,  0.8,   0.2),
+	"res://Scenes/detail_card_player.tscn": Color(1.0,  0.85,  0.0),
+	"res://Scenes/main_menu.tscn":          Color(1.0,  1.0,   1.0),
 }
 
 const DEFAULT_COLOR = Color(1.0, 1.0, 1.0)
 
+# Scènes disponibles — les vides seront activées au fur et à mesure
 const SCENE_PATHS = {
 	"competition":  "",
-	"team":         "",
+	"team":         "res://Scenes/team.tscn",
 	"bonus":        "",
 	"transfert":    "",
 	"association":  "",
@@ -52,14 +55,12 @@ func _ready():
 		"settings":    btn_settings,
 	}
 
-	# Créer UN SEUL PanelContainer pour le highlight
+	# PanelContainer unique pour le highlight de l'onglet actif
 	highlight_panel = PanelContainer.new()
 	highlight_panel.size = Vector2(96, 80)
 	highlight_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	# Le mettre DANS le HBoxContainer pour suivre les coordonnées
 	var hbox = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer
 	hbox.add_child(highlight_panel)
-	# Le sortir du flux du HBox en le mettant en position absolue
 	highlight_panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	highlight_panel.top_level = true
 	_hide_highlight()
@@ -80,7 +81,7 @@ func _update_border_color():
 		scene_path = get_tree().current_scene.scene_file_path
 	var col = SCENE_COLORS.get(scene_path, DEFAULT_COLOR)
 	_set_border_color(bg_taskbar_bottom, col)
-	_set_border_color(bg_taskbar_top, col)
+	_set_border_color(bg_taskbar_top,    col)
 	_update_active_btn(scene_path, col)
 
 func _set_border_color(panel: PanelContainer, col: Color):
@@ -89,34 +90,31 @@ func _set_border_color(panel: PanelContainer, col: Color):
 	panel.add_theme_stylebox_override("panel", style)
 
 func _update_active_btn(scene_path: String, col: Color):
+	# Tous les boutons en grisé
 	for key in btn_map:
 		var btn = btn_map[key]
-		if btn:
-			btn.modulate = Color(0.55, 0.55, 0.55, 0.65)
+		if btn: btn.modulate = Color(0.55, 0.55, 0.55, 0.65)
 
 	_hide_highlight()
 
+	# Bouton actif en pleine luminosité + highlight
 	for key in SCENE_PATHS:
-		if SCENE_PATHS[key] == scene_path and btn_map.has(key):
+		if SCENE_PATHS[key] != "" and SCENE_PATHS[key] == scene_path and btn_map.has(key):
 			var btn = btn_map[key]
 			if btn:
 				btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
-				active_btn = btn
+				active_btn   = btn
 				_move_highlight(btn, col)
 			break
 
 func _move_highlight(btn: Sprite2D, col: Color):
 	if highlight_panel == null: return
-
-	# Positionner le panel sur l'icône active en coordonnées globales
 	var btn_global = btn.global_position
-	var btn_size = Vector2(96, 80)
+	var btn_size   = Vector2(96, 80)
 	highlight_panel.global_position = btn_global - btn_size / 2.0
 	highlight_panel.size = btn_size
-
-	# Style : fond coloré semi-transparent + liséret fin brillant
 	var style = StyleBoxFlat.new()
-	style.bg_color = Color(col.r, col.g, col.b, 0.12)
+	style.bg_color     = Color(col.r, col.g, col.b, 0.12)
 	style.border_color = Color(col.r, col.g, col.b, 1.0)
 	style.set_border_width_all(1)
 	style.set_corner_radius_all(8)
@@ -138,11 +136,11 @@ func _input(event):
 
 func _navigate_to(key: String):
 	var path = SCENE_PATHS.get(key, "")
-	if path == "": return
+	if path == "": return   # scène pas encore créée
 	var current = ""
 	if get_tree().current_scene:
 		current = get_tree().current_scene.scene_file_path
-	if current == path: return
+	if current == path: return  # déjà sur cette scène
 	get_tree().change_scene_to_file(path)
 
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:

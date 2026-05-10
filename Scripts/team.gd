@@ -25,33 +25,36 @@ const NOTE_RANGES = {
 }
 
 # ── ÉTAT ──────────────────────────────────────────────────────────────────────
-var slot_card_ids:          Array      = ["","","","","","","",""]
-var slot_card_data:         Array      = [{},{},{},{},{},{},{},{}]
-var current_popup_color:    String     = ""
-var current_popup_cards:    Array      = []
-var popup_card_nodes:       Array      = []
+var slot_card_ids:       Array      = ["","","","","","","",""]
+var slot_card_data:      Array      = [{},{},{},{},{},{},{},{}]
+var current_popup_color: String     = ""
+var current_popup_cards: Array      = []
+var popup_card_nodes:    Array      = []
 
-var drag_active:            bool       = false
-var drag_card_data:         Dictionary = {}
-var drag_visual:            Node       = null
-var press_timer:            float      = 0.0
-var press_holding:          bool       = false
-var press_card_index:       int        = -1
-var touch_start:            Vector2    = Vector2.ZERO
+var drag_active:         bool       = false
+var drag_card_data:      Dictionary = {}
+var drag_visual:         Node       = null
+var press_timer:         float      = 0.0
+var press_holding:       bool       = false
+var press_card_index:    int        = -1
+var touch_start:         Vector2    = Vector2.ZERO
 
 # ── NŒUDS ─────────────────────────────────────────────────────────────────────
-@onready var btn_help        = $BTN_Help
-@onready var lbl_help        = $LBL_Help
-@onready var btn_bonus1      = $SlotsBonuses/BTN_SlotBonus1
-@onready var btn_bonus2      = $SlotsBonuses/BTN_SlotBonus2
+@onready var btn_help    = $BTN_Help
+@onready var lbl_help    = $LBL_Help
 
-@onready var yellow_bg       = $TotalCards/YellowCards/BTN_CardBackground
-@onready var orange_bg       = $TotalCards/OrangeCards/BTN_CardBackground
-@onready var red_bg          = $TotalCards/RedCards/BTN_CardBackground
-@onready var magenta_bg      = $TotalCards/MagentaCards/BTN_CardBackground
-@onready var blue_bg         = $TotalCards/BlueCards/BTN_CardBackground
-@onready var white_bg        = $TotalCards/WhiteCards/BTN_CardBackground
-@onready var special_bg      = $TotalCards/SpecialCards/BTN_CardBackground
+# BTN_SlotBonus1/2 sont des Labels (triangle vert) → _label_hit()
+@onready var btn_bonus1  = $SlotsBonuses/BTN_SlotBonus1
+@onready var btn_bonus2  = $SlotsBonuses/BTN_SlotBonus2
+
+# BTN_CardBackground est un PanelContainer (carré vert) → _panel_hit()
+@onready var yellow_bg   = $TotalCards/YellowCards/BTN_CardBackground
+@onready var orange_bg   = $TotalCards/OrangeCards/BTN_CardBackground
+@onready var red_bg      = $TotalCards/RedCards/BTN_CardBackground
+@onready var magenta_bg  = $TotalCards/MagentaCards/BTN_CardBackground
+@onready var blue_bg     = $TotalCards/BlueCards/BTN_CardBackground
+@onready var white_bg    = $TotalCards/WhiteCards/BTN_CardBackground
+@onready var special_bg  = $TotalCards/SpecialCards/BTN_CardBackground
 
 @onready var yellow_counter  = $TotalCards/YellowCards/LBL_Counter
 @onready var orange_counter  = $TotalCards/OrangeCards/LBL_Counter
@@ -61,13 +64,13 @@ var touch_start:            Vector2    = Vector2.ZERO
 @onready var white_counter   = $TotalCards/WhiteCards/LBL_Counter
 @onready var special_counter = $TotalCards/SpecialCards/LBL_Counter
 
-@onready var yellow_minmax   = $TotalCards/YellowCards/LBL_NoteMinMax
-@onready var orange_minmax   = $TotalCards/OrangeCards/LBL_NoteMinMax
-@onready var red_minmax      = $TotalCards/RedCards/LBL_NoteMinMax
-@onready var magenta_minmax  = $TotalCards/MagentaCards/LBL_NoteMinMax
-@onready var blue_minmax     = $TotalCards/BlueCards/LBL_NoteMinMax
-@onready var white_minmax    = $TotalCards/WhiteCards/LBL_NoteMinMax
-@onready var special_minmax  = $TotalCards/SpecialCards/LBL_NoteMinMax
+@onready var yellow_minmax  = $TotalCards/YellowCards/LBL_NoteMinMax
+@onready var orange_minmax  = $TotalCards/OrangeCards/LBL_NoteMinMax
+@onready var red_minmax     = $TotalCards/RedCards/LBL_NoteMinMax
+@onready var magenta_minmax = $TotalCards/MagentaCards/LBL_NoteMinMax
+@onready var blue_minmax    = $TotalCards/BlueCards/LBL_NoteMinMax
+@onready var white_minmax   = $TotalCards/WhiteCards/LBL_NoteMinMax
+@onready var special_minmax = $TotalCards/SpecialCards/LBL_NoteMinMax
 
 @onready var popup_cards     = $Popup_Cards
 @onready var btn_close_popup = $Popup_Cards/BTN_ClosePopup
@@ -83,7 +86,7 @@ func _ready():
 	lbl_help.visible    = false
 	popup_cards.visible = false
 
-	# ── Slots joueurs ─────────────────────────────────────────────────────────
+	# Slots joueurs — BG_SlotCardPlayer1..8 (PanelContainers)
 	var row1 = $SlotsBonuses/CNT_SlotsCardsPlayers/CNT_Row1
 	var row2 = $SlotsBonuses/CNT_SlotsCardsPlayers/CNT_Row2
 	for i in range(1, 5):
@@ -91,7 +94,7 @@ func _ready():
 	for i in range(5, 9):
 		slot_nodes.append(row2.get_node("BG_SlotCardPlayer%d" % i))
 
-	# ── Shots compétitions ────────────────────────────────────────────────────
+	# Shots compétitions
 	var srow1 = $ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row1
 	var srow2 = $ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row2
 	for i in range(1, 5):
@@ -102,7 +105,6 @@ func _ready():
 	_setup_color_cards()
 	_setup_counters()
 
-	# Charger les cartes si pas encore fait
 	if not GameState.cards_loaded:
 		SquadLoader.squad_loaded.connect(_on_squad_loaded)
 		SquadLoader.load_squad()
@@ -242,7 +244,6 @@ func _populate_card_grid(cards: Array):
 		card.specialty1         = card_data.get("specialty1", "")
 		card.specialty2         = card_data.get("specialty2", "")
 		card.selected_card_id   = card_data.get("card_id", "")
-		# Grisée si déjà dans un slot
 		if card_data.get("card_id", "") in slot_card_ids:
 			card.modulate = Color(0.5, 0.5, 0.5, 0.8)
 		card_grid.add_child(card)
@@ -254,8 +255,8 @@ func _process(delta):
 	if press_holding and press_card_index >= 0:
 		press_timer += delta
 		if press_timer >= LONG_PRESS_DURATION:
-			press_holding     = false
-			press_timer       = 0.0
+			press_holding    = false
+			press_timer      = 0.0
 			_start_drag_from_popup(press_card_index)
 
 # ── DRAG ──────────────────────────────────────────────────────────────────────
@@ -353,33 +354,31 @@ func _input(event):
 			drag_visual.position = event.position - Vector2(50, 75)
 
 func _on_press(pos: Vector2):
-	# Toggle aide
 	if _sprite_hit(btn_help, pos):
 		lbl_help.visible = not lbl_help.visible; return
 	if lbl_help.visible:
 		lbl_help.visible = false; return
 
-	# Fermer popup
 	if popup_cards.visible:
 		if _sprite_hit(btn_close_popup, pos):
 			_close_popup(); return
 
-	# Bonus
-	if _panel_hit(btn_bonus1, pos):
+	# BTN_SlotBonus1/2 sont des Labels → _label_hit()
+	if _label_hit(btn_bonus1, pos):
 		pass  # TODO : naviguer vers bonus.tscn
 		return
-	if _panel_hit(btn_bonus2, pos):
+	if _label_hit(btn_bonus2, pos):
 		pass  # TODO : naviguer vers bonus.tscn
 		return
 
-	# Cartes couleur → ouvrir popup
+	# Cartes couleur → ouvrir popup (PanelContainers → _panel_hit())
 	if not popup_cards.visible:
-		if _panel_hit(yellow_bg, pos):  _open_popup("yellow");  return
-		if _panel_hit(orange_bg, pos):  _open_popup("orange");  return
-		if _panel_hit(red_bg, pos):     _open_popup("red");     return
+		if _panel_hit(yellow_bg,  pos): _open_popup("yellow");  return
+		if _panel_hit(orange_bg,  pos): _open_popup("orange");  return
+		if _panel_hit(red_bg,     pos): _open_popup("red");     return
 		if _panel_hit(magenta_bg, pos): _open_popup("magenta"); return
-		if _panel_hit(blue_bg, pos):    _open_popup("blue");    return
-		if _panel_hit(white_bg, pos):   _open_popup("white");   return
+		if _panel_hit(blue_bg,    pos): _open_popup("blue");    return
+		if _panel_hit(white_bg,   pos): _open_popup("white");   return
 		if _panel_hit(special_bg, pos): _open_popup("special"); return
 
 	# Appui long sur carte dans popup → prépare drag
@@ -402,13 +401,9 @@ func _on_press(pos: Vector2):
 func _on_release(pos: Vector2):
 	press_holding = false; press_timer = 0.0
 	if not drag_active: return
-
-	# Drop sur slot joueur
 	for i in range(8):
 		if _panel_hit(slot_nodes[i], pos):
 			_drop_on_slot(i); return
-
-	# Drop hors slot → annuler drag
 	_end_drag()
 
 # ── PANEL COLOR ───────────────────────────────────────────────────────────────
@@ -422,6 +417,12 @@ func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if sprite == null or not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))
 
+# PanelContainer et ses sous-classes
 func _panel_hit(panel: PanelContainer, pos: Vector2) -> bool:
 	if panel == null or not panel.visible: return false
 	return panel.get_global_rect().has_point(pos)
+
+# Label (BTN_SlotBonus1/2 sont des Labels dans cette scène)
+func _label_hit(label: Label, pos: Vector2) -> bool:
+	if label == null or not label.visible: return false
+	return label.get_global_rect().has_point(pos)

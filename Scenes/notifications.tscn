@@ -32,6 +32,7 @@ offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="CNT_Languages" type="HBoxContainer" parent="." unique_id=495956164]
+z_index = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
@@ -46,7 +47,7 @@ theme_override_constants/separation = 40
 alignment = 1
 
 [node name="BTN_FlagFr" type="TextureRect" parent="CNT_Languages" unique_id=737994490]
-z_index = 1
+z_index = 2
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -55,7 +56,7 @@ mouse_filter = 0
 texture = ExtResource("2_p4yvo")
 
 [node name="BTN_FlagEn" type="TextureRect" parent="CNT_Languages" unique_id=757738014]
-z_index = 1
+z_index = 2
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -64,7 +65,7 @@ mouse_filter = 0
 texture = ExtResource("3_irdw7")
 
 [node name="BTN_FlagDe" type="TextureRect" parent="CNT_Languages" unique_id=3476972]
-z_index = 1
+z_index = 2
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -73,7 +74,7 @@ mouse_filter = 0
 texture = ExtResource("4_v8ynq")
 
 [node name="BTN_FlagIt" type="TextureRect" parent="CNT_Languages" unique_id=1144223813]
-z_index = 1
+z_index = 2
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -82,7 +83,7 @@ mouse_filter = 0
 texture = ExtResource("5_5jsob")
 
 [node name="BTN_FlagEs" type="TextureRect" parent="CNT_Languages" unique_id=332904947]
-z_index = 1
+z_index = 2
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -91,7 +92,7 @@ mouse_filter = 0
 texture = ExtResource("6_xahqb")
 
 [node name="BTN_FlagPt" type="TextureRect" parent="CNT_Languages" unique_id=1508055464]
-z_index = 1
+z_index = 2
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -100,6 +101,7 @@ mouse_filter = 0
 texture = ExtResource("7_if0s5")
 
 [node name="PNL_NotifPopup" type="PanelContainer" parent="." unique_id=545881239]
+z_index = 1
 anchors_preset = -1
 offset_left = 610.0
 offset_top = 650.0
@@ -107,13 +109,14 @@ offset_right = 1310.0
 offset_bottom = 1030.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_p4yvo")
 
-[node name="CNT_PopupContent" type="VBoxContainer" parent="PNL_NotifPopup" unique_id=1010674108]
+[node name="CNT_NotifPopup" type="VBoxContainer" parent="PNL_NotifPopup" unique_id=1010674108]
+z_index = 2
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="LBL_Content" type="Label" parent="PNL_NotifPopup/CNT_PopupContent" unique_id=940427463]
-z_index = 2
+[node name="LBL_Content" type="Label" parent="PNL_NotifPopup/CNT_NotifPopup" unique_id=940427463]
+z_index = 3
 custom_minimum_size = Vector2(600, 60)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -123,8 +126,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="IMG_Bell" type="TextureRect" parent="PNL_NotifPopup/CNT_PopupContent" unique_id=313518452]
-z_index = 10
+[node name="IMG_Bell" type="TextureRect" parent="PNL_NotifPopup/CNT_NotifPopup" unique_id=313518452]
+z_index = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -132,16 +135,16 @@ size_flags_vertical = 4
 texture = ExtResource("8_p4yvo")
 expand_mode = 1
 
-[node name="BTN_Accept" type="Button" parent="PNL_NotifPopup/CNT_PopupContent" unique_id=1808763129]
-z_index = 2
+[node name="BTN_Accept" type="Button" parent="PNL_NotifPopup/CNT_NotifPopup" unique_id=1808763129]
+z_index = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_irdw7")
 text = "Autoriser"
 
-[node name="BTN_Refuse" type="Button" parent="PNL_NotifPopup/CNT_PopupContent" unique_id=1336194408]
-z_index = 2
+[node name="BTN_Refuse" type="Button" parent="PNL_NotifPopup/CNT_NotifPopup" unique_id=1336194408]
+z_index = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32

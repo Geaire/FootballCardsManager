@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baisb8vb7hv6c"
-path="res://.godot/imported/img_ball_2 (2).png-2f565a883ea18938ce8b574ebb1d2f27.ctex"
+uid="uid://5ef1ivuf6qj7"
+path="res://.godot/imported/img_total_attack.png-6a1ca3ad26b4cfa6fbe5cbb5c855c3ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Balls/img_ball_2 (2).png"
-dest_files=["res://.godot/imported/img_ball_2 (2).png-2f565a883ea18938ce8b574ebb1d2f27.ctex"]
+source_file="res://Sprites/Specialties/img_total_attack.png"
+dest_files=["res://.godot/imported/img_total_attack.png-6a1ca3ad26b4cfa6fbe5cbb5c855c3ea.ctex"]
 
 [params]
 

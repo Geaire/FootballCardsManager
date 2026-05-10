@@ -34,9 +34,9 @@ z_index = 1
 position = Vector2(1500, 540)
 texture = ExtResource("2_0mh3r")
 
-[node name="IMG_LogoFcmBlack" type="Sprite2D" parent="." unique_id=1797500811]
+[node name="IMG_Logo" type="Sprite2D" parent="." unique_id=1797500811]
 z_index = 1
-position = Vector2(1621, 101)
+position = Vector2(1620, 103)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_qpywc")
 offset = Vector2(26, 1704)
@@ -140,6 +140,7 @@ position = Vector2(960, 912.5)
 texture = ExtResource("5_0mh3r")
 
 [node name="BTN_SendReset" type="Label" parent="." unique_id=688335911]
+visible = false
 z_index = 10
 offset_left = 760.0
 offset_top = 840.0
@@ -184,7 +185,7 @@ offset_top = 840.0
 offset_right = 1161.0
 offset_bottom = 980.0
 mouse_filter = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Reset Confirm"
 horizontal_alignment = 1

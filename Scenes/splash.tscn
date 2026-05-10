@@ -2,16 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bqw527qbjkgv7" path="res://Scripts/splash.gd" id="1_7xstc"]
 [ext_resource type="Texture2D" uid="uid://2difb3uhfief" path="res://Sprites/Backgrounds/bg_splash.jpg" id="2_7xstc"]
-[ext_resource type="Texture2D" uid="uid://dt5ov4xindyrg" path="res://Sprites/Others/img_logo_fcm_black.png" id="3_7xstc"]
+[ext_resource type="Texture2D" uid="uid://dt5ov4xindyrg" path="res://Sprites/Logo FCM/img_logo_fcm_black.png" id="3_7xstc"]
 
 [node name="Splash" type="Node2D" unique_id=666962164]
 script = ExtResource("1_7xstc")
 
-[node name="BG_Splash" type="Sprite2D" parent="." unique_id=1941698295]
-position = Vector2(960, 540)
+[node name="BG_Splash" type="TextureRect" parent="." unique_id=1669370564]
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("2_7xstc")
 
-[node name="IMG_LogoFcmBlack" type="Sprite2D" parent="." unique_id=897367817]
+[node name="IMG_Logo" type="Sprite2D" parent="." unique_id=897367817]
 z_index = 1
 position = Vector2(533, 365)
 scale = Vector2(0.7, 0.7)

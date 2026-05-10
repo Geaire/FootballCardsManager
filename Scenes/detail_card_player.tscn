@@ -4,24 +4,45 @@
 [ext_resource type="Texture2D" uid="uid://77m1qlwpjk8u" path="res://Sprites/Backgrounds/bg_CreateProfile_DetailCardPlayer.jpg" id="2_ngjs2"]
 [ext_resource type="Texture2D" uid="uid://bx4vmh3nlamwq" path="res://Sprites/Others/btn_yes_no.png" id="3_ffgkw"]
 [ext_resource type="Texture2D" uid="uid://dq8i67li18ttv" path="res://Sprites/Balls/img_ball_4.png" id="4_h1w81"]
+[ext_resource type="Texture2D" uid="uid://cvk05fw8ajjxx" path="res://Sprites/Balls/img_ball_13.png" id="4_ngjs2"]
+[ext_resource type="Texture2D" uid="uid://xrpwxbub1hmj" path="res://Sprites/Balls/img_ball_2.png" id="5_gwc35"]
 [ext_resource type="Texture2D" uid="uid://c58tjl3cpq1nf" path="res://Sprites/Balls/img_ball_5.png" id="5_r8pf6"]
 [ext_resource type="Texture2D" uid="uid://bu5hagbygrrmp" path="res://Sprites/Others/img_card_silhouette.png" id="6_4fdco"]
+[ext_resource type="Texture2D" uid="uid://bgkf4gdkmtyli" path="res://Sprites/Specialties/img_passing.png" id="6_1833g"]
 [ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="6_oh0sr"]
+[ext_resource type="Texture2D" uid="uid://blctm6ulj2leq" path="res://Sprites/Specialties/img_shooting.png" id="7_38obw"]
 [ext_resource type="FontFile" uid="uid://3xy0qrwodc31" path="res://Fonts/Roboto-Bold.ttf" id="8_8t0j4"]
 [ext_resource type="FontFile" uid="uid://d345ux4b2dmhk" path="res://Fonts/Roboto-Regular.ttf" id="9_kgodw"]
 [ext_resource type="FontFile" uid="uid://djse4v8s8ul4d" path="res://Fonts/MPLUS1p-Bold.ttf" id="10_6o6a0"]
-[ext_resource type="Texture2D" uid="uid://crq8r4sbrv8i2" path="res://Sprites/Specialties/specialty_tackling.png" id="10_h1anc"]
 [ext_resource type="Texture2D" uid="uid://by3bvnj8fy4dg" path="res://Sprites/Balls/img_ball_12.png" id="10_w3era"]
-[ext_resource type="Texture2D" uid="uid://dugyg7kkokyba" path="res://Sprites/Specialties/specialty_crossing.png" id="11_mfqbj"]
 [ext_resource type="FontFile" uid="uid://qchfwvdcm00i" path="res://Fonts/MPLUS1p-Black.ttf" id="11_u8okc"]
 [ext_resource type="Texture2D" uid="uid://badkaijnmc28s" path="res://Sprites/Flags/flag_fr.png" id="12_4fdco"]
+[ext_resource type="Texture2D" uid="uid://li13mlsd0tm" path="res://Sprites/Specialties/img_aerial-reach.png" id="15_4tjqc"]
 [ext_resource type="Texture2D" uid="uid://kq78nhnqn38p" path="res://Sprites/Balls/img_ball_6.png" id="16_e7tvd"]
+[ext_resource type="Texture2D" uid="uid://booohw7d7pgbo" path="res://Sprites/Specialties/img_reflex_save.png" id="16_gwc35"]
+[ext_resource type="Texture2D" uid="uid://85pof7xo78q8" path="res://Sprites/Balls/img_ball_14.png" id="16_h1w81"]
+[ext_resource type="Texture2D" uid="uid://b4wf3uhxx52g3" path="res://Sprites/Specialties/img_tackling.png" id="17_5ii76"]
 [ext_resource type="Texture2D" uid="uid://bxpn0ir8rbfdc" path="res://Sprites/Others/img_diamond.png" id="17_8t0j4"]
 [ext_resource type="Texture2D" uid="uid://cdk4gr6btpcfw" path="res://Sprites/Balls/img_ball_7.png" id="17_ngjs2"]
+[ext_resource type="Texture2D" uid="uid://bukg5lw4kb3ge" path="res://Sprites/Specialties/img_heading.png" id="18_6g322"]
 [ext_resource type="Texture2D" uid="uid://cvsj40lwxtvju" path="res://Sprites/Balls/img_ball_8.png" id="18_ffgkw"]
+[ext_resource type="Texture2D" uid="uid://8w3hhgqjycww" path="res://Sprites/Balls/img_ball_20.png" id="18_r8pf6"]
+[ext_resource type="Texture2D" uid="uid://d1u3yig0ujtps" path="res://Sprites/Specialties/img_dribbling.png" id="19_0dipb"]
 [ext_resource type="Texture2D" uid="uid://dm7vj6fklpq8e" path="res://Sprites/Balls/img_ball_9.png" id="19_h1w81"]
+[ext_resource type="Texture2D" uid="uid://ble8qlfj7b70l" path="res://Sprites/Specialties/img_leader.png" id="20_2kcdb"]
+[ext_resource type="Texture2D" uid="uid://b6lcg06h0bmlr" path="res://Sprites/Balls/img_ball_17.png" id="20_38obw"]
 [ext_resource type="Texture2D" uid="uid://dg6tyemb1gy0v" path="res://Sprites/Balls/img_ball_10.png" id="20_r8pf6"]
+[ext_resource type="Texture2D" uid="uid://cdmrmlwkn8ve0" path="res://Sprites/Balls/img_ball_19.png" id="20_rc8sd"]
 [ext_resource type="Texture2D" uid="uid://cwd05ydbsa1ei" path="res://Sprites/Balls/img_ball_11.png" id="21_rc8sd"]
+[ext_resource type="Texture2D" uid="uid://di3lh0m48ev4d" path="res://Sprites/Specialties/img_creator.png" id="21_whyui"]
+[ext_resource type="Texture2D" uid="uid://b0djd0gsdbwpc" path="res://Sprites/Specialties/img_Fortress.png" id="22_337nb"]
+[ext_resource type="Texture2D" uid="uid://chmq5r4j28ti1" path="res://Sprites/Balls/img_ball_21.png" id="22_vq75d"]
+[ext_resource type="Texture2D" uid="uid://5ef1ivuf6qj7" path="res://Sprites/Specialties/img_total_attack.png" id="23_fntho"]
+[ext_resource type="Texture2D" uid="uid://dppf8jwkbao0x" path="res://Sprites/Specialties/img_possession.png" id="24_b5d6e"]
+[ext_resource type="Texture2D" uid="uid://dk2bs0hqoe4nx" path="res://Sprites/Balls/img_ball_22.png" id="24_d2inx"]
+[ext_resource type="Texture2D" uid="uid://bdympdokuv8mv" path="res://Sprites/Balls/img_ball_18.png" id="28_7ga6e"]
+[ext_resource type="Texture2D" uid="uid://64ydew352bue" path="res://Sprites/Balls/img_ball_15.png" id="30_ryxeg"]
+[ext_resource type="Texture2D" uid="uid://is3prop745wf" path="res://Sprites/Balls/img_ball_16.png" id="32_glap1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc8sd"]
 bg_color = Color(0, 0, 0.023529412, 1)
@@ -64,6 +85,51 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nevo"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ld58"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 1, 1)
+
+[sub_resource type="FontFile" id="FontFile_4tjqc"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvhg4"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 1, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jvhg4"]
 load_path = "res://.godot/imported/img_ball_3.png-468e3fcde3fc2fa2fa96e667a1ee4fb2.ctex"
@@ -113,16 +179,16 @@ texture = ExtResource("3_ffgkw")
 
 [node name="BTN_PlayerFuture" type="Sprite2D" parent="." unique_id=411856780]
 position = Vector2(1850, 320)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("4_h1w81")
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("4_ngjs2")
 
 [node name="PNL_PlayerFuture" type="PanelContainer" parent="." unique_id=138529826]
 visible = false
 z_index = 10
-offset_left = 1197.0
+offset_left = 1059.0
 offset_top = 385.0
 offset_right = 1890.0
-offset_bottom = 806.0
+offset_bottom = 695.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rc8sd")
 
 [node name="CNT_PlayerFuture" type="VBoxContainer" parent="PNL_PlayerFuture" unique_id=1795217459]
@@ -132,45 +198,35 @@ layout_mode = 2
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="LBL_PlayerFuture" type="Label" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=1727682730]
-z_index = 12
-custom_minimum_size = Vector2(600, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Attention ! L'action choisi est sans retour possible."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="BTN_SignPro" type="Button" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=1786302257]
 z_index = 12
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Sign Pro"
+text = "Sign Pro ⚠ Delete Formation"
 
 [node name="BTN_SignPantheon" type="Button" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=1979550605]
 z_index = 12
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Sign Pantheon"
+text = "Sign Pantheon ⚠ Delete Squad"
 
 [node name="BTN_SignCollection" type="Button" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=610187015]
 z_index = 12
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Sign Collection
+text = "Sign Collection ⚠ Delete Squad
 "
 
 [node name="BTN_SignEndOfCareer" type="Button" parent="PNL_PlayerFuture/CNT_PlayerFuture" unique_id=991203927]
 z_index = 12
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "End of Career
+text = "End of Career ⚠ Delete Game
 "
 
 [node name="BTN_Help" type="Sprite2D" parent="." unique_id=473951052]
 position = Vector2(1850, 200)
-texture = ExtResource("5_r8pf6")
+texture = ExtResource("5_gwc35")
 
 [node name="LBL_Help" type="Label" parent="." unique_id=338651291]
 visible = false
@@ -220,14 +276,14 @@ texture = ExtResource("6_4fdco")
 [node name="IMG_Specialty1" type="Sprite2D" parent="Player" unique_id=534192437]
 z_index = 4
 position = Vector2(582, 250)
-scale = Vector2(2, 2)
-texture = ExtResource("10_h1anc")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_1833g")
 
 [node name="IMG_Specialty2" type="Sprite2D" parent="Player" unique_id=778589490]
 z_index = 4
 position = Vector2(582, 389)
-scale = Vector2(2, 2)
-texture = ExtResource("11_mfqbj")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_38obw")
 
 [node name="IMG_Flag" type="Sprite2D" parent="Player" unique_id=910125159]
 z_index = 3
@@ -237,10 +293,6 @@ texture = ExtResource("12_4fdco")
 [node name="IMG_BallColor" type="Sprite2D" parent="Player" unique_id=361542004]
 z_index = 4
 position = Vector2(128, 100)
-
-[node name="PNL_BallColor" type="Sprite2D" parent="Player" unique_id=1246186751]
-z_index = 3
-position = Vector2(122, 92)
 texture = ExtResource("10_w3era")
 
 [node name="LBL_Note" type="Label" parent="Player" unique_id=2047377376]
@@ -682,12 +734,14 @@ vertical_alignment = 1
 
 [node name="Evolution" type="Node2D" parent="." unique_id=507651848]
 
-[node name="BTN_RenamePlayer" type="Sprite2D" parent="Evolution" unique_id=2077760092]
+[node name="RenamePlayer" type="Node2D" parent="Evolution" unique_id=1731579082]
+
+[node name="BTN_RenamePlayer" type="Sprite2D" parent="Evolution/RenamePlayer" unique_id=2077760092]
 z_index = 1
 position = Vector2(774, 170)
 texture = ExtResource("3_ffgkw")
 
-[node name="LBL_RenamePlayer" type="Label" parent="Evolution" unique_id=299735104]
+[node name="LBL_RenamePlayer" type="Label" parent="Evolution/RenamePlayer" unique_id=299735104]
 z_index = 1
 offset_left = 840.0
 offset_top = 140.0
@@ -698,7 +752,7 @@ theme_override_font_sizes/font_size = 36
 text = "Rename Player"
 vertical_alignment = 1
 
-[node name="INP_FirstName" type="LineEdit" parent="Evolution" unique_id=418160183]
+[node name="INP_FirstName" type="LineEdit" parent="Evolution/RenamePlayer" unique_id=418160183]
 offset_left = 930.0
 offset_top = 50.0
 offset_right = 1345.0
@@ -707,7 +761,7 @@ theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 alignment = 1
 
-[node name="INP_LastName" type="LineEdit" parent="Evolution" unique_id=1142479911]
+[node name="INP_LastName" type="LineEdit" parent="Evolution/RenamePlayer" unique_id=1142479911]
 offset_left = 1355.0
 offset_top = 50.0
 offset_right = 1770.0
@@ -716,12 +770,14 @@ theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
 alignment = 1
 
-[node name="BTN_AttributePosition2" type="Sprite2D" parent="Evolution" unique_id=1328749480]
+[node name="AttributePosition2" type="Node2D" parent="Evolution" unique_id=1520834969]
+
+[node name="BTN_AttributePosition2" type="Sprite2D" parent="Evolution/AttributePosition2" unique_id=1328749480]
 z_index = 1
 position = Vector2(774, 250)
 texture = ExtResource("3_ffgkw")
 
-[node name="LBL_AttributePosition2" type="Label" parent="Evolution" unique_id=1154836499]
+[node name="LBL_AttributePosition2" type="Label" parent="Evolution/AttributePosition2" unique_id=1154836499]
 z_index = 1
 offset_left = 840.0
 offset_top = 220.0
@@ -732,12 +788,395 @@ theme_override_font_sizes/font_size = 36
 text = "Attribute Position 2"
 vertical_alignment = 1
 
-[node name="BTN_AttributeSpecialty1" type="Sprite2D" parent="Evolution" unique_id=1384146759]
+[node name="PNL_AttributePosition2" type="PanelContainer" parent="Evolution/AttributePosition2" unique_id=729792849]
+visible = false
+z_index = 10
+offset_left = 833.0
+offset_top = 150.0
+offset_right = 1357.0
+offset_bottom = 610.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4nevo")
+
+[node name="LBL_DG" type="Label" parent="Evolution/AttributePosition2" unique_id=162330003]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 857.8
+offset_top = 190.0
+offset_right = 957.8
+offset_bottom = 240.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "DG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterDG" type="Label" parent="Evolution/AttributePosition2" unique_id=814041404]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 861.0
+offset_top = 240.0
+offset_right = 961.0
+offset_bottom = 290.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_DD" type="Label" parent="Evolution/AttributePosition2" unique_id=1038775852]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 982.8
+offset_top = 187.5
+offset_right = 1082.8
+offset_bottom = 237.5
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "DD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterDD" type="Label" parent="Evolution/AttributePosition2" unique_id=659267738]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 982.8
+offset_top = 240.0
+offset_right = 1082.8
+offset_bottom = 290.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_DC" type="Label" parent="Evolution/AttributePosition2" unique_id=2120724056]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 1107.4
+offset_top = 187.5
+offset_right = 1207.4
+offset_bottom = 237.5
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "DC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterDC" type="Label" parent="Evolution/AttributePosition2" unique_id=2083316255]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1107.4
+offset_top = 240.0
+offset_right = 1207.4
+offset_bottom = 290.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_MDF" type="Label" parent="Evolution/AttributePosition2" unique_id=468980784]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 1232.2
+offset_top = 187.5
+offset_right = 1332.2
+offset_bottom = 237.5
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "MDF"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterMDF" type="Label" parent="Evolution/AttributePosition2" unique_id=433819436]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1232.2
+offset_top = 240.0
+offset_right = 1332.2
+offset_bottom = 290.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_MG" type="Label" parent="Evolution/AttributePosition2" unique_id=740113443]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 856.0
+offset_top = 330.0
+offset_right = 956.0
+offset_bottom = 380.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "MG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterMG" type="Label" parent="Evolution/AttributePosition2" unique_id=147825581]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 856.0
+offset_top = 380.0
+offset_right = 956.0
+offset_bottom = 430.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_MD" type="Label" parent="Evolution/AttributePosition2" unique_id=1818587970]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 982.8
+offset_top = 330.0
+offset_right = 1082.8
+offset_bottom = 380.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "MD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterMD" type="Label" parent="Evolution/AttributePosition2" unique_id=1178629952]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 982.8
+offset_top = 380.0
+offset_right = 1082.8
+offset_bottom = 430.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_MC" type="Label" parent="Evolution/AttributePosition2" unique_id=1434397646]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 1107.4
+offset_top = 330.0
+offset_right = 1207.4
+offset_bottom = 380.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "MC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterMC" type="Label" parent="Evolution/AttributePosition2" unique_id=17451255]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1107.4
+offset_top = 380.0
+offset_right = 1207.4
+offset_bottom = 430.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_MO" type="Label" parent="Evolution/AttributePosition2" unique_id=408811219]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 1232.2
+offset_top = 330.0
+offset_right = 1332.2
+offset_bottom = 380.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "MO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterMO" type="Label" parent="Evolution/AttributePosition2" unique_id=676812893]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1232.2
+offset_top = 380.0
+offset_right = 1332.2
+offset_bottom = 430.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_AG" type="Label" parent="Evolution/AttributePosition2" unique_id=2038886126]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 856.0
+offset_top = 470.0
+offset_right = 956.0
+offset_bottom = 520.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "AG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterAG" type="Label" parent="Evolution/AttributePosition2" unique_id=1695844006]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 854.0
+offset_top = 520.0
+offset_right = 954.0
+offset_bottom = 570.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_AD" type="Label" parent="Evolution/AttributePosition2" unique_id=2107901627]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 982.8
+offset_top = 470.0
+offset_right = 1082.8
+offset_bottom = 520.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "AD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterAD" type="Label" parent="Evolution/AttributePosition2" unique_id=736399128]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 982.8
+offset_top = 520.0
+offset_right = 1082.8
+offset_bottom = 570.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_ATT" type="Label" parent="Evolution/AttributePosition2" unique_id=1298991272]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 1107.4
+offset_top = 470.0
+offset_right = 1207.4
+offset_bottom = 520.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "ATT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterATT" type="Label" parent="Evolution/AttributePosition2" unique_id=627998916]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1107.4
+offset_top = 520.0
+offset_right = 1207.4
+offset_bottom = 570.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_AC" type="Label" parent="Evolution/AttributePosition2" unique_id=92059496]
+visible = false
+z_index = 11
+clip_contents = true
+custom_minimum_size = Vector2(100, 50)
+offset_left = 1232.2
+offset_top = 470.0
+offset_right = 1332.2
+offset_bottom = 520.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_kgodw")
+theme_override_font_sizes/font_size = 36
+text = "AC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CounterAC" type="Label" parent="Evolution/AttributePosition2" unique_id=1242194431]
+visible = false
+z_index = 11
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1232.2
+offset_top = 520.0
+offset_right = 1332.2
+offset_bottom = 570.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttributeSpecialty1" type="Node2D" parent="Evolution" unique_id=715514424]
+
+[node name="BTN_AttributeSpecialty1" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=1384146759]
 z_index = 1
 position = Vector2(774, 330)
 texture = ExtResource("3_ffgkw")
 
-[node name="LBL_AttributeSpecialty1" type="Label" parent="Evolution" unique_id=155777934]
+[node name="LBL_AttributeSpecialty1" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=155777934]
 z_index = 1
 offset_left = 840.0
 offset_top = 300.0
@@ -748,12 +1187,455 @@ theme_override_font_sizes/font_size = 36
 text = "Attribute Specialty 1"
 vertical_alignment = 1
 
-[node name="BTN_AttributeSpecialty2" type="Sprite2D" parent="Evolution" unique_id=1456557657]
+[node name="PNL_AttributeSpecialty1" type="PanelContainer" parent="Evolution/AttributeSpecialty1" unique_id=1430418928]
+visible = false
+z_index = 10
+offset_left = 833.0
+offset_top = 44.0
+offset_right = 1518.0
+offset_bottom = 745.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ld58")
+
+[node name="BTN_GoalReflex" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=1720085787]
+visible = false
+z_index = 11
+position = Vector2(935, 130)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_4tjqc")
+
+[node name="LBL_GoalReflexCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=948752280]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 175.0
+offset_right = 1020.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_GoalReflexName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1854915134]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 215.0
+offset_right = 1020.0
+offset_bottom = 265.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Goal Reflex"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_GoalAerial" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=861715754]
+visible = false
+z_index = 11
+position = Vector2(1095, 130)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_gwc35")
+
+[node name="LBL_GoalAerialCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=302280489]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 175.0
+offset_right = 1180.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_GoalAerialName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1026910625]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 215.0
+offset_right = 1180.0
+offset_bottom = 265.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Goal Aerial"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Tackling" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=1165577908]
+visible = false
+z_index = 11
+position = Vector2(1255, 130)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("17_5ii76")
+
+[node name="LBL_TacklingCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=402911788]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 175.0
+offset_right = 1340.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_TacklingName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1823611261]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 215.0
+offset_right = 1340.0
+offset_bottom = 265.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Tackling"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Passing" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=1465701760]
+visible = false
+z_index = 11
+position = Vector2(1415, 130)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_1833g")
+
+[node name="LBL_PassingCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=678186547]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 175.0
+offset_right = 1500.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_PassingName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1491626887]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 215.0
+offset_right = 1500.0
+offset_bottom = 265.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Passing"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Heading" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=1619823888]
+visible = false
+z_index = 11
+position = Vector2(935, 355)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("18_6g322")
+
+[node name="LBL_HeadingCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=675902027]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 400.0
+offset_right = 1020.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_HeadingName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1542666116]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 440.0
+offset_right = 1020.0
+offset_bottom = 490.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Heading"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Shooting" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=1482637062]
+visible = false
+z_index = 11
+position = Vector2(1095, 355)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_38obw")
+
+[node name="LBL_ShootingCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=604182838]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 400.0
+offset_right = 1180.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_ShootingName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1188561690]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 440.0
+offset_right = 1180.0
+offset_bottom = 490.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Shooting"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Dribbling" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=672575298]
+visible = false
+z_index = 11
+position = Vector2(1255, 355)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("19_0dipb")
+
+[node name="LBL_DribblingCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1535672268]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 400.0
+offset_right = 1340.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_DribblingName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=705077908]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 440.0
+offset_right = 1340.0
+offset_bottom = 490.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Dribbling"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Creator" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=392099921]
+visible = false
+z_index = 11
+position = Vector2(1415, 355)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("21_whyui")
+
+[node name="LBL_CreatorCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=454482401]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 400.0
+offset_right = 1500.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CreatorName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=211442778]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 440.0
+offset_right = 1500.0
+offset_bottom = 490.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Creator"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Leader" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=1473982909]
+visible = false
+z_index = 11
+position = Vector2(935, 580)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("20_2kcdb")
+
+[node name="LBL_LeaderCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=562281404]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 625.0
+offset_right = 1020.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_LeaderName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=598384099]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 665.0
+offset_right = 1020.0
+offset_bottom = 715.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Leader"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Fortress" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=906526765]
+visible = false
+z_index = 11
+position = Vector2(1095, 580)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("22_337nb")
+
+[node name="LBL_FortressCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1634336061]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 625.0
+offset_right = 1180.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_FortressName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=671667840]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 665.0
+offset_right = 1180.0
+offset_bottom = 715.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Fortress"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Possession" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=729376461]
+visible = false
+z_index = 11
+position = Vector2(1255, 580)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("24_b5d6e")
+
+[node name="LBL_PossessionCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1043573913]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 625.0
+offset_right = 1340.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_PossessionName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=233764514]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 665.0
+offset_right = 1340.0
+offset_bottom = 715.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Possession"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_TotalAttack" type="Sprite2D" parent="Evolution/AttributeSpecialty1" unique_id=402688770]
+visible = false
+z_index = 11
+position = Vector2(1415, 580)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("23_fntho")
+
+[node name="LBL_TotalAttackCounter" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=2001589156]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 625.0
+offset_right = 1500.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_TotalAttackName" type="Label" parent="Evolution/AttributeSpecialty1" unique_id=1498907386]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 665.0
+offset_right = 1500.0
+offset_bottom = 715.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Total Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AttributeSpecialty2" type="Node2D" parent="Evolution" unique_id=334246889]
+
+[node name="BTN_AttributeSpecialty2" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=1904766920]
 z_index = 1
 position = Vector2(774, 410)
 texture = ExtResource("3_ffgkw")
 
-[node name="LBL_AttributeSpecialty2" type="Label" parent="Evolution" unique_id=330612274]
+[node name="LBL_AttributeSpecialty2" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=828583441]
 z_index = 1
 offset_left = 840.0
 offset_top = 380.0
@@ -761,15 +1643,458 @@ offset_right = 1340.0
 offset_bottom = 445.0
 theme_override_fonts/font = ExtResource("10_6o6a0")
 theme_override_font_sizes/font_size = 36
-text = "Attribute Specialty 2"
+text = "Attribute Specialty 1"
 vertical_alignment = 1
 
-[node name="BTN_AttributeBallColor" type="Sprite2D" parent="Evolution" unique_id=310793502]
+[node name="PNL_AttributeSpecialty2" type="PanelContainer" parent="Evolution/AttributeSpecialty2" unique_id=1778644703]
+visible = false
+z_index = 10
+offset_left = 833.0
+offset_top = 44.0
+offset_right = 1518.0
+offset_bottom = 745.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ld58")
+
+[node name="BTN_GoalReflex" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=299389070]
+visible = false
+z_index = 11
+position = Vector2(935, 130)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_4tjqc")
+
+[node name="LBL_GoalReflexCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=2022049529]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 175.0
+offset_right = 1020.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_GoalReflexName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1931021108]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 215.0
+offset_right = 1020.0
+offset_bottom = 265.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Goal Reflex"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_GoalAerial" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=1989984239]
+visible = false
+z_index = 11
+position = Vector2(1095, 130)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_gwc35")
+
+[node name="LBL_GoalAerialCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1775099088]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 175.0
+offset_right = 1180.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_GoalAerialName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=640628599]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 215.0
+offset_right = 1180.0
+offset_bottom = 265.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Goal Aerial"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Tackling" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=1815852809]
+visible = false
+z_index = 11
+position = Vector2(1255, 130)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("17_5ii76")
+
+[node name="LBL_TacklingCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=2068202704]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 175.0
+offset_right = 1340.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_TacklingName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=773723321]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 215.0
+offset_right = 1340.0
+offset_bottom = 265.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Tackling"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Passing" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=1257114460]
+visible = false
+z_index = 11
+position = Vector2(1415, 130)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_1833g")
+
+[node name="LBL_PassingCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=91161691]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 175.0
+offset_right = 1500.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_PassingName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=402472692]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 215.0
+offset_right = 1500.0
+offset_bottom = 265.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Passing"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Heading" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=645413818]
+visible = false
+z_index = 11
+position = Vector2(935, 355)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("18_6g322")
+
+[node name="LBL_HeadingCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1683331254]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 400.0
+offset_right = 1020.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_HeadingName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=42222398]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 440.0
+offset_right = 1020.0
+offset_bottom = 490.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Heading"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Shooting" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=1760504172]
+visible = false
+z_index = 11
+position = Vector2(1095, 355)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_38obw")
+
+[node name="LBL_ShootingCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=295265114]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 400.0
+offset_right = 1180.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_ShootingName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1272018397]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 440.0
+offset_right = 1180.0
+offset_bottom = 490.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Shooting"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Dribbling" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=1883828954]
+visible = false
+z_index = 11
+position = Vector2(1255, 355)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("19_0dipb")
+
+[node name="LBL_DribblingCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1777310691]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 400.0
+offset_right = 1340.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_DribblingName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=775773964]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 440.0
+offset_right = 1340.0
+offset_bottom = 490.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Dribbling"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Creator" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=1523984507]
+visible = false
+z_index = 11
+position = Vector2(1415, 355)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("21_whyui")
+
+[node name="LBL_CreatorCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1063628891]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 400.0
+offset_right = 1500.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_CreatorName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=520210732]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 440.0
+offset_right = 1500.0
+offset_bottom = 490.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Creator"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Leader" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=893990872]
+visible = false
+z_index = 11
+position = Vector2(935, 580)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("20_2kcdb")
+
+[node name="LBL_LeaderCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=215899962]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 625.0
+offset_right = 1020.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_LeaderName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=369437258]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 850.0
+offset_top = 665.0
+offset_right = 1020.0
+offset_bottom = 715.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Leader"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Fortress" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=739249306]
+visible = false
+z_index = 11
+position = Vector2(1095, 580)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("22_337nb")
+
+[node name="LBL_FortressCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1116816738]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 625.0
+offset_right = 1180.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_FortressName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=455455356]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1010.0
+offset_top = 665.0
+offset_right = 1180.0
+offset_bottom = 715.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Fortress"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_Possession" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=1928118968]
+visible = false
+z_index = 11
+position = Vector2(1255, 580)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("24_b5d6e")
+
+[node name="LBL_PossessionCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1958817674]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 625.0
+offset_right = 1340.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_PossessionName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1855332141]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1170.0
+offset_top = 665.0
+offset_right = 1340.0
+offset_bottom = 715.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Possession"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BTN_TotalAttack" type="Sprite2D" parent="Evolution/AttributeSpecialty2" unique_id=328719580]
+visible = false
+z_index = 11
+position = Vector2(1415, 580)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("23_fntho")
+
+[node name="LBL_TotalAttackCounter" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=741026535]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 625.0
+offset_right = 1500.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("6_oh0sr")
+theme_override_font_sizes/font_size = 36
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBL_TotalAttackName" type="Label" parent="Evolution/AttributeSpecialty2" unique_id=1771489568]
+visible = false
+z_index = 12
+custom_minimum_size = Vector2(30, 0)
+offset_left = 1330.0
+offset_top = 665.0
+offset_right = 1500.0
+offset_bottom = 715.0
+theme_override_fonts/font = SubResource("FontFile_4tjqc")
+theme_override_font_sizes/font_size = 28
+text = "Total Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AttributeBallColor" type="Node2D" parent="Evolution" unique_id=942650632]
+
+[node name="BTN_AttributeBallColor" type="Sprite2D" parent="Evolution/AttributeBallColor" unique_id=310793502]
 z_index = 1
 position = Vector2(774, 490)
 texture = ExtResource("3_ffgkw")
 
-[node name="LBL_AttributeBallColor" type="Label" parent="Evolution" unique_id=1947795996]
+[node name="LBL_AttributeBallColor" type="Label" parent="Evolution/AttributeBallColor" unique_id=1947795996]
 z_index = 1
 offset_left = 840.0
 offset_top = 460.0
@@ -780,55 +2105,114 @@ theme_override_font_sizes/font_size = 36
 text = "Attribute Ball Color"
 vertical_alignment = 1
 
-[node name="BTN_AttributeBall1" type="Sprite2D" parent="Evolution" unique_id=554204814]
-z_index = 5
-position = Vector2(900, 478)
+[node name="PNL_AttributeBallColor" type="PanelContainer" parent="Evolution/AttributeBallColor" unique_id=2126439400]
+visible = false
+z_index = 10
+offset_left = 833.0
+offset_top = 150.0
+offset_right = 1357.0
+offset_bottom = 610.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jvhg4")
+
+[node name="BTN_AttributeBallColor1" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=554204814]
+z_index = 11
+position = Vector2(61, 68)
 texture = SubResource("CompressedTexture2D_jvhg4")
 
-[node name="BTN_AttributeBall2" type="Sprite2D" parent="Evolution" unique_id=236256697]
-z_index = 5
-position = Vector2(900, 560)
+[node name="BTN_AttributeBallColor2" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=1571719356]
+z_index = 11
+position = Vector2(61, 176)
+texture = ExtResource("16_h1w81")
+
+[node name="BTN_AttributeBallColor3" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=236256697]
+z_index = 11
+position = Vector2(162, 68)
 texture = ExtResource("4_h1w81")
 
-[node name="BTN_AttributeBall3" type="Sprite2D" parent="Evolution" unique_id=2107656202]
-z_index = 5
-position = Vector2(1000, 478)
-texture = ExtResource("5_r8pf6")
+[node name="BTN_AttributeBallColor4" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=1499255837]
+z_index = 11
+position = Vector2(162, 176)
+texture = ExtResource("20_rc8sd")
 
-[node name="BTN_AttributeBall4" type="Sprite2D" parent="Evolution" unique_id=802899850]
-z_index = 5
-position = Vector2(1000, 560)
-texture = ExtResource("16_e7tvd")
-
-[node name="BTN_AttributeBall5" type="Sprite2D" parent="Evolution" unique_id=1356779211]
-z_index = 5
-position = Vector2(1100, 478)
-texture = ExtResource("17_ngjs2")
-
-[node name="BTN_AttributeBall6" type="Sprite2D" parent="Evolution" unique_id=1233534402]
-z_index = 5
-position = Vector2(1100, 560)
-texture = ExtResource("18_ffgkw")
-
-[node name="BTN_AttributeBall7" type="Sprite2D" parent="Evolution" unique_id=881260373]
-z_index = 5
-position = Vector2(1200, 478)
-texture = ExtResource("19_h1w81")
-
-[node name="BTN_AttributeBall8" type="Sprite2D" parent="Evolution" unique_id=1829074168]
-z_index = 5
-position = Vector2(1200, 560)
+[node name="BTN_AttributeBallColor5" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=1829074168]
+z_index = 11
+position = Vector2(263, 68)
 texture = ExtResource("20_r8pf6")
 
-[node name="BTN_AttributeBall9" type="Sprite2D" parent="Evolution" unique_id=644254331]
-z_index = 5
-position = Vector2(1300, 478)
+[node name="BTN_AttributeBallColor6" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=832637459]
+z_index = 11
+position = Vector2(263, 176)
+texture = ExtResource("20_38obw")
+
+[node name="BTN_AttributeBallColor7" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=802899850]
+z_index = 11
+position = Vector2(364, 68)
+texture = ExtResource("16_e7tvd")
+
+[node name="BTN_AttributeBallColor8" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=902281426]
+z_index = 11
+position = Vector2(364, 176)
+texture = ExtResource("22_vq75d")
+
+[node name="BTN_AttributeBallColor9" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=644254331]
+z_index = 11
+position = Vector2(465, 68)
 texture = ExtResource("21_rc8sd")
 
-[node name="BTN_AttributeBall10" type="Sprite2D" parent="Evolution" unique_id=273819443]
-z_index = 5
-position = Vector2(1300, 560)
+[node name="BTN_AttributeBallColor10" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=145625125]
+z_index = 11
+position = Vector2(465, 176)
+texture = ExtResource("24_d2inx")
+
+[node name="BTN_AttributeBallColor11" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=2107656202]
+z_index = 11
+position = Vector2(61, 284)
+texture = ExtResource("5_r8pf6")
+
+[node name="BTN_AttributeBallColor12" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=766305855]
+z_index = 11
+position = Vector2(61, 392)
+texture = ExtResource("18_r8pf6")
+
+[node name="BTN_AttributeBallColor13" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=1356779211]
+z_index = 11
+position = Vector2(162, 284)
+texture = ExtResource("17_ngjs2")
+
+[node name="BTN_AttributeBallColor14" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=934263587]
+z_index = 11
+position = Vector2(162, 392)
+texture = ExtResource("28_7ga6e")
+
+[node name="BTN_AttributeBallColor15" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=1233534402]
+z_index = 11
+position = Vector2(263, 284)
+texture = ExtResource("18_ffgkw")
+
+[node name="BTN_AttributeBallColor16" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=789174492]
+z_index = 11
+position = Vector2(263, 392)
+texture = ExtResource("30_ryxeg")
+
+[node name="BTN_AttributeBallColor17" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=881260373]
+z_index = 11
+position = Vector2(364, 284)
+texture = ExtResource("19_h1w81")
+
+[node name="BTN_AttributeBallColor18" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=1108507094]
+z_index = 11
+position = Vector2(364, 392)
+texture = ExtResource("32_glap1")
+
+[node name="BTN_AttributeBallColor19" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=273819443]
+z_index = 11
+position = Vector2(465, 284)
 texture = ExtResource("10_w3era")
+
+[node name="BTN_AttributeBallColor20" type="Sprite2D" parent="Evolution/AttributeBallColor/PNL_AttributeBallColor" unique_id=1503366566]
+z_index = 11
+position = Vector2(465, 392)
+texture = ExtResource("4_ngjs2")
 
 [node name="Achievements" type="Node2D" parent="." unique_id=1452908079]
 position = Vector2(0, 60)

@@ -34,7 +34,6 @@ func _ready():
 	inp_email.max_length    = MAX_EMAIL_LENGTH
 	inp_password.max_length = MAX_PASSWORD_LENGTH
 	inp_forgot.max_length   = MAX_EMAIL_LENGTH
-	# Pas de secret sur le mot de passe — intentionnel
 	btn_login.gui_input.connect(_on_btn_login_input)
 	btn_signup.gui_input.connect(_on_btn_signup_input)
 	btn_forgot.gui_input.connect(_on_btn_forgot_input)
@@ -91,30 +90,30 @@ func _send_reset():
 	Firebase.send_password_reset(email)
 
 func _on_password_reset_success():
-	inp_forgot.visible     = false
-	img_send_reset.visible = false
-	btn_send_reset.visible = false
+	inp_forgot.visible        = false
+	img_send_reset.visible    = false
+	btn_send_reset.visible    = false
 	lbl_reset_confirm.visible = true
 
-# ── AUTH ───────────────────────────────────────────────────────────────────────
+# ── AUTH SUCCESS ──────────────────────────────────────────────────────────────
 func _on_auth_success(_user_id: String):
 	Firebase.firestore_success.connect(_on_profile_found)
 	Firebase.firestore_failed.connect(_on_profile_not_found)
 	Firebase.get_document("managers", Firebase.user_id)
 
 func _on_profile_found(_data: Dictionary):
-	if Firebase.firestore_success.is_connected(_on_profile_found):
-		Firebase.firestore_success.disconnect(_on_profile_found)
-	if Firebase.firestore_failed.is_connected(_on_profile_not_found):
-		Firebase.firestore_failed.disconnect(_on_profile_not_found)
+	_disconnect_profile_signals()
 	get_tree().change_scene_to_file(SCENE_SCHEDULE)
 
 func _on_profile_not_found(_error: String):
+	_disconnect_profile_signals()
+	get_tree().change_scene_to_file(SCENE_CREATE_PROFILE)
+
+func _disconnect_profile_signals():
 	if Firebase.firestore_success.is_connected(_on_profile_found):
 		Firebase.firestore_success.disconnect(_on_profile_found)
 	if Firebase.firestore_failed.is_connected(_on_profile_not_found):
 		Firebase.firestore_failed.disconnect(_on_profile_not_found)
-	get_tree().change_scene_to_file(SCENE_CREATE_PROFILE)
 
 func _on_auth_failed(_error: String):
 	if _mode == "signup":

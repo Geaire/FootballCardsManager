@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://es1d45tle841"
-path="res://.godot/imported/specialty_reflexes.png-768df1fd4560ee7d2fa69dea84f7d8d4.ctex"
+uid="uid://64ydew352bue"
+path="res://.godot/imported/img_ball_15.png-019c8ef3daa61bcbadbaeb8fd2ad41f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Specialties/specialty_reflexes.png"
-dest_files=["res://.godot/imported/specialty_reflexes.png-768df1fd4560ee7d2fa69dea84f7d8d4.ctex"]
+source_file="res://Sprites/Balls/img_ball_15.png"
+dest_files=["res://.godot/imported/img_ball_15.png-019c8ef3daa61bcbadbaeb8fd2ad41f5.ctex"]
 
 [params]
 

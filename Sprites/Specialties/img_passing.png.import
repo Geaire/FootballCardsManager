@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7vj58io0772y"
-path="res://.godot/imported/specialty_dribbling.png-ff9b952441111f6b0116f96dc87c43c6.ctex"
+uid="uid://bgkf4gdkmtyli"
+path="res://.godot/imported/img_passing.png-ee99e2aca57d9d653cc7a4618c010f0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Specialties/specialty_dribbling.png"
-dest_files=["res://.godot/imported/specialty_dribbling.png-ff9b952441111f6b0116f96dc87c43c6.ctex"]
+source_file="res://Sprites/Specialties/img_passing.png"
+dest_files=["res://.godot/imported/img_passing.png-ee99e2aca57d9d653cc7a4618c010f0d.ctex"]
 
 [params]
 

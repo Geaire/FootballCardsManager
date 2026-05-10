@@ -1,107 +1,59 @@
 extends Node2D
 
-const BALL_COLORS = {
-	"cyan":      Color(0.0,   0.808, 0.820),
-	"marine":    Color(0.0,   0.200, 0.400),
-	"rose":      Color(1.0,   0.412, 0.706),
-	"violet":    Color(0.416, 0.051, 0.678),
-	"rouge":     Color(1.0,   0.420, 0.420),
-	"bordeaux":  Color(0.502, 0.0,   0.125),
-	"gris":      Color(0.722, 0.722, 0.722),
-	"marron":    Color(0.545, 0.271, 0.075),
-	"vertclair": Color(0.584, 0.835, 0.698),
-	"vertfonce": Color(0.176, 0.416, 0.310),
-}
-
-const BALL_HEX_TO_KEY = {
-	"#00CED1": "cyan",     "#003366": "marine",
-	"#FF69B4": "rose",     "#6A0DAD": "violet",
-	"#FF6B6B": "rouge",    "#800020": "bordeaux",
-	"#B8B8B8": "gris",     "#8B4513": "marron",
-	"#95D5B2": "vertclair","#2D6A4F": "vertfonce",
-}
+# ── CONSTANTES ────────────────────────────────────────────────────────────────
+const POSITION2_KEYS  = ["DG","DD","DC","MDF","MG","MD","MC","MO","AG","AD","ATT","AC"]
+const SPECIALTY_KEYS  = ["GoalReflex","GoalAerial","Tackling","Passing","Heading",
+						  "Shooting","Dribbling","Creator","Leader","Fortress","Possession","TotalAttack"]
+const GK_SPECIALTIES  = ["GoalReflex","GoalAerial"]
+const BALL_COUNT      = 20
+const DRAG_THRESHOLD  = 20.0
 
 const CARD_COLORS = {
-	"yellow":  Color(1.0, 0.85, 0.0),
-	"orange":  Color(1.0, 0.5,  0.0),
-	"red":     Color(0.9, 0.1,  0.1),
-	"magenta": Color(0.56, 0.016, 0.56),
-	"blue":    Color(0.2,  0.5,  1.0),
-	"white":   Color(1.0,  1.0,  1.0),
-	"special": Color(0.0,  0.8,  0.4),
+	"yellow":  Color(1.0, 0.85, 0.0), "orange":  Color(1.0, 0.5,  0.0),
+	"red":     Color(0.9, 0.1,  0.1), "magenta": Color(0.56, 0.016, 0.56),
+	"blue":    Color(0.2, 0.5,  1.0), "white":   Color(1.0,  1.0,  1.0),
+	"special": Color(0.0, 0.8,  0.4),
 }
-
-const FORMATION_COSTS  = [100, 200, 300, 400, 500, 600, 700, 800, 900, 0, 0]
-const FORMATION_GAINS  = [15, 9, 8, 7, 6, 5, 4, 3, 2, 0, 0]
-const CLASSIC_MATCHES  = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 2]
+const FORMATION_COSTS = [100,200,300,400,500,600,700,800,900,0,0]
+const FORMATION_GAINS = [15,9,8,7,6,5,4,3,2,0,0]
+const CLASSIC_MATCHES = [1,1,1,1,2,2,2,2,3,3,2]
 
 const COLOR_GREEN  = Color(0.0,  0.78, 0.22)
 const COLOR_BLUE   = Color(0.2,  0.5,  1.0)
 const COLOR_ORANGE = Color(1.0,  0.5,  0.0)
 const COLOR_RED    = Color(0.9,  0.1,  0.1)
 const COLOR_WHITE  = Color(1.0,  1.0,  1.0)
+const COLOR_GRAY   = Color(0.4,  0.4,  0.4, 0.6)
 
 const MAX_NAME_LENGTH = 10
 const SCENE_COLLECTION_COUNTRY = "res://Scenes/collection_country.tscn"
 
-const TRANSLATIONS = {
-	"fr": {
-		"player_future": "Attention ! L'action choisie est sans retour possible.",
-		"help": "Renommer : cartes bleues, blanches et spéciales uniquement.\nPoste & Spécialité : obtenus via les récompenses.\nCouleur Ballon : organisez votre effectif par code couleur.\nEntrainement Pro : +1 tous les 20 matchs (1 match/jour).\nFormation : utilisez vos diamants pour progresser (1 palier/saison).",
-	},
-	"en": {
-		"player_future": "Warning! The chosen action cannot be undone.",
-		"help": "Rename: blue, white, and special cards only.\nPosition & Specialty: earned through rewards.\nBall Color: organize your squad using colors.\nPro Training: +1 every 20 matches (1 match/day).\nFormation: use diamonds to upgrade (1 level/season).",
-	},
-	"es": {
-		"player_future": "¡Atención! La acción elegida no tiene vuelta atrás.",
-		"help": "Renombrar: solo cartas azules, blancas y especiales.\nPosición y Especialidad: se obtienen con las recompensas.\nColor Balón: organiza tu plantilla por código de color.\nEntrenamiento Pro: +1 cada 20 partidos (1 partido/día).\nFormación: usa diamantes para avanzar (1 nivel/temporada).",
-	},
-	"de": {
-		"player_future": "Achtung! Die gewählte Aktion kann nicht rückgängig gemacht werden.",
-		"help": "Umbenennen: nur blaue, weiße und besondere Karten.\nPosition & Spezialität: werden als Belohnungen freigeschaltet.\nBallfarbe: organisiere dein Team mit einem Farbcode.\nProfi-Training: +1 alle 20 Spiele (1 Spiel/Tag).\nAusbildung: nutze Diamanten zum Aufsteigen (1 Stufe/Saison).",
-	},
-	"it": {
-		"player_future": "Attenzione! L'azione scelta è irreversibile.",
-		"help": "Rinominare: solo carte blu, bianche e speciali.\nPosizione e Specialità: ottenute tramite ricompense.\nColore Pallone: organizza la rosa con un codice colore.\nAllenamento Pro: +1 ogni 20 partite (1 partita/giorno).\nFormazione: usa i diamanti per avanzare (1 livello/stagione).",
-	},
-	"pt": {
-		"player_future": "Atenção! A ação escolhida é irreversível.",
-		"help": "Renomear: apenas cartas azuis, brancas e especiais.\nPosição e Especialidade: obtidas através de recompensas.\nCor da Bola: organize o seu plantel por código de cores.\nTreino Pro: +1 a cada 20 partidas (1 partida/dia).\nFormação: use diamantes para avançar (1 nível/temporada).",
-	},
-}
+# ── VARIABLES CARTE ────────────────────────────────────────────────────────────
+var note: int = 0;           var color: String = ""
+var position1: String = "";  var position2: String = ""
+var position2_unlocked: int = 0
+var age: int = 0;            var height: int = 0;     var weight: int = 0
+var nationality: String = ""
+var specialty1: String = ""; var specialty2: String = ""
+var firstname: String = "";  var lastname: String = ""
+var ball_color: String = ""
+var strength: int = 0;       var speed: int = 0;       var aggression: int = 0
+var positioning: int = 0;    var stamina: int = 0;     var creativity: int = 0
+var concentration: int = 0;  var motivation: int = 0;  var anticipation: int = 0
+var communication: int = 0
+var card_id: String = ""
+var training_tier: int = 0;  var training_matches: int = 0
+var is_formation_card: bool = false
 
-var note:                    int    = 0
-var color:                   String = ""
-var position1:               String = ""
-var position2:               String = ""
-var position2_unlocked:      int    = 0
-var age:                     int    = 0
-var height:                  int    = 0
-var weight:                  int    = 0
-var nationality:             String = ""
-var specialty1:              String = ""
-var specialty2:              String = ""
-var firstname:               String = ""
-var lastname:                String = ""
-var ball_color:              String = ""
-var strength:                int    = 0
-var speed:                   int    = 0
-var aggression:              int    = 0
-var positioning:             int    = 0
-var stamina:                 int    = 0
-var creativity:              int    = 0
-var concentration:           int    = 0
-var motivation:              int    = 0
-var anticipation:            int    = 0
-var communication:           int    = 0
-var card_id:                 String = ""
-var training_tier:           int    = 0
-var training_matches:        int    = 0
-var is_formation_card:       bool   = false
-var ball_menu_open:          bool   = false
-var manager_position2_stock: int    = 0
-var manager_specialty_stock: int    = 0
+# ── VARIABLES ÉTAT ────────────────────────────────────────────────────────────
+var stocks: Dictionary = {}
+var open_panel: String = ""        # "", "pos2", "spec1", "spec2", "ball"
+var press_pos: Vector2 = Vector2.ZERO
+var press_active: bool = false
+var drag_active: bool = false
+var drag_type: String = ""         # "pos2", "spec1", "spec2"
+var drag_key: String = ""
+var drag_visual: Node = null
 
 # ── NŒUDS — GÉNÉRAL ──────────────────────────────────────────────────────────
 @onready var btn_close           = $BTN_Close
@@ -109,48 +61,46 @@ var manager_specialty_stock: int    = 0
 @onready var lbl_help            = $LBL_Help
 @onready var btn_player_future   = $BTN_PlayerFuture
 @onready var pnl_player_future   = $PNL_PlayerFuture
-@onready var lbl_player_future   = $PNL_PlayerFuture/CNT_PlayerFuture/LBL_PlayerFuture
 @onready var btn_sign_pro        = $PNL_PlayerFuture/CNT_PlayerFuture/BTN_SignPro
 @onready var btn_sign_pantheon   = $PNL_PlayerFuture/CNT_PlayerFuture/BTN_SignPantheon
 @onready var btn_sign_collection = $PNL_PlayerFuture/CNT_PlayerFuture/BTN_SignCollection
 @onready var btn_sign_eoc        = $PNL_PlayerFuture/CNT_PlayerFuture/BTN_SignEndOfCareer
 
 # ── NŒUDS — PLAYER ────────────────────────────────────────────────────────────
-@onready var player_bg         = $Player/BG_CardBackground
-@onready var player_note       = $Player/LBL_Note
-@onready var player_pos1       = $Player/LBL_Position1
-@onready var player_pos2       = $Player/LBL_Position2
-@onready var player_spec1      = $Player/IMG_Specialty1
-@onready var player_spec2      = $Player/IMG_Specialty2
-@onready var player_flag       = $Player/IMG_Flag
-@onready var player_img_ball   = $Player/IMG_BallColor   # Sprite2D — modulate couleur
-@onready var player_pnl_ball   = $Player/PNL_BallColor   # PanelContainer — fond
-@onready var player_firstname  = $Player/LBL_FirstName
-@onready var player_lastname   = $Player/LBL_LastName
+@onready var player_bg        = $Player/BG_CardBackground
+@onready var player_note      = $Player/LBL_Note
+@onready var player_pos1      = $Player/LBL_Position1
+@onready var player_pos2      = $Player/LBL_Position2
+@onready var player_spec1     = $Player/IMG_Specialty1
+@onready var player_spec2     = $Player/IMG_Specialty2
+@onready var player_flag      = $Player/IMG_Flag
+@onready var player_img_ball  = $Player/IMG_BallColor
+@onready var player_firstname = $Player/LBL_FirstName
+@onready var player_lastname  = $Player/LBL_LastName
 
 # ── NŒUDS — SKILLS ────────────────────────────────────────────────────────────
-@onready var skills_bg                = $Skills/BG_CardBackground
-@onready var lbl_skills_title         = $Skills/LBL_SkillsTitle
-@onready var lbl_strength_label       = $Skills/LBL_StrengthLabel
-@onready var lbl_speed_label          = $Skills/LBL_SpeedLabel
-@onready var lbl_aggression_label     = $Skills/LBL_AggressionLabel
-@onready var lbl_positioning_label    = $Skills/LBL_PositioningLabel
-@onready var lbl_stamina_label        = $Skills/LBL_StaminaLabel
-@onready var lbl_concentration_label  = $Skills/LBL_ConcentrationLabel
-@onready var lbl_communication_label  = $Skills/LBL_CommunicationLabel
-@onready var lbl_motivation_label     = $Skills/LBL_MotivationLabel
-@onready var lbl_creativity_label     = $Skills/LBL_CreativityLabel
-@onready var lbl_anticipation_label   = $Skills/LBL_AnticipationLabel
-@onready var lbl_strength_value       = $Skills/LBL_StrengthValue
-@onready var lbl_speed_value          = $Skills/LBL_SpeedValue
-@onready var lbl_aggression_value     = $Skills/LBL_AggressionValue
-@onready var lbl_positioning_value    = $Skills/LBL_PositioningValue
-@onready var lbl_stamina_value        = $Skills/LBL_StaminaValue
-@onready var lbl_concentration_value  = $Skills/LBL_ConcentrationValue
-@onready var lbl_communication_value  = $Skills/LBL_CommunicationValue
-@onready var lbl_motivation_value     = $Skills/LBL_MotivationValue
-@onready var lbl_creativity_value     = $Skills/LBL_CreativityValue
-@onready var lbl_anticipation_value   = $Skills/LBL_AnticipationValue
+@onready var skills_bg               = $Skills/BG_CardBackground
+@onready var lbl_skills_title        = $Skills/LBL_SkillsTitle
+@onready var lbl_strength_label      = $Skills/LBL_StrengthLabel
+@onready var lbl_speed_label         = $Skills/LBL_SpeedLabel
+@onready var lbl_aggression_label    = $Skills/LBL_AggressionLabel
+@onready var lbl_positioning_label   = $Skills/LBL_PositioningLabel
+@onready var lbl_stamina_label       = $Skills/LBL_StaminaLabel
+@onready var lbl_concentration_label = $Skills/LBL_ConcentrationLabel
+@onready var lbl_communication_label = $Skills/LBL_CommunicationLabel
+@onready var lbl_motivation_label    = $Skills/LBL_MotivationLabel
+@onready var lbl_creativity_label    = $Skills/LBL_CreativityLabel
+@onready var lbl_anticipation_label  = $Skills/LBL_AnticipationLabel
+@onready var lbl_strength_value      = $Skills/LBL_StrengthValue
+@onready var lbl_speed_value         = $Skills/LBL_SpeedValue
+@onready var lbl_aggression_value    = $Skills/LBL_AggressionValue
+@onready var lbl_positioning_value   = $Skills/LBL_PositioningValue
+@onready var lbl_stamina_value       = $Skills/LBL_StaminaValue
+@onready var lbl_concentration_value = $Skills/LBL_ConcentrationValue
+@onready var lbl_communication_value = $Skills/LBL_CommunicationValue
+@onready var lbl_motivation_value    = $Skills/LBL_MotivationValue
+@onready var lbl_creativity_value    = $Skills/LBL_CreativityValue
+@onready var lbl_anticipation_value  = $Skills/LBL_AnticipationValue
 
 # ── NŒUDS — PHYSICAL ──────────────────────────────────────────────────────────
 @onready var physical_bg        = $Physical/BG_CardBackground
@@ -162,35 +112,44 @@ var manager_specialty_stock: int    = 0
 @onready var lbl_height_value   = $Physical/LBL_HeightValue
 @onready var lbl_weight_value   = $Physical/LBL_WeightValue
 
-# ── NŒUDS — EVOLUTION ─────────────────────────────────────────────────────────
-@onready var evolution_node      = $Evolution
-@onready var lbl_rename_player   = $Evolution/LBL_RenamePlayer
-@onready var btn_rename          = $Evolution/BTN_RenamePlayer
-@onready var inp_firstname       = $Evolution/INP_FirstName
-@onready var inp_lastname        = $Evolution/INP_LastName
-@onready var lbl_pos2            = $Evolution/LBL_AttributePosition2
-@onready var btn_pos2            = $Evolution/BTN_AttributePosition2
-@onready var lbl_spec1           = $Evolution/LBL_AttributeSpecialty1
-@onready var btn_spec1           = $Evolution/BTN_AttributeSpecialty1
-@onready var lbl_spec2           = $Evolution/LBL_AttributeSpecialty2
-@onready var btn_spec2           = $Evolution/BTN_AttributeSpecialty2
-@onready var lbl_ball_color      = $Evolution/LBL_AttributeBallColor
-@onready var btn_ball_color_menu = $Evolution/BTN_AttributeBallColor
-@onready var pnl_ball_menu       = $Evolution/PNL_AttributeBallColor
+# ── NŒUDS — EVOLUTION RENAME ──────────────────────────────────────────────────
+@onready var btn_rename   = $Evolution/RenamePlayer/BTN_RenamePlayer
+@onready var lbl_rename   = $Evolution/RenamePlayer/LBL_RenamePlayer
+@onready var inp_firstname = $Evolution/RenamePlayer/INP_FirstName
+@onready var inp_lastname  = $Evolution/RenamePlayer/INP_LastName
+
+# ── NŒUDS — EVOLUTION POSITION2 ───────────────────────────────────────────────
+@onready var pos2_node     = $Evolution/AttributePosition2
+@onready var btn_attr_pos2 = $Evolution/AttributePosition2/BTN_AttributePosition2
+@onready var pnl_attr_pos2 = $Evolution/AttributePosition2/PNL_AttributePosition2
+
+# ── NŒUDS — EVOLUTION SPECIALTY1 ─────────────────────────────────────────────
+@onready var spec1_node     = $Evolution/AttributeSpecialty1
+@onready var btn_attr_spec1 = $Evolution/AttributeSpecialty1/BTN_AttributeSpecialty1
+@onready var pnl_attr_spec1 = $Evolution/AttributeSpecialty1/PNL_AttributeSpecialty1
+
+# ── NŒUDS — EVOLUTION SPECIALTY2 ─────────────────────────────────────────────
+@onready var spec2_node     = $Evolution/AttributeSpecialty2
+@onready var btn_attr_spec2 = $Evolution/AttributeSpecialty2/BTN_AttributeSpecialty2
+@onready var pnl_attr_spec2 = $Evolution/AttributeSpecialty2/PNL_AttributeSpecialty2
+
+# ── NŒUDS — EVOLUTION BALL COLOR ─────────────────────────────────────────────
+@onready var btn_attr_ball = $Evolution/AttributeBallColor/BTN_AttributeBallColor
+@onready var pnl_attr_ball = $Evolution/AttributeBallColor/PNL_AttributeBallColor
 
 # ── NŒUDS — ACHIEVEMENTS ──────────────────────────────────────────────────────
-@onready var achievements_bg          = $Achievements/BG_CardBackground
-@onready var lbl_achievements_title   = $Achievements/LBL_AchievementsTitle
-@onready var lbl_played_label         = $Achievements/LBL_PlayedLabel
-@onready var lbl_wins_label           = $Achievements/LBL_WinsLabel
-@onready var lbl_losses_label         = $Achievements/LBL_LossesLabel
-@onready var lbl_winrate_label        = $Achievements/LBL_WinRateLabel
-@onready var lbl_competitions_label   = $Achievements/LBL_CompetitionsPlayedLabel
-@onready var lbl_played_value         = $Achievements/LBL_PlayedValue
-@onready var lbl_wins_value           = $Achievements/LBL_WinsValue
-@onready var lbl_losses_value         = $Achievements/LBL_LossesValue
-@onready var lbl_winrate_value        = $Achievements/LBL_WinRateValue
-@onready var lbl_competitions_value   = $Achievements/LBL_CompetitionsPlayedValue
+@onready var achievements_bg        = $Achievements/BG_CardBackground
+@onready var lbl_achievements_title = $Achievements/LBL_AchievementsTitle
+@onready var lbl_played_label       = $Achievements/LBL_PlayedLabel
+@onready var lbl_wins_label         = $Achievements/LBL_WinsLabel
+@onready var lbl_losses_label       = $Achievements/LBL_LossesLabel
+@onready var lbl_winrate_label      = $Achievements/LBL_WinRateLabel
+@onready var lbl_competitions_label = $Achievements/LBL_CompetitionsPlayedLabel
+@onready var lbl_played_value       = $Achievements/LBL_PlayedValue
+@onready var lbl_wins_value         = $Achievements/LBL_WinsValue
+@onready var lbl_losses_value       = $Achievements/LBL_LossesValue
+@onready var lbl_winrate_value      = $Achievements/LBL_WinRateValue
+@onready var lbl_competitions_value = $Achievements/LBL_CompetitionsPlayedValue
 
 # ── NŒUDS — TRAINING ──────────────────────────────────────────────────────────
 @onready var training_bg          = $Training/BG_CardBackground
@@ -200,10 +159,22 @@ var manager_specialty_stock: int    = 0
 @onready var lbl_training_c_title = $Training/TrainingClassic/LBL_TrainingTitle
 @onready var lbl_matches_label    = $Training/TrainingClassic/LBL_MatchesLabel
 
+# ── HELPERS NŒUDS DYNAMIQUES ──────────────────────────────────────────────────
+func _pos2_lbl(k: String) -> Label:    return pos2_node.get_node_or_null("LBL_" + k)
+func _pos2_ctr(k: String) -> Label:    return pos2_node.get_node_or_null("LBL_Counter" + k)
+func _spec_btn(n: Node2D, k: String) -> Sprite2D: return n.get_node_or_null("BTN_" + k)
+func _spec_ctr(n: Node2D, k: String) -> Label:    return n.get_node_or_null("LBL_" + k + "Counter")
+func _spec_nml(n: Node2D, k: String) -> Label:    return n.get_node_or_null("LBL_" + k + "Name")
+func _ball_btn(i: int) -> Sprite2D:   return pnl_attr_ball.get_node_or_null("BTN_AttributeBallColor%d" % i)
+
 # ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
+	# 1. Couleur immédiatement (anti-flash blanc)
+	color = GameState.selected_color
+	if color in CARD_COLORS: _set_panel_color(player_bg, CARD_COLORS[color])
+
+	# 2. Données carte
 	note               = GameState.selected_note
-	color              = GameState.selected_color
 	position1          = GameState.selected_position1
 	position2          = GameState.selected_position2
 	position2_unlocked = GameState.selected_position2_unlocked
@@ -216,151 +187,159 @@ func _ready():
 	firstname          = GameState.selected_firstname
 	lastname           = GameState.selected_lastname
 	ball_color         = GameState.selected_ball_color
-	strength           = GameState.selected_strength
-	speed              = GameState.selected_speed
-	aggression         = GameState.selected_aggression
-	positioning        = GameState.selected_positioning
-	stamina            = GameState.selected_stamina
-	creativity         = GameState.selected_creativity
-	concentration      = GameState.selected_concentration
-	motivation         = GameState.selected_motivation
-	anticipation       = GameState.selected_anticipation
-	communication      = GameState.selected_communication
+	strength           = GameState.selected_strength;      speed          = GameState.selected_speed
+	aggression         = GameState.selected_aggression;    positioning    = GameState.selected_positioning
+	stamina            = GameState.selected_stamina;       creativity     = GameState.selected_creativity
+	concentration      = GameState.selected_concentration; motivation     = GameState.selected_motivation
+	anticipation       = GameState.selected_anticipation;  communication  = GameState.selected_communication
 	card_id            = GameState.selected_card_id
 	is_formation_card  = (color == "white" and age < 18)
+
+	# 3. État UI initial
 	Taskbar.visible           = false
 	lbl_help.visible          = false
 	pnl_player_future.visible = false
 	inp_firstname.visible     = false
 	inp_lastname.visible      = false
-	pnl_ball_menu.visible     = false
-	lbl_ball_color.visible    = true
-	_hide_all_ball_children()
-	_apply_translations()
+	_close_all_panels()
+
+	# 4. Cache textures Figma dans GameState
+	_cache_textures()
+
+	# 5. Affichage statique
+	_display_labels()
 	_display_player()
 	_display_skills()
 	_display_physical()
-	_display_evolution()
 	_display_achievements()
+
+	# 6. Chargement asynchrone (training → stocks)
 	_load_training_data()
+
 	inp_firstname.text_submitted.connect(_on_firstname_submitted)
 	inp_lastname.text_submitted.connect(_on_lastname_submitted)
 
-# ── CACHER TOUS BTN/PNL_AttributeBall_ dans Evolution ────────────────────────
-func _hide_all_ball_children():
-	for child in evolution_node.get_children():
-		if child.name.begins_with("BTN_AttributeBall_") or \
-		   child.name.begins_with("PNL_AttributeBall_"):
-			child.visible = false
+# ── CACHE TEXTURES ────────────────────────────────────────────────────────────
+func _cache_textures():
+	# Ball colors 1..20 depuis PNL_AttributeBallColor
+	for i in range(1, BALL_COUNT + 1):
+		var key = "ball_%d" % i
+		if GameState.ball_textures.has(key): continue
+		var btn = _ball_btn(i)
+		if btn and btn.texture: GameState.ball_textures[key] = btn.texture
 
-# ── BALL COLOR SETUP — appelé quand le menu s'ouvre ──────────────────────────
-func _setup_ball_colors():
-	for child in evolution_node.get_children():
-		if child.name.begins_with("BTN_AttributeBall_") or \
-		   child.name.begins_with("PNL_AttributeBall_"):
-			child.visible = true
-		if child is PanelContainer and child.name.begins_with("PNL_AttributeBall_"):
-			var hex_part = child.name.replace("PNL_AttributeBall_", "")
-			var hex      = "#" + hex_part
-			if hex in BALL_HEX_TO_KEY:
-				child.modulate = BALL_COLORS[BALL_HEX_TO_KEY[hex]]
+	# Spécialités depuis spec1_node (mêmes textures que spec2_node)
+	for k in SPECIALTY_KEYS:
+		if GameState.specialty_textures.has(k): continue
+		var btn = _spec_btn(spec1_node, k)
+		if btn and btn.texture: GameState.specialty_textures[k] = btn.texture
 
-# ── TRADUCTIONS ────────────────────────────────────────────────────────────────
-func _apply_translations():
-	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["en"])
-	lbl_help.text          = t["help"]
-	lbl_player_future.text = t["player_future"]
+# ── PANELS OPEN/CLOSE ─────────────────────────────────────────────────────────
+func _close_all_panels():
+	open_panel = ""
+	pnl_attr_pos2.visible  = false
+	pnl_attr_spec1.visible = false
+	pnl_attr_spec2.visible = false
+	pnl_attr_ball.visible  = false
+	for k in POSITION2_KEYS:
+		var l = _pos2_lbl(k); var c = _pos2_ctr(k)
+		if l: l.visible = false
+		if c: c.visible = false
+	for k in SPECIALTY_KEYS:
+		for n in [spec1_node, spec2_node]:
+			var b = _spec_btn(n, k); var c = _spec_ctr(n, k); var nl = _spec_nml(n, k)
+			if b: b.visible = false
+			if c: c.visible = false
+			if nl: nl.visible = false
+
+func _open_panel(panel: String):
+	open_panel = panel
+	match panel:
+		"pos2":
+			pnl_attr_pos2.visible = true
+			for k in POSITION2_KEYS:
+				var l = _pos2_lbl(k); var c = _pos2_ctr(k)
+				if l: l.visible = true
+				if c: c.visible = true
+		"spec1":
+			pnl_attr_spec1.visible = true
+			_show_spec_elements(spec1_node)
+		"spec2":
+			pnl_attr_spec2.visible = true
+			_show_spec_elements(spec2_node)
+		"ball":
+			pnl_attr_ball.visible = true
+
+func _show_spec_elements(node: Node2D):
+	for k in SPECIALTY_KEYS:
+		var b = _spec_btn(node, k); var c = _spec_ctr(node, k); var nl = _spec_nml(node, k)
+		if b: b.visible = true
+		if c: c.visible = true
+		if nl: nl.visible = true
+
+func _toggle_panel(panel: String):
+	if open_panel == panel: _close_all_panels()
+	else: _close_all_panels(); _open_panel(panel)
+
+# ── AFFICHAGE LABELS STATIQUES ────────────────────────────────────────────────
+func _display_labels():
 	lbl_skills_title.text        = "SKILLS"
-	lbl_strength_label.text      = "Strength"
-	lbl_speed_label.text         = "Speed"
-	lbl_aggression_label.text    = "Aggression"
-	lbl_positioning_label.text   = "Positioning"
-	lbl_stamina_label.text       = "Stamina"
-	lbl_concentration_label.text = "Concentration"
-	lbl_communication_label.text = "Communication"
-	lbl_motivation_label.text    = "Motivation"
-	lbl_creativity_label.text    = "Creativity"
-	lbl_anticipation_label.text  = "Anticipation"
+	lbl_strength_label.text      = "Strength";     lbl_speed_label.text         = "Speed"
+	lbl_aggression_label.text    = "Aggression";   lbl_positioning_label.text   = "Positioning"
+	lbl_stamina_label.text       = "Stamina";      lbl_concentration_label.text = "Concentration"
+	lbl_communication_label.text = "Communication";lbl_motivation_label.text    = "Motivation"
+	lbl_creativity_label.text    = "Creativity";   lbl_anticipation_label.text  = "Anticipation"
 	lbl_physical_title.text      = "PHYSICAL"
-	lbl_age_label.text           = "Age"
-	lbl_height_label.text        = "Height"
+	lbl_age_label.text           = "Age";          lbl_height_label.text        = "Height"
 	lbl_weight_label.text        = "Weight"
 	lbl_achievements_title.text  = "ACHIEVEMENTS"
-	lbl_played_label.text        = "Matches played"
-	lbl_wins_label.text          = "Wins"
-	lbl_losses_label.text        = "Losses"
-	lbl_winrate_label.text       = "Win rate %"
+	lbl_played_label.text        = "Played";       lbl_wins_label.text          = "Wins"
+	lbl_losses_label.text        = "Losses";       lbl_winrate_label.text       = "Win rate %"
 	lbl_competitions_label.text  = "Competitions played"
-	lbl_training_f_title.text    = "FORMATION"
-	lbl_training_c_title.text    = "PRO TRAINING"
+	lbl_training_f_title.text    = "FORMATION";    lbl_training_c_title.text    = "PRO TRAINING"
 	lbl_matches_label.text       = "Matches :"
-	lbl_rename_player.text       = "Rename player"
-	lbl_pos2.text                = "Attribute Position 2"
-	lbl_spec1.text               = "Attribute Specialty 1"
-	lbl_spec2.text               = "Attribute Specialty 2"
-	lbl_ball_color.text          = "Ball Color"
-	_apply_training_formation_texts()
-
-func _apply_training_formation_texts():
-	for i in range(1, 12):
-		var lbl = training_formation.get_node_or_null("LBL_Round%d" % i)
-		if lbl == null: continue
-		var idx = i - 1
-		if idx < 9:    lbl.text = "+ %d for %d" % [FORMATION_GAINS[idx], FORMATION_COSTS[idx]]
-		elif idx == 9: lbl.text = "+ 1 position for"
-		else:          lbl.text = "+ 1 specialty for"
-
-# ── PANEL COLOR ───────────────────────────────────────────────────────────────
-func _set_panel_color(panel: PanelContainer, c: Color):
-	var style = panel.get_theme_stylebox("panel").duplicate()
-	style.bg_color = c
-	panel.add_theme_stylebox_override("panel", style)
+	lbl_rename.text              = "Rename player"
+	# Labels postes traduits dans les panels (visible dans le panel ouvert)
+	for k in POSITION2_KEYS:
+		var l = _pos2_lbl(k)
+		if l: l.text = GameState.get_pos_label(k)
+	# Noms spécialités (LBL_*Name) restent en anglais tels quels (déjà définis dans l'éditeur)
 
 # ── AFFICHAGE PLAYER ──────────────────────────────────────────────────────────
 func _display_player():
 	if color in CARD_COLORS: _set_panel_color(player_bg, CARD_COLORS[color])
 	player_note.text      = str(note)
-	player_pos1.text      = position1
-	player_pos2.text      = position2 if position2_unlocked == 1 else ""
+	player_pos1.text      = GameState.get_pos_label(position1)
+	player_pos2.text      = GameState.get_pos_label(position2) if position2 != "" else ""
 	player_pos2.visible   = (position2 != "" and position2_unlocked == 1)
-	player_firstname.text = firstname
-	player_lastname.text  = lastname
+	player_firstname.text = firstname;   player_lastname.text = lastname
 	player_spec1.visible  = (specialty1 != "")
 	player_spec2.visible  = (specialty2 != "")
 	if specialty1 != "":
-		var p = "res://Sprites/Specialties/specialty_" + specialty1 + ".png"
-		if ResourceLoader.exists(p): player_spec1.texture = load(p)
+		var t = GameState.specialty_textures.get(specialty1, null)
+		if t: player_spec1.texture = t
 	if specialty2 != "":
-		var p = "res://Sprites/Specialties/specialty_" + specialty2 + ".png"
-		if ResourceLoader.exists(p): player_spec2.texture = load(p)
+		var t = GameState.specialty_textures.get(specialty2, null)
+		if t: player_spec2.texture = t
 	var fp = "res://Sprites/Flags/flag_" + nationality + ".png"
-	if ResourceLoader.exists(fp):
-		player_flag.texture = load(fp); player_flag.visible = true
-	else:
-		player_flag.visible = false
-	# ── Ball color : modulate sur IMG_BallColor (Sprite2D) ────────────────────
-	if ball_color != "" and ball_color in BALL_COLORS:
-		player_img_ball.modulate = BALL_COLORS[ball_color]
-		player_img_ball.visible  = true
-		player_pnl_ball.visible  = true
-	else:
-		player_img_ball.modulate = Color(1, 1, 1)
-		player_img_ball.visible  = false
-		player_pnl_ball.visible  = false
+	if ResourceLoader.exists(fp): player_flag.texture = load(fp); player_flag.visible = true
+	else: player_flag.visible = false
+	_display_ball_sprite()
+
+func _display_ball_sprite():
+	if ball_color == "": player_img_ball.visible = false; return
+	var t = GameState.ball_textures.get(ball_color, null)
+	if t: player_img_ball.texture = t; player_img_ball.visible = true
+	else: player_img_ball.visible = false
 
 # ── AFFICHAGE SKILLS ──────────────────────────────────────────────────────────
 func _display_skills():
 	if color in CARD_COLORS: _set_panel_color(skills_bg, CARD_COLORS[color])
-	lbl_strength_value.text      = str(strength)
-	lbl_speed_value.text         = str(speed)
-	lbl_aggression_value.text    = str(aggression)
-	lbl_positioning_value.text   = str(positioning)
-	lbl_stamina_value.text       = str(stamina)
-	lbl_concentration_value.text = str(concentration)
-	lbl_communication_value.text = str(communication)
-	lbl_motivation_value.text    = str(motivation)
-	lbl_creativity_value.text    = str(creativity)
-	lbl_anticipation_value.text  = str(anticipation)
+	lbl_strength_value.text      = str(strength);      lbl_speed_value.text         = str(speed)
+	lbl_aggression_value.text    = str(aggression);    lbl_positioning_value.text   = str(positioning)
+	lbl_stamina_value.text       = str(stamina);       lbl_concentration_value.text = str(concentration)
+	lbl_communication_value.text = str(communication); lbl_motivation_value.text    = str(motivation)
+	lbl_creativity_value.text    = str(creativity);    lbl_anticipation_value.text  = str(anticipation)
 
 # ── AFFICHAGE PHYSICAL ────────────────────────────────────────────────────────
 func _display_physical():
@@ -372,250 +351,383 @@ func _display_physical():
 	lbl_height_value.text = str(height)
 	lbl_weight_value.text = str(weight)
 
-# ── AFFICHAGE EVOLUTION ───────────────────────────────────────────────────────
-func _display_evolution():
-	var can_rename = color in ["blue", "white", "special"]
-	btn_rename.modulate               = COLOR_GREEN if can_rename else COLOR_RED
-	btn_pos2.modulate                 = COLOR_GREEN if manager_position2_stock > 0 else COLOR_RED
-	btn_spec1.modulate                = COLOR_GREEN if manager_specialty_stock > 0 else COLOR_RED
-	btn_spec2.modulate                = COLOR_GREEN if manager_specialty_stock > 0 else COLOR_RED
-	btn_ball_color_menu.self_modulate = COLOR_GREEN
-
 # ── AFFICHAGE ACHIEVEMENTS ────────────────────────────────────────────────────
 func _display_achievements():
-	var played_val = 0; var wins_val = 0; var losses_val = 0
-	var winrate_val = 0; var competitions_val = 0
-	lbl_played_value.text       = str(played_val)
-	lbl_wins_value.text         = str(wins_val)
-	lbl_losses_value.text       = str(losses_val)
-	lbl_winrate_value.text      = str(winrate_val)
-	lbl_competitions_value.text = str(competitions_val)
-	if winrate_val >= 75:   _set_panel_color(achievements_bg, COLOR_GREEN)
-	elif winrate_val >= 50: _set_panel_color(achievements_bg, COLOR_BLUE)
-	elif winrate_val >= 25: _set_panel_color(achievements_bg, COLOR_ORANGE)
-	else:                   _set_panel_color(achievements_bg, COLOR_RED)
+	lbl_played_value.text = "0"; lbl_wins_value.text = "0"; lbl_losses_value.text = "0"
+	lbl_winrate_value.text = "0"; lbl_competitions_value.text = "0"
+	_set_panel_color(achievements_bg, COLOR_RED)
 
 # ── AFFICHAGE TRAINING ────────────────────────────────────────────────────────
 func _display_training():
 	if color in CARD_COLORS: _set_panel_color(training_bg, CARD_COLORS[color])
 	if is_formation_card:
-		training_formation.visible = true; training_classic.visible = false
+		training_formation.visible = true;  training_classic.visible = false
 		_display_training_formation()
 	else:
 		training_formation.visible = false; training_classic.visible = true
 		_display_training_classic()
+	# Labels formation
+	for i in range(1, 12):
+		var lbl = training_formation.get_node_or_null("LBL_Round%d" % i)
+		if lbl == null: continue
+		var idx = i - 1
+		if idx < 9:    lbl.text = "+ %d for %d" % [FORMATION_GAINS[idx], FORMATION_COSTS[idx]]
+		elif idx == 9: lbl.text = "+ 1 position for"
+		else:          lbl.text = "+ 1 specialty for"
 
 func _display_training_formation():
 	for i in range(1, 12):
 		var lbl = training_formation.get_node_or_null("LBL_Round%d" % i)
 		if lbl == null: continue
-		var diamond = lbl.get_node_or_null("IMG_Diamond")
-		if i <= training_tier:
-			lbl.modulate = COLOR_GREEN
-			if diamond: diamond.modulate = COLOR_GREEN
-		else:
-			lbl.modulate = COLOR_WHITE
-			if diamond: diamond.modulate = COLOR_WHITE
+		var d = lbl.get_node_or_null("IMG_Diamond")
+		lbl.modulate = COLOR_GREEN if i <= training_tier else COLOR_WHITE
+		if d: d.modulate = lbl.modulate
 
 func _display_training_classic():
 	for i in range(1, 21):
 		var lbl = training_classic.get_node_or_null("LBL_Round%d" % i)
 		if lbl: lbl.modulate = COLOR_WHITE
-	var round_num = 0
-	for tier_idx in range(CLASSIC_MATCHES.size()):
-		var needed = CLASSIC_MATCHES[tier_idx]
-		for j in range(needed):
-			round_num += 1
-			var lbl = training_classic.get_node_or_null("LBL_Round%d" % round_num)
+	var rn = 0
+	for ti in range(CLASSIC_MATCHES.size()):
+		for j in range(CLASSIC_MATCHES[ti]):
+			rn += 1
+			var lbl = training_classic.get_node_or_null("LBL_Round%d" % rn)
 			if lbl == null: continue
-			if tier_idx < training_tier:
-				lbl.modulate = COLOR_GREEN
-			elif tier_idx == training_tier and j < training_matches:
+			if ti < training_tier or (ti == training_tier and j < training_matches):
 				lbl.modulate = COLOR_GREEN
 
-# ── FIRESTORE — TRAINING ──────────────────────────────────────────────────────
+# ── GRISAGE PANELS ────────────────────────────────────────────────────────────
+func _update_pos2_display():
+	for k in POSITION2_KEYS:
+		var l = _pos2_lbl(k); var c = _pos2_ctr(k)
+		if l == null: continue
+		var count  = stocks.get(k, 0)
+		var grayed = (count == 0 or k == position1)
+		var mod    = COLOR_GRAY if grayed else Color(1,1,1,1)
+		l.modulate = mod
+		if c: c.text = str(count).lpad(3,"0"); c.modulate = mod
+
+func _update_spec_display(node: Node2D, cur: String, other: String):
+	var is_gk = (position1 == "GB")
+	for k in SPECIALTY_KEYS:
+		var b = _spec_btn(node, k); var c = _spec_ctr(node, k); var nl = _spec_nml(node, k)
+		if b == null: continue
+		var count    = stocks.get(k, 0)
+		var is_gk_sp = k in GK_SPECIALTIES
+		var wrong    = (is_gk and not is_gk_sp) or (not is_gk and is_gk_sp)
+		var grayed   = count == 0 or wrong or k == cur or k == other
+		var mod      = COLOR_GRAY if grayed else Color(1,1,1,1)
+		b.modulate = mod
+		if c: c.text = str(count).lpad(3,"0"); c.modulate = mod
+		if nl: nl.modulate = mod
+
+# ── DRAG & DROP — DÉTECTION ───────────────────────────────────────────────────
+func _identify_draggable(pos: Vector2) -> bool:
+	drag_type = ""; drag_key = ""
+	if open_panel == "pos2":
+		for k in POSITION2_KEYS:
+			var l = _pos2_lbl(k)
+			if l and l.visible and _label_hit(l, pos):
+				if stocks.get(k, 0) > 0 and k != position1:
+					drag_type = "pos2"; drag_key = k; return true
+	elif open_panel == "spec1":
+		for k in SPECIALTY_KEYS:
+			var b = _spec_btn(spec1_node, k)
+			if b and b.visible and _sprite_hit(b, pos):
+				var is_gk = position1 == "GB"; var is_gk_sp = k in GK_SPECIALTIES
+				var wrong = (is_gk and not is_gk_sp) or (not is_gk and is_gk_sp)
+				if stocks.get(k, 0) > 0 and not wrong and k != specialty1:
+					drag_type = "spec1"; drag_key = k; return true
+	elif open_panel == "spec2":
+		for k in SPECIALTY_KEYS:
+			var b = _spec_btn(spec2_node, k)
+			if b and b.visible and _sprite_hit(b, pos):
+				var is_gk = position1 == "GB"; var is_gk_sp = k in GK_SPECIALTIES
+				var wrong = (is_gk and not is_gk_sp) or (not is_gk and is_gk_sp)
+				if stocks.get(k, 0) > 0 and not wrong and k != specialty2 and k != specialty1:
+					drag_type = "spec2"; drag_key = k; return true
+	return false
+
+func _create_drag_visual(pos: Vector2):
+	match drag_type:
+		"pos2":
+			var lbl = Label.new()
+			lbl.text = GameState.get_pos_label(drag_key)
+			lbl.add_theme_font_size_override("font_size", 42)
+			lbl.add_theme_color_override("font_color", Color.WHITE)
+			add_child(lbl)
+			drag_visual = lbl
+		"spec1", "spec2":
+			var src = spec1_node if drag_type == "spec1" else spec2_node
+			var btn = _spec_btn(src, drag_key)
+			if btn:
+				var spr = Sprite2D.new()
+				spr.texture = btn.texture
+				spr.scale   = btn.scale * 0.8
+				add_child(spr)
+				drag_visual = spr
+	if drag_visual:
+		drag_visual.z_index = 200
+		if drag_visual is Label: drag_visual.global_position = pos - Vector2(40, 25)
+		else:                    drag_visual.global_position = pos
+
+func _try_drop(pos: Vector2):
+	if player_bg.get_global_rect().has_point(pos):
+		match drag_type:
+			"pos2":  _apply_position2(drag_key)
+			"spec1": _apply_specialty1(drag_key)
+			"spec2": _apply_specialty2(drag_key)
+
+# ── APPLY ACTIONS ─────────────────────────────────────────────────────────────
+func _apply_position2(key: String):
+	if position2 != "" and position2 != key:
+		stocks[position2] = stocks.get(position2, 0) + 1
+	position2 = key; position2_unlocked = 1
+	stocks[key] = max(0, stocks.get(key, 0) - 1)
+	player_pos2.text    = GameState.get_pos_label(position2)
+	player_pos2.visible = true
+	_update_pos2_display()
+	_save_card(); _save_stocks(); _close_all_panels()
+
+func _apply_specialty1(key: String):
+	if specialty1 != "" and specialty1 != key:
+		stocks[specialty1] = stocks.get(specialty1, 0) + 1
+	specialty1 = key
+	stocks[key] = max(0, stocks.get(key, 0) - 1)
+	var t = GameState.specialty_textures.get(key, null)
+	if t: player_spec1.texture = t; player_spec1.visible = true
+	_update_spec_display(spec1_node, specialty1, specialty2)
+	_update_spec_display(spec2_node, specialty2, specialty1)
+	_save_card(); _save_stocks(); _close_all_panels()
+
+func _apply_specialty2(key: String):
+	if specialty2 != "" and specialty2 != key:
+		stocks[specialty2] = stocks.get(specialty2, 0) + 1
+	specialty2 = key
+	stocks[key] = max(0, stocks.get(key, 0) - 1)
+	var t = GameState.specialty_textures.get(key, null)
+	if t: player_spec2.texture = t; player_spec2.visible = true
+	_update_spec_display(spec1_node, specialty1, specialty2)
+	_update_spec_display(spec2_node, specialty2, specialty1)
+	_save_card(); _save_stocks(); _close_all_panels()
+
+func _apply_ball_color(index: int):
+	ball_color = "ball_%d" % index
+	GameState.selected_ball_color = ball_color
+	var t = GameState.ball_textures.get(ball_color, null)
+	if t: player_img_ball.texture = t; player_img_ball.visible = true
+	_save_card(); _close_all_panels()
+
+# ── RENAME ────────────────────────────────────────────────────────────────────
+func _enter_rename():
+	inp_firstname.text = firstname; inp_lastname.text = lastname
+	inp_firstname.visible = true;   inp_lastname.visible = true
+	inp_firstname.grab_focus()
+
+func _on_firstname_submitted(text: String):
+	firstname = text.strip_edges().left(MAX_NAME_LENGTH)
+	player_firstname.text = firstname; inp_lastname.grab_focus()
+
+func _on_lastname_submitted(text: String):
+	lastname = text.strip_edges().left(MAX_NAME_LENGTH)
+	player_lastname.text = lastname
+	inp_firstname.visible = false; inp_lastname.visible = false; _save_card()
+
+# ── SAVE ──────────────────────────────────────────────────────────────────────
+func _save_card():
+	if card_id == "": return
+	SquadLoader.update_card({
+		"card_id": card_id, "note": note, "color": color,
+		"position1": position1, "position2": position2,
+		"position2_unlocked": position2_unlocked,
+		"age": age, "height": height, "weight": weight,
+		"nationality": nationality, "specialty1": specialty1, "specialty2": specialty2,
+		"firstname": firstname, "lastname": lastname, "ball_color": ball_color,
+		"strength": strength, "speed": speed, "aggression": aggression,
+		"positioning": positioning, "stamina": stamina, "creativity": creativity,
+		"concentration": concentration, "motivation": motivation,
+		"anticipation": anticipation, "communication": communication,
+		"training_tier": training_tier, "training_matches": training_matches,
+	})
+
+func _save_stocks():
+	GameState.stocks = stocks.duplicate()
+	Firebase.update_document("managers/" + Firebase.user_id + "/stocks", "inventory", stocks)
+
+# ── TRAINING FIRESTORE ────────────────────────────────────────────────────────
 func _load_training_data():
-	if card_id == "": _display_training(); return
+	if card_id == "": _display_training(); _load_stocks(); return
 	Firebase.firestore_success.connect(_on_training_loaded)
 	Firebase.firestore_failed.connect(_on_training_failed)
 	Firebase.get_document("managers/" + Firebase.user_id + "/cards", card_id)
 
 func _on_training_loaded(data: Dictionary):
-	if Firebase.firestore_success.is_connected(_on_training_loaded):
-		Firebase.firestore_success.disconnect(_on_training_loaded)
-	if Firebase.firestore_failed.is_connected(_on_training_failed):
-		Firebase.firestore_failed.disconnect(_on_training_failed)
-	training_tier    = int(data.get("training_tier", 0))
+	_disconnect_training()
+	training_tier = int(data.get("training_tier", 0))
 	training_matches = int(data.get("training_matches", 0))
-	_display_training()
+	_display_training(); _load_stocks()
 
-func _on_training_failed(_error: String):
+func _on_training_failed(_err: String):
+	_disconnect_training(); _display_training(); _load_stocks()
+
+func _disconnect_training():
 	if Firebase.firestore_success.is_connected(_on_training_loaded):
 		Firebase.firestore_success.disconnect(_on_training_loaded)
 	if Firebase.firestore_failed.is_connected(_on_training_failed):
 		Firebase.firestore_failed.disconnect(_on_training_failed)
-	_display_training()
 
-# ── SAVE ──────────────────────────────────────────────────────────────────────
-func _save_card():
-	if card_id == "": return
-	Firebase.update_document("managers/" + Firebase.user_id + "/cards", card_id, {
-		"firstname":          firstname,
-		"lastname":           lastname,
-		"ball_color":         ball_color,
-		"position2_unlocked": position2_unlocked,
-		"specialty1":         specialty1,
-		"specialty2":         specialty2,
-		"training_tier":      training_tier,
-		"training_matches":   training_matches,
-	})
+# ── STOCKS FIRESTORE ──────────────────────────────────────────────────────────
+func _load_stocks():
+	if GameState.stocks_loaded:
+		stocks = GameState.stocks.duplicate()
+		_update_pos2_display()
+		_update_spec_display(spec1_node, specialty1, specialty2)
+		_update_spec_display(spec2_node, specialty2, specialty1)
+		return
+	Firebase.firestore_success.connect(_on_stocks_loaded)
+	Firebase.firestore_failed.connect(_on_stocks_failed)
+	Firebase.get_document("managers/" + Firebase.user_id + "/stocks", "inventory")
 
-# ── BALL COLOR ────────────────────────────────────────────────────────────────
-func _apply_ball_color(hex: String):
-	ball_color             = BALL_HEX_TO_KEY.get(hex, "")
-	ball_menu_open         = false
-	pnl_ball_menu.visible  = false
-	lbl_ball_color.visible = true
-	_hide_all_ball_children()
-	_display_player()
-	_save_card()
+func _on_stocks_loaded(data: Dictionary):
+	_disconnect_stocks()
+	stocks = data.duplicate()
+	GameState.stocks = stocks.duplicate(); GameState.stocks_loaded = true
+	_update_pos2_display()
+	_update_spec_display(spec1_node, specialty1, specialty2)
+	_update_spec_display(spec2_node, specialty2, specialty1)
 
-func _remove_ball_color():
-	ball_color             = ""
-	ball_menu_open         = false
-	pnl_ball_menu.visible  = false
-	lbl_ball_color.visible = true
-	_hide_all_ball_children()
-	_display_player()
-	_save_card()
+func _on_stocks_failed(_err: String):
+	_disconnect_stocks(); stocks = {}
+	_update_pos2_display()
+	_update_spec_display(spec1_node, specialty1, specialty2)
+	_update_spec_display(spec2_node, specialty2, specialty1)
 
-# ── RENAME ────────────────────────────────────────────────────────────────────
-func _enter_rename():
-	inp_firstname.text    = firstname
-	inp_lastname.text     = lastname
-	inp_firstname.visible = true
-	inp_lastname.visible  = true
-	inp_firstname.grab_focus()
+func _disconnect_stocks():
+	if Firebase.firestore_success.is_connected(_on_stocks_loaded):
+		Firebase.firestore_success.disconnect(_on_stocks_loaded)
+	if Firebase.firestore_failed.is_connected(_on_stocks_failed):
+		Firebase.firestore_failed.disconnect(_on_stocks_failed)
 
-func _on_firstname_submitted(text: String):
-	firstname             = text.strip_edges().left(MAX_NAME_LENGTH)
-	player_firstname.text = firstname
-	inp_lastname.grab_focus()
-
-func _on_lastname_submitted(text: String):
-	lastname              = text.strip_edges().left(MAX_NAME_LENGTH)
-	player_lastname.text  = lastname
-	inp_firstname.visible = false
-	inp_lastname.visible  = false
-	_save_card()
-
-# ── ACTIONS PLAYER FUTURE ─────────────────────────────────────────────────────
-func _action_sign_pro():           pass
-func _action_sign_pantheon():      pass
-func _action_sign_end_of_career(): pass
-
+# ── FERMETURE ─────────────────────────────────────────────────────────────────
 func _action_sign_collection():
 	GameState.selected_country       = nationality.to_upper()
 	GameState.previous_scene         = "res://Scenes/detail_card_player.tscn"
 	GameState.collection_card_to_add = card_id
 	get_tree().change_scene_to_file(SCENE_COLLECTION_COUNTRY)
 
-# ── FERMETURE ─────────────────────────────────────────────────────────────────
 func _close():
 	_save_card()
+	GameState.selected_ball_color = ball_color
+	GameState.selected_specialty1 = specialty1
+	GameState.selected_specialty2 = specialty2
+	GameState.selected_position2  = position2
+	GameState.selected_position2_unlocked = position2_unlocked
 	if GameState.selected_deco_index == 1:
-		GameState.deco1_ball_color = ball_color
-		GameState.deco1_firstname  = firstname
-		GameState.deco1_lastname   = lastname
+		GameState.deco1_ball_color         = ball_color
+		GameState.deco1_specialty1         = specialty1
+		GameState.deco1_specialty2         = specialty2
+		GameState.deco1_firstname          = firstname
+		GameState.deco1_lastname           = lastname
 	elif GameState.selected_deco_index == 2:
-		GameState.deco2_ball_color = ball_color
-		GameState.deco2_firstname  = firstname
-		GameState.deco2_lastname   = lastname
+		GameState.deco2_ball_color         = ball_color
+		GameState.deco2_specialty1         = specialty1
+		GameState.deco2_specialty2         = specialty2
+		GameState.deco2_firstname          = firstname
+		GameState.deco2_lastname           = lastname
 	get_tree().change_scene_to_file(GameState.previous_scene)
+
+# ── PANEL COLOR ───────────────────────────────────────────────────────────────
+func _set_panel_color(panel: PanelContainer, c: Color):
+	var style = StyleBoxFlat.new()
+	style.bg_color = c
+	panel.add_theme_stylebox_override("panel", style)
 
 # ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
-	if not (event is InputEventMouseButton): return
-	if not (event.button_index == MOUSE_BUTTON_LEFT and event.pressed): return
-	var pos = event.position
+	# Mouse (test PC)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed: _on_press(event.position)
+		else:             _on_release(event.position)
+	elif event is InputEventMouseMotion:
+		_on_move(event.position)
+	# Touch (mobile)
+	elif event is InputEventScreenTouch:
+		if event.pressed: _on_press(event.position)
+		else:             _on_release(event.position)
+	elif event is InputEventScreenDrag:
+		_on_move(event.position)
 
-	if _sprite_hit(btn_close, pos):
-		_close(); return
+func _on_press(pos: Vector2):
+	press_pos    = pos
+	press_active = true
+	_identify_draggable(pos)   # stocke drag_type / drag_key si applicable
 
+func _on_move(pos: Vector2):
+	if press_active and not drag_active:
+		if drag_type != "" and pos.distance_to(press_pos) > DRAG_THRESHOLD:
+			drag_active = true
+			_create_drag_visual(pos)
+	if drag_active and drag_visual:
+		if drag_visual is Label: drag_visual.global_position = pos - Vector2(40, 25)
+		else:                    drag_visual.global_position = pos
+
+func _on_release(pos: Vector2):
+	press_active = false
+	if drag_active:
+		_try_drop(pos)
+		drag_active = false; drag_type = ""; drag_key = ""
+		if drag_visual: drag_visual.queue_free(); drag_visual = null
+	else:
+		_handle_tap(pos)
+
+func _handle_tap(pos: Vector2):
+	# Contrôles généraux
+	if _sprite_hit(btn_close, pos): _close(); return
 	if _sprite_hit(btn_help, pos):
-		lbl_help.visible          = not lbl_help.visible
+		lbl_help.visible = not lbl_help.visible
 		pnl_player_future.visible = false; return
-
+	if lbl_help.visible: lbl_help.visible = false; return
 	if _sprite_hit(btn_player_future, pos):
-		pnl_player_future.visible = not pnl_player_future.visible
-		lbl_help.visible          = false; return
-
-	if lbl_help.visible:
-		lbl_help.visible = false; return
-
+		pnl_player_future.visible = not pnl_player_future.visible; return
 	if pnl_player_future.visible:
-		# BTN_Sign* = Button → _button_hit ← CORRECTION CLÉ
-		if _button_hit(btn_sign_pro, pos):
-			pnl_player_future.visible = false; _action_sign_pro(); return
-		if _button_hit(btn_sign_pantheon, pos):
-			pnl_player_future.visible = false; _action_sign_pantheon(); return
-		if _button_hit(btn_sign_collection, pos):
-			pnl_player_future.visible = false; _action_sign_collection(); return
-		if _button_hit(btn_sign_eoc, pos):
-			pnl_player_future.visible = false; _action_sign_end_of_career(); return
+		if _sprite_hit(btn_sign_pro, pos):        pnl_player_future.visible = false; return
+		if _sprite_hit(btn_sign_pantheon, pos):   pnl_player_future.visible = false; return
+		if _sprite_hit(btn_sign_collection, pos): pnl_player_future.visible = false; _action_sign_collection(); return
+		if _sprite_hit(btn_sign_eoc, pos):        pnl_player_future.visible = false; return
 		pnl_player_future.visible = false; return
 
-	# ── Menu ball color ouvert — itération sur Evolution ─────────────────────
-	if ball_menu_open:
-		for child in evolution_node.get_children():
-			if child is Sprite2D and child.name.begins_with("BTN_AttributeBall_"):
-				if _sprite_hit(child, pos):
-					var hex_part = child.name.replace("BTN_AttributeBall_", "")
-					_apply_ball_color("#" + hex_part)
-					return
-		ball_menu_open         = false
-		pnl_ball_menu.visible  = false
-		lbl_ball_color.visible = true
-		_hide_all_ball_children()
-		return
+	# Boutons Evolution — toggle panels
+	if _sprite_hit(btn_attr_pos2, pos):  _toggle_panel("pos2");  return
+	if _sprite_hit(btn_attr_spec1, pos): _toggle_panel("spec1"); return
+	if _sprite_hit(btn_attr_spec2, pos): _toggle_panel("spec2"); return
+	if _sprite_hit(btn_attr_ball, pos):  _toggle_panel("ball");  return
 
-	# ── BTN_AttributeBallColor — toggle ───────────────────────────────────────
-	if _sprite_hit(btn_ball_color_menu, pos):
-		if ball_menu_open:
-			_remove_ball_color()
-		else:
-			ball_menu_open         = true
-			pnl_ball_menu.visible  = true
-			lbl_ball_color.visible = false
-			_setup_ball_colors()
-		return
+	# Sélection ball color (clic dans le panel ouvert)
+	if open_panel == "ball":
+		for i in range(1, BALL_COUNT + 1):
+			var b = _ball_btn(i)
+			if b and _sprite_hit(b, pos): _apply_ball_color(i); return
+		_close_all_panels(); return
 
+	# Clic hors du panel ouvert → fermer
+	if open_panel != "":
+		var pnl_rect: Rect2
+		match open_panel:
+			"pos2":  pnl_rect = pnl_attr_pos2.get_global_rect()
+			"spec1": pnl_rect = pnl_attr_spec1.get_global_rect()
+			"spec2": pnl_rect = pnl_attr_spec2.get_global_rect()
+			"ball":  pnl_rect = pnl_attr_ball.get_global_rect()
+		if not pnl_rect.has_point(pos): _close_all_panels(); return
+
+	# Rename (cartes bleues, blanches, spéciales uniquement)
 	if _sprite_hit(btn_rename, pos):
 		if color in ["blue", "white", "special"]: _enter_rename()
-		return
-
-	if _sprite_hit(btn_pos2, pos):
-		if manager_position2_stock > 0:
-			position2_unlocked = 1
-			manager_position2_stock -= 1
-			_display_player(); _display_evolution(); _save_card()
-		return
-
-	if _sprite_hit(btn_spec1, pos):
-		if manager_specialty_stock > 0 and specialty1 == "": pass
-		return
-	if _sprite_hit(btn_spec2, pos):
-		if manager_specialty_stock > 0 and specialty2 == "": pass
 		return
 
 # ── HIT DETECTION ─────────────────────────────────────────────────────────────
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if sprite == null or not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))
-
-func _button_hit(button: Button, pos: Vector2) -> bool:
-	if button == null or not button.visible: return false
-	return button.get_global_rect().has_point(pos)
 
 func _label_hit(label: Label, pos: Vector2) -> bool:
 	if label == null or not label.visible: return false
