@@ -1,5 +1,6 @@
 extends Node2D
 
+# ── CONSTANTES ────────────────────────────────────────────────────────────────
 const CARD_SCENE          = "res://Scenes/card_player.tscn"
 const SCENE_DCP           = "res://Scenes/detail_card_player.tscn"
 const LONG_PRESS_DURATION = 0.5
@@ -20,7 +21,7 @@ const NOTE_RANGES = {
 	"red":     "80 - 89",
 	"magenta": "90 - 99",
 	"blue":    "100 - 131",
-	"white":   "40 - 112",
+	"white":   "40",
 	"special": "???",
 }
 
@@ -30,7 +31,6 @@ var slot_card_data:      Array      = [{},{},{},{},{},{},{},{}]
 var current_popup_color: String     = ""
 var current_popup_cards: Array      = []
 var popup_card_nodes:    Array      = []
-
 var drag_active:         bool       = false
 var drag_card_data:      Dictionary = {}
 var drag_visual:         Node       = null
@@ -40,21 +40,18 @@ var press_card_index:    int        = -1
 var touch_start:         Vector2    = Vector2.ZERO
 
 # ── NŒUDS ─────────────────────────────────────────────────────────────────────
-@onready var btn_help    = $BTN_Help
-@onready var lbl_help    = $LBL_Help
+@onready var btn_help        = $BTN_Help
+@onready var lbl_help        = $LBL_Help
+@onready var btn_bonus1      = $SlotsBonuses/BTN_SlotBonus1
+@onready var btn_bonus2      = $SlotsBonuses/BTN_SlotBonus2
 
-# BTN_SlotBonus1/2 sont des Labels (triangle vert) → _label_hit()
-@onready var btn_bonus1  = $SlotsBonuses/BTN_SlotBonus1
-@onready var btn_bonus2  = $SlotsBonuses/BTN_SlotBonus2
-
-# BTN_CardBackground est un PanelContainer (carré vert) → _panel_hit()
-@onready var yellow_bg   = $TotalCards/YellowCards/BTN_CardBackground
-@onready var orange_bg   = $TotalCards/OrangeCards/BTN_CardBackground
-@onready var red_bg      = $TotalCards/RedCards/BTN_CardBackground
-@onready var magenta_bg  = $TotalCards/MagentaCards/BTN_CardBackground
-@onready var blue_bg     = $TotalCards/BlueCards/BTN_CardBackground
-@onready var white_bg    = $TotalCards/WhiteCards/BTN_CardBackground
-@onready var special_bg  = $TotalCards/SpecialCards/BTN_CardBackground
+@onready var yellow_bg       = $TotalCards/YellowCards/BTN_CardBackground
+@onready var orange_bg       = $TotalCards/OrangeCards/BTN_CardBackground
+@onready var red_bg          = $TotalCards/RedCards/BTN_CardBackground
+@onready var magenta_bg      = $TotalCards/MagentaCards/BTN_CardBackground
+@onready var blue_bg         = $TotalCards/BlueCards/BTN_CardBackground
+@onready var white_bg        = $TotalCards/WhiteCards/BTN_CardBackground
+@onready var special_bg      = $TotalCards/SpecialCards/BTN_CardBackground
 
 @onready var yellow_counter  = $TotalCards/YellowCards/LBL_Counter
 @onready var orange_counter  = $TotalCards/OrangeCards/LBL_Counter
@@ -64,17 +61,17 @@ var touch_start:         Vector2    = Vector2.ZERO
 @onready var white_counter   = $TotalCards/WhiteCards/LBL_Counter
 @onready var special_counter = $TotalCards/SpecialCards/LBL_Counter
 
-@onready var yellow_minmax  = $TotalCards/YellowCards/LBL_NoteMinMax
-@onready var orange_minmax  = $TotalCards/OrangeCards/LBL_NoteMinMax
-@onready var red_minmax     = $TotalCards/RedCards/LBL_NoteMinMax
-@onready var magenta_minmax = $TotalCards/MagentaCards/LBL_NoteMinMax
-@onready var blue_minmax    = $TotalCards/BlueCards/LBL_NoteMinMax
-@onready var white_minmax   = $TotalCards/WhiteCards/LBL_NoteMinMax
-@onready var special_minmax = $TotalCards/SpecialCards/LBL_NoteMinMax
+@onready var yellow_minmax   = $TotalCards/YellowCards/LBL_NoteMinMax
+@onready var orange_minmax   = $TotalCards/OrangeCards/LBL_NoteMinMax
+@onready var red_minmax      = $TotalCards/RedCards/LBL_NoteMinMax
+@onready var magenta_minmax  = $TotalCards/MagentaCards/LBL_NoteMinMax
+@onready var blue_minmax     = $TotalCards/BlueCards/LBL_NoteMinMax
+@onready var white_minmax    = $TotalCards/WhiteCards/LBL_NoteMinMax
+@onready var special_minmax  = $TotalCards/SpecialCards/LBL_NoteMinMax
 
-@onready var popup_cards     = $Popup_Cards
-@onready var btn_close_popup = $Popup_Cards/BTN_ClosePopup
-@onready var card_grid       = $Popup_Cards/ScrollContainer/CardGrid
+@onready var popup_cards     = $PopupCards
+@onready var btn_close_popup = $PopupCards/BTN_ClosePopup
+@onready var card_grid       = $PopupCards/CNT_ScrollCards/CNT_CardGrid
 
 var slot_nodes: Array = []
 var shot_nodes: Array = []
@@ -86,7 +83,6 @@ func _ready():
 	lbl_help.visible    = false
 	popup_cards.visible = false
 
-	# Slots joueurs — BG_SlotCardPlayer1..8 (PanelContainers)
 	var row1 = $SlotsBonuses/CNT_SlotsCardsPlayers/CNT_Row1
 	var row2 = $SlotsBonuses/CNT_SlotsCardsPlayers/CNT_Row2
 	for i in range(1, 5):
@@ -94,9 +90,8 @@ func _ready():
 	for i in range(5, 9):
 		slot_nodes.append(row2.get_node("BG_SlotCardPlayer%d" % i))
 
-	# Shots compétitions
-	var srow1 = $ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row1
-	var srow2 = $ShotsCompetitions/CTN_ShotsCompetitions/CNT_Row2
+	var srow1 = $ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row1
+	var srow2 = $ShotsCompetitions/CNT_ShotsCompetitions/CNT_Row2
 	for i in range(1, 5):
 		shot_nodes.append(srow1.get_node("BG_ShotCompetition%d" % i))
 	for i in range(5, 9):
@@ -151,27 +146,28 @@ func _load_team_data():
 	Firebase.get_document("managers/" + Firebase.user_id + "/team", "current_week")
 
 func _on_team_loaded(data: Dictionary):
-	if Firebase.firestore_success.is_connected(_on_team_loaded):
-		Firebase.firestore_success.disconnect(_on_team_loaded)
-	if Firebase.firestore_failed.is_connected(_on_team_failed):
-		Firebase.firestore_failed.disconnect(_on_team_failed)
+	_disconnect_team_signals()
 	for i in range(8):
 		slot_card_ids[i] = data.get("slot_%d" % (i + 1), "")
 	_rebuild_slot_card_data()
 	_refresh_slots()
 
 func _on_team_failed(_error: String):
+	_disconnect_team_signals()
+	_refresh_slots()
+
+func _disconnect_team_signals():
 	if Firebase.firestore_success.is_connected(_on_team_loaded):
 		Firebase.firestore_success.disconnect(_on_team_loaded)
 	if Firebase.firestore_failed.is_connected(_on_team_failed):
 		Firebase.firestore_failed.disconnect(_on_team_failed)
-	_refresh_slots()
 
 func _rebuild_slot_card_data():
 	var all_cards = SquadLoader.get_all_cards()
 	for i in range(8):
 		slot_card_data[i] = {}
-		if slot_card_ids[i] == "": continue
+		if slot_card_ids[i] == "":
+			continue
 		for card in all_cards:
 			if card.get("card_id", "") == slot_card_ids[i]:
 				slot_card_data[i] = card
@@ -182,8 +178,7 @@ func _refresh_slots():
 	for i in range(8):
 		var bg = slot_nodes[i]
 		if slot_card_ids[i] != "":
-			var cd = slot_card_data[i]
-			var c  = CARD_COLORS.get(cd.get("color", ""), Color(0.7, 0.7, 0.7))
+			var c = CARD_COLORS.get(slot_card_data[i].get("color", ""), Color(0.7, 0.7, 0.7))
 			_set_panel_color(bg, c)
 		else:
 			_set_panel_color(bg, Color(1, 1, 1))
@@ -215,13 +210,20 @@ func _close_popup():
 
 func _get_cards_by_color(color: String) -> Array:
 	match color:
-		"yellow":  return GameState.cards_yellow
-		"orange":  return GameState.cards_orange
-		"red":     return GameState.cards_red
-		"magenta": return GameState.cards_magenta
-		"blue":    return GameState.cards_blue
-		"white":   return GameState.cards_white
-		"special": return GameState.cards_special
+		"yellow":
+			return GameState.cards_yellow
+		"orange":
+			return GameState.cards_orange
+		"red":
+			return GameState.cards_red
+		"magenta":
+			return GameState.cards_magenta
+		"blue":
+			return GameState.cards_blue
+		"white":
+			return GameState.cards_white
+		"special":
+			return GameState.cards_special
 	return []
 
 func _populate_card_grid(cards: Array):
@@ -229,8 +231,7 @@ func _populate_card_grid(cards: Array):
 		child.queue_free()
 	popup_card_nodes.clear()
 	for card_data in cards:
-		var cs   = load(CARD_SCENE)
-		var card = cs.instantiate()
+		var card = load(CARD_SCENE).instantiate()
 		card.clickable          = false
 		card.note               = int(card_data.get("note", 0))
 		card.color              = card_data.get("color", "yellow")
@@ -255,36 +256,40 @@ func _process(delta):
 	if press_holding and press_card_index >= 0:
 		press_timer += delta
 		if press_timer >= LONG_PRESS_DURATION:
-			press_holding    = false
-			press_timer      = 0.0
+			press_holding = false
+			press_timer   = 0.0
 			_start_drag_from_popup(press_card_index)
 
 # ── DRAG ──────────────────────────────────────────────────────────────────────
 func _start_drag_from_popup(card_index: int):
-	if card_index >= current_popup_cards.size(): return
+	if card_index >= current_popup_cards.size():
+		return
 	var card_data = current_popup_cards[card_index]
-	if card_data.get("card_id", "") in slot_card_ids: return
+	if card_data.get("card_id", "") in slot_card_ids:
+		return
 	drag_active    = true
 	drag_card_data = card_data
-	var cs         = load(CARD_SCENE)
-	drag_visual    = cs.instantiate()
-	drag_visual.clickable   = false
-	drag_visual.note        = int(card_data.get("note", 0))
-	drag_visual.color       = card_data.get("color", "yellow")
-	drag_visual.position1   = card_data.get("position1", "")
-	drag_visual.nationality = card_data.get("nationality", "")
-	drag_visual.firstname   = card_data.get("firstname", "")
-	drag_visual.lastname    = card_data.get("lastname", "")
-	drag_visual.ball_color  = card_data.get("ball_color", "")
-	drag_visual.z_index     = 100
-	drag_visual.scale       = Vector2(0.45, 0.45)
-	add_child(drag_visual)
-	drag_visual.display()
+	var card       = load(CARD_SCENE).instantiate()
+	card.clickable   = false
+	card.note        = int(card_data.get("note", 0))
+	card.color       = card_data.get("color", "yellow")
+	card.position1   = card_data.get("position1", "")
+	card.nationality = card_data.get("nationality", "")
+	card.firstname   = card_data.get("firstname", "")
+	card.lastname    = card_data.get("lastname", "")
+	card.ball_color  = card_data.get("ball_color", "")
+	card.z_index     = 100
+	card.scale       = Vector2(0.45, 0.45)
+	add_child(card)
+	card.display()
+	drag_visual = card
 
 func _drop_on_slot(slot_index: int):
-	if not drag_active: return
+	if not drag_active:
+		return
 	var card_id = drag_card_data.get("card_id", "")
-	if card_id == "": return
+	if card_id == "":
+		return
 	slot_card_ids[slot_index]  = card_id
 	slot_card_data[slot_index] = drag_card_data
 	_end_drag()
@@ -303,13 +308,16 @@ func _remove_from_slot(slot_index: int):
 func _end_drag():
 	drag_active    = false
 	drag_card_data = {}
-	if drag_visual: drag_visual.queue_free(); drag_visual = null
+	if drag_visual:
+		drag_visual.queue_free()
+		drag_visual = null
 	press_card_index = -1
 
 # ── OUVRIR DCP ────────────────────────────────────────────────────────────────
 func _open_dcp(slot_index: int):
 	var data = slot_card_data[slot_index]
-	if data.is_empty(): return
+	if data.is_empty():
+		return
 	GameState.selected_note               = int(data.get("note", 0))
 	GameState.selected_color              = data.get("color", "")
 	GameState.selected_position1          = data.get("position1", "")
@@ -349,39 +357,40 @@ func _input(event):
 			_on_release(event.position)
 	elif event is InputEventMouseMotion:
 		if press_holding and event.position.distance_to(touch_start) > 15:
-			press_holding = false; press_timer = 0.0
+			press_holding = false
+			press_timer   = 0.0
 		if drag_active and drag_visual:
 			drag_visual.position = event.position - Vector2(50, 75)
 
 func _on_press(pos: Vector2):
 	if _sprite_hit(btn_help, pos):
-		lbl_help.visible = not lbl_help.visible; return
+		lbl_help.visible = not lbl_help.visible
+		return
 	if lbl_help.visible:
-		lbl_help.visible = false; return
+		lbl_help.visible = false
+		return
 
 	if popup_cards.visible:
 		if _sprite_hit(btn_close_popup, pos):
-			_close_popup(); return
+			_close_popup()
+			return
 
-	# BTN_SlotBonus1/2 sont des Labels → _label_hit()
 	if _label_hit(btn_bonus1, pos):
-		pass  # TODO : naviguer vers bonus.tscn
+		pass  # TODO : bonus.tscn
 		return
 	if _label_hit(btn_bonus2, pos):
-		pass  # TODO : naviguer vers bonus.tscn
+		pass  # TODO : bonus.tscn
 		return
 
-	# Cartes couleur → ouvrir popup (PanelContainers → _panel_hit())
 	if not popup_cards.visible:
-		if _panel_hit(yellow_bg,  pos): _open_popup("yellow");  return
-		if _panel_hit(orange_bg,  pos): _open_popup("orange");  return
-		if _panel_hit(red_bg,     pos): _open_popup("red");     return
+		if _panel_hit(yellow_bg, pos):  _open_popup("yellow");  return
+		if _panel_hit(orange_bg, pos):  _open_popup("orange");  return
+		if _panel_hit(red_bg, pos):     _open_popup("red");     return
 		if _panel_hit(magenta_bg, pos): _open_popup("magenta"); return
-		if _panel_hit(blue_bg,    pos): _open_popup("blue");    return
-		if _panel_hit(white_bg,   pos): _open_popup("white");   return
+		if _panel_hit(blue_bg, pos):    _open_popup("blue");    return
+		if _panel_hit(white_bg, pos):   _open_popup("white");   return
 		if _panel_hit(special_bg, pos): _open_popup("special"); return
 
-	# Appui long sur carte dans popup → prépare drag
 	if popup_cards.visible and not drag_active:
 		for i in range(popup_card_nodes.size()):
 			var card = popup_card_nodes[i]
@@ -391,7 +400,6 @@ func _on_press(pos: Vector2):
 				press_timer      = 0.0
 				return
 
-	# Clic court sur slot occupé → DCP
 	for i in range(8):
 		if _panel_hit(slot_nodes[i], pos):
 			if slot_card_ids[i] != "":
@@ -399,11 +407,14 @@ func _on_press(pos: Vector2):
 			return
 
 func _on_release(pos: Vector2):
-	press_holding = false; press_timer = 0.0
-	if not drag_active: return
+	press_holding = false
+	press_timer   = 0.0
+	if not drag_active:
+		return
 	for i in range(8):
 		if _panel_hit(slot_nodes[i], pos):
-			_drop_on_slot(i); return
+			_drop_on_slot(i)
+			return
 	_end_drag()
 
 # ── PANEL COLOR ───────────────────────────────────────────────────────────────
@@ -417,12 +428,10 @@ func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
 	if sprite == null or not sprite.visible: return false
 	return sprite.get_rect().has_point(sprite.to_local(pos))
 
-# PanelContainer et ses sous-classes
 func _panel_hit(panel: PanelContainer, pos: Vector2) -> bool:
 	if panel == null or not panel.visible: return false
 	return panel.get_global_rect().has_point(pos)
 
-# Label (BTN_SlotBonus1/2 sont des Labels dans cette scène)
 func _label_hit(label: Label, pos: Vector2) -> bool:
 	if label == null or not label.visible: return false
 	return label.get_global_rect().has_point(pos)

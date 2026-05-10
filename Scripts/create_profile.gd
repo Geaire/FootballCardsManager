@@ -10,10 +10,10 @@ extends Node2D
 @onready var btn_confirm           = $BTN_Confirm
 
 # ── CONSTANTES ────────────────────────────────────────────────────────────────
-const SCENE_MAIN_MENU   = "res://Scenes/main_menu.tscn"
-const CARD_SCENE        = "res://Scenes/card_player.tscn"
-const MAX_NAME_LENGTH   = 13
-const ALLOWED_CHARS     = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-'"
+const SCENE_MAIN_MENU = "res://Scenes/main_menu.tscn"
+const CARD_SCENE      = "res://Scenes/card_player.tscn"
+const MAX_NAME_LENGTH = 13
+const ALLOWED_CHARS   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-'"
 
 const STARTER_PACK = {
 	"yellow":  60,
@@ -24,7 +24,6 @@ const STARTER_PACK = {
 	"white":   10,
 }
 
-var _cards_pending:   int   = 0
 var _generated_cards: Array = []
 
 # ── READY ──────────────────────────────────────────────────────────────────────
@@ -83,12 +82,10 @@ func _try_confirm():
 	GameState.manager_name = manager_name
 	GameState.team_name    = team_name
 
-	# ── Générer les cartes IMMÉDIATEMENT dans le cache local ──────────────────
-	# Indépendant de Firestore — le manager a toujours ses cartes même si Firebase
-	# est lent ou en erreur.
+	# ── 1. Générer les cartes dans le cache local immédiatement ───────────────
 	_generate_starter_pack()
 
-	# ── Sauvegarder le profil en Firestore (best-effort) ─────────────────────
+	# ── 2. Sauvegarder le profil manager ─────────────────────────────────────
 	Firebase.firestore_success.connect(_on_profile_saved)
 	Firebase.firestore_failed.connect(_on_profile_failed)
 	Firebase.create_document("managers", Firebase.user_id, {
@@ -101,12 +98,12 @@ func _try_confirm():
 # ── PROFIL FIRESTORE ──────────────────────────────────────────────────────────
 func _on_profile_saved(_data: Dictionary):
 	_disconnect_profile_signals()
-	_save_all_cards()
+	_batch_save_cards()
 
 func _on_profile_failed(error: String):
 	print("Profile Firestore failed (non-blocking): " + error)
 	_disconnect_profile_signals()
-	_save_all_cards()
+	_batch_save_cards()
 
 func _disconnect_profile_signals():
 	if Firebase.firestore_success.is_connected(_on_profile_saved):
@@ -134,7 +131,7 @@ func _generate_card(color: String) -> Dictionary:
 		"red":     card.note = randi_range(80, 89)
 		"magenta": card.note = randi_range(90, 99)
 		"blue":    card.note = randi_range(100, 129)
-		"white":   card.note = 40  # Toujours 40 — jamais randomisé
+		"white":   card.note = 40
 	card.generate_age_height_weight()
 	card.generate_nationality()
 	card.generate_positions()
@@ -175,34 +172,37 @@ func _generate_card(color: String) -> Dictionary:
 	card.queue_free()
 	return d
 
-# ── SAUVEGARDE FIRESTORE ──────────────────────────────────────────────────────
-func _save_all_cards():
-	_cards_pending = _generated_cards.size()
-	if _cards_pending == 0:
+# ── SAUVEGARDE BATCH — 1 SEULE REQUÊTE pour toutes les cartes ─────────────────
+func _batch_save_cards():
+	if _generated_cards.is_empty():
 		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
 		return
-	Firebase.firestore_success.connect(_on_card_saved)
-	Firebase.firestore_failed.connect(_on_card_save_failed)
+
+	# Construire le tableau pour batch_write
+	var batch_items = []
 	for d in _generated_cards:
-		Firebase.update_document(
-			"managers/" + Firebase.user_id + "/cards",
-			d["card_id"], d
-		)
+		batch_items.append({
+			"collection": "managers/" + Firebase.user_id + "/cards",
+			"doc_id":     d["card_id"],
+			"data":       d
+		})
 
-func _on_card_saved(_data: Dictionary):
-	_cards_pending -= 1
-	if _cards_pending <= 0:
-		_disconnect_card_signals()
-		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+	Firebase.batch_success.connect(_on_batch_done)
+	Firebase.batch_failed.connect(_on_batch_done_error)
+	Firebase.batch_write(batch_items)
 
-func _on_card_save_failed(_error: String):
-	_cards_pending -= 1
-	if _cards_pending <= 0:
-		_disconnect_card_signals()
-		get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+func _on_batch_done():
+	_disconnect_batch_signals()
+	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
 
-func _disconnect_card_signals():
-	if Firebase.firestore_success.is_connected(_on_card_saved):
-		Firebase.firestore_success.disconnect(_on_card_saved)
-	if Firebase.firestore_failed.is_connected(_on_card_save_failed):
-		Firebase.firestore_failed.disconnect(_on_card_save_failed)
+func _on_batch_done_error(error: String):
+	print("Batch save failed (non-blocking): " + error)
+	_disconnect_batch_signals()
+	# Les cartes sont déjà dans le cache local — le manager peut jouer
+	get_tree().change_scene_to_file(SCENE_MAIN_MENU)
+
+func _disconnect_batch_signals():
+	if Firebase.batch_success.is_connected(_on_batch_done):
+		Firebase.batch_success.disconnect(_on_batch_done)
+	if Firebase.batch_failed.is_connected(_on_batch_done_error):
+		Firebase.batch_failed.disconnect(_on_batch_done_error)

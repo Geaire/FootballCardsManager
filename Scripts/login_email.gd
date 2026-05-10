@@ -97,8 +97,11 @@ func _on_password_reset_success():
 
 # ── AUTH SUCCESS ──────────────────────────────────────────────────────────────
 func _on_auth_success(_user_id: String):
-	Firebase.firestore_success.connect(_on_profile_found)
-	Firebase.firestore_failed.connect(_on_profile_not_found)
+	# Vérifier avant de connecter — évite "signal already connected"
+	if not Firebase.firestore_success.is_connected(_on_profile_found):
+		Firebase.firestore_success.connect(_on_profile_found)
+	if not Firebase.firestore_failed.is_connected(_on_profile_not_found):
+		Firebase.firestore_failed.connect(_on_profile_not_found)
 	Firebase.get_document("managers", Firebase.user_id)
 
 func _on_profile_found(_data: Dictionary):
@@ -134,3 +137,4 @@ func _exit_tree():
 		Firebase.auth_failed.disconnect(_on_auth_failed)
 	if Firebase.password_reset_success.is_connected(_on_password_reset_success):
 		Firebase.password_reset_success.disconnect(_on_password_reset_success)
+	_disconnect_profile_signals()

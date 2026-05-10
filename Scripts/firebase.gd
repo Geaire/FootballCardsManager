@@ -4,6 +4,7 @@ const API_KEY       = "AIzaSyCsGFJGO7gFPNMotP9O6OzprjwShqb7Dls"
 const PROJECT_ID    = "football-cards-manager"
 const AUTH_URL      = "https://identitytoolkit.googleapis.com/v1/accounts:"
 const FIRESTORE_URL = "https://firestore.googleapis.com/v1/projects/" + PROJECT_ID + "/databases/(default)/documents/"
+const BATCH_URL     = "https://firestore.googleapis.com/v1/projects/" + PROJECT_ID + "/databases/(default)/documents:batchWrite"
 
 var id_token:          String = ""
 var refresh_token:     String = ""
@@ -15,9 +16,12 @@ signal auth_success(user_id: String)
 signal auth_failed(error: String)
 signal firestore_success(data: Dictionary)
 signal firestore_failed(error: String)
+signal batch_success
+signal batch_failed(error: String)
 signal password_reset_success
 signal password_reset_failed(error: String)
 
+# ── AUTH ───────────────────────────────────────────────────────────────────────
 func sign_up(email: String, password: String):
 	var url  = AUTH_URL + "signUp?key=" + API_KEY
 	var body = JSON.stringify({"email": email, "password": password, "returnSecureToken": true})
@@ -34,13 +38,15 @@ func sign_in_anonymous():
 	_send_request(url, body, "_on_auth_response")
 
 func sign_out():
-	id_token = ""; refresh_token = ""; user_id = ""; manager_email = ""; manager_connected = false
+	id_token = ""; refresh_token = ""; user_id = ""
+	manager_email = ""; manager_connected = false
 
 func send_password_reset(email: String):
 	var url  = AUTH_URL + "sendOobCode?key=" + API_KEY
 	var body = JSON.stringify({"requestType": "PASSWORD_RESET", "email": email})
 	_send_request(url, body, "_on_password_reset_response")
 
+# ── FIRESTORE — OPÉRATIONS INDIVIDUELLES ─────────────────────────────────────
 func create_document(collection: String, doc_id: String, data: Dictionary):
 	var url  = FIRESTORE_URL + collection + "/" + doc_id
 	var body = JSON.stringify({"fields": _to_firestore(data)})
@@ -63,6 +69,27 @@ func delete_document(collection: String, doc_id: String):
 	var url = FIRESTORE_URL + collection + "/" + doc_id
 	_send_request_auth(url, "", "_on_firestore_response", HTTPClient.METHOD_DELETE)
 
+# ── FIRESTORE — BATCH WRITE ───────────────────────────────────────────────────
+# Envoie jusqu'à 500 documents en UNE SEULE requête HTTP.
+# documents_array : Array de Dictionary {collection, doc_id, data}
+# Exemple : [{"collection":"managers/uid/cards","doc_id":"abc","data":{...}}, ...]
+func batch_write(documents_array: Array):
+	var writes = []
+	for item in documents_array:
+		var col    = item.get("collection", "")
+		var doc_id = item.get("doc_id", "")
+		var data   = item.get("data", {})
+		var name   = "projects/" + PROJECT_ID + "/databases/(default)/documents/" + col + "/" + doc_id
+		writes.append({
+			"update": {
+				"name":   name,
+				"fields": _to_firestore(data)
+			}
+		})
+	var body = JSON.stringify({"writes": writes})
+	_send_request_auth(BATCH_URL, body, "_on_batch_response", HTTPClient.METHOD_POST)
+
+# ── REQUÊTES HTTP ─────────────────────────────────────────────────────────────
 func _send_request(url: String, body: String, callback: String):
 	var http = HTTPRequest.new()
 	add_child(http)
@@ -76,9 +103,12 @@ func _send_request_auth(url: String, body: String, callback: String, method: int
 	var headers = ["Content-Type: application/json", "Authorization: Bearer " + id_token]
 	http.request(url, headers, method, body)
 
+# ── RÉPONSES ──────────────────────────────────────────────────────────────────
 func _on_auth_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	var response = JSON.parse_string(body.get_string_from_utf8())
+	if response == null:
+		emit_signal("auth_failed", "Parse error"); return
 	if response_code == 200:
 		id_token          = response.get("idToken", "")
 		refresh_token     = response.get("refreshToken", "")
@@ -87,65 +117,102 @@ func _on_auth_response(_result, response_code, _headers, body, http):
 		manager_connected = true
 		emit_signal("auth_success", user_id)
 	else:
-		emit_signal("auth_failed", response.get("error", {}).get("message", "Erreur inconnue"))
+		var err = response.get("error", {})
+		emit_signal("auth_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
 
 func _on_password_reset_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	if response_code == 200:
-		emit_signal("password_reset_success")
-	else:
-		var response = JSON.parse_string(body.get_string_from_utf8())
-		emit_signal("password_reset_failed", response.get("error", {}).get("message", "Erreur inconnue"))
+		emit_signal("password_reset_success"); return
+	var response = JSON.parse_string(body.get_string_from_utf8())
+	if response == null:
+		emit_signal("password_reset_failed", "Parse error"); return
+	var err = response.get("error", {})
+	emit_signal("password_reset_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
 
 func _on_firestore_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	var response = JSON.parse_string(body.get_string_from_utf8())
+	if response == null:
+		emit_signal("firestore_failed", "Parse error"); return
 	if response_code in [200, 201]:
 		emit_signal("firestore_success", _from_firestore(response))
 	else:
-		emit_signal("firestore_failed", response.get("error", {}).get("message", "Erreur inconnue"))
+		var err = response.get("error", {})
+		emit_signal("firestore_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
+
+func _on_batch_response(_result, response_code, _headers, body, http):
+	http.queue_free()
+	if response_code == 200:
+		emit_signal("batch_success")
+	else:
+		var response = JSON.parse_string(body.get_string_from_utf8())
+		if response == null:
+			emit_signal("batch_failed", "Parse error"); return
+		var err = response.get("error", {})
+		emit_signal("batch_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
 
 func _on_collection_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	var response = JSON.parse_string(body.get_string_from_utf8())
+	if response == null:
+		emit_signal("firestore_failed", "Parse error"); return
 	if response_code == 200:
 		var documents = response.get("documents", [])
-		var result = []
+		var result    = []
 		for doc in documents:
 			var parsed = _from_firestore(doc)
 			if not parsed.is_empty():
 				result.append(parsed)
 		emit_signal("firestore_success", {"documents": result})
 	else:
-		emit_signal("firestore_failed", response.get("error", {}).get("message", "Erreur inconnue"))
+		var err = response.get("error", {})
+		emit_signal("firestore_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
 
+# ── CONVERSION FIRESTORE ──────────────────────────────────────────────────────
 func _to_firestore(data: Dictionary) -> Dictionary:
 	var fields = {}
 	for key in data:
 		var val = data[key]
-		if typeof(val) == TYPE_STRING:       fields[key] = {"stringValue": val}
-		elif typeof(val) == TYPE_INT:        fields[key] = {"integerValue": str(val)}
-		elif typeof(val) == TYPE_FLOAT:      fields[key] = {"doubleValue": val}
-		elif typeof(val) == TYPE_BOOL:       fields[key] = {"booleanValue": val}
-		elif typeof(val) == TYPE_DICTIONARY: fields[key] = {"mapValue": {"fields": _to_firestore(val)}}
+		if typeof(val) == TYPE_STRING:
+			fields[key] = {"stringValue": val}
+		elif typeof(val) == TYPE_INT:
+			fields[key] = {"integerValue": str(val)}
+		elif typeof(val) == TYPE_FLOAT:
+			fields[key] = {"doubleValue": val}
+		elif typeof(val) == TYPE_BOOL:
+			fields[key] = {"booleanValue": val}
+		elif typeof(val) == TYPE_DICTIONARY:
+			fields[key] = {"mapValue": {"fields": _to_firestore(val)}}
 		elif typeof(val) == TYPE_ARRAY:
 			var arr = []
-			for item in val: arr.append({"stringValue": str(item)})
+			for item in val:
+				arr.append({"stringValue": str(item)})
 			fields[key] = {"arrayValue": {"values": arr}}
 	return fields
 
 func _from_firestore(data: Dictionary) -> Dictionary:
 	var result = {}
 	var fields = data.get("fields", {})
+	if typeof(fields) != TYPE_DICTIONARY:
+		return result
 	for key in fields:
 		var field = fields[key]
-		if field.has("stringValue"):    result[key] = field["stringValue"]
-		elif field.has("integerValue"): result[key] = int(field["integerValue"])
-		elif field.has("doubleValue"):  result[key] = field["doubleValue"]
-		elif field.has("booleanValue"): result[key] = field["booleanValue"]
-		elif field.has("mapValue"):     result[key] = _from_firestore(field["mapValue"])
+		if typeof(field) != TYPE_DICTIONARY:
+			continue
+		if field.has("stringValue"):
+			result[key] = field["stringValue"]
+		elif field.has("integerValue"):
+			result[key] = int(field["integerValue"])
+		elif field.has("doubleValue"):
+			result[key] = field["doubleValue"]
+		elif field.has("booleanValue"):
+			result[key] = field["booleanValue"]
+		elif field.has("mapValue"):
+			result[key] = _from_firestore(field["mapValue"])
 		elif field.has("arrayValue"):
 			var arr = []
-			for item in field["arrayValue"].get("values", []): arr.append(item.get("stringValue", ""))
+			for item in field["arrayValue"].get("values", []):
+				arr.append(item.get("stringValue", ""))
 			result[key] = arr
 	return result

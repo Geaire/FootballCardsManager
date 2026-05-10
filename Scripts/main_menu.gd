@@ -16,30 +16,28 @@ const SCENE_TEAM = "res://Scenes/team.tscn"
 const SFX_CLICK  = "res://Audio/sfx_click.wav"
 
 # Les slogans sont l'identité du jeu — traduits dans les 6 langues.
-# Tout le reste de la scène est en anglais fixe.
 const SLOGANS = {
-	"fr": ["Construis. Pense. Domine.", "Pas de hasard, le meilleur gagne toujours.", "Oublie les tactiques. Maîtrise les bonus."],
-	"en": ["Build. Think. Dominate.",   "No luck, the best always wins.",             "Forget tactics. Master the bonuses."],
-	"es": ["Construye. Piensa. Domina.","Sin suerte, el mejor siempre gana.",         "Olvida las tácticas. Domina los bonos."],
-	"de": ["Baue. Denke. Dominiere.",   "Kein Zufall, der Beste gewinnt immer.",      "Vergiss Taktiken. Meistere die Boni."],
-	"it": ["Costruisci. Pensa. Domina.","Nessuna fortuna, il migliore vince sempre.", "Dimentica le tattiche. Padroneggia i bonus."],
-	"pt": ["Constrói. Pensa. Domina.",  "Sem sorte, o melhor sempre vence.",          "Esqueça as táticas. Domine os bônus."],
+	"fr": ["Construis. Pense. Domine.",  "Pas de hasard, le meilleur gagne toujours.", "Oublie les tactiques. Maîtrise les bonus."],
+	"en": ["Build. Think. Dominate.",    "No luck, the best always wins.",              "Forget tactics. Master the bonuses."],
+	"es": ["Construye. Piensa. Domina.", "Sin suerte, el mejor siempre gana.",          "Olvida las tácticas. Domina los bonos."],
+	"de": ["Baue. Denke. Dominiere.",    "Kein Zufall, der Beste gewinnt immer.",       "Vergiss Taktiken. Meistere die Boni."],
+	"it": ["Costruisci. Pensa. Domina.", "Nessuna fortuna, il migliore vince sempre.",  "Dimentica le tattiche. Padroneggia i bonus."],
+	"pt": ["Constrói. Pensa. Domina.",   "Sem sorte, o melhor sempre vence.",           "Esqueça as táticas. Domine os bônus."],
 }
 
 # ── READY ──────────────────────────────────────────────────────────────────────
 func _ready():
-	Taskbar.visible      = true
-	Taskbar._update_border_color
-	lbl_version.text     = "V 0.1"
-	btn_play.text        = "Play"
+	Taskbar.visible       = false
+	lbl_version.text      = "V 0.1"
+	btn_play.text         = "Play"
 	btn_sound_on.visible  = GameState.sound_on
 	btn_sound_off.visible = not GameState.sound_on
 
-	# Slogans traduits
 	var s = SLOGANS.get(GameState.language, SLOGANS["en"])
-	lbl_slogan1.text = s[0]; lbl_slogan2.text = s[1]; lbl_slogan3.text = s[2]
+	lbl_slogan1.text = s[0]
+	lbl_slogan2.text = s[1]
+	lbl_slogan3.text = s[2]
 
-	# Cartes déco
 	_setup_deco_card(card_deco1, 1, GameState.deco1_color)
 	_setup_deco_card(card_deco2, 2, GameState.deco2_color)
 
@@ -49,11 +47,15 @@ func _setup_deco_card(card: Node2D, idx: int, saved_color: String):
 	if saved_color == "":
 		card.generate()
 		card.display()
-		if idx == 1: card.save_to_gamestate_deco1()
-		else:        card.save_to_gamestate_deco2()
+		if idx == 1:
+			card.save_to_gamestate_deco1()
+		else:
+			card.save_to_gamestate_deco2()
 	else:
-		if idx == 1: card.restore_from_gamestate_deco1()
-		else:        card.restore_from_gamestate_deco2()
+		if idx == 1:
+			card.restore_from_gamestate_deco1()
+		else:
+			card.restore_from_gamestate_deco2()
 		card.display()
 
 # ── INPUT ─────────────────────────────────────────────────────────────────────
