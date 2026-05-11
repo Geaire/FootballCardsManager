@@ -21,7 +21,6 @@ signal batch_failed(error: String)
 signal password_reset_success
 signal password_reset_failed(error: String)
 
-# ── AUTH ───────────────────────────────────────────────────────────────────────
 func sign_up(email: String, password: String):
 	var url  = AUTH_URL + "signUp?key=" + API_KEY
 	var body = JSON.stringify({"email": email, "password": password, "returnSecureToken": true})
@@ -38,15 +37,17 @@ func sign_in_anonymous():
 	_send_request(url, body, "_on_auth_response")
 
 func sign_out():
-	id_token = ""; refresh_token = ""; user_id = ""
-	manager_email = ""; manager_connected = false
+	id_token = ""
+	refresh_token = ""
+	user_id = ""
+	manager_email = ""
+	manager_connected = false
 
 func send_password_reset(email: String):
 	var url  = AUTH_URL + "sendOobCode?key=" + API_KEY
 	var body = JSON.stringify({"requestType": "PASSWORD_RESET", "email": email})
 	_send_request(url, body, "_on_password_reset_response")
 
-# ── FIRESTORE — OPÉRATIONS INDIVIDUELLES ─────────────────────────────────────
 func create_document(collection: String, doc_id: String, data: Dictionary):
 	var url  = FIRESTORE_URL + collection + "/" + doc_id
 	var body = JSON.stringify({"fields": _to_firestore(data)})
@@ -69,27 +70,20 @@ func delete_document(collection: String, doc_id: String):
 	var url = FIRESTORE_URL + collection + "/" + doc_id
 	_send_request_auth(url, "", "_on_firestore_response", HTTPClient.METHOD_DELETE)
 
-# ── FIRESTORE — BATCH WRITE ───────────────────────────────────────────────────
-# Envoie jusqu'à 500 documents en UNE SEULE requête HTTP.
-# documents_array : Array de Dictionary {collection, doc_id, data}
-# Exemple : [{"collection":"managers/uid/cards","doc_id":"abc","data":{...}}, ...]
 func batch_write(documents_array: Array):
+	print("BATCH user_id: ", user_id)
+	print("BATCH token début: ", id_token.left(20))
+	
 	var writes = []
 	for item in documents_array:
 		var col    = item.get("collection", "")
 		var doc_id = item.get("doc_id", "")
 		var data   = item.get("data", {})
-		var name   = "projects/" + PROJECT_ID + "/databases/(default)/documents/" + col + "/" + doc_id
-		writes.append({
-			"update": {
-				"name":   name,
-				"fields": _to_firestore(data)
-			}
-		})
+		var doc_name = "projects/" + PROJECT_ID + "/databases/(default)/documents/" + col + "/" + doc_id
+		writes.append({"update": {"name": doc_name, "fields": _to_firestore(data)}})
 	var body = JSON.stringify({"writes": writes})
 	_send_request_auth(BATCH_URL, body, "_on_batch_response", HTTPClient.METHOD_POST)
 
-# ── REQUÊTES HTTP ─────────────────────────────────────────────────────────────
 func _send_request(url: String, body: String, callback: String):
 	var http = HTTPRequest.new()
 	add_child(http)
@@ -103,12 +97,15 @@ func _send_request_auth(url: String, body: String, callback: String, method: int
 	var headers = ["Content-Type: application/json", "Authorization: Bearer " + id_token]
 	http.request(url, headers, method, body)
 
-# ── RÉPONSES ──────────────────────────────────────────────────────────────────
 func _on_auth_response(_result, response_code, _headers, body, http):
+	print("AUTH response code: ", response_code)
+	print("AUTH body: ", body.get_string_from_utf8().left(100))
+	http.queue_free()
 	http.queue_free()
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	if response == null:
-		emit_signal("auth_failed", "Parse error"); return
+		emit_signal("auth_failed", "Parse error")
+		return
 	if response_code == 200:
 		id_token          = response.get("idToken", "")
 		refresh_token     = response.get("refreshToken", "")
@@ -118,45 +115,54 @@ func _on_auth_response(_result, response_code, _headers, body, http):
 		emit_signal("auth_success", user_id)
 	else:
 		var err = response.get("error", {})
-		emit_signal("auth_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
+		var msg = err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error"
+		emit_signal("auth_failed", msg)
 
 func _on_password_reset_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	if response_code == 200:
-		emit_signal("password_reset_success"); return
+		emit_signal("password_reset_success")
+		return
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	if response == null:
-		emit_signal("password_reset_failed", "Parse error"); return
+		emit_signal("password_reset_failed", "Parse error")
+		return
 	var err = response.get("error", {})
-	emit_signal("password_reset_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
+	var msg = err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error"
+	emit_signal("password_reset_failed", msg)
 
 func _on_firestore_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	if response == null:
-		emit_signal("firestore_failed", "Parse error"); return
+		emit_signal("firestore_failed", "Parse error")
+		return
 	if response_code in [200, 201]:
 		emit_signal("firestore_success", _from_firestore(response))
 	else:
 		var err = response.get("error", {})
-		emit_signal("firestore_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
+		var msg = err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error"
+		emit_signal("firestore_failed", msg)
 
 func _on_batch_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	if response_code == 200:
 		emit_signal("batch_success")
-	else:
-		var response = JSON.parse_string(body.get_string_from_utf8())
-		if response == null:
-			emit_signal("batch_failed", "Parse error"); return
-		var err = response.get("error", {})
-		emit_signal("batch_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
+		return
+	var response = JSON.parse_string(body.get_string_from_utf8())
+	if response == null:
+		emit_signal("batch_failed", "Parse error")
+		return
+	var err = response.get("error", {})
+	var msg = err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error"
+	emit_signal("batch_failed", msg)
 
 func _on_collection_response(_result, response_code, _headers, body, http):
 	http.queue_free()
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	if response == null:
-		emit_signal("firestore_failed", "Parse error"); return
+		emit_signal("firestore_failed", "Parse error")
+		return
 	if response_code == 200:
 		var documents = response.get("documents", [])
 		var result    = []
@@ -167,9 +173,9 @@ func _on_collection_response(_result, response_code, _headers, body, http):
 		emit_signal("firestore_success", {"documents": result})
 	else:
 		var err = response.get("error", {})
-		emit_signal("firestore_failed", err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error")
+		var msg = err.get("message", "Unknown error") if typeof(err) == TYPE_DICTIONARY else "Unknown error"
+		emit_signal("firestore_failed", msg)
 
-# ── CONVERSION FIRESTORE ──────────────────────────────────────────────────────
 func _to_firestore(data: Dictionary) -> Dictionary:
 	var fields = {}
 	for key in data:

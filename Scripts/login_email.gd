@@ -120,6 +120,7 @@ func _disconnect_profile_signals():
 
 func _on_auth_failed(_error: String):
 	if _mode == "signup":
+		lbl_incorrect_email.text = _error
 		lbl_incorrect_email.visible = true
 	else:
 		lbl_incorrect_password.visible = true
