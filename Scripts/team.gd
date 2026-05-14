@@ -177,8 +177,8 @@ func _rebuild_slot_card_data():
    continue
   for card in all_cards:
    if card.get("card_id", "") == slot_card_ids[i]:
-    slot_card_data[i] = card
-    break
+	slot_card_data[i] = card
+	break
 
 # ── REFRESH SLOTS ─────────────────────────────────────────────────────────────
 func _refresh_slots():
@@ -395,15 +395,15 @@ func _on_press(pos: Vector2):
   for i in range(popup_card_nodes.size()):
    var card = popup_card_nodes[i]
    if card.bg_card_background.get_global_rect().has_point(pos):
-    press_card_index = i
-    press_holding = true
-    press_timer = 0.0
-    return
+	press_card_index = i
+	press_holding = true
+	press_timer = 0.0
+	return
 
  for i in range(8):
   if _panel_hit(slot_nodes[i], pos):
    if slot_card_ids[i] != "":
-    _open_dcp(i)
+	_open_dcp(i)
    return
 
 func _on_release(pos: Vector2):
