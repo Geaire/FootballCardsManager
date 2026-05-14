@@ -41,7 +41,7 @@ func _ready():
 	_setup_deco_card(card_deco1, 1, GameState.deco1_color)
 	_setup_deco_card(card_deco2, 2, GameState.deco2_color)
 
-func _setup_deco_card(card: Node2D, idx: int, saved_color: String):
+func _setup_deco_card(card: Control, idx: int, saved_color: String):
 	card.deco_index = idx
 	card.clickable  = true
 	if saved_color == "":

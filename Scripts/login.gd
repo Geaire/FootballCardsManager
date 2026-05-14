@@ -12,7 +12,7 @@ const SCENE_SCHEDULE       = "res://Scenes/schedule.tscn"
 const SCENE_LOGIN_EMAIL    = "res://Scenes/login_email.tscn"
 
 const MOBILE_SAVE_TRANSLATIONS = {
-	"fr": "Save on Mobile",
+	"fr": "Sauvergarde sur Mobile",
 	"en": "Save on Mobile",
 	"es": "Guardar en Móvil",
 	"de": "Auf Handy speichern",

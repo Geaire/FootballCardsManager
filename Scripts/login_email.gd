@@ -31,9 +31,11 @@ func _ready():
 	img_send_reset.visible         = false
 	btn_send_reset.visible         = false
 	lbl_reset_confirm.visible      = false
-	inp_email.max_length    = MAX_EMAIL_LENGTH
-	inp_password.max_length = MAX_PASSWORD_LENGTH
-	inp_forgot.max_length   = MAX_EMAIL_LENGTH
+	inp_email.max_length           = MAX_EMAIL_LENGTH
+	inp_password.max_length        = MAX_PASSWORD_LENGTH
+	inp_forgot.max_length          = MAX_EMAIL_LENGTH
+	inp_email.placeholder_text     = "Email"
+	inp_password.placeholder_text  = "Password"
 	btn_login.gui_input.connect(_on_btn_login_input)
 	btn_signup.gui_input.connect(_on_btn_signup_input)
 	btn_forgot.gui_input.connect(_on_btn_forgot_input)
@@ -61,9 +63,13 @@ func _try_auth():
 	lbl_incorrect_email.visible    = false
 	lbl_incorrect_password.visible = false
 	if not _is_valid_email(email):
-		lbl_incorrect_email.visible = true; return
+		lbl_incorrect_email.text    = "Invalid email"
+		lbl_incorrect_email.visible = true
+		return
 	if password.length() < 6:
-		lbl_incorrect_password.visible = true; return
+		lbl_incorrect_password.text    = "Password too short (min 6)"
+		lbl_incorrect_password.visible = true
+		return
 	if _mode == "login": Firebase.sign_in(email, password)
 	else:                Firebase.sign_up(email, password)
 
@@ -86,7 +92,9 @@ func _send_reset():
 	var email = inp_forgot.text.strip_edges()
 	lbl_incorrect_email.visible = false
 	if not _is_valid_email(email):
-		lbl_incorrect_email.visible = true; return
+		lbl_incorrect_email.text    = "Invalid email"
+		lbl_incorrect_email.visible = true
+		return
 	Firebase.send_password_reset(email)
 
 func _on_password_reset_success():
@@ -95,34 +103,41 @@ func _on_password_reset_success():
 	btn_send_reset.visible    = false
 	lbl_reset_confirm.visible = true
 
-# ── AUTH SUCCESS ──────────────────────────────────────────────────────────────
+# ── AUTH ───────────────────────────────────────────────────────────────────────
 func _on_auth_success(_user_id: String):
-	# Vérifier avant de connecter — évite "signal already connected"
-	if not Firebase.firestore_success.is_connected(_on_profile_found):
-		Firebase.firestore_success.connect(_on_profile_found)
-	if not Firebase.firestore_failed.is_connected(_on_profile_not_found):
-		Firebase.firestore_failed.connect(_on_profile_not_found)
+	# Reset obligatoire : cards_loaded peut rester true d'une session précédente
+	GameState.cards_loaded  = false
+	GameState.cards_yellow  = []
+	GameState.cards_orange  = []
+	GameState.cards_red     = []
+	GameState.cards_magenta = []
+	GameState.cards_blue    = []
+	GameState.cards_white   = []
+	GameState.cards_special = []
+	Firebase.firestore_success.connect(_on_profile_found)
+	Firebase.firestore_failed.connect(_on_profile_not_found)
 	Firebase.get_document("managers", Firebase.user_id)
 
 func _on_profile_found(_data: Dictionary):
-	_disconnect_profile_signals()
-	get_tree().change_scene_to_file(SCENE_SCHEDULE)
-
-func _on_profile_not_found(_error: String):
-	_disconnect_profile_signals()
-	get_tree().change_scene_to_file(SCENE_CREATE_PROFILE)
-
-func _disconnect_profile_signals():
 	if Firebase.firestore_success.is_connected(_on_profile_found):
 		Firebase.firestore_success.disconnect(_on_profile_found)
 	if Firebase.firestore_failed.is_connected(_on_profile_not_found):
 		Firebase.firestore_failed.disconnect(_on_profile_not_found)
+	get_tree().change_scene_to_file(SCENE_SCHEDULE)
+
+func _on_profile_not_found(_error: String):
+	if Firebase.firestore_success.is_connected(_on_profile_found):
+		Firebase.firestore_success.disconnect(_on_profile_found)
+	if Firebase.firestore_failed.is_connected(_on_profile_not_found):
+		Firebase.firestore_failed.disconnect(_on_profile_not_found)
+	get_tree().change_scene_to_file(SCENE_CREATE_PROFILE)
 
 func _on_auth_failed(_error: String):
 	if _mode == "signup":
-		lbl_incorrect_email.text = _error
+		lbl_incorrect_email.text    = "Email already used"
 		lbl_incorrect_email.visible = true
 	else:
+		lbl_incorrect_password.text    = "Incorrect email or password"
 		lbl_incorrect_password.visible = true
 		btn_forgot.visible             = true
 
@@ -138,4 +153,3 @@ func _exit_tree():
 		Firebase.auth_failed.disconnect(_on_auth_failed)
 	if Firebase.password_reset_success.is_connected(_on_password_reset_success):
 		Firebase.password_reset_success.disconnect(_on_password_reset_success)
-	_disconnect_profile_signals()

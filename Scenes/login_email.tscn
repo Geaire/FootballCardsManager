@@ -63,7 +63,6 @@ offset_bottom = 345.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_kj54y")
-text = "Email"
 alignment = 1
 
 [node name="LBL_IncorrectEmail" type="Label" parent="." unique_id=1930123187]
@@ -87,7 +86,6 @@ offset_bottom = 545.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_qpywc")
-text = "Password"
 alignment = 1
 
 [node name="LBL_IncorrectPassword" type="Label" parent="." unique_id=647548184]

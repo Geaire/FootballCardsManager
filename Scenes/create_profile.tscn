@@ -110,3 +110,24 @@ theme_override_font_sizes/font_size = 40
 text = "Confirm"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LBL_Loading" type="Label" parent="." unique_id=1703809740]
+z_index = 1
+offset_left = 704.0
+offset_top = 760.0
+offset_right = 1280.0
+offset_bottom = 832.0
+theme_override_font_sizes/font_size = 40
+text = "Loading"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PRG_Loading" type="ProgressBar" parent="." unique_id=247848381]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = 576.0
+offset_top = 840.0
+offset_right = 1408.0
+offset_bottom = 889.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32

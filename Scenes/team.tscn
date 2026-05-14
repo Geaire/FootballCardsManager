@@ -574,12 +574,12 @@ custom_minimum_size = Vector2(240, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ib3d")
 
-[node name="PopupCards" type="Node2D" parent="." unique_id=1996014285]
+[node name="PopupCards" type="CanvasLayer" parent="." unique_id=50206781]
+layer = 10
 visible = false
 
 [node name="BG_Popup" type="PanelContainer" parent="PopupCards" unique_id=2031972699]
 modulate = Color(0, 0, 0, 1)
-z_index = 100
 offset_top = 455.0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -587,7 +587,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_nak4y")
 
 [node name="BG_GridPopup" type="Sprite2D" parent="PopupCards" unique_id=1920555249]
 modulate = Color(0, 0, 1, 1)
-z_index = 101
 position = Vector2(960, 764)
 texture = ExtResource("6_bdi2c")
 
@@ -608,3 +607,6 @@ layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 6
+
+[node name="DragLayer" type="CanvasLayer" parent="." unique_id=1042879651]
+layer = 20

@@ -1,0 +1,343 @@
+[gd_scene format=3 uid="uid://b8vcuptndf3k0"]
+
+[ext_resource type="Texture2D" uid="uid://dv03oh1ng7i0n" path="res://Sprites/Backgrounds/bg_grid.png" id="1_vtjrj"]
+[ext_resource type="Texture2D" uid="uid://xrpwxbub1hmj" path="res://Sprites/Balls/img_ball_2.png" id="2_nveqr"]
+[ext_resource type="FontFile" uid="uid://dnc02xec6rxb7" path="res://Fonts/NotoSansArabicUI-Black.ttf" id="2_q22jy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtjrj"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 12
+expand_margin_top = 17.0
+
+[node name="Bonus" type="Node2D" unique_id=1324560781]
+
+[node name="BG_Bonus" type="ColorRect" parent="." unique_id=543596445]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="BG_GridBonus" type="Sprite2D" parent="." unique_id=438458585]
+modulate = Color(1, 1, 0, 1)
+z_index = 1
+position = Vector2(960, 540)
+texture = ExtResource("1_vtjrj")
+
+[node name="BTN_Help" type="Sprite2D" parent="." unique_id=315454768]
+z_index = 2
+position = Vector2(1864, 153)
+texture = ExtResource("2_nveqr")
+
+[node name="LBL_TitleBonusPlayers" type="Label" parent="." unique_id=1498394994]
+z_index = 3
+offset_left = 117.0
+offset_top = 182.0
+offset_right = 942.0
+offset_bottom = 986.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_q22jy")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtjrj")
+text = "BONUS POSITIONS"
+horizontal_alignment = 1
+
+[node name="LBL_TitleBonusSkills" type="Label" parent="." unique_id=569275802]
+z_index = 4
+offset_left = 975.0
+offset_top = 24.0
+offset_right = 1345.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_q22jy")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtjrj")
+text = "BONUS SKILLS"
+horizontal_alignment = 1
+
+[node name="LBL_TitleBonusSpecialties" type="Label" parent="." unique_id=920844293]
+z_index = 4
+offset_left = 1451.0
+offset_top = 23.0
+offset_right = 1821.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_q22jy")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtjrj")
+text = "BONUS SPECIALTIES"
+horizontal_alignment = 1
+
+[node name="LBL_TitleBonusTeam" type="Label" parent="." unique_id=368799090]
+z_index = 4
+offset_left = 556.0
+offset_top = 26.0
+offset_right = 926.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_q22jy")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtjrj")
+text = "BONUS TEAM"
+horizontal_alignment = 1
+
+[node name="LBL_TitleBonusSpecials" type="Label" parent="." unique_id=563098292]
+z_index = 4
+offset_left = 1454.0
+offset_top = 98.0
+offset_right = 1824.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_q22jy")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtjrj")
+text = "BONUS SPECIALS"
+horizontal_alignment = 1
+
+[node name="LBL_TitleBonusPositions" type="Label" parent="." unique_id=469358038]
+z_index = 4
+offset_left = 468.0
+offset_top = 100.0
+offset_right = 838.0
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_q22jy")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtjrj")
+text = "BONUS PLAYERS"
+horizontal_alignment = 1
+
+[node name="LBL_TitleBonusExperience" type="Label" parent="." unique_id=1534747080]
+z_index = 4
+offset_left = 19.0
+offset_top = 18.0
+offset_right = 389.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_q22jy")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtjrj")
+text = "BONUS EXPERIENCE"
+horizontal_alignment = 1
+
+[node name="LBL_TitleBonusPhysical" type="Label" parent="." unique_id=1351849888]
+z_index = 4
+offset_left = 981.0
+offset_top = 102.0
+offset_right = 1351.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_q22jy")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtjrj")
+text = "BONUS PHYSICAL"
+horizontal_alignment = 1
+
+[node name="BTN_TitleBonus1" type="Label" parent="." unique_id=1057408065]
+z_index = 4
+offset_left = 291.0
+offset_top = 247.0
+offset_right = 786.0
+offset_bottom = 286.0
+theme_override_font_sizes/font_size = 24
+text = "Détail"
+horizontal_alignment = 1
+
+[node name="BTN_NameBonus2" type="Label" parent="." unique_id=1632099976]
+z_index = 4
+offset_left = 329.0
+offset_top = 294.0
+offset_right = 810.0
+offset_bottom = 333.0
+theme_override_font_sizes/font_size = 24
+text = "DC/DG + DG/MG + MG/DC"
+
+[node name="BTN_Title NamesBonus1" type="Label" parent="." unique_id=450190688]
+z_index = 4
+offset_left = 154.0
+offset_top = 252.0
+offset_right = 353.0
+offset_bottom = 291.0
+theme_override_font_sizes/font_size = 24
+text = "Nom"
+
+[node name="BTN_TitleBonus2" type="Label" parent="." unique_id=1218097058]
+z_index = 4
+offset_left = 132.0
+offset_top = 290.0
+offset_right = 323.0
+offset_bottom = 330.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus3" type="Label" parent="." unique_id=1569462455]
+z_index = 4
+offset_left = 132.0
+offset_top = 330.0
+offset_right = 323.0
+offset_bottom = 370.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus4" type="Label" parent="." unique_id=1003138142]
+z_index = 4
+offset_left = 132.0
+offset_top = 370.0
+offset_right = 323.0
+offset_bottom = 410.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus5" type="Label" parent="." unique_id=2049925664]
+z_index = 4
+offset_left = 132.0
+offset_top = 410.0
+offset_right = 323.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus6" type="Label" parent="." unique_id=767667268]
+z_index = 4
+offset_left = 132.0
+offset_top = 450.0
+offset_right = 323.0
+offset_bottom = 490.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus7" type="Label" parent="." unique_id=1665306883]
+z_index = 4
+offset_left = 132.0
+offset_top = 490.0
+offset_right = 323.0
+offset_bottom = 530.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus8" type="Label" parent="." unique_id=1482856267]
+z_index = 4
+offset_left = 132.0
+offset_top = 530.0
+offset_right = 323.0
+offset_bottom = 570.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus9" type="Label" parent="." unique_id=1336690996]
+z_index = 4
+offset_left = 132.0
+offset_top = 570.0
+offset_right = 323.0
+offset_bottom = 610.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus10" type="Label" parent="." unique_id=1184474844]
+z_index = 4
+offset_left = 132.0
+offset_top = 610.0
+offset_right = 323.0
+offset_bottom = 650.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus11" type="Label" parent="." unique_id=2001860630]
+z_index = 4
+offset_left = 132.0
+offset_top = 650.0
+offset_right = 323.0
+offset_bottom = 690.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus12" type="Label" parent="." unique_id=880722111]
+z_index = 4
+offset_left = 132.0
+offset_top = 690.0
+offset_right = 323.0
+offset_bottom = 730.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus13" type="Label" parent="." unique_id=1310952178]
+z_index = 4
+offset_left = 132.0
+offset_top = 730.0
+offset_right = 323.0
+offset_bottom = 770.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus14" type="Label" parent="." unique_id=1912825478]
+z_index = 4
+offset_left = 132.0
+offset_top = 770.0
+offset_right = 323.0
+offset_bottom = 810.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus15" type="Label" parent="." unique_id=379209158]
+z_index = 4
+offset_left = 132.0
+offset_top = 810.0
+offset_right = 323.0
+offset_bottom = 850.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus16" type="Label" parent="." unique_id=69917461]
+z_index = 4
+offset_left = 132.0
+offset_top = 850.0
+offset_right = 323.0
+offset_bottom = 890.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus17" type="Label" parent="." unique_id=623566731]
+z_index = 4
+offset_left = 132.0
+offset_top = 890.0
+offset_right = 323.0
+offset_bottom = 930.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_TitleBonus18" type="Label" parent="." unique_id=157444098]
+z_index = 4
+offset_left = 132.0
+offset_top = 930.0
+offset_right = 323.0
+offset_bottom = 970.0
+theme_override_font_sizes/font_size = 24
+text = "Jeu en triangle"
+
+[node name="BTN_PourcentBonus1" type="Label" parent="." unique_id=1020039044]
+z_index = 4
+offset_left = 837.0
+offset_top = 248.0
+offset_right = 907.0
+offset_bottom = 287.0
+theme_override_font_sizes/font_size = 24
+text = "%"
+horizontal_alignment = 1
+
+[node name="BTN_PourcentBonus2" type="Label" parent="." unique_id=365432792]
+z_index = 4
+offset_left = 822.0
+offset_top = 293.0
+offset_right = 920.0
+offset_bottom = 332.0
+theme_override_font_sizes/font_size = 24
+text = "0.47"
+horizontal_alignment = 1

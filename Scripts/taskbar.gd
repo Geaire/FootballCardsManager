@@ -1,18 +1,16 @@
 extends CanvasLayer
 
 const SCENE_COLORS = {
-	# Orange RGB 255/128/0
-	"res://Scenes/schedule.tscn":           Color(1.0,  0.502, 0.0),
-	"res://Scenes/team.tscn":               Color(1.0,  1.0,   1.0),
-	"res://Scenes/collection_flags.tscn":   Color(0.0,  0.8,   0.2),
-	"res://Scenes/collection_country.tscn": Color(0.0,  0.8,   0.2),
-	"res://Scenes/detail_card_player.tscn": Color(1.0,  0.85,  0.0),
-	"res://Scenes/main_menu.tscn":          Color(1.0,  1.0,   1.0),
+	"res://Scenes/schedule.tscn":           Color(1.0, 0.55, 0.0),
+	"res://Scenes/team.tscn":               Color(0.0, 0.4,  1.0),
+	"res://Scenes/collection_flags.tscn":   Color(0.0, 0.8,  0.2),
+	"res://Scenes/collection_country.tscn": Color(0.0, 0.8,  0.2),
+	"res://Scenes/detail_card_player.tscn": Color(1.0, 0.85, 0.0),
+	"res://Scenes/main_menu.tscn":          Color(1.0, 1.0,  1.0),
 }
 
 const DEFAULT_COLOR = Color(1.0, 1.0, 1.0)
 
-# Scènes disponibles — les vides seront activées au fur et à mesure
 const SCENE_PATHS = {
 	"competition":  "",
 	"team":         "res://Scenes/team.tscn",
@@ -24,6 +22,12 @@ const SCENE_PATHS = {
 	"history":      "",
 	"settings":     "",
 }
+
+# Échelle et opacité des icônes inactives
+const SCALE_ACTIVE   = Vector2(1.0,  1.0)
+const SCALE_INACTIVE = Vector2(0.78, 0.78)
+const ALPHA_ACTIVE   = 1.0
+const ALPHA_INACTIVE = 0.5
 
 @onready var bg_taskbar_bottom = $TaskbarBottom/BG_TaskbarBottom
 @onready var bg_taskbar_top    = $TaskbarTop/BG_TaskbarTop
@@ -39,8 +43,6 @@ const SCENE_PATHS = {
 @onready var btn_settings    = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer/BTN_Settings
 
 var btn_map: Dictionary = {}
-var active_btn: Sprite2D = null
-var highlight_panel: PanelContainer = null
 
 func _ready():
 	btn_map = {
@@ -54,26 +56,8 @@ func _ready():
 		"history":     btn_history,
 		"settings":    btn_settings,
 	}
-
-	# PanelContainer unique pour le highlight de l'onglet actif
-	highlight_panel = PanelContainer.new()
-	highlight_panel.size = Vector2(96, 80)
-	highlight_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var hbox = $TaskbarBottom/BG_TaskbarBottom/HBoxContainer
-	hbox.add_child(highlight_panel)
-	highlight_panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
-	highlight_panel.top_level = true
-	_hide_highlight()
-
 	_update_border_color()
 	get_tree().root.child_entered_tree.connect(_on_scene_changed)
-
-func _hide_highlight():
-	if highlight_panel == null: return
-	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0, 0, 0, 0)
-	style.set_border_width_all(0)
-	highlight_panel.add_theme_stylebox_override("panel", style)
 
 func _update_border_color():
 	var scene_path = ""
@@ -81,44 +65,35 @@ func _update_border_color():
 		scene_path = get_tree().current_scene.scene_file_path
 	var col = SCENE_COLORS.get(scene_path, DEFAULT_COLOR)
 	_set_border_color(bg_taskbar_bottom, col)
-	_set_border_color(bg_taskbar_top,    col)
-	_update_active_btn(scene_path, col)
+	_set_border_color(bg_taskbar_top, col)
+	_update_active_btn(scene_path)
 
 func _set_border_color(panel: PanelContainer, col: Color):
-	var style = panel.get_theme_stylebox("panel").duplicate()
+	var existing = panel.get_theme_stylebox("panel")
+	var style: StyleBoxFlat
+	if existing is StyleBoxFlat:
+		style = existing.duplicate() as StyleBoxFlat
+	else:
+		style = StyleBoxFlat.new()
 	style.border_color = col
 	panel.add_theme_stylebox_override("panel", style)
 
-func _update_active_btn(scene_path: String, col: Color):
-	# Tous les boutons en grisé
+func _update_active_btn(scene_path: String):
+	# Toutes les icônes → petites et semi-transparentes
 	for key in btn_map:
 		var btn = btn_map[key]
-		if btn: btn.modulate = Color(0.55, 0.55, 0.55, 0.65)
+		if btn == null: continue
+		btn.scale   = SCALE_INACTIVE
+		btn.modulate = Color(1.0, 1.0, 1.0, ALPHA_INACTIVE)
 
-	_hide_highlight()
-
-	# Bouton actif en pleine luminosité + highlight
+	# Icône active → taille normale et opaque
 	for key in SCENE_PATHS:
-		if SCENE_PATHS[key] != "" and SCENE_PATHS[key] == scene_path and btn_map.has(key):
+		if SCENE_PATHS[key] == scene_path and btn_map.has(key):
 			var btn = btn_map[key]
-			if btn:
-				btn.modulate = Color(1.0, 1.0, 1.0, 1.0)
-				active_btn   = btn
-				_move_highlight(btn, col)
+			if btn == null: continue
+			btn.scale    = SCALE_ACTIVE
+			btn.modulate = Color(1.0, 1.0, 1.0, ALPHA_ACTIVE)
 			break
-
-func _move_highlight(btn: Sprite2D, col: Color):
-	if highlight_panel == null: return
-	var btn_global = btn.global_position
-	var btn_size   = Vector2(96, 80)
-	highlight_panel.global_position = btn_global - btn_size / 2.0
-	highlight_panel.size = btn_size
-	var style = StyleBoxFlat.new()
-	style.bg_color     = Color(col.r, col.g, col.b, 0.12)
-	style.border_color = Color(col.r, col.g, col.b, 1.0)
-	style.set_border_width_all(1)
-	style.set_corner_radius_all(8)
-	highlight_panel.add_theme_stylebox_override("panel", style)
 
 func _on_scene_changed(_node):
 	await get_tree().process_frame
@@ -136,11 +111,11 @@ func _input(event):
 
 func _navigate_to(key: String):
 	var path = SCENE_PATHS.get(key, "")
-	if path == "": return   # scène pas encore créée
+	if path == "": return
 	var current = ""
 	if get_tree().current_scene:
 		current = get_tree().current_scene.scene_file_path
-	if current == path: return  # déjà sur cette scène
+	if current == path: return
 	get_tree().change_scene_to_file(path)
 
 func _sprite_hit(sprite: Sprite2D, pos: Vector2) -> bool:
