@@ -24,16 +24,30 @@ const NOTE_RANGES = {
 	"special": "???",
 }
 
+# Même constante que schedule.gd pour l'affichage des compétitions
+const COMP_COLORS = {
+	"championnat_classique": Color(0.0,   0.200, 0.400),
+	"coupe_classique":       Color(0.0,   0.808, 0.820),
+	"championnat_pantheon":  Color(0.416, 0.051, 0.678),
+	"coupe_pantheon":        Color(1.0,   0.412, 0.706),
+	"championnat_jeunes":    Color(0.545, 0.271, 0.075),
+	"coupe_jeunes":          Color(0.722, 0.722, 0.722),
+	"championnat_asso":      Color(0.502, 0.0,   0.125),
+	"coupe_asso":            Color(1.0,   0.420, 0.420),
+	"championnat_special":   Color(0.176, 0.416, 0.310),
+	"autre":                 Color(0.584, 0.835, 0.698),
+}
+
 # ── ÉTAT ──────────────────────────────────────────────────────────────────────
 var slot_card_ids:       Array      = ["","","","","","","",""]
 var slot_card_data:      Array      = [{},{},{},{},{},{},{},{}]
 var current_popup_color: String     = ""
 var current_popup_cards: Array      = []
-var popup_card_nodes:    Array      = []  # instances card_player (Control)
+var popup_card_nodes:    Array      = []
 
 var drag_active:         bool       = false
 var drag_card_data:      Dictionary = {}
-var drag_visual:         Control    = null  # card_player Control dans DragLayer
+var drag_visual:         Control    = null
 var press_timer:         float      = 0.0
 var press_holding:       bool       = false
 var press_card_index:    int        = -1
@@ -100,19 +114,23 @@ func _ready():
 	_setup_color_cards()
 	_setup_counters()
 
+	# FIX race condition : charger les shots APRÈS les cartes
+	# Les deux appellent Firebase.firestore_success → conflit si simultanés
 	if not GameState.cards_loaded:
 		SquadLoader.squad_loaded.connect(_on_squad_loaded)
 		SquadLoader.load_squad()
 	else:
 		_load_team_data()
+		_load_schedule_shots()  # shots en dernier, après les cartes
 
 func _on_squad_loaded():
 	if SquadLoader.squad_loaded.is_connected(_on_squad_loaded):
 		SquadLoader.squad_loaded.disconnect(_on_squad_loaded)
 	_setup_counters()
 	_load_team_data()
+	_load_schedule_shots()  # shots en dernier, après les cartes
 
-# ── COULEURS ──────────────────────────────────────────────────────────────────
+# ── COULEURS CARTES ───────────────────────────────────────────────────────────
 func _setup_color_cards():
 	_set_panel_color(yellow_bg,  CARD_COLORS["yellow"])
 	_set_panel_color(orange_bg,  CARD_COLORS["orange"])
@@ -139,7 +157,52 @@ func _setup_counters():
 	white_counter.text   = str(GameState.cards_white.size()).lpad(4, "0")
 	special_counter.text = str(GameState.cards_special.size()).lpad(4, "0")
 
-# ── FIREBASE ──────────────────────────────────────────────────────────────────
+# ── SHOTS COMPETITIONS — charge depuis Firestore (schedule) ──────────────────
+func _load_schedule_shots():
+	Firebase.firestore_success.connect(_on_schedule_loaded)
+	Firebase.firestore_failed.connect(_on_schedule_failed)
+	Firebase.get_document("managers/" + Firebase.user_id + "/schedule", "current_week")
+
+func _on_schedule_loaded(data: Dictionary):
+	if Firebase.firestore_success.is_connected(_on_schedule_loaded):
+		Firebase.firestore_success.disconnect(_on_schedule_loaded)
+	if Firebase.firestore_failed.is_connected(_on_schedule_failed):
+		Firebase.firestore_failed.disconnect(_on_schedule_failed)
+	_display_schedule_shots(data)
+
+func _on_schedule_failed(_error: String):
+	if Firebase.firestore_success.is_connected(_on_schedule_loaded):
+		Firebase.firestore_success.disconnect(_on_schedule_loaded)
+	if Firebase.firestore_failed.is_connected(_on_schedule_failed):
+		Firebase.firestore_failed.disconnect(_on_schedule_failed)
+
+func _display_schedule_shots(data: Dictionary):
+	for i in range(1, 9):
+		var bg  = shot_nodes[i - 1]
+		var key = "shot_%d" % i
+		var s   = data.get(key, {})
+		if typeof(s) == TYPE_DICTIONARY and s.has("name") and s["name"] != "":
+			var comp_color = COMP_COLORS.get(s.get("type", ""), Color(0.3, 0.3, 0.3))
+			_set_panel_color(bg, comp_color)
+			# Ajouter ou mettre à jour le label de compétition
+			var lbl = bg.get_node_or_null("LBL_ShotComp")
+			if lbl == null:
+				lbl = Label.new()
+				lbl.name = "LBL_ShotComp"
+				lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+				lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+				lbl.vertical_alignment   = VERTICAL_ALIGNMENT_CENTER
+				lbl.autowrap_mode        = TextServer.AUTOWRAP_WORD
+				lbl.add_theme_font_size_override("font_size", 11)
+				lbl.add_theme_color_override("font_color", Color(1, 1, 1))
+				bg.add_child(lbl)
+			lbl.text = s.get("name", "")
+		else:
+			_set_panel_color(bg, Color(1, 1, 1, 0.15))
+			var lbl = bg.get_node_or_null("LBL_ShotComp")
+			if lbl: lbl.text = ""
+
+# ── FIREBASE TEAM ────────────────────────────────────────────────────────────
 func _load_team_data():
 	Firebase.firestore_success.connect(_on_team_loaded)
 	Firebase.firestore_failed.connect(_on_team_failed)
@@ -169,8 +232,7 @@ func _rebuild_slot_card_data():
 		if slot_card_ids[i] == "": continue
 		for c in all_cards:
 			if c.get("card_id", "") == slot_card_ids[i]:
-				slot_card_data[i] = c
-				break
+				slot_card_data[i] = c; break
 
 func _save_team():
 	var data: Dictionary = {}
@@ -186,7 +248,7 @@ func _refresh_slots():
 			var c = CARD_COLORS.get(slot_card_data[i].get("color", ""), Color(0.7,0.7,0.7))
 			_set_panel_color(bg, c)
 		else:
-			_set_panel_color(bg, Color(1,1,1))
+			_set_panel_color(bg, Color(1, 1, 1))
 
 # ── POPUP ─────────────────────────────────────────────────────────────────────
 func _open_popup(color: String):
@@ -195,12 +257,11 @@ func _open_popup(color: String):
 	cards.sort_custom(func(a, b): return int(a.get("note",0)) > int(b.get("note",0)))
 	current_popup_cards = cards
 	_populate_card_grid(cards)
-	# Centrage + espacement des cartes
+	# Espacement entre les cartes
 	var grid = get_node_or_null("PopupCards/CNT_ScrollCards/CNT_CardGrid")
 	if grid:
 		grid.add_theme_constant_override("h_separation", 12)
 		grid.add_theme_constant_override("v_separation", 12)
-		grid.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	popup_cards.visible = true
 
 func _close_popup():
@@ -225,12 +286,10 @@ func _get_cards_by_color(color: String) -> Array:
 		"special": return GameState.cards_special
 	return []
 
-# ── POPULATE GRID — vraies cartes card_player (Control) ───────────────────────
+# ── POPULATE GRID — vraies cartes card_player (Control) ──────────────────────
 func _populate_card_grid(cards: Array):
 	var grid = get_node_or_null("PopupCards/CNT_ScrollCards/CNT_CardGrid")
-	if grid == null:
-		push_error("CNT_CardGrid introuvable!")
-		return
+	if grid == null: push_error("CNT_CardGrid introuvable!"); return
 	for child in grid.get_children():
 		child.queue_free()
 	popup_card_nodes.clear()
@@ -257,7 +316,7 @@ func _populate_card_grid(cards: Array):
 		card.display()
 		popup_card_nodes.append(card)
 
-# ── PROCESS — appui long ──────────────────────────────────────────────────────
+# ── PROCESS — appui long → drag ───────────────────────────────────────────────
 func _process(delta):
 	if press_holding and press_card_index >= 0:
 		press_timer += delta
@@ -275,15 +334,15 @@ func _start_drag_from_popup(card_index: int):
 	drag_card_data = card_data
 	var cs         = load(CARD_SCENE)
 	drag_visual    = cs.instantiate() as Control
-	drag_visual.clickable          = false
-	drag_visual.note               = int(card_data.get("note", 0))
-	drag_visual.color              = card_data.get("color", "yellow")
-	drag_visual.position1          = card_data.get("position1", "")
-	drag_visual.nationality        = card_data.get("nationality", "")
-	drag_visual.firstname          = card_data.get("firstname", "")
-	drag_visual.lastname           = card_data.get("lastname", "")
-	drag_visual.ball_color         = card_data.get("ball_color", "")
-	drag_visual.scale              = Vector2(0.45, 0.45)
+	drag_visual.clickable   = false
+	drag_visual.note        = int(card_data.get("note", 0))
+	drag_visual.color       = card_data.get("color", "yellow")
+	drag_visual.position1   = card_data.get("position1", "")
+	drag_visual.nationality = card_data.get("nationality", "")
+	drag_visual.firstname   = card_data.get("firstname", "")
+	drag_visual.lastname    = card_data.get("lastname", "")
+	drag_visual.ball_color  = card_data.get("ball_color", "")
+	drag_visual.scale       = Vector2(0.45, 0.45)
 	drag_layer.add_child(drag_visual)
 	drag_visual.display()
 
@@ -302,54 +361,34 @@ func _remove_from_slot(slot_index: int):
 	slot_card_ids[slot_index]  = ""
 	slot_card_data[slot_index] = {}
 	_refresh_slots()
-	if popup_cards.visible:
-		_populate_card_grid(current_popup_cards)
+	if popup_cards.visible: _populate_card_grid(current_popup_cards)
 	_save_team()
 
 func _end_drag():
 	drag_active    = false
 	drag_card_data = {}
-	if drag_visual:
-		drag_visual.queue_free()
-		drag_visual = null
+	if drag_visual: drag_visual.queue_free(); drag_visual = null
 	press_card_index = -1
 
+# ── DCP DEPUIS POPUP ──────────────────────────────────────────────────────────
 func _open_dcp_from_popup(card_index: int):
 	if card_index >= current_popup_cards.size(): return
 	var data = current_popup_cards[card_index]
-	GameState.selected_note               = int(data.get("note", 0))
-	GameState.selected_color              = data.get("color", "")
-	GameState.selected_position1          = data.get("position1", "")
-	GameState.selected_position2          = data.get("position2", "")
-	GameState.selected_position2_unlocked = int(data.get("position2_unlocked", 0))
-	GameState.selected_age                = int(data.get("age", 0))
-	GameState.selected_height             = int(data.get("height", 0))
-	GameState.selected_weight             = int(data.get("weight", 0))
-	GameState.selected_nationality        = data.get("nationality", "")
-	GameState.selected_specialty1         = data.get("specialty1", "")
-	GameState.selected_specialty2         = data.get("specialty2", "")
-	GameState.selected_firstname          = data.get("firstname", "")
-	GameState.selected_lastname           = data.get("lastname", "")
-	GameState.selected_ball_color         = data.get("ball_color", "")
-	GameState.selected_strength           = int(data.get("strength", 0))
-	GameState.selected_speed              = int(data.get("speed", 0))
-	GameState.selected_aggression         = int(data.get("aggression", 0))
-	GameState.selected_positioning        = int(data.get("positioning", 0))
-	GameState.selected_stamina            = int(data.get("stamina", 0))
-	GameState.selected_creativity         = int(data.get("creativity", 0))
-	GameState.selected_concentration      = int(data.get("concentration", 0))
-	GameState.selected_motivation         = int(data.get("motivation", 0))
-	GameState.selected_anticipation       = int(data.get("anticipation", 0))
-	GameState.selected_communication      = int(data.get("communication", 0))
-	GameState.selected_card_id            = data.get("card_id", "")
-	GameState.selected_deco_index         = 0
-	GameState.previous_scene              = "res://Scenes/team.tscn"
+	_fill_gamestate_from_dict(data)
+	GameState.selected_deco_index = 0
+	GameState.previous_scene      = "res://Scenes/team.tscn"
 	get_tree().change_scene_to_file(SCENE_DCP)
 
-# ── DCP depuis slot ────────────────────────────────────────────────────────────
-func _open_dcp(slot_index: int):
+# ── DCP DEPUIS SLOT ───────────────────────────────────────────────────────────
+func _open_dcp_from_slot(slot_index: int):
 	var data = slot_card_data[slot_index]
 	if data.is_empty(): return
+	_fill_gamestate_from_dict(data)
+	GameState.selected_deco_index = 0
+	GameState.previous_scene      = "res://Scenes/team.tscn"
+	get_tree().change_scene_to_file(SCENE_DCP)
+
+func _fill_gamestate_from_dict(data: Dictionary):
 	GameState.selected_note               = int(data.get("note", 0))
 	GameState.selected_color              = data.get("color", "")
 	GameState.selected_position1          = data.get("position1", "")
@@ -375,9 +414,6 @@ func _open_dcp(slot_index: int):
 	GameState.selected_anticipation       = int(data.get("anticipation", 0))
 	GameState.selected_communication      = int(data.get("communication", 0))
 	GameState.selected_card_id            = data.get("card_id", "")
-	GameState.selected_deco_index         = 0
-	GameState.previous_scene              = "res://Scenes/team.tscn"
-	get_tree().change_scene_to_file(SCENE_DCP)
 
 # ── INPUT ─────────────────────────────────────────────────────────────────────
 func _input(event):
@@ -391,7 +427,7 @@ func _input(event):
 		if press_holding and event.position.distance_to(touch_start) > 15:
 			press_holding = false; press_timer = 0.0
 		if drag_active and drag_visual:
-			drag_visual.position = event.position - Vector2(50, 75)
+			drag_visual.position = event.position - Vector2(50, 50)
 
 func _on_press(pos: Vector2):
 	if _sprite_hit(btn_help, pos):
@@ -415,7 +451,7 @@ func _on_press(pos: Vector2):
 		if _panel_hit(white_bg, pos):   _open_popup("white");   return
 		if _panel_hit(special_bg, pos): _open_popup("special"); return
 
-	# Tap sur carte popup → DCP / Long press → drag
+	# Tap sur carte popup → prépare tap court (DCP) ou appui long (drag)
 	if popup_cards.visible and not drag_active:
 		for i in range(popup_card_nodes.size()):
 			if popup_card_nodes[i].get_global_rect().has_point(pos):
@@ -424,16 +460,16 @@ func _on_press(pos: Vector2):
 				press_timer      = 0.0
 				return
 
-	# Clic court sur slot → DCP
+	# Clic court sur slot occupé → DCP
 	for i in range(8):
 		if _panel_hit(slot_nodes[i], pos):
 			if slot_card_ids[i] != "":
-				_open_dcp(i)
+				_open_dcp_from_slot(i)
 			return
 
 func _on_release(pos: Vector2):
-	var was_holding = press_holding
-	press_holding = false; press_timer = 0.0
+	var was_holding  = press_holding
+	press_holding    = false; press_timer = 0.0
 
 	# Tap court sur carte popup → DCP
 	if popup_cards.visible and not drag_active and press_card_index >= 0 and was_holding:
@@ -446,6 +482,7 @@ func _on_release(pos: Vector2):
 		return
 
 	if not drag_active: return
+	# Drop sur slot
 	for i in range(8):
 		if _panel_hit(slot_nodes[i], pos):
 			_drop_on_slot(i); return
@@ -459,6 +496,7 @@ func _set_panel_color(panel: Control, c: Color):
 		style = existing.duplicate() as StyleBoxFlat
 	else:
 		style = StyleBoxFlat.new()
+		style.set_corner_radius_all(12)
 	style.bg_color = c
 	panel.add_theme_stylebox_override("panel", style)
 

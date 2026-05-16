@@ -68,8 +68,25 @@ const BALL_COLORS = {
 	"vertfonce": Color(0.176, 0.416, 0.310),
 }
 
-const SPECIALTIES_GB    = ["command","reflexes"]
-const SPECIALTIES_FIELD = ["crossing","dribbling","heading","passing","shooting","tackling"]
+const SPECIALTIES_GB    = ["GoalReflex", "GoalAerial"]
+const SPECIALTIES_FIELD = ["GoalAerial", "Tackling", "Passing", "Heading", "Shooting",
+							"Dribbling", "Creator", "Leader", "Fortress", "Possession", "TotalAttack"]
+
+# Mapping nom Godot → fichier sprite
+const SPECIALTY_FILES = {
+	"GoalReflex":  "res://Sprites/Specialties/img_reflex_save.png",
+	"GoalAerial":  "res://Sprites/Specialties/img_aerial-reach.png",
+	"Tackling":    "res://Sprites/Specialties/img_tackling.png",
+	"Passing":     "res://Sprites/Specialties/img_passing.png",
+	"Heading":     "res://Sprites/Specialties/img_heading.png",
+	"Shooting":    "res://Sprites/Specialties/img_shooting.png",
+	"Dribbling":   "res://Sprites/Specialties/img_dribbling.png",
+	"Creator":     "res://Sprites/Specialties/img_creator.png",
+	"Leader":      "res://Sprites/Specialties/img_leader.png",
+	"Fortress":    "res://Sprites/Specialties/img_Fortress.png",
+	"Possession":  "res://Sprites/Specialties/img_possession.png",
+	"TotalAttack": "res://Sprites/Specialties/img_total_attack.png",
+}
 
 const TOP_COUNTRIES    = ["br","de","ar","fr","it","es","gb","pt"]
 const STRONG_COUNTRIES = ["nl","be","hr","pl","se","ma","sn","gh","ng","us","mx","jp","kr","au","ru","cz","tr","ro","dk","no"]
@@ -246,27 +263,31 @@ func display():
 		lbl_position2.visible = false
 	lbl_firstname.text = firstname
 	lbl_lastname.text  = lastname
-	# Auto-réduction police si prénom/nom > 10 caractères
+	# Auto-réduction police noms longs
 	var max_len = max(firstname.length(), lastname.length())
-	var font_size = 20
-	if max_len > 13:   font_size = 13
-	elif max_len > 10: font_size = 16
+	var font_size = 28
+	if max_len > 13:   font_size = 18
+	elif max_len > 10: font_size = 22
 	lbl_firstname.add_theme_font_size_override("font_size", font_size)
 	lbl_lastname.add_theme_font_size_override("font_size", font_size)
-	# Ball color via modulate
-	if ball_color != "" and ball_color in BALL_COLORS:
-		img_ball_color.modulate = BALL_COLORS[ball_color]
-		img_ball_color.visible  = true
+	# Ball color via texture numérotée (img_ball_1.png à img_ball_20.png)
+	if ball_color != "" and ball_color != "0":
+		var p = "res://Sprites/Balls/img_ball_" + ball_color + ".png"
+		if ResourceLoader.exists(p):
+			img_ball_color.texture = load(p)
+			img_ball_color.visible = true
+		else:
+			img_ball_color.visible = false
 	else:
 		img_ball_color.visible = false
-	# Spécialités
+	# Spécialités — chargement via dict (noms Godot → fichier)
 	img_specialty1.visible = (specialty1 != "")
 	img_specialty2.visible = (specialty2 != "")
-	if specialty1 != "":
-		var p = "res://Sprites/Specialties/specialty_" + specialty1 + ".png"
+	if specialty1 != "" and specialty1 in SPECIALTY_FILES:
+		var p = SPECIALTY_FILES[specialty1]
 		img_specialty1.texture = load(p) if ResourceLoader.exists(p) else null
-	if specialty2 != "":
-		var p = "res://Sprites/Specialties/specialty_" + specialty2 + ".png"
+	if specialty2 != "" and specialty2 in SPECIALTY_FILES:
+		var p = SPECIALTY_FILES[specialty2]
 		img_specialty2.texture = load(p) if ResourceLoader.exists(p) else null
 	# Drapeau
 	var fp  = "res://Sprites/Flags/flag_" + nationality + ".png"

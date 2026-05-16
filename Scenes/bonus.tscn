@@ -325,19 +325,29 @@ text = "Jeu en triangle"
 [node name="BTN_PourcentBonus1" type="Label" parent="." unique_id=1020039044]
 z_index = 4
 offset_left = 837.0
-offset_top = 248.0
+offset_top = 233.0
 offset_right = 907.0
-offset_bottom = 287.0
+offset_bottom = 272.0
 theme_override_font_sizes/font_size = 24
 text = "%"
 horizontal_alignment = 1
 
-[node name="BTN_PourcentBonus2" type="Label" parent="." unique_id=365432792]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1919565873]
+offset_left = 780.0
+offset_top = 270.0
+offset_right = 928.0
+offset_bottom = 973.0
+
+[node name="BTN_PourcentBonus2" type="Label" parent="VBoxContainer" unique_id=365432792]
 z_index = 4
-offset_left = 822.0
-offset_top = 293.0
-offset_right = 920.0
-offset_bottom = 332.0
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0.47"
+horizontal_alignment = 1
+
+[node name="BTN_PourcentBonus3" type="Label" parent="VBoxContainer" unique_id=578976200]
+z_index = 4
+layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "0.47"
 horizontal_alignment = 1

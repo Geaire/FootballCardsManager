@@ -165,10 +165,12 @@ func _try_confirm():
 	Firebase.firestore_success.connect(_on_profile_created)
 	Firebase.firestore_failed.connect(_on_profile_failed)
 	Firebase.create_document("managers", Firebase.user_id, {
-		"manager_name": manager_name,
-		"team_name":    team_name,
-		"language":     GameState.language,
-		"sound_on":     GameState.sound_on
+		"manager_name":     manager_name,
+		"team_name":        team_name,
+		"language":         GameState.language,
+		"sound_on":         GameState.sound_on,
+		"position2_stock":  1,   # 1 position2 en stock à la création
+		"specialty_stock":  2,   # 1 spécialité1 + 1 spécialité2 = 2 en stock
 	})
 
 func _on_profile_created(_data: Dictionary):
@@ -206,9 +208,9 @@ func _generate_card(color: String) -> Dictionary:
 		"magenta": card.note = randi_range(90, 99)
 		"blue":    card.note = randi_range(100, 129)
 		"white":   card.note = randi_range(40, 70)
-	card.color = color
+	card.color       = color
+	card.nationality = "fr"  # TEST : toutes les cartes françaises pour vérifier les rewards
 	card.generate_age_height_weight()
-	card.generate_nationality()
 	card.generate_positions()
 	card.generate_name()
 	card.generate_specialties()

@@ -42,7 +42,6 @@ const WEEKLY_NEWS = {
 	"pt": ["Bem-vindo ao Football Cards Manager!", "Campeonato Clássico disponível.", "", "", ""],
 }
 
-# ── TRADUCTIONS — popup uniquement ────────────────────────────────────────────
 const TRANSLATIONS = {
 	"fr": {
 		"popup_comp": "- FCM s'adapte à votre vie et à vos envies.\n- Choisissez quand jouer et quoi jouer.\n- Programmez vos compétitions pour la semaine prochaine.\n- Glissez / Déposez. Glissez / Retirez.\n- 1 championnat occupe 2 Shots espacés de 6h.\n- Planning verrouillé le dimanche à 18h.",
@@ -93,25 +92,24 @@ var touch_start:         Vector2    = Vector2.ZERO
 var locked:              bool       = false
 var page1_nodes:         Array      = []
 
-# ── NŒUDS ─────────────────────────────────────────────────────────────────────
 @onready var lbl_title_competitions = $LBL_TitleCompetitions
-@onready var btn_help_competitions  = $BTN_HelpCompetitions      # Sprite2D
+@onready var btn_help_competitions  = $BTN_HelpCompetitions
 @onready var lbl_popup_competitions = $LBL_PopupCompetitions
-@onready var btn_next_page          = $BTN_NextPage              # Sprite2D
-@onready var cnt_competitions       = $CNT_Competitions          # VBoxContainer ← pas PNL_
+@onready var btn_next_page          = $BTN_NextPage
+@onready var cnt_competitions       = $CNT_Competitions
 
 @onready var page2               = $Page2
-@onready var btn_prev_page       = $Page2/BTN_PrevPage           # Sprite2D
+@onready var btn_prev_page       = $Page2/BTN_PrevPage
 @onready var lbl_title_news      = $Page2/LBL_TitleNews
-@onready var lbl_news1           = $Page2/CNT_News/LBL_News1     # ← CNT_News pas PNL_News
+@onready var lbl_news1           = $Page2/CNT_News/LBL_News1
 @onready var lbl_news2           = $Page2/CNT_News/LBL_News2
 @onready var lbl_news3           = $Page2/CNT_News/LBL_News3
 @onready var lbl_news4           = $Page2/CNT_News/LBL_News4
 @onready var lbl_news5           = $Page2/CNT_News/LBL_News5
 @onready var lbl_title_evolution = $Page2/LBL_TitleEvolution
-@onready var btn_help_evolution  = $Page2/BTN_HelpEvolution       # Sprite2D
+@onready var btn_help_evolution  = $Page2/BTN_HelpEvolution
 @onready var lbl_popup_evolution = $Page2/LBL_PopupEvolution
-@onready var btn_bonus           = $Page2/CNT_Evolution/BTN_Bonus          # ← CNT_Evolution
+@onready var btn_bonus           = $Page2/CNT_Evolution/BTN_Bonus
 @onready var btn_feat_comp       = $Page2/CNT_Evolution/BTN_Competitions
 @onready var btn_design          = $Page2/CNT_Evolution/BTN_Design
 @onready var btn_others          = $Page2/CNT_Evolution/BTN_Others
@@ -136,11 +134,12 @@ func _ready():
 	_setup_catalogue()
 	_setup_news()
 	_apply_translations()
-	_refresh_shots()
 	_check_lock()
 	page1_nodes = [lbl_title_competitions, btn_help_competitions, btn_next_page, cnt_competitions]
 	for i in range(1, 9):
 		page1_nodes.append(shot_nodes[i - 1])
+	# Charger les shots sauvegardés depuis Firestore
+	_load_shots()
 
 func _setup_shot_times():
 	for i in range(1, 9):
@@ -160,11 +159,9 @@ func _setup_news():
 	var news   = WEEKLY_NEWS.get(GameState.language, WEEKLY_NEWS["fr"])
 	var labels = [lbl_news1, lbl_news2, lbl_news3, lbl_news4, lbl_news5]
 	for i in range(labels.size()):
-		var text          = news[i] if i < news.size() else ""
-		labels[i].text    = text
-		labels[i].visible = (text != "")
+		var text       = news[i] if i < news.size() else ""
+		labels[i].text = text; labels[i].visible = (text != "")
 
-# ── TRADUCTIONS — popup uniquement ────────────────────────────────────────────
 func _apply_translations():
 	var t = TRANSLATIONS.get(GameState.language, TRANSLATIONS["fr"])
 	lbl_popup_competitions.text = t["popup_comp"]
@@ -172,28 +169,30 @@ func _apply_translations():
 	lbl_title_competitions.text = "Next week competitions"
 	lbl_title_news.text         = "Newsletter!"
 	lbl_title_evolution.text    = "Football Cards Manager Evolution"
-	btn_bonus.text              = "BONUS"
-	btn_feat_comp.text          = "COMPETITIONS"
-	btn_design.text             = "DESIGN"
-	btn_others.text             = "OTHERS"
-	btn_bugs.text               = "BUGS"
+	btn_bonus.text = "BONUS"; btn_feat_comp.text = "COMPETITIONS"
+	btn_design.text = "DESIGN"; btn_others.text = "OTHERS"; btn_bugs.text = "BUGS"
 
 func _refresh_shots():
 	for i in range(1, 9):
 		var lbl_c = shot_nodes[i - 1].get_node("LBL_Competition")
 		var bg    = shot_nodes[i - 1].get_node("BG_Shot")
 		if shot_data[i].is_empty():
-			lbl_c.text = ""
-			_set_bg_color(bg, Color(1, 1, 1))
+			lbl_c.text = ""; _set_bg_color(bg, Color(1, 1, 1))
 		else:
 			lbl_c.text = shot_data[i]["name"]
 			_set_bg_color(bg, COMP_COLORS[shot_data[i]["type"]])
 	_setup_catalogue()
 	_update_shot_availability()
 
-func _set_bg_color(panel: PanelContainer, color: Color):
-	var style = panel.get_theme_stylebox("panel").duplicate()
-	style.bg_color = color
+func _set_bg_color(panel: PanelContainer, c: Color):
+	var existing = panel.get_theme_stylebox("panel")
+	var style: StyleBoxFlat
+	if existing is StyleBoxFlat:
+		style = existing.duplicate() as StyleBoxFlat
+	else:
+		style = StyleBoxFlat.new()
+		style.set_corner_radius_all(8)
+	style.bg_color = c
 	panel.add_theme_stylebox_override("panel", style)
 
 func _update_shot_availability():
@@ -213,10 +212,60 @@ func _is_shot_available_for_champ(slot: int) -> bool:
 
 func _check_lock():
 	var now = Time.get_datetime_dict_from_system()
-	locked = (now["weekday"] == 0 and now["hour"] >= 18)
+	locked  = (now["weekday"] == 0 and now["hour"] >= 18)
 	for i in range(1, 9):
 		shot_nodes[i - 1].get_node("OVL_Lock").visible = locked
 
+# ── FIRESTORE — PERSISTANCE DES SHOTS ────────────────────────────────────────
+func _save_shots():
+	if Firebase.user_id == "": return
+	var data: Dictionary = {}
+	for i in range(1, 9):
+		if shot_data[i].is_empty():
+			data["shot_%d" % i] = {}
+		else:
+			data["shot_%d" % i] = {
+				"name":    shot_data[i].get("name", ""),
+				"type":    shot_data[i].get("type", ""),
+				"cat_idx": shot_data[i].get("cat_idx", -1),
+			}
+	Firebase.update_document(
+		"managers/" + Firebase.user_id + "/schedule",
+		"current_week", data
+	)
+
+func _load_shots():
+	if Firebase.user_id == "": return
+	Firebase.firestore_success.connect(_on_shots_loaded)
+	Firebase.firestore_failed.connect(_on_shots_failed)
+	Firebase.get_document("managers/" + Firebase.user_id + "/schedule", "current_week")
+
+func _on_shots_loaded(data: Dictionary):
+	if Firebase.firestore_success.is_connected(_on_shots_loaded):
+		Firebase.firestore_success.disconnect(_on_shots_loaded)
+	if Firebase.firestore_failed.is_connected(_on_shots_failed):
+		Firebase.firestore_failed.disconnect(_on_shots_failed)
+	for i in range(1, 9):
+		var key = "shot_%d" % i
+		var s   = data.get(key, {})
+		if typeof(s) == TYPE_DICTIONARY and s.has("name") and s["name"] != "":
+			shot_data[i] = s
+			# Marquer la compétition comme utilisée dans le catalogue
+			var cat_idx = int(s.get("cat_idx", -1))
+			if cat_idx >= 0 and cat_idx < catalogue_available.size():
+				catalogue_available[cat_idx] = false
+		else:
+			shot_data[i] = {}
+	_refresh_shots()
+
+func _on_shots_failed(_error: String):
+	if Firebase.firestore_success.is_connected(_on_shots_loaded):
+		Firebase.firestore_success.disconnect(_on_shots_loaded)
+	if Firebase.firestore_failed.is_connected(_on_shots_failed):
+		Firebase.firestore_failed.disconnect(_on_shots_failed)
+	_refresh_shots()
+
+# ── PROCESS ────────────────────────────────────────────────────────────────────
 func _process(delta):
 	if press_holding and press_slot > 0:
 		press_timer += delta
@@ -224,7 +273,7 @@ func _process(delta):
 			press_holding = false; press_timer = 0.0
 			if not locked:
 				var slot = press_slot; press_slot = -1
-				_end_drag(); _clear_shot(slot); _refresh_shots()
+				_end_drag(); _clear_shot(slot); _refresh_shots(); _save_shots()
 
 func _animate_to_page(page: int):
 	if is_animating: return
@@ -246,8 +295,7 @@ func _animate_to_page(page: int):
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			touch_start = event.position
-			_on_press(event.position)
+			touch_start = event.position; _on_press(event.position)
 		else:
 			_on_release(event.position)
 	elif event is InputEventMouseMotion:
@@ -261,17 +309,14 @@ func _on_press(pos: Vector2):
 		_animate_to_page(2); return
 	if _sprite_hit(btn_prev_page, pos) and current_page == 2:
 		_animate_to_page(1); return
-	# Toggle popups — même bouton ouvre ET ferme
 	if _sprite_hit(btn_help_competitions, pos) and current_page == 1:
 		lbl_popup_competitions.visible = not lbl_popup_competitions.visible
 		lbl_popup_evolution.visible    = false; return
 	if _sprite_hit(btn_help_evolution, pos) and current_page == 2:
 		lbl_popup_evolution.visible    = not lbl_popup_evolution.visible
 		lbl_popup_competitions.visible = false; return
-	if lbl_popup_competitions.visible:
-		lbl_popup_competitions.visible = false; return
-	if lbl_popup_evolution.visible:
-		lbl_popup_evolution.visible = false; return
+	if lbl_popup_competitions.visible: lbl_popup_competitions.visible = false; return
+	if lbl_popup_evolution.visible:    lbl_popup_evolution.visible    = false; return
 	if current_page == 2:
 		if _label_hit(btn_bonus, pos):     OS.shell_open(FEATUREBASE_URL + "?category=bonus"); return
 		if _label_hit(btn_feat_comp, pos): OS.shell_open(FEATUREBASE_URL + "?category=competitions"); return
@@ -295,7 +340,7 @@ func _on_release(pos: Vector2):
 	for i in range(1, 9):
 		if _shot_hit(i, pos): _drop_on_shot(i); return
 	if drag_origin_shot > 0 and _cnt_hit(pos):
-		_clear_shot(drag_origin_shot); _end_drag(); _refresh_shots(); return
+		_clear_shot(drag_origin_shot); _end_drag(); _refresh_shots(); _save_shots(); return
 	_end_drag()
 
 func _start_drag(comp_name: String, comp_type: String, origin_shot: int, origin_cat: int):
@@ -331,7 +376,7 @@ func _drop_on_shot(slot: int):
 			shot_data[drag_origin_shot] = {}
 		shot_data[slot] = {"name": drag_comp_name, "type": drag_comp_type, "cat_idx": drag_origin_cat}
 		if drag_origin_cat >= 0: catalogue_available[drag_origin_cat] = false
-	_end_drag(); _refresh_shots()
+	_end_drag(); _refresh_shots(); _save_shots()
 
 func _clear_shot(slot: int):
 	if shot_data[slot].is_empty(): return
